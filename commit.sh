@@ -9,8 +9,8 @@ README
 存放leetcode(www.leetcode.com) 上的问题解法代码，主力语言Ruby, 偶而使用C++, Python。 
 
 ***** 
-|:---  |:---
 |Author|@GaoangLiu|
+|:---  |:---
 |E-mail|xmsun@pm.me
 
 ### Log: 
