@@ -7,7 +7,7 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;36m'
 PLAIN='\033[0m'
 
-echo -e "${BLUE}USAGE: ./build-cli problem_id [language: c/cpp/ruby/python]${PLAIN}"
+echo -e "${GREEN}USAGE: ./build-cli problem_id [language: c/cpp/ruby/python]${PLAIN}"
 pid=$1
 lan='ruby'
 if [ $# -gt 1 ] ; then 
