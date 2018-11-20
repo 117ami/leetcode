@@ -1,0 +1,60 @@
+# coding: utf-8
+# Q1
+# @param {Integer} n
+# @return {Integer}
+def rotated_digits(n)
+  return 0 if n < 2
+  return 1 if n == 2
+  rotate = { 0 => 0, 1 => 1, 2 => 5, 5=>2, 6=>9, 8=>8, 9=>6}
+  r = 0
+  2.upto(n).each do |k|
+    newk = ''
+    k.to_s.each_char do |c|
+      unless rotate.key?(c.to_i)
+        newk = ''
+        break
+      end
+      newk = newk + rotate[c.to_i].to_s
+    end
+    r += 1 if newk != '' && newk.to_i != k
+  end
+  r
+end
+
+p rotated_digits(9)
+
+# Q3
+# @param {String} s
+# @param {String} t
+# @return {String}
+def custom_sort_string(s, t)
+  return t if s.empty?
+  h = Hash[s.chars.zip(0..s.length)]
+  t.chars.each do |c|
+    h[c] = 222 unless h.key?(c)
+  end
+  t.chars.sort_by {|c| h[c]}.join.to_s
+end
+p custom_sort_string('cba', 'abcabababedd')
+
+
+# Q4
+# @param {Integer} n
+# @return {Integer}
+def num_tilings(n)
+  h = {}
+  loop = lambda do |i|
+    h = {0 => 0, 1=>1, 2=>2, 3=>5}
+    return h[i] if i <= 3
+    r = 0
+    1.upto(i-1) do |k|
+      loop.call(k) unless h.key?(k)
+      loop.call(i-k) unless h.key?(i-k)
+      r += h[k] * h[i-k]
+    end
+    return h[i] = r + 1 - i
+  end
+  loop.call(n)
+end
+
+p num_tilings(5)
