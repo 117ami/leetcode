@@ -14,6 +14,6 @@ README
 * Tue 11/20/18/15:47:57: Add a few scripts for downloading problem descriptions
 * Tue 11/20/18/17:12:41: [Easy] 942 di string match is solved; a script for generating code file is created
 * Tue 11/20/18/17:36:04: [Easy] 941 valid mountail array is solved.
-* Tue 11/20/18/20:34:01: A trivial modification of commit.sh(table left aligned)
 * Tue 11/20/18/20:34:09: A trivial modification of commit.sh(table left aligned)
+* Wed 11/21/18/10:42:15: [Medium] 938 range sum of bst solved
 ```
