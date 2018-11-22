@@ -19,4 +19,5 @@ README
 * Wed 11/21/18/10:58:23: [Medium] 944 delete columns to make sorted is solved with only one-line ruby code
 * Thu 11/22/18/11:13:05: [Easy] 937 reorder log files solved
 * Thu 11/22/18/12:27:22: [Easy] 401 binary watch solved; expect实现脚本自动登陆leetcode
+* Thu 11/22/18/13:46:01: usd [Expect] to login leetcode automatically
 ```
