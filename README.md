@@ -21,4 +21,5 @@ README
 * Thu 11/22/18/12:27:22: [Easy] 401 binary watch solved; expect实现脚本自动登陆leetcode
 * Thu 11/22/18/13:46:01: use [Expect] to login leetcode automatically
 * Thu 11/22/18/13:50:03: PROGRESS: solutions includes 718 files; finish 605 problems
+* Fri 11/23/18/10:50:51: login.sh updated: check whether credential file exists before login
 ```
