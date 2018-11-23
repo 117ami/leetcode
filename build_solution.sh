@@ -24,6 +24,11 @@ leetcode show $pid >> $source
 echo "=end" >> $source
 
 # removing spaces 
-sed -i "1irequire './aux.rb\'" $source
+case $lan in 
+	'ruby') sed -i "1irequire './aux.rb\'" $source;; 
+	'cpp') sed -i "1 include \"aux.cpp\"" $source;; 
+	*) echo '' ;;
+esac
+
 sed -i '/^\s*$/d' $source
 
