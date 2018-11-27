@@ -4,9 +4,9 @@ README
 存放leetcode(www.leetcode.com) 上的问题解法代码，主力语言Ruby, 偶而使用C++, Python。 
 
 ***** 
-|Author|@GaoangLiu|
+|Author|@ssrzz|
 |:---  |:---
-|E-mail|xmsun@pm.me
+|E-mail|ssrzz@pm.me
 
 ### Log: 
 ```
@@ -26,4 +26,5 @@ README
 * Fri 11/23/18/12:50:45: build_solutions improved
 * Tue 11/27/18/11:28:45: [Medium] LC 932 the solution given by @lee215 is strikingly smart
 * Tue 11/27/18/12:00:22: [Medium] LC 934 shortest bridge solved
+* Tue 11/27/18/15:49:24: changed defaulted email addr
 ```
