@@ -25,4 +25,5 @@ README
 * Fri 11/23/18/12:20:51: [Easy 707 design linked list solved
 * Fri 11/23/18/12:50:45: build_solutions improved
 * Tue 11/27/18/11:28:45: [Medium] LC 932 the solution given by @lee215 is strikingly smart
+* Tue 11/27/18/12:00:22: [Medium] LC 934 shortest bridge solved
 ```
