@@ -27,4 +27,5 @@ README
 * Tue 11/27/18/11:28:45: [Medium] LC 932 the solution given by @lee215 is strikingly smart
 * Tue 11/27/18/12:00:22: [Medium] LC 934 shortest bridge solved
 * Tue 11/27/18/15:49:24: changed defaulted email addr
+* Wed 11/28/18/11:34:33: [Medium 919 complete binary tree solved
 ```
