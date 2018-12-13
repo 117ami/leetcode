@@ -29,4 +29,5 @@ README
 * Tue 11/27/18/15:49:24: changed defaulted email addr
 * Wed 11/28/18/11:34:33: [Medium 919 complete binary tree solved
 * Wed 11/28/18/12:05:19: Add new script [tools.sh] for list undone [Easy/Medium] problems; also merge submit code into it
+* Thu 12/13/18/19:31:25: [Easy] 953 alien dict solved in 1 pass
 ```
