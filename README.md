@@ -32,4 +32,5 @@ README
 * Thu 12/13/18/19:31:25: [Easy] 953 alien dict solved in 1 pass
 * Fri 12/14/18/07:19:53: [Medium] 609 solved
 * Sat 12/15/18/13:44:43: [Medium] 641 design circular deque
+* Sat 12/15/18/14:08:00: [Medium] 622 design circular queue
 ```
