@@ -37,7 +37,7 @@ def login_account():
         p = subprocess.Popen(['bash', 'login.sh'])
         try:
             p.wait(10)
-        except subp.TimeoutExpired:
+        except subprocess.TimeoutExpired:
             p.kill()
 
 
