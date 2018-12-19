@@ -25,5 +25,6 @@ case $1 in
 	'-eu') sortedEasyUndone;;
 	'-m')  sortedMediumAll;;
 	'-mu') sortedMediumUndone;;
+	'-s')  submit;;
 	*)	   usage;;
 esac
