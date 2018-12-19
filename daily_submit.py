@@ -42,10 +42,12 @@ def login_account():
 
 
 def sleep_submit():
+        # logout before login for the existence of multiple accounts
+    os.system("leetcode user -L")
     while True:
         login_account()
         auto_sumbit()
-        sleep(random.randint(3, 5))
+        sleep(random.randint(3600 * 3, 3600 * 5))
 
 
 sleep_submit()
