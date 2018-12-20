@@ -1,7 +1,7 @@
 #!/bin/bash 
 comments=$1
 echo '*' `date +"%a %D/%T":` $comments | tee -a c.log 
-readme='README.md'
+readme='log.md'
 
 echo '
 README
