@@ -34,12 +34,12 @@ def is_login():
 
 def login_account():
     while not is_login():
-        p = subprocess.Popen(['bash', 'login.sh'])
-        try:
-            p.wait(10)
-        except subprocess.TimeoutExpired:
-            p.kill()
-
+    	proc = subprocess.Popen(["bash", "login.sh"])
+    	try:
+    		outs, errs = proc.communicate(timeout=10)
+    	except TimeoutExpired:
+    		proc.kill()
+    		outs, errs = proc.communicate()
 
 def sleep_submit():
         # logout before login for the existence of multiple accounts

@@ -36,4 +36,5 @@ README
 * Wed 12/19/18/13:09:48: a script for auto submit solution
 * Wed 12/19/18/13:16:02: setting time to 3~5 hours
 * Wed 12/19/18/20:24:26: bug fixed: subprocess
+* Thu 12/20/18/15:22:08: bug fixed: object has no attribute TimeoutExpired
 ```
