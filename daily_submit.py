@@ -9,7 +9,8 @@ from shutil import copyfile
 
 def auto_sumbit():
     file = "ac.c"
-    while not file.endswith(".rb"):
+    while not file.endswith(".rb") or not re.findall(
+            r"\d+", file):  # problem ID is required
         file = random.choice(os.listdir("solutions"))
     print(file)
 
@@ -34,20 +35,24 @@ def is_login():
 
 def login_account():
     while not is_login():
-    	proc = subprocess.Popen(["bash", "login.sh"])
-    	try:
-    		outs, errs = proc.communicate(timeout=10)
-    	except TimeoutExpired:
-    		proc.kill()
-    		outs, errs = proc.communicate()
+        proc = subprocess.Popen(["bash", "login.sh"])
+        try:
+            outs, errs = proc.communicate(timeout=10)
+        except subprocess.TimeoutExpired:
+            proc.terminate()
+            outs, errs = proc.communicate()
+
 
 def sleep_submit():
         # logout before login for the existence of multiple accounts
     os.system("leetcode user -L")
     while True:
-        login_account()
-        auto_sumbit()
-        sleep(random.randint(3600 * 3, 3600 * 5))
+        try:
+            login_account()
+            auto_sumbit()
+            sleep(random.randint(3600 * 3, 3600 * 5))
+        except BaseException:
+            pass
 
 
 sleep_submit()

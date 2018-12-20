@@ -38,4 +38,5 @@ README
 * Wed 12/19/18/20:24:26: bug fixed: subprocess
 * Thu 12/20/18/15:22:08: bug fixed: object has no attribute TimeoutExpired
 * Thu 12/20/18/15:58:41: Briefly introduce this repo in readme
+* Thu 12/20/18/20:06:08: bug fixed: list index out of range when no problem ID is found in solution file name
 ```
