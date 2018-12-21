@@ -19,7 +19,7 @@ def login_account(credfile)
       writer.puts(username)
       reader.expect(/pass:/, 5)
       writer.puts(passwd)
-      sleep(3)
+      # sleep(3)
       puts "cmd response: #{reader.gets}"
     end
   end

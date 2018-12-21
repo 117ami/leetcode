@@ -32,3 +32,4 @@
 * Fri 12/21/18/11:47:46: update: add daemon.sh as a daemon-pro for daily_submit.py
 * Fri 12/21/18/11:55:41: update: make sleep time customizable
 * Fri 12/21/18/14:52:50: minor-update: use pkill to kill partially
+* Fri 12/21/18/20:46:39: [Hard] 149 max points on a line solved
