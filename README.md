@@ -21,12 +21,12 @@ README
   *  E.g.,   ```bash build_solution.sh 123```  will build a (by default .rb) solution for problem 123. 
 
 *****
-### Log (1-problem/per day for 100 days)
+### Log (100 Days Plan: 1 problem/per day solved with Python)
 
-- `22/12/2018` :  [Easy] 463 island perimeter ;[Medium] 779 k-th symbol in Grammar 
+- `22/12/2018` :  [Easy] 463 island perimeter / [Medium] 779 k-th symbol in Grammar 
 
-- 
-
+- `progress` 
+   <img src="python_solutions/progress.png" >
 
 
 
