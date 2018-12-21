@@ -21,6 +21,17 @@ README
   *  E.g.,   ```bash build_solution.sh 123```  will build a (by default .rb) solution for problem 123. 
 
 *****
+### Log (1-problem/per day for 100 days)
+
+- `22/12/2018` :  [Easy] 463 island perimeter ;
+
+- 
+
+
+
+
+----
+
 |Author|@ssrzz|
 |:---  |:---
 |E-mail|ssrzz@pm.me
