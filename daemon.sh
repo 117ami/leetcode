@@ -4,10 +4,9 @@ st=$1
 : ${st:=1800} # Default sleep time is 30 minutes 
 while :; do
 	echo "" > nohup.out
+	pkill -f "python3 daily"	
 	nohup python3 daily_submit.py &
-	pid=$!
 	sleep $st
-	kill -9 $pid 
 done
 
 # bash test.sh &
