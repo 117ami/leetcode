@@ -45,8 +45,8 @@ def login_account():
 
 
 def sleep_submit():
-    # logout before login for the existence of multiple accounts
-    # os.system("leetcode user -L")
+    # Essential: logout before login, otherwise [SESSION EXPIRED] error will be raised
+    os.system("leetcode user -L")
     while True:
         try:
             login_account()
