@@ -23,7 +23,7 @@ README
 *****
 ### Log (1-problem/per day for 100 days)
 
-- `22/12/2018` :  [Easy] 463 island perimeter ;
+- `22/12/2018` :  [Easy] 463 island perimeter ;[Medium] 779 k-th symbol in Grammar 
 
 - 
 
