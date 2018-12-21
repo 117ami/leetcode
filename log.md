@@ -39,4 +39,5 @@ README
 * Thu 12/20/18/15:22:08: bug fixed: object has no attribute TimeoutExpired
 * Thu 12/20/18/15:58:41: Briefly introduce this repo in readme
 * Thu 12/20/18/20:06:08: bug fixed: list index out of range when no problem ID is found in solution file name
+* Fri 12/21/18/08:15:50: bug fixed: add login.rb as new program to login account in background
 ```

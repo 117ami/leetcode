@@ -1,5 +1,5 @@
 #!/user/bin/env python
-import os
+import os, sys
 import random
 import subprocess
 import re
@@ -35,17 +35,18 @@ def is_login():
 
 def login_account():
     while not is_login():
-        proc = subprocess.Popen(["bash", "login.sh"])
-        try:
-            outs, errs = proc.communicate(timeout=10)
-        except subprocess.TimeoutExpired:
-            proc.terminate()
-            outs, errs = proc.communicate()
+    	print("**Login...")
+    	proc = subprocess.Popen(["ruby", "login.rb"])
+    	try:
+    		outs, errs = proc.communicate(timeout=10)
+    	except subprocess.TimeoutExpired:
+    		proc.terminate()
+    		outs, errs = proc.communicate()
 
 
 def sleep_submit():
-        # logout before login for the existence of multiple accounts
-    os.system("leetcode user -L")
+    # logout before login for the existence of multiple accounts
+    # os.system("leetcode user -L")
     while True:
         try:
             login_account()
