@@ -1,4 +1,4 @@
-#!/user/bin/env ruby
+#!/user/bin/ruby
 require 'colorize'
 require 'pty'
 require 'expect'

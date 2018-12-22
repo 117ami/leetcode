@@ -1,4 +1,4 @@
-#!/user/bin/env python
+#!/user/bin/python3
 import os, sys
 import random
 import subprocess
