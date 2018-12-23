@@ -1,5 +1,5 @@
 #!/bin/bash
-function submit 			{ leetcode submit $2;} 
+function submit 			{ leetcode submit $1;} 
 function sortedEasyAll 		{ leetcode list -q eL | awk '{print substr($(NF-1), 2), $0}' | sort -g ; }
 function sortedEasyUndone 	{ leetcode list -q eDL | awk '{print substr($(NF-1), 2), $0}' | sort -g ; }
 function sortedMediumAll 	{ leetcode list -q mL | awk '{print substr($(NF-1), 2), $0}' | sort -g ; }
@@ -25,6 +25,6 @@ case $1 in
 	'-eu') sortedEasyUndone;;
 	'-m')  sortedMediumAll;;
 	'-mu') sortedMediumUndone;;
-	'-s')  submit;;
+	'-s')  submit $2;;
 	*)	   usage;;
 esac

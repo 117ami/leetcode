@@ -24,7 +24,7 @@ README
 ### Log (100 Days Plan: 1 problem/per day solved with Python)
 
 - `22/12/2018` :  [Easy] 463 island perimeter / [Medium] 779 k-th symbol in Grammar 
-- `23/12/2018`： [Easy] 345, 541, 344 
+- `23/12/2018`： [Easy] 345, 541, 344 / [Medium] 659 
 - `progress` 
    <img src="python_solutions/progress.png" >
 
