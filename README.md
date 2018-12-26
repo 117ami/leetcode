@@ -26,8 +26,9 @@ README
 - `22/12/2018` :  [Easy] 463 island perimeter / [Medium] 779 k-th symbol in Grammar 
 - `23/12/2018`：[Easy] 345, 541, 344 / [Medium] 659 
 - `24/12/2018` : [Easy] 961; [Medium]  962
-- `progress` 
-   <img src="python_solutions/progress.png" >
+- `25/12/2018`：[Medium] 73、289 
+- `progress` [++———————————————]  10 / 300
+
 
 
 
@@ -35,7 +36,8 @@ README
 
 |Author|@ssrzz|
 |:---  |:---
-|E-mail|ssrzz@pm.me
+
+# |E-mail|ssrzz@pm.me
 
 ### 
 
