@@ -30,7 +30,4 @@ Solutions to Leetcode problems in Python3, inspired by [Haoel(CPP solutions)](ht
 
 ### Contact
 
-[<p align="center"> <img src="media/contact.png" width=400/> <p>](mailto: ssrzz@pm.me)
-
-
-
+[<p align="center"><img src="media/contact.png" width="400"/><p>](mailto:ssrzz@pm.me)
