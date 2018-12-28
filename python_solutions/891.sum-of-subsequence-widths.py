@@ -70,7 +70,7 @@ class Solution(object):
         return (mod + maxn - minn) % mod
 
     def sumSubseqWidths(self, a):
-    	# someone else's solution, quite smart 
+        # someone else's solution, quite smart
         a.sort()
         res = 0
         for i, n in enumerate(a):
