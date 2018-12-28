@@ -47,9 +47,9 @@ def update_readme():
     with open('README.md', 'w') as f:
         f.write(readme_head)
         for pid, diffi, plink, title, local in items:
-            tr = "|[" + diff_symbols[diffi] + "] " + pid + " | [" + \
+            tr = "|(" + diff_symbols[diffi] + ") " + pid + " | [" + \
                 title + "](" + plink + ") | [Python](" + local + ")| \n"
             f.write(tr)
-
+        f.write(open('conf.d/readme_tail', 'r').read())
 update_readme()
 
