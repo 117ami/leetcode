@@ -27,8 +27,9 @@ README
 - `23/12/2018`：[Easy] 345, 541, 344 / [Medium] 659 
 - `24/12/2018` : [Easy] 961; [Medium]  962
 - `25/12/2018`：[Medium] 73、289 
-- `progress` [++———————————————]  10 / 300
-
+- `26/12/2018` : 583,  215, 479
+- `27/12/2018`:  [225E](https://leetcode.com/problems/implement-stack-using-queues/description/), [525M](https://leetcode.com/problems/contiguous-array/description/)
+- `progress` [++———————————————]  15 / 300
 
 
 
