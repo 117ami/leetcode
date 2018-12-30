@@ -8,12 +8,13 @@ Solutions to Leetcode problems in Python3, inspired by [Haoel(CPP solutions)](ht
 
 (Note: the symbols 𝐇, 𝐌, 𝐄 after each ID imply the difficulties: Hard, Medium, Easy)
 
-| #    | Title | Solution | 
+| #    | Title | Talk is cheap. Show me the code. | 
 | ---- | ----- | -------- | 
 |(𝐌) 73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)| 
 |(𝐌) 215 | [kth-largest-element-in-an-array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/) | [Python](./python_solutions/215.kth-largest-element-in-an-array.py)| 
 |(𝐄) 225 | [implement-stack-using-queues](https://leetcode.com/problems/implement-stack-using-queues/description/) | [Python](./python_solutions/225.implement-stack-using-queues.py)| 
 |(𝐌) 289 | [game-of-life](https://leetcode.com/problems/game-of-life/description/) | [Python](./python_solutions/289.game-of-life.py)| 
+|(𝐄) 342 | [power-of-four](https://leetcode.com/problems/power-of-four/description/) | [Python](./python_solutions/342.power-of-four.py)| 
 |(𝐄) 344 | [reverse-string](https://leetcode.com/problems/reverse-string/description/) | [Python](./python_solutions/344.reverse-string.py)| 
 |(𝐄) 345 | [reverse-vowels-of-a-string](https://leetcode.com/problems/reverse-vowels-of-a-string/description/) | [Python](./python_solutions/345.reverse-vowels-of-a-string.py)| 
 |(𝐄) 463 | [island-perimeter](https://leetcode.com/problems/island-perimeter/description/) | [Python](./python_solutions/463.island-perimeter.py)| 

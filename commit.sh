@@ -19,6 +19,9 @@ README
 cat c.log >> $readme
 echo '```' >> $readme 
 
+# auto update README.md
+python3 scripts/auto_add_log.py 
+
 git add .
 git commit -m "$comments"
 git push 
