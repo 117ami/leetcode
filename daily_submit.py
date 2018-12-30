@@ -23,8 +23,11 @@ def auto_sumbit():
                 target.write(line + "\n")
     target.close()
 
-    os.system("leetcode submit " + nfname)
+    res = subprocess.run(["leetcode", "submit", nfname], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    # os.system("leetcode submit " + nfname)
+    print(res.stdout)
     os.remove(nfname)
+    return 'expired' in str(res.stdout)
 
 
 def is_login():
@@ -49,11 +52,15 @@ def sleep_submit():
     # os.system("leetcode user -L")
     while True:
         try:
-            login_account()
-            auto_sumbit()
-            sleep(random.randint(3600 * 3, 3600 * 5))
-        except BaseException:
-            pass
+            res = auto_sumbit()
+            if res:
+                login_account()
+            sleep(random.randint(300, 500))
+        except BaseException as ex:
+            print("Exception", ex)
 
 
-sleep_submit()
+if __name__ == '__main__':
+    print(is_login())
+    # auto_sumbit()
+    sleep_submit()

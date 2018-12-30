@@ -13,7 +13,6 @@ def login_account(credfile)
     break if is_login
 
     puts '[Sign in ...]'.blue
-
     PTY.spawn('leetcode user -l') do |reader, writer|
       # cont. in 5s if input doesn't match
       reader.expect(/login:/, 5)
@@ -27,4 +26,4 @@ def login_account(credfile)
   puts is_login ? '[Login succeed!]'.green : '[Login failed, try again later.]'.red
 end
 
-login_account(ARGV[0].nil? ? ARGV[0] : '/usr/local/info/credential.dat')
+login_account(ARGV[0].nil? ? '/usr/local/info/credential.dat' : ARGV[0])
