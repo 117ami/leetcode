@@ -57,3 +57,4 @@
 * Fri 12/28/18/08:23:21: [Hard] 891 sum of subsequence widths solved
 * Fri 12/28/18/10:08:45: [new feature/medium revise]: add Python script for automatically update README / format several .py solutions with problem[link/difficulty]
 * Fri 12/28/18/10:41:32: [minor-revise]: update contact info to readme
+* Sun 12/30/18/12:09:09: [new file]: new script loop-or-die.sh for autom submit lc solutions

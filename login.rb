@@ -11,6 +11,7 @@ def login_account(credfile)
   username, passwd = `head -n 2 #{credfile}`.split("\n")
   10.times do
     break if is_login
+
     puts '[Sign in ...]'.blue
 
     PTY.spawn('leetcode user -l') do |reader, writer|
@@ -26,4 +27,4 @@ def login_account(credfile)
   puts is_login ? '[Login succeed!]'.green : '[Login failed, try again later.]'.red
 end
 
-login_account('/usr/local/info/credential.dat')
+login_account(ARGV[0].nil? ? ARGV[0] : '/usr/local/info/credential.dat')
