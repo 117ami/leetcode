@@ -14,6 +14,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists/description/) | [Python](./python_solutions/21.merge-two-sorted-lists.py)/[Ruby](./python_solutions/21.merge-two-sorted-lists.rb)| 
 |𝐌.55 | [jump-game](https://leetcode.com/problems/jump-game/description/) | [Python](./python_solutions/55.jump-game.py)/[Ruby](./python_solutions/55.jump-game.rb)| 
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb)| 
+|𝐄.110 | [balanced-binary-tree](https://leetcode.com/problems/balanced-binary-tree/description/) | [Python](./python_solutions/110.balanced-binary-tree.py)/[Ruby](./python_solutions/110.balanced-binary-tree.rb)| 
 |𝐌.215 | [kth-largest-element-in-an-array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/) | [Python](./python_solutions/215.kth-largest-element-in-an-array.py)/[Ruby](./python_solutions/215.kth-largest-element-in-an-array.rb)| 
 |𝐄.225 | [implement-stack-using-queues](https://leetcode.com/problems/implement-stack-using-queues/description/) | [Python](./python_solutions/225.implement-stack-using-queues.py)/[Ruby](./python_solutions/225.implement-stack-using-queues.rb)| 
 |𝐌.289 | [game-of-life](https://leetcode.com/problems/game-of-life/description/) | [Python](./python_solutions/289.game-of-life.py)/[Ruby](./python_solutions/289.game-of-life.rb)| 
@@ -35,5 +36,5 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 
 ### Contact
 
-[<img src="media/owl.png" width="250">](mailto:ssrzz@pm.me)
+[<img src="media/owl.png" width="321">](mailto:ssrzz@pm.me)
 
