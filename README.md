@@ -35,5 +35,5 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 
 ### Contact
 
-[<img src="media/contact.png" width="250">](mailto:ssrzz@pm.me)
+[<img src="media/owl.png" width="250">](mailto:ssrzz@pm.me)
 
