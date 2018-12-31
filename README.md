@@ -18,7 +18,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.225 | [implement-stack-using-queues](https://leetcode.com/problems/implement-stack-using-queues/description/) | [Python](./python_solutions/225.implement-stack-using-queues.py)/[Ruby](./python_solutions/225.implement-stack-using-queues.rb)| 
 |𝐌.289 | [game-of-life](https://leetcode.com/problems/game-of-life/description/) | [Python](./python_solutions/289.game-of-life.py)/[Ruby](./python_solutions/289.game-of-life.rb)| 
 |𝐄.342 | [power-of-four](https://leetcode.com/problems/power-of-four/description/) | [Python](./python_solutions/342.power-of-four.py)/[Ruby](./python_solutions/342.power-of-four.rb)| 
-|𝐄.344 | [reverse-string](https://leetcode.com/problems/reverse-string/description/) | [Python](./python_solutions/344.reverse-string.py)|
+|𝐄.344 | [reverse-string](https://leetcode.com/problems/reverse-string/description/) | [Python](./python_solutions/344.reverse-string.py)/[Ruby](./python_solutions/344.reverse-string.rb)| 
 |𝐄.345 | [reverse-vowels-of-a-string](https://leetcode.com/problems/reverse-vowels-of-a-string/description/) | [Python](./python_solutions/345.reverse-vowels-of-a-string.py)|
 |𝐄.463 | [island-perimeter](https://leetcode.com/problems/island-perimeter/description/) | [Python](./python_solutions/463.island-perimeter.py)|
 |𝐄.479 | [largest-palindrome-product](https://leetcode.com/problems/largest-palindrome-product/description/) | [Python](./python_solutions/479.largest-palindrome-product.py)|
