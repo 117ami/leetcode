@@ -3,6 +3,7 @@
 import sys
 import re
 import subprocess
+import os
 '''
 automatically add progress log to README.md
 '''
@@ -40,6 +41,16 @@ def format_print():
     return outputs
 
 
+def find_ruby_solution(local):
+    '''
+    :type local: a string of .py file
+    :rtype: string if .rb solution was found, or None otherwise
+    '''
+    rlocal = local.replace('.py', '.rb')
+    return rlocal if os.path.exists(rlocal) else None
+        
+
+
 def update_readme():
     diff_symbols = {'Hard': '𝐇', 'Medium': '𝐌', 'Easy': '𝐄'}
     readme_head = open('conf.d/readme_head', 'r').read()
@@ -47,9 +58,12 @@ def update_readme():
     with open('README.md', 'w') as f:
         f.write(readme_head)
         for pid, diffi, plink, title, local in items:
-            tr = "|(" + diff_symbols[diffi] + ") " + pid + " | [" + \
-                title + "](" + plink + ") | [Python](" + local + ")| \n"
+            ruby_solution = find_ruby_solution(local)
+            tr = "|" + diff_symbols[diffi] + "." + pid + " | [" + \
+                title + "](" + plink + ") | [Python](" + local + ")"
+            tr += "/[Ruby](" + ruby_solution +")| \n" if ruby_solution else "|\n"
             f.write(tr)
         f.write(open('conf.d/readme_tail', 'r').read())
+
 update_readme()
 
