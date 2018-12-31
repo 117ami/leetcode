@@ -6,3 +6,4 @@
 * Mon 12/31/18/09:10:53: [Easy] p21 solved
 * Mon 12/31/18/09:12:56: [Easy] p344 ruby solution added
 * Mon 12/31/18/09:19:01: [minor-revise] p345, 463, 541, 659, 779 ruby solution added
+* Mon 12/31/18/09:23:01: [file-rename] fix a file-rename error that previous rename 541.py to 541.rb
