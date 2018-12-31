@@ -4,12 +4,14 @@ Leetcode
 
 ### Leetcode Solutions 
 
-Solutions to Leetcode problems in Python3, inspired by [Haoel(CPP solutions)](https://github.com/haoel/leetcode). An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode problems can be found [here](./solutions/). 
+Python solutions to Leetcode problems in Python3, inspired by [Haoel(CPP solutions)](https://github.com/haoel/leetcode). 
+An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode problems can be found [here](./solutions/). 
 
 (Note: the symbols 𝐇, 𝐌, 𝐄 after each ID imply the difficulties: Hard, Medium, Easy)
 
 | #    | Title | Talk is cheap. Show me the code. | 
 | ----: | -----: | -------: | 
+|𝐄.21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists/description/) | [Python](./python_solutions/21.merge-two-sorted-lists.py)/[Ruby](./python_solutions/21.merge-two-sorted-lists.rb)| 
 |𝐌.55 | [jump-game](https://leetcode.com/problems/jump-game/description/) | [Python](./python_solutions/55.jump-game.py)/[Ruby](./python_solutions/55.jump-game.rb)| 
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb)| 
 |𝐌.215 | [kth-largest-element-in-an-array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/) | [Python](./python_solutions/215.kth-largest-element-in-an-array.py)/[Ruby](./python_solutions/215.kth-largest-element-in-an-array.rb)| 
