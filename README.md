@@ -38,6 +38,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.961 | [n-repeat-element](https://leetcode.com/problems/n-repeated-element-in-size-2n-array/description/) | [Python](./python_solutions/961.n-repeat-element.py)/[Ruby](./python_solutions/961.n-repeat-element.rb)| 
 |𝐌.962 | [maximum-width-ramp](https://leetcode.com/problems/maximum-width-ramp/description/) | [Python](./python_solutions/962.maximum-width-ramp.py)/[Ruby](./python_solutions/962.maximum-width-ramp.rb)| 
 |𝐄.965 | [univalued-binary-tree](https://leetcode.com/problems/univalued-binary-tree/description/) | [Python](./python_solutions/965.univalued-binary-tree.py)/[Ruby](./python_solutions/965.univalued-binary-tree.rb)| 
+|𝐌.966 | [vowel-spellchecker](https://leetcode.com/problems/vowel-spellchecker/description/) | [Python](./python_solutions/966.vowel-spellchecker.py)/[Ruby](./python_solutions/966.vowel-spellchecker.rb)| 
 
 
 ### Contact
