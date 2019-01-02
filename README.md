@@ -17,12 +17,14 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.104 | [maximum-depth-of-binary-tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/) | [Python](./python_solutions/104.maximum-depth-of-binary-tree.py)/[Ruby](./python_solutions/104.maximum-depth-of-binary-tree.rb)| 
 |𝐄.110 | [balanced-binary-tree](https://leetcode.com/problems/balanced-binary-tree/description/) | [Python](./python_solutions/110.balanced-binary-tree.py)/[Ruby](./python_solutions/110.balanced-binary-tree.rb)| 
 |𝐄.111 | [minimum-depth-of-binary-tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/description/) | [Python](./python_solutions/111.minimum-depth-of-binary-tree.py)/[Ruby](./python_solutions/111.minimum-depth-of-binary-tree.rb)| 
+|𝐄.171 | [excel-sheet-column-number](https://leetcode.com/problems/excel-sheet-column-number/description/) | [Python](./python_solutions/171.excel-sheet-column-number.py)/[Ruby](./python_solutions/171.excel-sheet-column-number.rb)| 
 |𝐌.215 | [kth-largest-element-in-an-array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/) | [Python](./python_solutions/215.kth-largest-element-in-an-array.py)/[Ruby](./python_solutions/215.kth-largest-element-in-an-array.rb)| 
 |𝐄.225 | [implement-stack-using-queues](https://leetcode.com/problems/implement-stack-using-queues/description/) | [Python](./python_solutions/225.implement-stack-using-queues.py)/[Ruby](./python_solutions/225.implement-stack-using-queues.rb)| 
 |𝐌.289 | [game-of-life](https://leetcode.com/problems/game-of-life/description/) | [Python](./python_solutions/289.game-of-life.py)/[Ruby](./python_solutions/289.game-of-life.rb)| 
 |𝐄.342 | [power-of-four](https://leetcode.com/problems/power-of-four/description/) | [Python](./python_solutions/342.power-of-four.py)/[Ruby](./python_solutions/342.power-of-four.rb)| 
 |𝐄.344 | [reverse-string](https://leetcode.com/problems/reverse-string/description/) | [Python](./python_solutions/344.reverse-string.py)/[Ruby](./python_solutions/344.reverse-string.rb)| 
 |𝐄.345 | [reverse-vowels-of-a-string](https://leetcode.com/problems/reverse-vowels-of-a-string/description/) | [Python](./python_solutions/345.reverse-vowels-of-a-string.py)/[Ruby](./python_solutions/345.reverse-vowels-of-a-string.rb)| 
+|𝐌.384 | [shuffle-an-array](https://leetcode.com/problems/shuffle-an-array/description/) | [Python](./python_solutions/384.shuffle-an-array.py)/[Ruby](./python_solutions/384.shuffle-an-array.rb)| 
 |𝐄.463 | [island-perimeter](https://leetcode.com/problems/island-perimeter/description/) | [Python](./python_solutions/463.island-perimeter.py)/[Ruby](./python_solutions/463.island-perimeter.rb)| 
 |𝐄.479 | [largest-palindrome-product](https://leetcode.com/problems/largest-palindrome-product/description/) | [Python](./python_solutions/479.largest-palindrome-product.py)|
 |𝐌.525 | [contiguous-array](https://leetcode.com/problems/contiguous-array/description/) | [Python](./python_solutions/525.contiguous-array.py)|
@@ -30,6 +32,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.583 | [delete-operation-for-two-strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/) | [Python](./python_solutions/583.delete-operation-for-two-strings.py)|
 |𝐌.659 | [split-array-into-consecutive-subsequences](https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/) | [Python](./python_solutions/659.split-array-into-consecutive-subsequences.py)/[Ruby](./python_solutions/659.split-array-into-consecutive-subsequences.rb)| 
 |𝐌.779 | [k-th-symbol-in-grammar](https://leetcode.com/problems/k-th-symbol-in-grammar/description/) | [Python](./python_solutions/779.k-th-symbol-in-grammar.py)/[Ruby](./python_solutions/779.k-th-symbol-in-grammar.rb)| 
+|𝐌.855 | [exam-room](https://leetcode.com/problems/exam-room/description/) | [Python](./python_solutions/855.exam-room.py)/[Ruby](./python_solutions/855.exam-room.rb)| 
 |𝐇.891 | [sum-of-subsequence-widths](https://leetcode.com/problems/sum-of-subsequence-widths/description/) | [Python](./python_solutions/891.sum-of-subsequence-widths.py)|
 |𝐄.914 | [x-of-a-kind-in-a-deck-of-cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/description/) | [Python](./python_solutions/914.x-of-a-kind-in-a-deck-of-cards.py)/[Ruby](./python_solutions/914.x-of-a-kind-in-a-deck-of-cards.rb)| 
 |𝐄.961 | [n-repeat-element](https://leetcode.com/problems/n-repeated-element-in-size-2n-array/description/) | [Python](./python_solutions/961.n-repeat-element.py)/[Ruby](./python_solutions/961.n-repeat-element.rb)| 
@@ -38,5 +41,5 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 
 ### Contact
 
-[<img src="media/owl.png" width="321">](mailto:ssrzz@pm.me)
+[<p align="center"><img src="media/owl.png" width="321"/></p>](mailto:ssrzz@pm.me)
 
