@@ -32,6 +32,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.541 | [reverse-string-ii](https://leetcode.com/problems/reverse-string-ii/description/) | [Python](./python_solutions/541.reverse-string-ii.py)/[Ruby](./python_solutions/541.reverse-string-ii.rb)| 
 |𝐌.583 | [delete-operation-for-two-strings](https://leetcode.com/problems/delete-operation-for-two-strings/description/) | [Python](./python_solutions/583.delete-operation-for-two-strings.py)|
 |𝐌.659 | [split-array-into-consecutive-subsequences](https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/) | [Python](./python_solutions/659.split-array-into-consecutive-subsequences.py)/[Ruby](./python_solutions/659.split-array-into-consecutive-subsequences.rb)| 
+|𝐇.765 | [couples-holding-hands](https://leetcode.com/problems/couples-holding-hands/description/) | [Python](./python_solutions/765.couples-holding-hands.py)/[Ruby](./python_solutions/765.couples-holding-hands.rb)| 
 |𝐌.779 | [k-th-symbol-in-grammar](https://leetcode.com/problems/k-th-symbol-in-grammar/description/) | [Python](./python_solutions/779.k-th-symbol-in-grammar.py)/[Ruby](./python_solutions/779.k-th-symbol-in-grammar.rb)| 
 |𝐌.855 | [exam-room](https://leetcode.com/problems/exam-room/description/) | [Python](./python_solutions/855.exam-room.py)/[Ruby](./python_solutions/855.exam-room.rb)| 
 |𝐇.891 | [sum-of-subsequence-widths](https://leetcode.com/problems/sum-of-subsequence-widths/description/) | [Python](./python_solutions/891.sum-of-subsequence-widths.py)|
