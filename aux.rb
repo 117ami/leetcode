@@ -1,20 +1,29 @@
+#!/usr/bin/ruby
+
 # contain auxiliary functions for OJ
-def letter?(x)
+def is_letter?(x)
   x =~ /[[:alpha:]]/ || false
 end
 
-def digit?(x)
+def is_digit?(x)
   x =~ /[[:digit:]]/ || false
 end
 
-def substring?(_x, _y)
-  false
+# determinate is t.chars is a sublist of s.chars. e.g., is_sub?('abc', 'apbpcp') == True
+def is_sub?(t, s)
+  return true if t.empty?
+  return false if s.nil? || s.length < t.length
+
+  j = 0
+  j += 1 while j < s.length && s[j] != t[0]
+  is_sub?(t[1..-1], s[j + 1..-1])
 end
 
 # create palindrome with n bits
 def nbits_palindrome(n)
   return Array(0..9).map(&:to_s) if n == 1
   return ['00', 11, 22, 33, 44, 55, 66, 77, 88, 99].map(&:to_s) if n == 2
+
   res = []
   Array(0..9).each do |i|
     nbits_palindrome(n - 2).each do |m|
@@ -29,10 +38,12 @@ end
 # detemine whether string s is palindrome
 def isP?(s)
   return true if s.length <= 1
+
   ia = 0
   ib = s.length - 1
   while ia < ib
     return false unless s[ia] == s[ib]
+
     ia += 1
     ib -= 1
   end
@@ -79,6 +90,7 @@ end
 
 def list2arr(root)
   return [] if root.nil?
+
   res = []
   while root
     res << root.val
@@ -89,6 +101,7 @@ end
 
 def arr2list(arr)
   return nil if arr.empty?
+
   root = ListNode.new(arr.first)
   tmp  = root
   arr[1..-1].each { |n| tmp.next = ListNode.new(n); tmp = tmp.next; }
@@ -103,6 +116,7 @@ end
 # This method finds and modifies the root parent of n, as well as its ancestors.
 def find(parent, n)
   return n if n == parent[n]
+
   parent[n] = find(parent, parent[n])
   parent[n]
 end
@@ -117,6 +131,7 @@ def create_parent(graph)
     parent[nodei] = parent.key?(nodei) ? find(parent, nodei) : nodei
     edge.each_with_index do |iscon, nodej|
       next if iscon.zero?
+
       if parent[nodei] > parent[nodej]
         parent[parent[nodei]] = parent[nodei] = parent[nodej]
         find(parent, nodei)

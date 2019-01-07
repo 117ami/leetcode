@@ -1,4 +1,3 @@
-#!/user/bin/python3
 
 class XString(object):
     def is_p(s):
@@ -33,4 +32,13 @@ class XString(object):
         		if aux + 1 > cur_max: cur_max = aux + 1
         		res = max(res, dp[j])
         return res 
+
+
+# for Strings
+# decide whether list(s) in list(t). e.g., is_sub('abc', 'akbkck') == True
+def is_substring(s, t):
+    it = iter(t)
+    return all(c in it for c in s)
+
+    
 
