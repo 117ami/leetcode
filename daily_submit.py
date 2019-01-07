@@ -7,7 +7,7 @@ from time import sleep
 from shutil import copyfile
 
 
-def auto_sumbit():
+def sumbit_solution():
     file = "ac.c"
     while not file.endswith(".rb") or not re.findall(
             r"\d+", file):  # problem ID is required
@@ -36,31 +36,19 @@ def is_login():
         ["leetcode", "user"], stdout=subprocess.PIPE).communicate()[0]))
 
 
-def login_account():
-    while not is_login():
-    	print("**Login...")
-    	proc = subprocess.Popen(["ruby", "login.rb"])
-    	try:
-    		outs, errs = proc.communicate(timeout=10)
-    	except subprocess.TimeoutExpired:
-    		proc.terminate()
-    		outs, errs = proc.communicate()
-
-
-def sleep_submit():
-    # Essential: logout before login, otherwise [SESSION EXPIRED] error will be raised
-    # os.system("leetcode user -L")
-    while True:
-        try:
-            res = auto_sumbit()
-            if res:
-                login_account()
-            sleep(random.randint(300, 500))
-        except BaseException as ex:
-            print("Exception", ex)
+def login():
+    os.system('ruby login.rb')
 
 
 if __name__ == '__main__':
     print(is_login())
-    # auto_sumbit()
-    sleep_submit()
+    try:
+        while True:
+            if sumbit_solution():
+                login()
+            sleep(random.randint(300, 500))
+    except Exception as e:
+        print(e)
+        os.system('pkill -f "python3 daily"')
+        os.system('python3 daily_submit.py &')
+
