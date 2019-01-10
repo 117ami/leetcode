@@ -14,6 +14,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1 | [two-sum](https://leetcode.com/problems/two-sum/description/) | [Python](./python_solutions/1.two-sum.py)/[Ruby](./python_solutions/1.two-sum.rb)| 
 |𝐄.21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists/description/) | [Python](./python_solutions/21.merge-two-sorted-lists.py)/[Ruby](./python_solutions/21.merge-two-sorted-lists.rb)| 
 |𝐄.26 | [remove-duplicates-from-sorted-array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/) | [Python](./python_solutions/26.remove-duplicates-from-sorted-array.py)/[Ruby](./python_solutions/26.remove-duplicates-from-sorted-array.rb)| 
+|𝐄.28 | [implement-strstr](https://leetcode.com/problems/implement-strstr/description/) | [Python](./python_solutions/28.implement-strstr.py)/[Ruby](./python_solutions/28.implement-strstr.rb)| 
 |𝐌.55 | [jump-game](https://leetcode.com/problems/jump-game/description/) | [Python](./python_solutions/55.jump-game.py)/[Ruby](./python_solutions/55.jump-game.rb)| 
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb)| 
 |𝐄.104 | [maximum-depth-of-binary-tree](https://leetcode.com/problems/maximum-depth-of-binary-tree/description/) | [Python](./python_solutions/104.maximum-depth-of-binary-tree.py)/[Ruby](./python_solutions/104.maximum-depth-of-binary-tree.rb)| 
