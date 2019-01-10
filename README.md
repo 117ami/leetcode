@@ -29,6 +29,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.342 | [power-of-four](https://leetcode.com/problems/power-of-four/description/) | [Python](./python_solutions/342.power-of-four.py)/[Ruby](./python_solutions/342.power-of-four.rb)| 
 |𝐄.344 | [reverse-string](https://leetcode.com/problems/reverse-string/description/) | [Python](./python_solutions/344.reverse-string.py)/[Ruby](./python_solutions/344.reverse-string.rb)| 
 |𝐄.345 | [reverse-vowels-of-a-string](https://leetcode.com/problems/reverse-vowels-of-a-string/description/) | [Python](./python_solutions/345.reverse-vowels-of-a-string.py)/[Ruby](./python_solutions/345.reverse-vowels-of-a-string.rb)| 
+|𝐌.380 | [insert-delete-getrandom-o1](https://leetcode.com/problems/insert-delete-getrandom-o1/description/) | [Python](./python_solutions/380.insert-delete-getrandom-o1.py)/[Ruby](./python_solutions/380.insert-delete-getrandom-o1.rb)| 
 |𝐌.384 | [shuffle-an-array](https://leetcode.com/problems/shuffle-an-array/description/) | [Python](./python_solutions/384.shuffle-an-array.py)/[Ruby](./python_solutions/384.shuffle-an-array.rb)| 
 |𝐌.392 | [is-subsequence](https://leetcode.com/problems/is-subsequence/description/) | [Python](./python_solutions/392.is-subsequence.py)/[Ruby](./python_solutions/392.is-subsequence.rb)| 
 |𝐄.463 | [island-perimeter](https://leetcode.com/problems/island-perimeter/description/) | [Python](./python_solutions/463.island-perimeter.py)/[Ruby](./python_solutions/463.island-perimeter.rb)| 
