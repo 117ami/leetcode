@@ -36,6 +36,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.459 | [repeated-substring-pattern](https://leetcode.com/problems/repeated-substring-pattern/description/) | [Python](./python_solutions/459.repeated-substring-pattern.py)/[Ruby](./python_solutions/459.repeated-substring-pattern.rb)| 
 |𝐄.463 | [island-perimeter](https://leetcode.com/problems/island-perimeter/description/) | [Python](./python_solutions/463.island-perimeter.py)/[Ruby](./python_solutions/463.island-perimeter.rb)| 
 |𝐄.479 | [largest-palindrome-product](https://leetcode.com/problems/largest-palindrome-product/description/) | [Python](./python_solutions/479.largest-palindrome-product.py)|
+|𝐄.507 | [perfect-number](https://leetcode.com/problems/perfect-number/description/) | [Python](./python_solutions/507.perfect-number.py)/[Ruby](./python_solutions/507.perfect-number.rb)| 
 |𝐌.524 | [longest-word-in-dictionary-through-deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/description/) | [Python](./python_solutions/524.longest-word-in-dictionary-through-deleting.py)/[Ruby](./python_solutions/524.longest-word-in-dictionary-through-deleting.rb)| 
 |𝐌.525 | [contiguous-array](https://leetcode.com/problems/contiguous-array/description/) | [Python](./python_solutions/525.contiguous-array.py)|
 |𝐄.541 | [reverse-string-ii](https://leetcode.com/problems/reverse-string-ii/description/) | [Python](./python_solutions/541.reverse-string-ii.py)/[Ruby](./python_solutions/541.reverse-string-ii.rb)| 
