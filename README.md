@@ -39,6 +39,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.470 | [implement-rand10-using-rand7](https://leetcode.com/problems/implement-rand10-using-rand7/description/) | [Python](./python_solutions/470.implement-rand10-using-rand7.py)/[Ruby](./python_solutions/470.implement-rand10-using-rand7.rb)| 
 |𝐄.479 | [largest-palindrome-product](https://leetcode.com/problems/largest-palindrome-product/description/) | [Python](./python_solutions/479.largest-palindrome-product.py)|
 |𝐄.507 | [perfect-number](https://leetcode.com/problems/perfect-number/description/) | [Python](./python_solutions/507.perfect-number.py)/[Ruby](./python_solutions/507.perfect-number.rb)| 
+|𝐌.519 | [random-flip-matrix](https://leetcode.com/problems/random-flip-matrix/description/) | [Python](./python_solutions/519.random-flip-matrix.py)/[Ruby](./python_solutions/519.random-flip-matrix.rb)| 
 |𝐌.524 | [longest-word-in-dictionary-through-deleting](https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/description/) | [Python](./python_solutions/524.longest-word-in-dictionary-through-deleting.py)/[Ruby](./python_solutions/524.longest-word-in-dictionary-through-deleting.rb)| 
 |𝐌.525 | [contiguous-array](https://leetcode.com/problems/contiguous-array/description/) | [Python](./python_solutions/525.contiguous-array.py)|
 |𝐄.541 | [reverse-string-ii](https://leetcode.com/problems/reverse-string-ii/description/) | [Python](./python_solutions/541.reverse-string-ii.py)/[Ruby](./python_solutions/541.reverse-string-ii.rb)| 
