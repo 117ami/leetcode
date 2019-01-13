@@ -29,31 +29,37 @@
 # change.
 #
 class Solution:
-    def strongPasswordChecker(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        if self.already_strong(s): return 0
-        if len(s) <= 4: return 6 - len(s)
-        
+	def strongPasswordChecker(self, s):
+		"""
+		:type s: str
+		:rtype: int
+		"""
+		if self.already_strong(s): return 0
+		if len(s) <= 4: return 6 - len(s)
+		if len(s) == 5: return one_step_more(s)
+		
+
+	def one_step_more(self, s):
+		# assume len(s) == 5
+		return 2 if len(set([c for c in s])) == 1 else 1
 
 
-    def already_strong(self, s):
-    	slen = len(s)
-    	if slen < 6 or slen > 20: return False
-    	lowercase = uppercase = digit = False
-    	for i, c in enumerate(s):
-    		if i >= 2 and c == s[i-1] and c == s[i-2]:
-    			return False
-    		if c.islower(): lowercase = True
-    		if c.isupper(): uppercase = True
-    		if c.isdigit(): digit = True
+	def already_strong(self, s):
+		slen = len(s)
+		if slen < 6 or slen > 20: return False
+		lowercase = uppercase = digit = False
+		for i, c in enumerate(s):
+			if i >= 2 and c == s[i-1] and c == s[i-2]:
+				return False
+			if c.islower(): lowercase = True
+			if c.isupper(): uppercase = True
+			if c.isdigit(): digit = True
 
-    	return all([lowercase, uppercase, digit])
+		return all([lowercase, uppercase, digit])
 
 s = 'aeiouuBu23'
-print(Solution().already_strong(s))
+s = 'aaaaa'
+print(Solution().one_step_more(s))
 
 
 
