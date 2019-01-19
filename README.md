@@ -58,6 +58,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.855 | [exam-room](https://leetcode.com/problems/exam-room/description/) | [Python](./python_solutions/855.exam-room.py)/[Ruby](./python_solutions/855.exam-room.rb)| 
 |𝐇.891 | [sum-of-subsequence-widths](https://leetcode.com/problems/sum-of-subsequence-widths/description/) | [Python](./python_solutions/891.sum-of-subsequence-widths.py)|
 |𝐄.914 | [x-of-a-kind-in-a-deck-of-cards](https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/description/) | [Python](./python_solutions/914.x-of-a-kind-in-a-deck-of-cards.py)/[Ruby](./python_solutions/914.x-of-a-kind-in-a-deck-of-cards.rb)| 
+|𝐌.938 | [range-sum-of-bst](https://leetcode.com/problems/range-sum-of-bst/description/) | [Python](./python_solutions/938.range-sum-of-bst.py)/[Ruby](./python_solutions/938.range-sum-of-bst.rb)| 
 |𝐌.954 | [array-of-doubled-pairs](https://leetcode.com/problems/array-of-doubled-pairs/description/) | [Python](./python_solutions/954.array-of-doubled-pairs.py)/[Ruby](./python_solutions/954.array-of-doubled-pairs.rb)| 
 |𝐄.961 | [n-repeat-element](https://leetcode.com/problems/n-repeated-element-in-size-2n-array/description/) | [Python](./python_solutions/961.n-repeat-element.py)/[Ruby](./python_solutions/961.n-repeat-element.rb)| 
 |𝐌.962 | [maximum-width-ramp](https://leetcode.com/problems/maximum-width-ramp/description/) | [Python](./python_solutions/962.maximum-width-ramp.py)/[Ruby](./python_solutions/962.maximum-width-ramp.rb)| 
