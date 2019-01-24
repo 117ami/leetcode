@@ -41,14 +41,12 @@ def login():
 
 
 if __name__ == '__main__':
-    print(is_login())
-    try:
-        while True:
+    print('isLogin:', is_login())
+    while True:
+        try:
             if sumbit_solution():
                 login()
-            sleep(random.randint(300, 500))
-    except Exception as e:
-        print(e)
-        os.system('pkill -f "python3 daily"')
-        os.system('python3 daily_submit.py &')
+            sleep(random.randint(500, 1200))
+        except Exception as e:
+            print(e)
 
