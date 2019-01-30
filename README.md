@@ -37,6 +37,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.235 | [lowest-common-ancestor-of-a-binary-search-tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/) | [Python](./python_solutions/235.lowest-common-ancestor-of-a-binary-search-tree.py)/[Ruby](./python_solutions/235.lowest-common-ancestor-of-a-binary-search-tree.rb)| 
 |𝐄.268 | [missing-number](https://leetcode.com/problems/missing-number/description/) | [Python](./python_solutions/268.missing-number.py)/[Ruby](./python_solutions/268.missing-number.rb)| 
 |𝐌.289 | [game-of-life](https://leetcode.com/problems/game-of-life/description/) | [Python](./python_solutions/289.game-of-life.py)/[Ruby](./python_solutions/289.game-of-life.rb)| 
+|𝐇.316 | [remove-duplicate-letters](https://leetcode.com/problems/remove-duplicate-letters/description/) | [Python](./python_solutions/316.remove-duplicate-letters.py)/[Ruby](./python_solutions/316.remove-duplicate-letters.rb)| 
 |𝐌.324 | [wiggle-sort-ii](https://leetcode.com/problems/wiggle-sort-ii/description/) | [Python](./python_solutions/324.wiggle-sort-ii.py)/[Ruby](./python_solutions/324.wiggle-sort-ii.rb)| 
 |𝐄.342 | [power-of-four](https://leetcode.com/problems/power-of-four/description/) | [Python](./python_solutions/342.power-of-four.py)/[Ruby](./python_solutions/342.power-of-four.rb)| 
 |𝐄.344 | [reverse-string](https://leetcode.com/problems/reverse-string/description/) | [Python](./python_solutions/344.reverse-string.py)/[Ruby](./python_solutions/344.reverse-string.rb)| 
