@@ -86,6 +86,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.965 | [univalued-binary-tree](https://leetcode.com/problems/univalued-binary-tree/description/) | [Python](./python_solutions/965.univalued-binary-tree.py)/[Ruby](./python_solutions/965.univalued-binary-tree.rb)| 
 |𝐌.966 | [vowel-spellchecker](https://leetcode.com/problems/vowel-spellchecker/description/) | [Python](./python_solutions/966.vowel-spellchecker.py)/[Ruby](./python_solutions/966.vowel-spellchecker.rb)| 
 |𝐌.967 | [numbers-with-same-consecutive-differences](https://leetcode.com/problems/numbers-with-same-consecutive-differences/description/) | [Python](./python_solutions/967.numbers-with-same-consecutive-differences.py)/[Ruby](./python_solutions/967.numbers-with-same-consecutive-differences.rb)| 
+|𝐄.976 | [largest-perimeter-triangle](https://leetcode.com/problems/largest-perimeter-triangle/description/) | [Python](./python_solutions/976.largest-perimeter-triangle.py)/[Ruby](./python_solutions/976.largest-perimeter-triangle.rb)| 
 
 
 ### Contact
