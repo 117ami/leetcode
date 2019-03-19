@@ -87,6 +87,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.966 | [vowel-spellchecker](https://leetcode.com/problems/vowel-spellchecker/description/) | [Python](./python_solutions/966.vowel-spellchecker.py)/[Ruby](./python_solutions/966.vowel-spellchecker.rb)| 
 |𝐌.967 | [numbers-with-same-consecutive-differences](https://leetcode.com/problems/numbers-with-same-consecutive-differences/description/) | [Python](./python_solutions/967.numbers-with-same-consecutive-differences.py)/[Ruby](./python_solutions/967.numbers-with-same-consecutive-differences.rb)| 
 |𝐄.976 | [largest-perimeter-triangle](https://leetcode.com/problems/largest-perimeter-triangle/description/) | [Python](./python_solutions/976.largest-perimeter-triangle.py)/[Ruby](./python_solutions/976.largest-perimeter-triangle.rb)| 
+|𝐄.1013 | [pairs-of-songs-with-total-durations-divisible-by-60](https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/description/) | [Python](./python_solutions/1013.pairs-of-songs-with-total-durations-divisible-by-60.py)/[Ruby](./python_solutions/1013.pairs-of-songs-with-total-durations-divisible-by-60.rb)| 
 
 
 ### Contact

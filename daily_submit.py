@@ -5,6 +5,7 @@ import subprocess
 import re
 from time import sleep
 from shutil import copyfile
+from telegm import ServerLogger
 
 
 def sumbit_solution():
@@ -26,6 +27,7 @@ def sumbit_solution():
     res = subprocess.run(["leetcode", "submit", nfname], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     # os.system("leetcode submit " + nfname)
     print(res.stdout)
+    ServerLogger().alertGreco(str(nfname) + ' submitted for agl' )
     os.remove(nfname)
     return 'expired' in str(res.stdout)
 
@@ -46,7 +48,8 @@ if __name__ == '__main__':
         try:
             if sumbit_solution():
                 login()
-            sleep(random.randint(500, 1200))
+            # sleep(random.randint(500, 1200))
+            sleep(10800)
         except Exception as e:
             print(e)
 
