@@ -69,8 +69,9 @@ def update_readme():
             js_solution = find_js_solution(local)
             tr = "|" + diff_symbols[diffi] + "." + pid + " | [" + \
                 title + "](" + plink + ") | [Python](" + local + ")"
-            tr += "/[Ruby](" + ruby_solution +")| \n" if ruby_solution else "|\n"
-            tr += "/[JS](" + js_solution +")| \n" if js_solution else "|\n"            
+            tr += "/[Ruby](" + ruby_solution +") " if ruby_solution
+            tr += "/[JS](" + js_solution +") " if js_solution
+            tr += "|\n"
             f.write(tr)
         f.write(open('conf.d/readme_tail', 'r').read())
 
