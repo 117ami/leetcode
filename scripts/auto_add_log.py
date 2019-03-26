@@ -49,6 +49,13 @@ def find_ruby_solution(local):
     rlocal = local.replace('.py', '.rb')
     return rlocal if os.path.exists(rlocal) else None
         
+def find_js_solution(local):
+    '''
+    :type local: a string of .py file
+    :rtype: string if .js solution was found, or None otherwise
+    '''
+    rlocal = local.replace('.py', '.js')
+    return rlocal if os.path.exists(rlocal) else None
 
 
 def update_readme():
@@ -59,9 +66,11 @@ def update_readme():
         f.write(readme_head)
         for pid, diffi, plink, title, local in items:
             ruby_solution = find_ruby_solution(local)
+            js_solution = find_js_solution(local)
             tr = "|" + diff_symbols[diffi] + "." + pid + " | [" + \
                 title + "](" + plink + ") | [Python](" + local + ")"
             tr += "/[Ruby](" + ruby_solution +")| \n" if ruby_solution else "|\n"
+            tr += "/[JS](" + js_solution +")| \n" if js_solution else "|\n"            
             f.write(tr)
         f.write(open('conf.d/readme_tail', 'r').read())
 
