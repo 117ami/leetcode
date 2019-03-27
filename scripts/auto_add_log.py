@@ -70,7 +70,7 @@ def update_readme():
             tr = "|" + diff_symbols[diffi] + "." + pid + " | [" + \
                 title + "](" + plink + ") | [Python](" + local + ")"
             if ruby_solution: tr += "/[Ruby](" + ruby_solution +") " 
-            if js_solution: tr += "/[JS](" + js_solution +") "
+            if js_solution: tr += "/[Javascript](" + js_solution +") "
             tr += "|\n"
             f.write(tr)
         f.write(open('conf.d/readme_tail', 'r').read())
