@@ -19,6 +19,24 @@ def is_sub?(t, s)
   is_sub?(t[1..-1], s[j + 1..-1])
 end
 
+
+# ======================== numbers =========================
+# Given a number N, return a string consisting of [0..k-1] that represents \
+# its value in base k, which might be negative.
+def toBase(n, base)
+  return n.to_s(base) if base > 0
+  return '0' if n.zero?
+
+  digits = []
+  while n != 0
+    n, remainder = n.divmod(base)
+    n, remainder = n + 1, remainder - base if remainder < 0
+    digits << remainder
+  end
+  digits.join.reverse
+end
+
+
 # create palindrome with n bits
 def nbits_palindrome(n)
   return Array(0..9).map(&:to_s) if n == 1
@@ -88,13 +106,11 @@ class ListNode
   end
 end
 
-def list2arr(root)
-  return [] if root.nil?
-
+def list2arr(head)
   res = []
-  while root
-    res << root.val
-    root = root.next
+  while head
+    res << head.val
+    head = head.next
   end
   res
 end
