@@ -67,5 +67,16 @@
  * @return {number}
  */
 var minKBitFlips = function(A, K) {
-    
+    var ans = 0,
+        cur = 0
+    for (var i = 0; i < A.length; i++) {
+        if (i >= K && A[i - K] == 2) cur -= 1
+        if (cur % 2 == A[i]) {
+            if (i + K > A.length) return -1
+            ans += 1
+            cur += 1
+            A[i] = 2
+        }
+    }
+    return ans
 };
