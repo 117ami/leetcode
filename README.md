@@ -10,7 +10,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 (Note: the symbols 𝐇, 𝐌, 𝐄 after each ID imply the difficulties: Hard, Medium, Easy)
 
 | #    | Title | Talk is cheap. Show me the code. | 
-| ----: | -----: | -------: | 
+| :---- | :----- | :------- | 
 |𝐄.1 | [two-sum](https://leetcode.com/problems/two-sum/description/) | [Python](./python_solutions/1.two-sum.py)/[Ruby](./python_solutions/1.two-sum.rb) |
 |𝐄.7 | [reverse-integer](https://leetcode.com/problems/reverse-integer/description/) | [Python](./python_solutions/7.reverse-integer.py)/[Ruby](./python_solutions/7.reverse-integer.rb) |
 |𝐄.21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists/description/) | [Python](./python_solutions/21.merge-two-sorted-lists.py)/[Ruby](./python_solutions/21.merge-two-sorted-lists.rb) |
@@ -88,6 +88,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.966 | [vowel-spellchecker](https://leetcode.com/problems/vowel-spellchecker/description/) | [Python](./python_solutions/966.vowel-spellchecker.py)/[Ruby](./python_solutions/966.vowel-spellchecker.rb) |
 |𝐌.967 | [numbers-with-same-consecutive-differences](https://leetcode.com/problems/numbers-with-same-consecutive-differences/description/) | [Python](./python_solutions/967.numbers-with-same-consecutive-differences.py)/[Ruby](./python_solutions/967.numbers-with-same-consecutive-differences.rb) |
 |𝐄.976 | [largest-perimeter-triangle](https://leetcode.com/problems/largest-perimeter-triangle/description/) | [Python](./python_solutions/976.largest-perimeter-triangle.py)/[Ruby](./python_solutions/976.largest-perimeter-triangle.rb) |
+|𝐄.989 | [add-to-array-form-of-integer](https://leetcode.com/problems/add-to-array-form-of-integer/description/) | [Python](./python_solutions/989.add-to-array-form-of-integer.py)/[Ruby](./python_solutions/989.add-to-array-form-of-integer.rb) /[Javascript](./python_solutions/989.add-to-array-form-of-integer.js) /[C++](./python_solutions/989.add-to-array-form-of-integer.cpp) |
 |𝐄.993 | [cousins-in-binary-tree](https://leetcode.com/problems/cousins-in-binary-tree/description/) | [Python](./python_solutions/993.cousins-in-binary-tree.py)/[Ruby](./python_solutions/993.cousins-in-binary-tree.rb) /[Javascript](./python_solutions/993.cousins-in-binary-tree.js) |
 |𝐄.994 | [rotting-oranges](https://leetcode.com/problems/rotting-oranges/description/) | [Python](./python_solutions/994.rotting-oranges.py)/[Ruby](./python_solutions/994.rotting-oranges.rb) /[Javascript](./python_solutions/994.rotting-oranges.js) |
 |𝐇.995 | [minimum-number-of-k-consecutive-bit-flips](https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/description/) | [Python](./python_solutions/995.minimum-number-of-k-consecutive-bit-flips.py)/[Ruby](./python_solutions/995.minimum-number-of-k-consecutive-bit-flips.rb) /[Javascript](./python_solutions/995.minimum-number-of-k-consecutive-bit-flips.js) /[C++](./python_solutions/995.minimum-number-of-k-consecutive-bit-flips.cpp) |

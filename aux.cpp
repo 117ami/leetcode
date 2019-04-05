@@ -147,3 +147,20 @@ void printTree(TreeNode* root) {
 //   say(r->left->right == nullptr);
 //   return 0;
 // }
+
+
+// ********************************************************
+// ON Integers 
+// ********************************************************
+vector <int> integerToArray(int x) {
+    vector <int> resultArray;
+    while (true) {
+      resultArray.insert(resultArray.begin(), x%10);
+      x /= 10;
+      if(x == 0)
+          return resultArray;
+    }
+}
+
+
+
