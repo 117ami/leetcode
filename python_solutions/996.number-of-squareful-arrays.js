@@ -50,5 +50,36 @@
  * @return {number}
  */
 var numSquarefulPerms = function(A) {
-    
+    var count = {},
+        cand = {},
+        ans = 0;
+    for (var a of A) count[a] = a in count ? count[a] + 1 : 1;
+    for (var a of A)
+        for (var b of A) {
+            var s = Math.floor(Math.sqrt(a + b));
+            if (s * s == a + b)
+                if (a in cand)
+                    cand[a][b] = 1;
+                else {
+                    cand[a] = {}
+                    cand[a][b] = 1
+                }
+        }
+    // console.log(cand);
+
+    var dfs = function(x, cter) {
+        count[x] -= 1;
+        if (cter == 0) ans += 1;
+        for (var y in cand[x])
+            if (count[y])
+                dfs(y, cter - 1);
+        count[x] += 1;
+    }
+
+    for (var a in count)
+        dfs(a, A.length - 1);
+    return ans;
 };
+
+var A = [1, 8, 8, 17]
+console.log(numSquarefulPerms(A))
