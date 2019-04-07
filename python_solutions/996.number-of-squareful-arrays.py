@@ -46,47 +46,35 @@
 #
 #
 
+import collections
 import math
 
 
 class Solution:
-    def __init__(self):
-        self.ans = 0
-        self.prefixes = {}
-
-    def dfs(self, pf, n, arr):
-        if len(arr) == 0:
-            self.ans += 1
-        # print(pf, n, arr, self.ans)
-        if len(arr) == 0 or pf in self.prefixes:
-            return
-
-        for i, k in enumerate(arr):
-            if i < len(arr) - 1 and arr[i] == arr[i + 1]:
-                continue
-            z = 3.14 if k + n < 0 else math.sqrt(k + n)
-            # print('before', int(z), z, n)
-            if not (int(z) == z or n == -1):
-                continue
-            # print('after', int(z), z, n)
-
-            nextpf = pf + '/' + str(k)
-            left = [] if i == 0 else arr[:i]
-            self.dfs(nextpf, arr[i], left + arr[i + 1:])
-            self.prefixes[nextpf] = True
-
     def numSquarefulPerms(self, a):
         if len(a) == 0:
             return 0
-        self.dfs('', -1, a)
-        return self.ans
+        c = collections.Counter(a)
+        cand = {x: [y for y in c if int(
+            math.sqrt(x + y)) ** 2 == x + y] for x in c}
+        self.res = 0
+
+        def dfs(x, cter):
+            c[x] -= 1
+            if cter == 0:
+                self.res += 1
+            [dfs(y, cter - 1) for y in cand[x] if c[y] > 0]
+            c[x] += 1
+
+        for x in c:
+            dfs(x, len(a) - 1)
+
+        return self.res
 
 
 a = [1, 8, 8, 17]
-a = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 14]
-a = [2, 2, 14]
-# a = [0,0,0,1,1,1]
+# a = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 14]
+# a = [2, 2, 14]
+a = [0, 0, 0, 1, 1, 1]
 
 print(Solution().numSquarefulPerms(a))
-
-print(math.sqrt(8) == 3)
