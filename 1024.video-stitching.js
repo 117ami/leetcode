@@ -83,19 +83,19 @@
  * @return {number}
  */
 var videoStitching = function(clips, T) {
-    var i = res = curmax = 0;
-    var premax = -1;
-    clips.sort((a, b) => (a[0] - b[0]));
+    var res = i = curmax = 0; 
+    premax = -1 ;
+    clips.sort((a, b)=>(a[0] - b[0]));
     // console.log(clips);
     while (true) {
-        if (i >= clips.length || clips[i][0] > curmax) return -1;
+        if (i >= clips.length || clips[i][0] > curmax) return -1; 
         if (clips[i][0] > premax) {
-            premax = curmax;
-            res += 1;
+            premax = curmax; 
+            res += 1; 
         }
-        curmax = Math.max(curmax, clips[i][1]);
-        if (curmax >= T) return res;
+        curmax = Math.max(curmax, clips[i][1]); 
         i += 1;
+        if (curmax >= T) return res; 
     }
 };
 
