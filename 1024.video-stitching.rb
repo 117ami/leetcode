@@ -81,19 +81,17 @@
 # @param {Integer} t
 # @return {Integer}
 def video_stitching(clips, t)
-  clips.sort_by!(&:first)
-  i = count = max_end = 0
-  loop do
-    return -1 if i >= clips.size || clips[i].first > max_end
+  res = curmax = 0
+  premax = -1
+  clips.sort.each do |i, j|
+    return -1 if i > curmax
 
-    new_end = max_end
-    while i < clips.size && clips[i].first <= max_end
-      new_end = [new_end, clips[i].last].max
-      i += 1
+    if i > premax
+      premax = curmax
+      res += 1
     end
-    max_end = new_end
-    count += 1
-    return count if max_end >= t
+    curmax = [curmax, j].max
+    return res if curmax >= t
   end
   -1
 end
@@ -102,6 +100,6 @@ clips = [[0, 1], [6, 8], [0, 2], [5, 6], [0, 4], [0, 3], [6, 7], [1, 3], [4, 7],
 t = 9
 # clips = [[0, 2], [4, 6], [8, 10], [1, 9], [1, 5], [5, 9]]
 # t = 10
-clips = [[0, 1], [1, 2]]
-t = 5
+# clips = [[0, 4], [2, 8]]
+# t = 5
 p video_stitching(clips, t)

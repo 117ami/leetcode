@@ -83,5 +83,58 @@
  * @return {number}
  */
 var videoStitching = function(clips, T) {
-    
+    var i = res = curmax = 0;
+    var premax = -1;
+    clips.sort((a, b) => (a[0] - b[0]));
+    // console.log(clips);
+    while (true) {
+        if (i >= clips.length || clips[i][0] > curmax) return -1;
+        if (clips[i][0] > premax) {
+            premax = curmax;
+            res += 1;
+        }
+        curmax = Math.max(curmax, clips[i][1]);
+        if (curmax >= T) return res;
+        i += 1;
+    }
 };
+
+
+var clips = [
+        [0, 1],
+        [6, 8],
+        [0, 2],
+        [5, 6],
+        [0, 4],
+        [0, 3],
+        [6, 7],
+        [1, 3],
+        [4, 7],
+        [1, 4],
+        [2, 5],
+        [2, 6],
+        [3, 4],
+        [4, 5],
+        [5, 7],
+        [6, 9]
+    ],
+    T = 9;
+var clips = [
+        [0, 1],
+        [1, 2]
+    ],
+    T = 5
+var clips = [
+        [17, 18],
+        [25, 26],
+        [16, 21],
+        [3, 3],
+        [19, 23],
+        [1, 5],
+        [0, 2],
+        [9, 20],
+        [5, 17],
+        [8, 10]
+    ],
+    T = 15
+console.log(videoStitching(clips, T))

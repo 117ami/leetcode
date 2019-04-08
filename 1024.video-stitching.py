@@ -80,40 +80,27 @@
 
 
 class Solution:
-    def videoStitching(self, clips, t):
-        clips.sort(key=lambda a: a[0])
-        i = cter = curend = 0
-        while True:
-            if i >= len(clips) or clips[i][0] > curend:
-                return -1
-            newend = curend
-            while i < len(clips) and clips[i][0] <= curend:
-                newend = max(newend, clips[i][1])
+    def videoStitching(self, clips, T):
+        i = curmax = res = 0
+        clips.sort()
+        while i < len(clips):
+            if clips[i][0] > curmax: return -1
+            premax = curmax
+            while i < len(clips) and clips[i][0] <= curmax:
+                premax = max(premax, clips[i][1])
                 i += 1
-            curend = newend
-            cter += 1
-            if curend >= t:
-                return cter
+            curmax = premax
+            res += 1
+            if curmax >= T: return res 
         return -1
 
 
-clips = [
-    [
-        0, 1], [
-            6, 8], [
-                0, 2], [
-                    5, 6], [
-                        0, 4], [
-                            0, 3], [
-                                6, 7], [
-                                    1, 3], [
-                                        4, 7], [
-                                            1, 4], [
-                                                2, 5], [
-                                                    2, 6], [
-                                                        3, 4], [
-                                                            4, 5], [
-                                                                5, 7], [
-                                                                    6, 9]]
+
+
+
+
+clips = [[0,1],[6,8],[0,2],[5,6],[0,4],[0,3],[6,7],[1,3],[4,7],[1,4],[2,5],[2,6],[3,4],[4,5],[5,7],[6,9]]
 t = 9
+# clips = [[0,4],[0, 2],[2, 8], [3, 5]]
+# t = 5
 print(Solution().videoStitching(clips, t))
