@@ -63,6 +63,8 @@
 # @param {Integer} dst
 # @param {Integer} k
 # @return {Integer}
+
+# https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 def find_cheapest_price(_n, edges, src, dst, k)
 	
 end

@@ -9,14 +9,14 @@ def is_digit?(x)
   x =~ /[[:digit:]]/ || false
 end
 
-# determinate is t.chars is a sublist of s.chars. e.g., is_sub?('abc', 'apbpcp') == True
-def is_sub?(t, s)
-  return true if t.empty?
-  return false if s.nil? || s.length < t.length
-
-  j = 0
-  j += 1 while j < s.length && s[j] != t[0]
-  is_sub?(t[1..-1], s[j + 1..-1])
+# determinate is s.chars is a sublist of t.chars. e.g., is_sub?('abc', 'apbpcp') == True
+def is_sub?(s, t)
+  i = j = 0
+  while i < s.size && j < t.size
+    i += 1 if s[i] == t[j]
+    j += 1
+  end
+  i == s.size 
 end
 
 

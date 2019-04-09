@@ -1,6 +1,6 @@
 # 
 if [[ $1 == *.cpp ]]; then	# for cpp program
-    # clang-format -i $1
+    clang-format -i $1
     if [ -f a.out ]; then 
 	rm a.out
     fi
