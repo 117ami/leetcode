@@ -114,6 +114,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1021 | [best-sightseeing-pair](https://leetcode.com/problems/best-sightseeing-pair/description/) | [Python](./python_solutions/1021.best-sightseeing-pair.py)/[Ruby](./python_solutions/1021.best-sightseeing-pair.rb) /[Javascript](./python_solutions/1021.best-sightseeing-pair.js) |
 |𝐌.1022 | [smallest-integer-divisible-by-k](https://leetcode.com/problems/smallest-integer-divisible-by-k/description/) | [Python](./python_solutions/1022.smallest-integer-divisible-by-k.py)/[Ruby](./python_solutions/1022.smallest-integer-divisible-by-k.rb) /[Javascript](./python_solutions/1022.smallest-integer-divisible-by-k.js) |
 |𝐌.1023 | [binary-string-with-substrings-representing-1-to-n](https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/description/) | [Python](./python_solutions/1023.binary-string-with-substrings-representing-1-to-n.py)/[Ruby](./python_solutions/1023.binary-string-with-substrings-representing-1-to-n.rb) /[Javascript](./python_solutions/1023.binary-string-with-substrings-representing-1-to-n.js) |
+|𝐌.1024 | [video-stitching](https://leetcode.com/problems/video-stitching/description/) | [Python](./python_solutions/1024.video-stitching.py)/[Ruby](./python_solutions/1024.video-stitching.rb) /[Javascript](./python_solutions/1024.video-stitching.js) /[C++](./python_solutions/1024.video-stitching.cpp) |
 
 
 ### Contact

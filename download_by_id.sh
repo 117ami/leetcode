@@ -5,7 +5,7 @@ leetcode show $1 -gx -l ruby
 leetcode show $1 -gx -l python3
 leetcode show $1 -gx -l javascript
 
-cppFile=$(ls | grep cpp | grep -v 'aux' | head -n 1)
+cppFile=$(ls -t *.cpp | head -n 1)
 
 echo "
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

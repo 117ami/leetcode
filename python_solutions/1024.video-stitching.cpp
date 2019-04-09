@@ -115,26 +115,5 @@ int main(int argc, char const *argv[]) {
   return 0;
 }
 
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
 
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
-}
-
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
-
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
-}
-
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
-
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
-}
 
