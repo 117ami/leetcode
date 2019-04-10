@@ -78,25 +78,25 @@
  *
  */
 
-#include "aux.cpp"
+// #include "aux.cpp"
 
 class Solution {
 public:
   int videoStitching(vector<vector<int>> &clips, int T) {
     sort(clips.begin(), clips.end(),
         [](const vector<int> &a, const vector<int> &b) { return a[0] < b[0]; });
-    int i = 0, res = 0, cur = 0, pre = -1; 
-    while (i < clips.size()) {
-      if (clips[i][0] > cur) return -1; 
-      if (clips[i][0] > pre) {
+    int res = 0, cur = 0, pre = -1; 
+    for (auto pair: clips) {
+      int a = pair[0], b = pair[1]; 
+      if (a > cur) return -1; 
+      if (a > pre) {
         pre = cur; 
-        res += 1;
+        res += 1 ;
       }
-      cur = max(cur, clips[i][1]);
+      cur = max(cur, b); 
       if (cur >= T) return res; 
-      i += 1; 
     }
-    return -1;
+    return -1; 
   }
 };
 
@@ -106,14 +106,14 @@ static const int _ = []() {
   return 0;
 }();
 
-int main(int argc, char const *argv[]) {
-  Solution s;
-  std::vector<std::vector<int>> clips = {{0, 4}, {2, 8}};
-  clips = {{0,2},{4,6},{8,10},{1,9},{1,5},{5,9}};
-  int T = 10;
-  say(s.videoStitching(clips, T));
-  return 0;
-}
+// int main(int argc, char const *argv[]) {
+//   Solution s;
+//   std::vector<std::vector<int>> clips = {{0, 4}, {2, 8}};
+//   clips = {{0,2},{4,6},{8,10},{1,9},{1,5},{5,9}};
+//   int T = 10;
+//   say(s.videoStitching(clips, T));
+//   return 0;
+// }
 
 
 

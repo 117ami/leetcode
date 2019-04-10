@@ -65,8 +65,31 @@
 # @return {Integer}
 
 # https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
-def find_cheapest_price(_n, edges, src, dst, k)
-	
+def find_cheapest_price(n, edges, src, dst, k)
+  prices = {}
+  edges.each do |a, b, pr|
+    prices[a] = { b => pr } unless prices.key?(a)
+    prices[a][b] = pr
+  end
+  visited = (0..n).zip([0] * (n + 1)).to_h
+  res = Float::INFINITY
+
+  dfs = lambda do |s, d, k, cost|
+    res = cost if s == d
+    return if s == d || k.zero? || !prices.key?(s)
+
+    visited[s] = 1
+    prices[s].each_key do |ns|
+      next if visited[ns] == 1
+      next if prices[s][ns] + cost > res
+
+      dfs.call(ns, d, k - 1, prices[s][ns] + cost)
+    end
+    visited[s] = 0
+  end
+
+  dfs.call(src, dst, k + 1, 0)
+  res == Float::INFINITY ? -1 : res
 end
 
 n = 3
@@ -75,13 +98,14 @@ src = 0
 dst = 2
 k = 1
 
-edges = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
-src = 0
-dst = 2
-k = 0
+# edges = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
+# src = 0
+# dst = 2
+# k = 0
 
-edges = [[1,2,10],[2,0,7],[1,3,8],[4,0,10],[3,4,2],[4,2,10],[0,3,3],[3,1,6],[2,4,5]]
-src = 0
-dst = 4
+n = 5
+edges =[[4,1,1],[1,2,3],[0,3,2],[0,4,10],[3,1,1],[1,4,3]]
+src = 2
+dst = 1
 k = 1
 p find_cheapest_price(n, edges, src, dst, k)
