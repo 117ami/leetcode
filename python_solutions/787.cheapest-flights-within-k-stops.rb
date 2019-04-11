@@ -65,6 +65,42 @@
 # @return {Integer}
 
 # https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+
+# A native Priority Queue
+class PriorityQueue
+  def elements
+    @es
+  end
+
+  def initialize
+    @es = []
+  end
+
+  def <<(x)
+    push(x)
+  end
+
+  def empty?
+    @es.empty?
+  end
+
+  def pop
+    @es.pop
+  end
+
+  def push(x) # x is assumed to be an integer or a string
+    return pusharray(x) if x.is_a?(Array)
+
+    idx = (0..@es.size - 1).bsearch { |i| @es[i] < x } || @es.size
+    @es.insert(idx, x)
+  end
+
+  def pusharray(x) # x is assumed to be an array
+    idx = (0..@es.size - 1).bsearch { |i| @es[i].first <= x.first } || @es.size
+    @es.insert(idx, x)
+  end
+end
+
 def find_cheapest_price(n, edges, src, dst, k)
   prices = {}
   edges.each do |a, b, pr|
@@ -74,22 +110,24 @@ def find_cheapest_price(n, edges, src, dst, k)
   visited = (0..n).zip([0] * (n + 1)).to_h
   res = Float::INFINITY
 
-  dfs = lambda do |s, d, k, cost|
-    res = cost if s == d
-    return if s == d || k.zero? || !prices.key?(s)
+  pq = PriorityQueue.new
+  pq << [0, src, k + 1]
+  until pq.empty?
+    # p pq
+    cp, cs, left = pq.pop
+    # p [cp, cs, left]
+    return cp if cs == dst
 
-    visited[s] = 1
-    prices[s].each_key do |ns|
+    visited[cs] = 1
+    next unless left > 0 && prices.key?(cs)
+
+    prices[cs].each_pair do |ns, pr|
       next if visited[ns] == 1
-      next if prices[s][ns] + cost > res
 
-      dfs.call(ns, d, k - 1, prices[s][ns] + cost)
+      pq << [cp + pr, ns, left - 1]
     end
-    visited[s] = 0
   end
-
-  dfs.call(src, dst, k + 1, 0)
-  res == Float::INFINITY ? -1 : res
+  -1
 end
 
 n = 3
@@ -98,14 +136,9 @@ src = 0
 dst = 2
 k = 1
 
-# edges = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
-# src = 0
-# dst = 2
-# k = 0
-
 n = 5
-edges =[[4,1,1],[1,2,3],[0,3,2],[0,4,10],[3,1,1],[1,4,3]]
-src = 2
-dst = 1
-k = 1
+edges = [[0, 1, 5], [1, 2, 5], [0, 3, 2], [3, 1, 2], [1, 4, 1], [4, 2, 1]]
+src = 0
+dst = 2
+k = 2
 p find_cheapest_price(n, edges, src, dst, k)

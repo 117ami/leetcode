@@ -16,9 +16,8 @@ def is_sub?(s, t)
     i += 1 if s[i] == t[j]
     j += 1
   end
-  i == s.size 
+  i == s.size
 end
-
 
 # ======================== numbers =========================
 # Given a number N, return a string consisting of [0..k-1] that represents \
@@ -30,12 +29,14 @@ def toBase(n, base)
   digits = []
   while n != 0
     n, remainder = n.divmod(base)
-    n, remainder = n + 1, remainder - base if remainder < 0
+    if remainder < 0
+      n += 1
+      remainder -= base
+    end
     digits << remainder
   end
   digits.join.reverse
 end
-
 
 # create palindrome with n bits
 def nbits_palindrome(n)
@@ -168,3 +169,46 @@ end
 def hash_hash(iv = 0)
   Hash.new { |h, k| h[k] = Hash.new(iv) }
 end
+
+# A native Priority Queue
+class PriorityQueue
+  def elements
+    @es
+  end
+
+  def initialize
+    @es = []
+  end
+
+  def empty?
+    @es.empty?
+  end
+
+  def << (x)
+    push(x)
+  end
+
+  def pop
+    @es.pop
+  end
+
+  def push(x)  # x is assumed to be an integer or a string
+    return pusharray(x) if x.is_a?(Array)
+    idx = (0..@es.size - 1).bsearch { |i| @es[i] < x } || @es.size
+    @es.insert(idx, x)
+  end
+
+  def pusharray(x)  # x is assumed to be an array
+    idx = (0..@es.size - 1).bsearch { |i| @es[i].first <= x.first } || @es.size
+    @es.insert(idx, x)
+  end
+
+end
+
+# pq = PriorityQueue.new
+# pq << [1, 2, 878]
+# pq << [3, 2, 878]
+# pq << [0, 2, 878]
+# pq << [109, 2, 878]
+# p [0, 2, 3].is_a?(Array)
+# p pq.elements
