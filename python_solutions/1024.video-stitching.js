@@ -83,19 +83,19 @@
  * @return {number}
  */
 var videoStitching = function(clips, T) {
-    let res = cur = 0,
-        lastcur = -1;
-    for (let pair of clips.sort((a, b) => (a[0] - b[0]))) {
-        if (pair[0] > cur) return -1;
-        if (pair[0] > lastcur) {
-            lastcur = cur;
-            res += 1;
+    let i = res = cur = 0; 
+    clips.sort((a, b) => (a[0] - b[0])); 
+    while (true) {
+        if (i >= clips.length || clips[i][0] > cur || cur >= T) break; 
+        let pre = cur; 
+        while (i < clips.length && clips[i][0] <= cur) {
+            pre = Math.max(pre, clips[i][1]); 
+            i += 1; 
         }
-        cur = Math.max(cur, pair[1]);
-        // console.log(pair);
-        if (cur >= T) return res;
+        cur = pre;
+        res += 1; 
     }
-    return -1;
+    return cur >= T ? res : -1; 
 };
 
 

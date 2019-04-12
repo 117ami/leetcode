@@ -81,15 +81,17 @@
 # @param {Integer} t
 # @return {Integer}
 def video_stitching(clips, t)
-  res = cur = pre = 0 
-  pre -= 1
-  clips.sort.each do |a, b|
-    return -1 if a > cur 
-    if a > pre
-      pre = cur 
-      res += 1
+  res = i = cur = 0 
+  clips.sort!
+  loop do 
+    return -1 if i >= clips.size || clips[i].first > cur 
+    pre = cur 
+    while i < clips.size && clips[i].first <= cur 
+      pre = [pre, clips[i].last].max 
+      i += 1
     end
-    cur = [cur, b].max 
+    res += 1
+    cur = pre 
     return res if cur >= t
   end
   -1

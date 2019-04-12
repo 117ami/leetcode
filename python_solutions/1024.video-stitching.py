@@ -81,16 +81,18 @@
 
 class Solution:
     def videoStitching(self, clips, T):
-        cur = res = 0
-        pre = -1
-        for a, b in sorted(clips):
-            if a > cur: return -1 
-            if a > pre: 
-                pre = cur
-                res += 1
-            cur = max(cur, b)
-            if cur >= T: return res 
-        return -1
+        i = res = cur = 0 
+        clips.sort()
+        while True:
+            if i >=  len(clips) or clips[i][0] > cur or cur >= T: break
+            pre = cur 
+            while i < len(clips) and clips[i][0] <= cur:
+                pre = max(pre, clips[i][1])
+                i += 1
+            cur = pre 
+            res += 1
+        return res if cur >= T else -1
+
 
 
 

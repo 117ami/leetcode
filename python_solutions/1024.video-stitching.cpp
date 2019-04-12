@@ -85,18 +85,16 @@ public:
   int videoStitching(vector<vector<int>> &clips, int T) {
     sort(clips.begin(), clips.end(),
         [](const vector<int> &a, const vector<int> &b) { return a[0] < b[0]; });
-    int res = 0, cur = 0, pre = -1; 
-    for (auto pair: clips) {
-      int a = pair[0], b = pair[1]; 
-      if (a > cur) return -1; 
-      if (a > pre) {
-        pre = cur; 
-        res += 1 ;
-      }
-      cur = max(cur, b); 
-      if (cur >= T) return res; 
+    int res = 0, cur = 0, i = 0; 
+    while (i < clips.size()) {
+      if (clips[i][0] > cur || cur >= T) break; 
+      int pre = cur; 
+      while (i < clips.size() && clips[i][0] <= cur) 
+        pre = max(pre, clips[i++][1]);
+      cur = pre; 
+      res ++ ;
     }
-    return -1; 
+    return cur >= T ? res : -1; 
   }
 };
 
