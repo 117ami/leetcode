@@ -36,6 +36,45 @@
  * @param {number} target
  * @return {number[]}
  */
+
+var bisect_left = function(nums, target) {
+    var i = 0,
+        j = nums.length - 1,
+        mid;
+    while (i < j) {
+        mid = ~~((i + j) / 2);
+        if (nums[mid] < target)
+            i = mid + 1;
+        else
+            j = mid;
+    }
+    return i;
+}
+
+var bisect_right = function(nums, target) {
+    var i = 0,
+        j = nums.length - 1,
+        mid;
+    while (i < j) {
+        mid = Math.ceil((i + j) / 2);
+        if (nums[mid] > target)
+            j = mid - 1;
+        else
+            i = mid;
+    }
+    return j;
+}
+
+
 var searchRange = function(nums, target) {
-    
+    var i = bisect_left(nums, target),
+        j = bisect_right(nums, target);
+    if (nums[i] != target || nums[j] != target) return [-1, -1];
+    return [i, j];
 };
+
+var nums = [5, 7, 7, 8, 8, 10]
+target = 8;
+console.log(bisect_left(nums, target));
+console.log(bisect_right(nums, target));
+console.log(searchRange(nums, target))
