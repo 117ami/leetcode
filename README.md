@@ -124,6 +124,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1024 | [video-stitching](https://leetcode.com/problems/video-stitching/description/) | [Python](./python_solutions/1024.video-stitching.py)/[Ruby](./python_solutions/1024.video-stitching.rb) /[Javascript](./python_solutions/1024.video-stitching.js) /[C++](./python_solutions/1024.video-stitching.cpp) |
 |𝐄.1025 | [divisor-game](https://leetcode.com/problems/divisor-game/description/) | [Python](./python_solutions/1025.divisor-game.py)/[Ruby](./python_solutions/1025.divisor-game.rb) /[Javascript](./python_solutions/1025.divisor-game.js) /[C++](./python_solutions/1025.divisor-game.cpp) |
 |𝐌.1026 | [maximum-difference-between-node-and-ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/description/) | [Python](./python_solutions/1026.maximum-difference-between-node-and-ancestor.py)/[Ruby](./python_solutions/1026.maximum-difference-between-node-and-ancestor.rb) /[Javascript](./python_solutions/1026.maximum-difference-between-node-and-ancestor.js) /[C++](./python_solutions/1026.maximum-difference-between-node-and-ancestor.cpp) |
+|𝐌.1027 | [longest-arithmetic-sequence](https://leetcode.com/problems/longest-arithmetic-sequence/description/) | [Python](./python_solutions/1027.longest-arithmetic-sequence.py)/[Ruby](./python_solutions/1027.longest-arithmetic-sequence.rb) /[Javascript](./python_solutions/1027.longest-arithmetic-sequence.js) /[C++](./python_solutions/1027.longest-arithmetic-sequence.cpp) |
 
 
 ### Contact
