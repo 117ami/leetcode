@@ -128,6 +128,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1029 | [two-city-scheduling](https://leetcode.com/problems/two-city-scheduling/description/) | [Python](./python_solutions/1029.two-city-scheduling.py)/[Ruby](./python_solutions/1029.two-city-scheduling.rb) /[Javascript](./python_solutions/1029.two-city-scheduling.js) /[C++](./python_solutions/1029.two-city-scheduling.cpp) |
 |𝐄.1030 | [matrix-cells-in-distance-order](https://leetcode.com/problems/matrix-cells-in-distance-order/description/) | [Python](./python_solutions/1030.matrix-cells-in-distance-order.py)/[Ruby](./python_solutions/1030.matrix-cells-in-distance-order.rb) /[Javascript](./python_solutions/1030.matrix-cells-in-distance-order.js) /[C++](./python_solutions/1030.matrix-cells-in-distance-order.cpp) |
 |𝐌.1031 | [maximum-sum-of-two-non-overlapping-subarrays](https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/description/) | [Python](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.py)/[Ruby](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.rb) /[Javascript](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.js) /[C++](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.cpp) |
+|𝐇.1032 | [stream-of-characters](https://leetcode.com/problems/stream-of-characters/description/) | [Python](./python_solutions/1032.stream-of-characters.py)/[Ruby](./python_solutions/1032.stream-of-characters.rb) |
 
 
 ### Contact
