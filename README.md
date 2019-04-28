@@ -136,6 +136,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1031 | [maximum-sum-of-two-non-overlapping-subarrays](https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/description/) | [Python](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.py)/[Ruby](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.rb) /[Javascript](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.js) /[C++](./python_solutions/1031.maximum-sum-of-two-non-overlapping-subarrays.cpp) |
 |𝐇.1032 | [stream-of-characters](https://leetcode.com/problems/stream-of-characters/description/) | [Python](./python_solutions/1032.stream-of-characters.py)/[Ruby](./python_solutions/1032.stream-of-characters.rb) |
 |𝐄.1033 | [moving-stones-until-consecutive](https://leetcode.com/problems/moving-stones-until-consecutive/description/) | [Python](./python_solutions/1033.moving-stones-until-consecutive.py)/[Ruby](./python_solutions/1033.moving-stones-until-consecutive.rb) /[Javascript](./python_solutions/1033.moving-stones-until-consecutive.js) /[C++](./python_solutions/1033.moving-stones-until-consecutive.cpp) |
+|𝐌.1035 | [uncrossed-lines](https://leetcode.com/problems/uncrossed-lines/description/) | [Python](./python_solutions/1035.uncrossed-lines.py)/[Ruby](./python_solutions/1035.uncrossed-lines.rb) /[Javascript](./python_solutions/1035.uncrossed-lines.js) /[C++](./python_solutions/1035.uncrossed-lines.cpp) |
 
 
 ### Contact
