@@ -63,13 +63,13 @@
 
 class Solution:
     def maxUncrossedLines(self, a, b):
-        res = [[0 for j in range(len(b) + 1)] for i in range(len(a) + 1)]
+        cur = [0] * (len(b) + 1)
         for i in range(len(a)):
+            pre = list(cur)
             for j in range(len(b)):
-                res[i + 1][j + 1] = max(res[i + 1][j], res[i][j + 1])
-                if a[i] == b[j]:
-                    res[i + 1][j + 1] = max(res[i][j] + 1, res[i + 1][j + 1])
-        return res[-1][-1]
+                cur[j + 1] = 1 + \
+                    pre[j] if a[i] == b[j] else max(cur[j], pre[j + 1])
+        return cur[-1]
 
 
 a = [1, 3, 7, 1, 7, 5]

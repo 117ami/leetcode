@@ -63,12 +63,14 @@
 class Solution {
 public:
     int maxUncrossedLines(vector<int>& A, vector<int>& B) {
-        vector<vector<int>>res (A.size() + 1, vector<int> (B.size() + 1, 0)); 
-        for(int i = 0; i < A.size(); i ++)
+    	vector<int> cur (B.size() + 1, 0);
+        for(int i = 0; i < A.size(); i ++) {
+        	vector<int> pre(cur);
         	for (int j = 0; j < B.size() ; j ++)
-        		res[i+1][j+1] = A[i] == B[j] ? 1 + res[i][j] : max(res[i+1][j], res[i][j+1]);
+        		cur[j+1] = A[i] == B[j] ? 1 + pre[j] : max(cur[j], pre[j+1]);
+        }
 
-        return res[A.size()][B.size()];
+        return cur[B.size()];
     }
 };
 

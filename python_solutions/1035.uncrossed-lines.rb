@@ -63,26 +63,25 @@
 # @param {Integer[]} b
 # @return {Integer}
 def max_uncrossed_lines(a, b)
-  res = Array.new(a.size + 1) { Array.new(b.size + 1, 0) }
+  pre = Array.new(b.size + 1, 0)
+  cur = pre.dup
   0.upto(a.size - 1).each do |i|
     0.upto(b.size - 1).each do |j|
-      res[i + 1][j + 1] = if a[i] == b[j]
-                            [res[i][j + 1], res[i + 1][j], 1 + res[i][j]].max
-                          else
-                            [res[i][j + 1], res[i + 1][j]].max
-                          end
+      cur[j + 1] = a[i] == b[j] ? 1 + pre[j] : [cur[j], pre[j + 1]].max
     end
+    pre = cur.dup
   end
-  # p res
-  res.last.last
+  cur.last
 end
 
 a = [1, 3, 7, 1, 7, 5]
 b = [1, 9, 2, 5, 1]
 
-# a = [2, 5, 1, 2, 5]
-# b = [10, 5, 2, 1, 5, 2]
+a = [2, 5, 1, 2, 5]
+b = [10, 5, 2, 1, 5, 2]
 
-a = [1,3,7,1,7,5]
-b = [1,9,2,5,1]
+# a = [1, 3, 7, 1, 7, 5]
+# b = [1, 9, 2, 5, 1]
+# a = [3]
+# b = [3, 3, 2]
 p max_uncrossed_lines(a, b)
