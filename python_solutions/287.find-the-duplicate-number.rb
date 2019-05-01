@@ -42,24 +42,22 @@
 # @param {Integer[]} nums
 # @return {Integer}
 def find_duplicate(nums)
-  return 1 if nums.size == 2
-
   slow = nums.first
   fast = nums[slow]
+  cond = 0
+  loop do
+    if slow == fast
+      fast = 0
+      cond += 1
+    end
+    return slow if cond == 2
 
-  while slow != fast
     slow = nums[slow]
-    fast = nums[nums[fast]]
+    fast = cond.zero? ? nums[nums[fast]] : nums[fast]
   end
-
-  slow = 0
-  while slow != fast
-    slow = nums[slow]
-    fast = nums[fast]
-  end
-  slow
+  fast
 end
 
 nums = [2, 1, 3, 2, 4, 5]
-nums = [3, 1, 3, 4, 2]
-find_duplicate(nums)
+# nums = [3, 1, 3, 4, 2]
+p find_duplicate(nums)

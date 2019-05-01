@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=287 lang=cpp
+ * @lc app=leetcode id=287 lang=javascript
  *
  * [287] Find the Duplicate Number
  *
@@ -39,17 +39,26 @@
  * 
  * 
  */
-class Solution {
-public:
-    int findDuplicate(vector<int>& nums) {
-        
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findDuplicate = function(nums) {
+    var slow = nums[0],
+        fast = nums[slow];
+    cond = 0;
+    while (true) {
+        if (slow == fast) {
+            cond += 1;
+            slow = 0;
+        }
+        if (cond == 2) return fast;
+        slow = nums[slow];
+        fast = cond == 0 ? nums[nums[fast]] : nums[fast];
     }
+    return fast;
 };
 
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
-
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
-}
-
+nums = [1, 3, 2, 1, 4];
+nums = [2, 5, 9, 6, 9, 3, 8, 9, 7, 1];
+console.log(findDuplicate(nums));
