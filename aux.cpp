@@ -9,13 +9,13 @@
 #include <map>
 #include <math.h>
 #include <numeric>
+#include <queue>
 #include <regex>
 #include <set>
 #include <stdio.h>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <queue>
 
 using namespace std;
 
@@ -43,7 +43,7 @@ template <class T> void say(const T n) {
 // print a pair
 
 template <class T> void say(const pair<T, T> &p) {
-  cout << p.first << " " << p.second << endl; 
+  cout << p.first << " " << p.second << endl;
 }
 
 // print a vector of items out
@@ -71,9 +71,8 @@ template <class T> void say(vector<vector<T>> &vv) {
 template <class T> void say(vector<pair<T, T>> &vv) {
   // cout << "...printing vector<vector<T>>: \n";
   for (auto v : vv)
-    cout << v.first << " " << v.second << endl; 
+    cout << v.first << " " << v.second << endl;
 }
-
 
 struct TreeNode {
   int val;
@@ -104,42 +103,42 @@ TreeNode *arr2tree(vector<int> arr) {
     todo.emplace_back(left_node);
     todo.emplace_back(right_node);
     tid++;
-    idx++; 
+    idx++;
   }
   return root;
 }
 
-// Given a root node of a tree, return its traversal of nodes with depth  
-vector<pair<int, int>> traversalWithDepth(TreeNode* root, int depth = 0){
+// Given a root node of a tree, return its traversal of nodes with depth
+vector<pair<int, int>> traversalWithDepth(TreeNode *root, int depth = 0) {
   vector<pair<int, int>> res;
-  if (root == NULL) return res; 
+  if (root == NULL)
+    return res;
   res.emplace_back(make_pair(root->val, depth));
-  for(auto pair: traversalWithDepth(root->left, depth+1)) 
-    res.emplace_back(pair); 
-
-  if (root->left == NULL && root->right != NULL)
-    res.emplace_back(make_pair(INT_MIN, depth+1));
-
-  for(auto pair: traversalWithDepth(root->right, depth+1)) 
+  for (auto pair : traversalWithDepth(root->left, depth + 1))
     res.emplace_back(pair);
 
-  return res; 
+  if (root->left == NULL && root->right != NULL)
+    res.emplace_back(make_pair(INT_MIN, depth + 1));
+
+  for (auto pair : traversalWithDepth(root->right, depth + 1))
+    res.emplace_back(pair);
+
+  return res;
 }
 
-void printTree(TreeNode* root) {
-  vector<pair<int, int>> vpi = traversalWithDepth(root, 0); 
+void printTree(TreeNode *root) {
+  vector<pair<int, int>> vpi = traversalWithDepth(root, 0);
   sort(vpi.begin(), vpi.end(),
        [](const pair<int, int> &a, const pair<int, int> &b) {
          return a.second < b.second;
        });
-  for(auto pair: vpi) 
-    if (pair.first == INT_MIN) 
-      cout << "NULL " ; 
+  for (auto pair : vpi)
+    if (pair.first == INT_MIN)
+      cout << "NULL ";
     else
-      cout << pair.first << " "; 
-  cout << endl;     
+      cout << pair.first << " ";
+  cout << endl;
 }
-
 
 // int main(int argc, char const *argv[]) {
 //   vector<int> arr = {1, 2, 3, 4, -1231, -1231, 6};
@@ -148,34 +147,34 @@ void printTree(TreeNode* root) {
 //   return 0;
 // }
 
-
 // ********************************************************
-// ON Integers 
+// ON Integers
 // ********************************************************
-vector <int> integerToArray(int x) {
-    vector <int> resultArray;
-    while (true) {
-      resultArray.insert(resultArray.begin(), x%10);
-      x /= 10;
-      if(x == 0)
-          return resultArray;
-    }
+vector<int> integerToArray(int x) {
+  vector<int> resultArray;
+  while (true) {
+    resultArray.insert(resultArray.begin(), x % 10);
+    x /= 10;
+    if (x == 0)
+      return resultArray;
+  }
 }
-
-
 
 // ********************************************************
 // Strings
 // ********************************************************
-  bool isSubString(string s, string t)  {
-    int i = 0, j = 0; 
-    while (i < s.size() && j < t.size()) {
-      if (s[i] == t[j])  i ++; 
-      j ++; 
-    }
-    return (i == s.size()) ;
+bool isSubString(string s, string t) {
+  int i = 0, j = 0;
+  while (i < s.size() && j < t.size()) {
+    if (s[i] == t[j])
+      i++;
+    j++;
   }
+  return (i == s.size());
+}
 
-
-
-
+// int main(int argc, char const *argv[]) {
+//   say("Hello");
+//   say(string(1, ')'));
+//   return 0;
+// }

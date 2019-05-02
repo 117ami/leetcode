@@ -68,31 +68,30 @@
  *
  *
  */
-#include "aux.cpp"
-#include <stack>
+// #include "aux.cpp"
+// #include <stack>
+
 class Solution {
 public:
   int scoreOfParentheses(string S) {
-  	vector<string> stack; 
-    for (auto c : S) {
+    stack<int> st;
+    for (auto &c : S) {
       if (c == '(')
-        st.push_back(string m(1, c));
+        st.push(-1);
       else {
         int n = 0;
-        while (st.back() != "(") {
-          n += int(st.back());
+        while (st.top() != -1) {
+          n += st.top();
           st.pop();
         }
-        n = max(1, 2 * n);
         st.pop();
-        st.push((char)n);
+        st.push(max(1, 2 * n));
       }
     }
 
     int res = 0;
     while (!st.empty()) {
-      say(st.top());
-      res += st.top() - '0';
+      res += st.top();
       st.pop();
     }
     return res;
@@ -105,10 +104,10 @@ static const int _ = []() {
   return 0;
 }();
 
-int main(int argc, char const *argv[]) {
-  Solution s;
-  string S = "()";
-  S = "()((((()(()))))((()))()((())((()(())))(())))";
-  say(s.scoreOfParentheses(S));
-  return 0;
-}
+// int main(int argc, char const *argv[]) {
+//   Solution s;
+//   string S = "(()(()))";
+//   // S = "()((((()(()))))((()))()((())((()(())))(())))";
+//   say(s.scoreOfParentheses(S));
+//   return 0;
+// }
