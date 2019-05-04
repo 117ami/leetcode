@@ -66,11 +66,13 @@ def predict_the_winner(nums)
     end
     pre = cur.dup
   end
+  p cur
   cur.last >= 0
 end
 
 # nums = [1, 5, 233, 7]
-# nums = [1, 5, 2]
+nums = [5, 3, 4, 5]
+p predict_the_winner(nums)
 
 # 100.times do |_|
 # 	sz = Random.rand(30)
