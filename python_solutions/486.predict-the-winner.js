@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=486 lang=cpp
+ * @lc app=leetcode id=486 lang=javascript
  *
  * [486] Predict the Winner
  *
@@ -52,17 +52,27 @@
  * 
  * 
  */
-class Solution {
-public:
-    bool PredictTheWinner(vector<int>& nums) {
-        
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var PredictTheWinner = function(nums) {
+    if (nums.length <= 2) return true;
+
+    var pre = nums.slice(),
+        cur = nums.slice();
+
+    for (var sz = 1; sz < nums.length; sz++) {
+        console.log(cur, pre)
+        for (var i = 0; i < nums.length - sz; i++) {
+            var j = i + sz;
+            cur[j] = Math.max(nums[i] - pre[j], nums[j] - pre[j - 1]);
+        }
+        pre = cur.slice();
     }
+
+    return cur[nums.length - 1] >= 0;
 };
 
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
-
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
-}
-
+// var nums = [1, 5, 2];
+// console.log(PredictTheWinner(nums))
