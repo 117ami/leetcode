@@ -57,4 +57,13 @@
 #
 class Solution:
     def stoneGame(self, piles: List[int]) -> bool:
+    	cur = piles[:]
+    	for length in range(1, len(piles)):
+    		pre = cur[:]
+    		for i in range(len(piles) - length):
+    			j = i + length
+    			cur[j] = max(piles[i] - pre[j], piles[j] - pre[j-1])
+    	return cur[-1] > 0
+
+
         

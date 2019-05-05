@@ -58,14 +58,23 @@
 class Solution {
 public:
     bool stoneGame(vector<int>& piles) {
-        
+        std::vector<int> cur(piles);
+        std::vector<int> pre;
+        for(int len = 1; len < piles.size(); len ++) {
+        	pre = cur; 
+        	for(int i = 0; i < piles.size() - len; i ++) {
+        		int j = i + len; 
+        		cur[j] = max(piles[i] - pre[j], piles[j] - pre[j-1]); 
+        	}
+        }
+        return cur.back() > 0; 
     }
 };
 
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
 
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
-}
+// int main(int argc, char const *argv[]) {
+// 	Solution s;
+// 	return 0;
+// }
 

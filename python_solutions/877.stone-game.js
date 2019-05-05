@@ -60,5 +60,14 @@
  * @return {boolean}
  */
 var stoneGame = function(piles) {
-    
+    var pre = piles.slice(),
+        cur = piles.slice();
+    for (var len = 1; len < piles.length; len++) {
+        for (var i = 0; i < piles.length - len; i++) {
+            var j = i + len;
+            cur[j] = Math.max(piles[i] - pre[j], piles[j] - pre[j - 1]);
+        }
+        pre = cur.slice();
+    }
+    return cur[cur.length - 1] > 0;
 };

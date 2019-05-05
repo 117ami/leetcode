@@ -1,5 +1,5 @@
 #!/bin/bash 
-comments=$1
+comments=$@
 echo '*' `date +"%a %D/%T":` $comments | tee -a c.log 
 readme='/dev/null'
 
