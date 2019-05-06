@@ -71,5 +71,24 @@
  * @return {number}
  */
 var eraseOverlapIntervals = function(intervals) {
-    
+    intervals.sort((a, b) => (a[1] - b[1]));
+    // console.log(intervals)
+    var end = Number.NEGATIVE_INFINITY,
+        res = 0;
+    for (var i of intervals) {
+        if (i[0] < end)
+            res += 1;
+        else
+            end = i[1];
+    }
+    return res;
 };
+
+
+var intervals = [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [1, 3]
+];
+eraseOverlapIntervals(intervals);
