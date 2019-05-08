@@ -7,11 +7,16 @@ leetcode show $1 -gx -l javascript
 
 cppFile=$(ls -t *.cpp | head -n 1)
 
+echo '
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();' | tee -a $cppFile
+
 echo "
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+#include \"aux.cpp\"
+#include \"$cppFile\"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
 	return 0;
 }
-" >> $cppFile
+" | tee test.cpp

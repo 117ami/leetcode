@@ -11,7 +11,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 
 | #    | Title | Talk is cheap. Show me the code. | 
 | :---- | :----- | :------- | 
-|𝐄.1 | [two-sum](https://leetcode.com/problems/two-sum/description/) | [Python](./python_solutions/1.two-sum.py)/[Ruby](./python_solutions/1.two-sum.rb) |
+|𝐄.1 | [two-sum](https://leetcode.com/problems/two-sum/description/) | [Python](./python_solutions/1.two-sum.py)/[Ruby](./python_solutions/1.two-sum.rb) /[Javascript](./python_solutions/1.two-sum.js) /[C++](./python_solutions/1.two-sum.cpp) |
 |𝐌.3 | [longest-substring-without-repeating-characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/) | [Python](./python_solutions/3.longest-substring-without-repeating-characters.py)/[Ruby](./python_solutions/3.longest-substring-without-repeating-characters.rb) /[Javascript](./python_solutions/3.longest-substring-without-repeating-characters.js) /[C++](./python_solutions/3.longest-substring-without-repeating-characters.cpp) |
 |𝐄.7 | [reverse-integer](https://leetcode.com/problems/reverse-integer/description/) | [Python](./python_solutions/7.reverse-integer.py)/[Ruby](./python_solutions/7.reverse-integer.rb) |
 |𝐄.21 | [merge-two-sorted-lists](https://leetcode.com/problems/merge-two-sorted-lists/description/) | [Python](./python_solutions/21.merge-two-sorted-lists.py)/[Ruby](./python_solutions/21.merge-two-sorted-lists.rb) |
