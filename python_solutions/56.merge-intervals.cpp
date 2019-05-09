@@ -1,14 +1,14 @@
 /*
- * @lc app=leetcode id=56 lang=javascript
+ * @lc app=leetcode id=56 lang=cpp
  *
  * [56] Merge Intervals
  *
  * https://leetcode.com/problems/merge-intervals/description/
  *
  * algorithms
- * Medium (35.42%)
- * Total Accepted:    337.2K
- * Total Submissions: 950.8K
+ * Medium (35.48%)
+ * Total Accepted:    338.7K
+ * Total Submissions: 954.7K
  * Testcase Example:  '[[1,3],[2,6],[8,10],[15,18]]'
  *
  * Given a collection of intervals, merge all overlapping intervals.
@@ -33,10 +33,19 @@
  * default code definition to get new method signature.
  * 
  */
-/**
- * @param {number[][]} intervals
- * @return {number[][]}
- */
-var merge = function(intervals) {
-    
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+		vector<vector<int>> res; 
+		sort(intervals.begin(), intervals.end(), [](const std::vector<int> &a, const vector<int> &b) {return a[0] < b[0] ; });
+		for (auto &i: intervals) 
+			if (res.size() == 0 || res[res.size() -1][1] < i[0])
+				res.push_back(i); 
+			else
+				res[res.size()-1][1] = 	max(res[res.size()-1][1], i[1]);
+		return res;		
+    }
 };
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

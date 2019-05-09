@@ -6,9 +6,9 @@
 # https://leetcode.com/problems/merge-intervals/description/
 #
 # algorithms
-# Medium (35.42%)
-# Total Accepted:    337.2K
-# Total Submissions: 950.8K
+# Medium (35.48%)
+# Total Accepted:    338.7K
+# Total Submissions: 954.7K
 # Testcase Example:  '[[1,3],[2,6],[8,10],[15,18]]'
 #
 # Given a collection of intervals, merge all overlapping intervals.
@@ -35,4 +35,15 @@
 #
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+    	intervals.sort(key=lambda x: x[0])
+    	res = []
+    	for i in intervals:
+    		if len(res) == 0 or res[-1][1] < i[0]:
+    			res.append(i)
+    		else:
+    			res[-1][1] = max(res[-1][1], i[1])
+    	return res 
+
+
+
         
