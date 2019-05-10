@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "516.longest-palindromic-subsequence.cpp"
+#include "5.longest-palindromic-substring.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;

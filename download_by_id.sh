@@ -9,7 +9,7 @@ pythonFile=$(ls -t *.cpp | head -n 1)
 cppFile=$(ls -t *.cpp | head -n 1)
 
 echo -e "\n\n
-s = Solution()\n\n" | tee -a pythonFile
+s = Solution()\n\n" | tee -a $pythonFile
 
 echo -e "\n\n
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cppFile
