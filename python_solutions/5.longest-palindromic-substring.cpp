@@ -33,7 +33,25 @@
 class Solution {
 public:
     string longestPalindrome(string s) {
-        
+        string t(s.rbegin(), s.rend());
+        if (s == t) return s; 
+        int start = 0, maxlen = 1; 
+        for(int i = 0; i < s.size();) {
+        	int j = i - 1; 
+        	while (s[++i] == s[j+1]); 
+        	int k = i; 
+        	while (j >= 0 && k <= s.size() - 1 && s[j] == s[k]) {
+        		--j, ++k; 
+        	}
+
+        	if (k - j - 1 > maxlen) {
+        		start = j + 1; 
+        		maxlen = k - j - 1;
+        	}
+
+        }
+        // say(maxlen);
+        return s.substr(start, maxlen); 
     }
 };
 
