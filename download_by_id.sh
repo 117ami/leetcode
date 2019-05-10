@@ -5,11 +5,14 @@ leetcode show $1 -gx -l ruby
 leetcode show $1 -gx -l python3
 leetcode show $1 -gx -l javascript
 
+pythonFile=$(ls -t *.cpp | head -n 1)
 cppFile=$(ls -t *.cpp | head -n 1)
 
-echo '
+echo -e "\n\n
+s = Solution()\n\n" | tee -a pythonFile
 
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();' | tee -a $cppFile
+echo -e "\n\n
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cppFile
 
 echo "
 #include \"aux.cpp\"
