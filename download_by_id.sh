@@ -5,7 +5,7 @@ leetcode show $1 -gx -l ruby
 leetcode show $1 -gx -l python3
 leetcode show $1 -gx -l javascript
 
-pythonFile=$(ls -t *.cpp | head -n 1)
+pythonFile=$(ls -t *.py | head -n 1)
 cppFile=$(ls -t *.cpp | head -n 1)
 
 echo -e "\n\n
