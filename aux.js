@@ -31,4 +31,12 @@ var two_d_array = function(m , n) {
     return new Array(m).fill(0).map(() => new Array(n).fill(0));   
 }
 
+var reverse = function(s) {
+    return [...str].reverse().join('');
+}
+
+
 console.log(two_d_array(4, 3));
+
+
+

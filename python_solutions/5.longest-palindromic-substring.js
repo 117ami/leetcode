@@ -34,6 +34,33 @@
  * @param {string} s
  * @return {string}
  */
+var reverse = function(str) {
+    return [...str].reverse().join('');
+}
+
+
 var longestPalindrome = function(s) {
-	    
+    if (s == reverse(s)) return s;
+    var start = 0,
+        maxlen = 1;
+    for (var i = 0; i < s.length;) {
+        var j = i - 1;
+        while (i < s.length && s[i] == s[j + 1]) i += 1;
+        var k = i;
+        while (j >= 0 && k < s.length && s[j] == s[k]) {
+            j -= 1;
+            k += 1;
+        }
+
+        if (k - j - 1 > maxlen) {
+            maxlen = k - j - 1;
+            start = j + 1;
+        }
+    }
+    return s.substring(start, start + maxlen);
 };
+
+
+var s = "babad";
+console.log(reverse(s))
+console.log(longestPalindrome(s));

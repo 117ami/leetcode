@@ -37,18 +37,22 @@ def longest_palindrome(s)
 
   start = 0
   maxlen = 1
-  1.upto(s.size).each do |i|
-    if i - maxlen >= 1 && s[i - maxlen - 1..i] == s[i - maxlen - 1..i].reverse
-      start = i - maxlen - 1
-      maxlen += 2
-    elsif i - maxlen >= 0 && s[i - maxlen..i] == s[i - maxlen..i].reverse
-      start = i - maxlen
-      maxlen += 1
+  0.upto(s.size).each do |i|
+    j = i - 1
+    i += 1 while i < s.size && s[i] == s[j + 1]
+    k = i
+    while j >= 0 && k < s.size && s[j] == s[k]
+      j -= 1
+      k += 1
+    end
+    if k - j - 1 > maxlen
+      maxlen = k - j - 1
+      start = j + 1
     end
   end
   # p start, maxlen
   s[start..start + maxlen - 1]
 end
 
-s = 'adam'
+s = 'babad'
 p longest_palindrome(s)
