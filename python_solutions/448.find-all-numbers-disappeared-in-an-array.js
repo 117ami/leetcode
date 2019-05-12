@@ -34,5 +34,25 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function(nums) {
-    
+    var res = [],
+        i = 0;
+    while (i < nums.length) {
+        var n = nums[i];
+        while (n > 0) {
+            var m = nums[n - 1];
+            nums[n - 1] = -1 * n;
+            n = m;
+        }
+        i += 1;
+    }
+    for (i = 1; i <= nums.length; i++)
+        if (nums[i - 1] > 0)
+            res.push(i);
+
+    return res;
+
 };
+
+
+var nums = [1, 2, 3, 3]
+console.log(findDisappearedNumbers(nums))
