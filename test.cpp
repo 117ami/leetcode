@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
-#include "153.find-minimum-in-rotated-sorted-array.cpp"
+#include "516.longest-palindromic-subsequence.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
 	std::vector<int> nums = {2, 3, 4, 5, 6, 1};
-	int res = s.findMin(nums);
+	nums = {3, 1, 3, 3, 3};
+	int res = s.longestPalindromeSubseq("adam");
 	say(res);
 	return 0;
 }

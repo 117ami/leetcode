@@ -43,7 +43,19 @@
 class Solution {
 public:
     int findMin(vector<int>& nums) {
-        
+    	return recursive(nums, 0, nums.size() - 1);
+    }
+
+    int recursive(vector<int>& nums, int start, int end) {
+		int pivot = nums[end];
+        int mid = (start + end) / 2; 
+        if (end - start <= 1) return min(nums[start], nums[end]); 
+        if (nums[mid] < pivot) 
+        	return recursive(nums, start, mid); 
+        else if (nums[mid] > pivot) 
+        	return recursive(nums, mid, end); 
+        else
+        	return min(recursive(nums, start, mid), recursive(nums, mid, end));
     }
 };
 

@@ -43,7 +43,16 @@
 class Solution {
 public:
     int longestPalindromeSubseq(string s) {
-        
+		vector<int> cur (s.size(), 0); 
+		for (int i = s.size() - 1; i >= 0; i--)  {
+			vector<int> pre(cur); 
+			cur[i] = 1;
+			for (int j = i+1; j < s.size(); j ++) {
+				cur[j] = s[i] == s[j] ? 2 + pre[j-1] : max(cur[j-1], pre[j]);
+			}
+		}
+		// say(cur);
+		return cur.back();
     }
 };
 
