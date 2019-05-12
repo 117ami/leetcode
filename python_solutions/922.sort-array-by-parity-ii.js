@@ -49,5 +49,20 @@
  * @return {number[]}
  */
 var sortArrayByParityII = function(A) {
-    
+    res = []
+    i = 0, j = 1
+    for (var n of A)
+        if (n % 2 == 0) {
+            res[i] = n
+            i += 2
+        } else {
+            res[j] = n
+            j += 2
+        }
+    return res
 };
+
+
+
+A = [3, 2, 4, 9]
+console.log(sortArrayByParityII(A))
