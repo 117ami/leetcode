@@ -40,5 +40,20 @@
  * @return {number}
  */
 var findMin = function(nums) {
-    
+    var start = 0,
+        end = nums.length - 1,
+        pivot = nums[nums.length - 1];
+    while (start < end) {
+        var mid = Math.floor((start + end) / 2);
+        if (nums[mid] < pivot)
+            end = mid;
+        else
+            start = mid + 1;
+    }
+    return nums[start];
 };
+
+
+nums = [3, 4, 5, 1, 2]
+nums = [1, 2]
+console.log(findMin(nums));
