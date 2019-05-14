@@ -45,5 +45,21 @@
  * @return {number}
  */
 var findMin = function(nums) {
-    
+    var rec = function(start, end) {
+        // console.log(start, end);		
+        if (end - start <= 1) return Math.min(...nums.slice(start, end + 1));
+        var mid = Math.floor((start + end) / 2),
+            pivot = nums[end];
+        if (nums[mid] < pivot)
+            return rec(start, mid);
+        else if (nums[mid] > pivot)
+            return rec(mid + 1, end);
+        else
+            return Math.min(rec(start, mid), rec(mid + 1, end));
+    };
+    return rec(0, nums.length - 1);
 };
+
+var nums = [3, 3, 3, 1, 3];
+// nums = [1, 3]
+console.log(findMin(nums));
