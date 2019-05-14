@@ -90,5 +90,18 @@
  * @return {boolean}
  */
 var lemonadeChange = function(bills) {
-    
+    var five = ten = 0;
+    for (var b of bills) {
+        if (b == 5) five += 2;
+        if (b == 10) ten += 1;
+
+        five = five - (b == 20 && ten == 0 ? 3 : 1);
+        if (b == 20 && ten > 0) ten -= 1;
+
+        if (five < 0) return false;
+    }
+    return true;
 };
+
+bills = [5, 10, 5, 10]
+console.log(lemonadeChange(bills))
