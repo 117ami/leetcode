@@ -38,19 +38,30 @@
  * @param {number[]} nums
  */
 var Solution = function(nums) {
-    
+    this.nums = nums;
 };
 
 /** 
  * @param {number} target
  * @return {number}
  */
+
 Solution.prototype.pick = function(target) {
-    
+    var count = 0,
+        res = 0;
+    for (var i = 0; i < this.nums.length; i++) {
+        if (target == this.nums[i]) {
+            count += 1;
+            if (Math.floor(Math.random() * 10 ** 9) % count == 0)
+                res = i;
+        }
+    }
+    return res;
 };
 
-/** 
- * Your Solution object will be instantiated and called as such:
- * var obj = new Solution(nums)
- * var param_1 = obj.pick(target)
- */
+
+// * Your Solution object will be instantiated and called as such:
+var nums = [2, 3, 1, 3, 2, 3];
+var obj = new Solution(nums)
+var param_1 = obj.pick(3)
+console.log(param_1)
