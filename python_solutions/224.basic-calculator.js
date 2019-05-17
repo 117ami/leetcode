@@ -47,5 +47,33 @@
  * @return {number}
  */
 var calculate = function(s) {
-    
+	var res = 0, sign = 1, stack = [], number = 0; 
+	for (var c of s)    {
+		if (!isNaN(parseInt(c, 10))){
+			number = number * 10 + parseInt(c);
+		} else if (c == '+') {
+			res += number * sign; 
+			number = 0; 
+			sign = 1; 
+		} else if (c == '-') {
+			res += number * sign; 
+			number = 0; 
+			sign = -1;
+		} else if (c == '(') {
+			stack.push(res); 
+			stack.push(sign);
+			res = 0; 
+			sign = 1; 
+		} else if (c == ')') {
+			res += number * sign; 
+			res *= stack.pop(); 
+			res += stack.pop(); 
+			number = 0; 
+		}
+	}
+	return res + number * sign;
 };
+
+
+var s = "(1-(2-3))"
+console.log(calculate(s))
