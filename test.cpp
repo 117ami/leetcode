@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "371.sum-of-two-integers.cpp"
+#include "191.number-of-1-bits.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
