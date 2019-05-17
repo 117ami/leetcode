@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=299 lang=cpp
+ * @lc app=leetcode id=299 lang=javascript
  *
  * [299] Bulls and Cows
  *
@@ -47,13 +47,32 @@
  * Note: You may assume that the secret number and your friend's guess only
  * contain digits, and their lengths are always equal.
  */
-class Solution {
-public:
-    string getHint(string secret, string guess) {
-        
+/**
+ * @param {string} secret
+ * @param {string} guess
+ * @return {string}
+ */
+var getHint = function(secret, guess) {
+    var bull = 0,
+        cow = 0,
+        cg = {},
+        cs = {};
+    for (var i = 0; i < secret.length; i++) {
+        if (secret[i] == guess[i])
+            bull += 1;
+        else {
+            cs[secret[i]] = cs[secret[i]] ? cs[secret[i]] + 1 : 1;
+            cg[guess[i]] = cg[guess[i]] ? cg[guess[i]] + 1 : 1;
+        }
     }
+    for (var k in cg) {
+        if (k in cs)
+            cow += Math.min(cg[k], cs[k]);
+    }
+
+    return `${bull}A${cow}B`;
 };
 
-
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+secret = '1239'
+guess = '4231'
+console.log(getHint(secret, guess))
