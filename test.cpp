@@ -1,10 +1,10 @@
 
 #include "aux.cpp"
-#include "224.basic-calculator.cpp"
+#include "371.sum-of-two-integers.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.calculate("(1-(2-3))"));
+	say(s.getSum(-1, 1));
 	return 0;
 }
 

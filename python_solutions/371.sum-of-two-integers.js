@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=371 lang=cpp
+ * @lc app=leetcode id=371 lang=javascript
  *
  * [371] Sum of Two Integers
  *
@@ -33,13 +33,18 @@
  * 
  * 
  */
-class Solution {
-public:
-    int getSum(int a, int b) {
-        
-    }
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+var getSum = function(a, b) {
+    if (b == 0) return a;
+    return getSum(a ^ b, (a & b) << 1);
 };
 
+var print = function(a) {
+    console.log(a)
+}
 
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+print(getSum(-1, -2))
