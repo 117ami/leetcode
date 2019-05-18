@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "371.sum-of-two-integers.cpp"
+#include "898.bitwise-ors-of-subarrays.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.getSum(-1, 1));
+	vector<int> a = {1, 2, 4};
+	say(s.subarrayBitwiseORs(a));
 	return 0;
 }
 
