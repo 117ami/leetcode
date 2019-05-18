@@ -45,7 +45,36 @@
 class Solution {
 public:
     int calculate(string s) {
-        
+        int res = 0, sign = 1, number = 0; 
+        stack <int> st ; 
+
+        for (auto &c: s) {
+        	if (isdigit(c)) {
+        		number = number * 10 + ((int) c - 48); 
+        	} else if (c == '+') {
+        		res += number * sign; 
+        		number = 0; 
+        		sign = 1; 
+        	} else if (c == '-') {
+        		res += number * sign;
+        		number = 0; 
+        		sign = -1; 
+        	} else if (c == '(') {
+        		st.push(res); 
+        		st.push(sign); 
+        		res = 0; 
+        		sign = 1; 
+        	} else if (c == ')') {
+        		res += number * sign;
+        		res *= st.top(); 
+        		st.pop(); 
+        		res += st.top(); 
+        		st.pop(); 
+        		number = 0; 
+        	}
+        }
+        // say();
+        return res + number * sign; 
     }
 };
 

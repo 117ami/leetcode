@@ -12,6 +12,7 @@
 #include <queue>
 #include <regex>
 #include <set>
+#include <stack>
 #include <stdio.h>
 #include <unordered_map>
 #include <unordered_set>
