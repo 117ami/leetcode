@@ -69,10 +69,25 @@
  * @param {string} S
  * @return {string}
  */
+
 var toGoatLatin = function(S) {
-    
+    var res = '',
+        a = '';
+    var cs = S.split(' ');
+
+    function isVowel(x) {
+        return /[aeiouAEIOU]/.test(x)
+    };
+    for (var c of cs) {
+        a += 'a';
+        res += ' ';
+        res += isVowel(c[0]) ? c + 'ma' + a : c.slice(1) + c[0] + 'ma' + a;
+    }
+    return res.slice(1);
 };
 
 var print = function(a) {
-	console.log(a);
-} 
+    console.log(a);
+}
+
+toGoatLatin('I speak goat like')

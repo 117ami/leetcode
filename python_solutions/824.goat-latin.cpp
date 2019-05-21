@@ -65,10 +65,22 @@
  * 
  * 
  */
+#include <iostream>
+#include <sstream>
 class Solution {
 public:
     string toGoatLatin(string S) {
-        
+		stringstream iss(S), oss; 
+		string word, a; 
+		string vowels("AEIOUaeiou");
+		while (iss >> word) {
+			a.push_back('a');
+			if (vowels.find_first_of(word[0]) != string::npos)
+				oss << ' ' << word << "ma" << a;
+			else
+				oss << ' ' << word.substr(1) << word[0] << "ma" << a;
+		}
+		return oss.str().substr(1);
     }
 };
 

@@ -66,11 +66,21 @@
 # 
 #
 class Solution:
-    def toGoatLatin(self, S: str) -> str:
+    def toGoatLatin(self, S):
+        res = app = ''
+        for c in S.split(' '):
+            app += 'a'
+            res += ' '
+            if c[0].lower() in 'aeiou':
+                res += c + 'ma' + app 
+            else:
+                res += c[1:] + c[0] + 'ma' + app
         
+        return res[1:] 
 
 
 
 s = Solution()
+print(s.toGoatLatin('i speak goat Latin'))
 
 
