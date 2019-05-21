@@ -73,11 +73,34 @@
 # 
 #
 class Solution:
-    def mergeStones(self, stones: List[int], K: int) -> int:
+    def mergeStones(self, stones, K):
+    	size = len(stones)    	
+    	if (size - 1) % (K - 1) != 0: return -1 
+
+    	dp = [[float('inf') for _ in range(size)] for _ in range(size)] 
+    	xlen = K
+
+    	while xlen <= size:
+    		for i in range(0, size - xlen + 1):
+    			j = i + xlen - 1
+    			if xlen == K:
+    				dp[i][j] = sum(stones[i:j+1])
+    			else:
+    				for m in range(K):
+    					print(i, j, m, dp[i+m][i+m+xlen-K], sum(stones[i:j+1]))
+    					dp[i][j] = min(dp[i][j], sum(stones[i:j+1]) - sum(stones[i+m:i+m+xlen-K+1]) + 2 * dp[i+m][i+m+xlen-K])
+
+    		xlen += K - 1
+
+    	print(dp)
         
 
 
 
 s = Solution()
-
+stones = [3, 5, 1, 2, 6]
+K = 3
+stones = [3,2,4,1]
+K = 2
+s.mergeStones(stones, K)
 

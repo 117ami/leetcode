@@ -78,9 +78,12 @@
 def merge_stones(stones, k)
   return -1 if (stones.size - 1) % (k - 1) != 0
   dp = Array.new(stones.size){|_| Array.new(stones.size, Float::INFINITY)}
-  k.upto(stones.size).each do |len|
-  	1.upto(stones.size-k + 1).each do |i|
+  len = k 
+  while len <= stones.size 
+  # k.upto(stones.size).each do |len|
+  	1.upto(stones.size-len + 1).each do |i|
   		j = i + len - 1  		
+      
   		if len == k  
   			dp[i][j] = number[i..j].reduce(:+)
   		else
