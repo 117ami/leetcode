@@ -184,8 +184,16 @@ class PriorityQueue
     @es.empty?
   end
 
+  def size
+    @es.size
+  end
+
   def << (x)
     push(x)
+  end
+
+  def shift
+    @es.shift
   end
 
   def pop

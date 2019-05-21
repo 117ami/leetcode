@@ -1,10 +1,9 @@
 
 #include "aux.cpp"
-#include "1047.remove-all-adjacent-duplicates-in-string.cpp"
+#include "1046.last-stone-weight.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.removeDuplicates("abbaca"));
 	return 0;
 }
 
