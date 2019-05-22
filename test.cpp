@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1046.last-stone-weight.cpp"
+#include "1042.flower-planting-with-no-adjacent.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> stones = {2, 7, 4, 1, 8, 1};
-	say(s.lastStoneWeight(stones));
+	vector<vector<int>> paths = {{1, 2}, {2, 3}, {3, 1}}; 
+	say(s.gardenNoAdj(3, paths));
 	return 0;
 }
 

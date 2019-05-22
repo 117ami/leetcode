@@ -72,7 +72,7 @@
  * @return {number}
  */
 var subarrayBitwiseORs = function(A) {
-    
+	    
 };
 
 var print = function(a) {
