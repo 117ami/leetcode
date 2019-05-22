@@ -40,5 +40,39 @@ def is_substring(s, t):
     it = iter(t)
     return all(c in it for c in s)
 
-    
 
+class PriorityQueue(object): 
+    def __init__(self, li=[]): 
+        self.queue = [] 
+        for i in li:
+            self.push(i)
+  
+    def __str__(self): 
+        return ' '.join([str(i) for i in self.queue]) 
+  
+    # for checking if the queue is empty 
+    def isEmpty(self): 
+        return len(self.queue) == 0
+  
+    # for return the size of queue 
+    def size(self):
+        return len(self.queue)
+
+    # for inserting an element in the queue 
+    def push(self, data):
+        insert_idx = bisect_left(self.queue, data)
+        self.queue.insert(insert_idx, data)
+
+    # for popping an element based on Priority 
+    def pop(self): 
+        return self.queue.pop()
+
+
+# # from bisect import bisect_left
+
+# pq = PriorityQueue()
+# for i in [2, 5, 4, 3, 9, 6]:
+#     pq.push(i)
+
+# while not pq.isEmpty():
+#     print(pq.pop())
