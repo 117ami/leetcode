@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=1046 lang=javascript
+ * @lc app=leetcode id=1046 lang=cpp
  *
  * [1046] Last Stone Weight
  *
@@ -49,14 +49,25 @@
  * 1 <= stones[i] <= 1000
  * 
  */
-/**
- * @param {number[]} stones
- * @return {number}
- */
-var lastStoneWeight = function(stones) {
-    
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+		priority_queue<int> pq; 
+		for (int &i: stones)        
+			pq.push(i);
+		int a, b; 
+		while (pq.size() > 1){
+			a = pq.top(); 
+			pq.pop(); 
+			b = pq.top();
+			pq.pop(); 
+			pq.push(a - b); 
+		}
+		if (pq.empty()) return 0; 
+		return pq.top();
+    }
 };
 
-var print = function(a) {
-	console.log(a);
-} 
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

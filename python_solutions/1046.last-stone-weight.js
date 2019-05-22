@@ -1,5 +1,5 @@
 /*
- * @lc app=leetcode id=1046 lang=cpp
+ * @lc app=leetcode id=1046 lang=javascript
  *
  * [1046] Last Stone Weight
  *
@@ -49,13 +49,49 @@
  * 1 <= stones[i] <= 1000
  * 
  */
-class Solution {
-public:
-    int lastStoneWeight(vector<int>& stones) {
-        
+/**
+ * @param {number[]} stones
+ * @return {number}
+ */
+var bisect_left = function(nums, target) {
+    var i = 0,
+        j = nums.length - 1,
+        mid;
+    if (target <= nums[0]) return 0;
+    if (target >= nums[nums.length - 1]) return nums.length;
+
+    while (i < j) {
+        mid = ~~((i + j) / 2);
+        if (nums[mid] == target)
+            return mid;
+        else if (nums[mid] < target)
+            i = mid + 1;
+        else
+            j = mid;
     }
+    return j;
+}
+
+var lastStoneWeight = function(stones) {
+    var pq = [];
+    stones.forEach(function(e) {
+        var idx = bisect_left(pq, e);
+        pq.splice(idx, 0, e);
+    });
+
+    while (pq.length > 1) {
+        var diff = pq.pop() - pq.pop();
+        var idx = bisect_left(pq, diff);
+        pq.splice(idx, 0, diff);
+    }
+    // print(pq);
+    if (pq.length == 0) return 0;
+    return pq[0];
 };
 
+var print = function(a) {
+    console.log(a);
+}
 
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+stones = [2, 7, 4, 1, 8, 1]
+lastStoneWeight(stones)
