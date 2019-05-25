@@ -74,9 +74,29 @@
  * @return {boolean}
  */
 var isRobotBounded = function(instructions) {
-    
+    var x = 0,
+        y = 0,
+        i = 0;
+    var dir = [
+        [0, 1],
+        [1, 0],
+        [0, -1],
+        [-1, 0]
+    ];
+    [...instructions].forEach(function(e) {
+        if (e == 'L')
+            i = (i + 3) % 4;
+        else if (e == 'R')
+            i = (i + 1) % 4;
+        else
+            x += dir[i][0], y += dir[i][1];
+    });
+    return (x == 0 && y == 0) || i > 0;
 };
 
 var print = function(a) {
-	console.log(a);
-} 
+    console.log(a);
+}
+
+var instructions = "GGLLGG";
+print(isRobotBounded(instructions))

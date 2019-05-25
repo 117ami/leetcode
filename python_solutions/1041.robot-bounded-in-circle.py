@@ -71,6 +71,13 @@
 #
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
+    	x = y = i = 0
+    	dir = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+    	for c in instructions:
+    		if c == 'L': i = (i + 3) % 4
+    		if c == 'R': i = (i + 1) % 4    		
+    		if c == 'G': x, y = x + dir[i][0], y + dir[i][1]
+    	return x == 0 and y == 0 or i > 0
         
 
 
