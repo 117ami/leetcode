@@ -31,7 +31,7 @@ def format_print():
     for fs in listfiles:
         for line in str(fs).split("\n"):
             arr = line.split()
-            rm = re.match(r'\d+.*py', arr[-1])
+            rm = re.match(r'\d+.*\.py', arr[-1])
             if rm is not None:
                 local_link = "python_solutions/" + rm.group(0)
                 plink, diffi, pid, title = parse_problem(local_link)
