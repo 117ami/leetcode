@@ -22,6 +22,7 @@ s = Solution()\n\n" | tee -a $python_file
 
 echo "
 #include \"aux.cpp\"
+#include \"c.cpp\"
 #include \"$cpp_file\"
 
 int main(int argc, char const *argv[]) {

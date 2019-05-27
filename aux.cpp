@@ -27,8 +27,8 @@ then the size is 10.
 **/
 
 vector<int> randvector(int bound, int xsize) {
-  if (xsize <= 0)
-    xsize = 10;
+  cout << "A random vector of size " << xsize << " with bound " << bound << ":" << endl; 
+  if (xsize <= 0) xsize = 10;
   vector<int> res;
   srand(time(NULL));
   for (int i = 0; i < xsize; i++)
@@ -51,7 +51,7 @@ template <class T> void say(const pair<T, T> &p) {
 template <class T> void say(const vector<T> &vect) {
   // cout << "...printing vector<T>: \n";
   for (auto t : vect)
-    cout << t << ", ";
+    cout << t << " ";
   cout << endl;
 }
 
@@ -164,15 +164,7 @@ vector<int> integerToArray(int x) {
 // ********************************************************
 // Strings
 // ********************************************************
-bool isSubString(string s, string t) {
-  int i = 0, j = 0;
-  while (i < s.size() && j < t.size()) {
-    if (s[i] == t[j])
-      i++;
-    j++;
-  }
-  return (i == s.size());
-}
+
 
 // int main(int argc, char const *argv[]) {
 //   say("Hello");
