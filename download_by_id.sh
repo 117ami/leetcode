@@ -17,8 +17,8 @@ var print = function(a) {
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file
 
-echo -e "\n\n
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
+# echo -e "\n\n
+# static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
 
 echo "
 #include \"aux.cpp\"
