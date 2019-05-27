@@ -170,6 +170,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1046 | [last-stone-weight](https://leetcode.com/problems/last-stone-weight/description/) | [Python](./python_solutions/1046.last-stone-weight.py)/[Ruby](./python_solutions/1046.last-stone-weight.rb) /[Javascript](./python_solutions/1046.last-stone-weight.js) /[C++](./python_solutions/1046.last-stone-weight.cpp) |
 |𝐄.1047 | [remove-all-adjacent-duplicates-in-string](https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/description/) | [Python](./python_solutions/1047.remove-all-adjacent-duplicates-in-string.py)/[Ruby](./python_solutions/1047.remove-all-adjacent-duplicates-in-string.rb) /[Javascript](./python_solutions/1047.remove-all-adjacent-duplicates-in-string.js) /[C++](./python_solutions/1047.remove-all-adjacent-duplicates-in-string.cpp) |
 |𝐌.1048 | [longest-string-chain](https://leetcode.com/problems/longest-string-chain/description/) | [Python](./python_solutions/1048.longest-string-chain.py)/[Ruby](./python_solutions/1048.longest-string-chain.rb) /[Javascript](./python_solutions/1048.longest-string-chain.js) /[C++](./python_solutions/1048.longest-string-chain.cpp) |
+|𝐄.1051 | [height-checker](https://leetcode.com/problems/height-checker/description/) | [Python](./python_solutions/1051.height-checker.py)/[Ruby](./python_solutions/1051.height-checker.rb) /[Javascript](./python_solutions/1051.height-checker.js) /[C++](./python_solutions/1051.height-checker.cpp) |
 
 
 ### Contact
