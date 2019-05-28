@@ -9,10 +9,11 @@ js_file=$(ls -t *.js | head -n 1)
 python_file=$(ls -t *.py | head -n 1)
 cpp_file=$(ls -t *.cpp | head -n 1)
 
-echo -e "
-var print = function(a) {
-	console.log(a);
-} " | tee -a $js_file
+# echo -e "
+# var print = function(a) {
+# 	console.log(a);
+# } " | tee -a $js_file
+cat aux.js | tee -a $js_file
 
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file

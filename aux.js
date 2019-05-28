@@ -1,4 +1,3 @@
-
 var bisect_left = function(nums, target) {
     var i = 0,
         j = nums.length - 1,
@@ -36,7 +35,19 @@ var reverse = function(s) {
 }
 
 
-console.log(two_d_array(4, 3));
+// simple print
+var print = function(a) {
+    console.log(a);
+}
 
+
+// For counting elements in a list 
+var counter = function(array) {
+    var dict = {};
+    array.forEach(function(e) {
+        dict[e] = dict[e] ? dict[e] += 1 : 1;
+    });
+    return dict;
+}
 
 

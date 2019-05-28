@@ -60,6 +60,7 @@ using VVI = vector<VI>;
 using MII = map<int, int>;
 using MCI = map<char, int>;
 using SI = set<int>;
+using SPII = set<pair<int, int>>;
 using UMII = unordered_map<int, int>;
 using USI = unordered_set<int>;
 
@@ -76,6 +77,7 @@ static auto __2333__ = []() {
 // ==================================================
 
 // some macro for less typing
+#define INF 0x3f3f3f3f                         
 #define max_(x, y) ((x) > (y) ? (x) : (y))
 #define min_(x, y) ((x) > (y) ? (y) : (x))
 
@@ -178,8 +180,7 @@ int random_(int m) {
 }
 
 // whether s is substring of t
-bool is_sub(string s, string t) 
-{
+bool is_sub(string s, string t) {
   if (s.size() > t.size()) return false;
 
   int i = 0, j = 0;
@@ -191,8 +192,7 @@ bool is_sub(string s, string t)
 }
 
 // sort vector of vector<int> by first element
-void sort_by_last(VVI & a)
-{
+void sort_by_last(VVI & a){
   sort(a.begin(), a.end(), [](const VI &p, const VI &q){return p.back() < q.back();});
 }
 
@@ -206,6 +206,64 @@ LL product(VI &a) {
 int vec_max(VI &a) { return *max_element(a.begin(), a.end()); }
 int vec_min(VI &a) { return *min_element(a.begin(), a.end()); }
 
+
+// This class represents a directed graph using adjacency list representation
+class Graph {
+  int V; // No. of vertices
+  list<PII> *adj;  // In a weighted graph, we need to store vertex and weight pair for every edge
+
+public:
+  Graph(int V); // Constructor
+  void addEdge(int u, int v, int w);
+  VI shortestPath(int s);
+};
+
+// Allocates memory for adjacency list
+Graph::Graph(int V) {
+  this->V = V;
+  adj = new list<PII>[V];
+}
+
+void Graph::addEdge(int u, int v, int w) {
+  adj[u].push_back(make_pair(v, w));
+  adj[v].push_back(make_pair(u, w));
+}
+
+// Get shortest paths from src to all other vertices using Dijkstra's algorithm
+VI Graph::shortestPath(int src) {
+  // Create a priority queue to store vertices that
+  // are being preprocessed. This is weird syntax in C++.
+  // Refer below link for details of this syntax
+  // https://www.geeksforgeeks.org/implement-min-heap-using-stl/
+  priority_queue<PII, vector<PII>, greater<PII>> pq;
+
+  VI dist(V, INF);
+
+  pq.push(make_pair(0, src));
+  dist[src] = 0;
+
+  while (!pq.empty()) {
+    int u = pq.top().second;
+    pq.pop();
+
+    for (auto &i : adj[u]) {
+      int v = i.first;
+      int weight = i.second;
+
+      if (dist[v] > dist[u] + weight) {
+        dist[v] = dist[u] + weight;
+        pq.push(make_pair(dist[v], v));
+      }
+    }
+  }
+
+  // Print shortest distances stored in dist[]
+  // printf("Vertex   Distance from Source\n");
+  // for (int i = 0; i < V; ++i)
+  //   printf("%d \t\t %d\n", i, dist[i]);
+
+    return dist; 
+}
 
 
 // ==================================================
