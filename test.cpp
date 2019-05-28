@@ -1,7 +1,6 @@
 
 #include "aux.cpp"
-#include "c.cpp"
-#include "1049.last-stone-weight-ii.cpp"
+#include "494.target-sum.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
