@@ -1,4 +1,56 @@
-#!/usr/bin/ruby
+#
+# @lc app=leetcode id=1049 lang=ruby
+#
+# [1049] Last Stone Weight II
+#
+# https://leetcode.com/problems/last-stone-weight-ii/description/
+#
+# algorithms
+# Medium (36.44%)
+# Total Accepted:    3K
+# Total Submissions: 8.2K
+# Testcase Example:  '[2,7,4,1,8,1]'
+#
+# We have a collection of rocks, each rock has a positive integer weight.
+#
+# Each turn, we choose any two rocks and smash them together.  Suppose the
+# stones have weights x and y with x <= y.  The result of this smash is:
+#
+#
+# If x == y, both stones are totally destroyed;
+# If x != y, the stone of weight x is totally destroyed, and the stone of
+# weight y has new weight y-x.
+#
+#
+# At the end, there is at most 1 stone left.  Return the smallest possible
+# weight of this stone (the weight is 0 if there are no stones left.)
+#
+#
+#
+# Example 1:
+#
+#
+# Input: [2,7,4,1,8,1]
+# Output: 1
+# Explanation:
+# We can combine 2 and 4 to get 2 so the array converts to [2,7,1,8,1] then,
+# we can combine 7 and 8 to get 1 so the array converts to [2,1,1,1] then,
+# we can combine 2 and 1 to get 1 so the array converts to [1,1,1] then,
+# we can combine 1 and 1 to get 0 so the array converts to [1] then that's the
+# optimal value.
+#
+#
+#
+#
+# Note:
+#
+#
+# 1 <= stones.length <= 30
+# 1 <= stones[i] <= 100
+#
+#
+# @param {Integer[]} stones
+# @return {Integer}
 
 # contain auxiliary functions for OJ
 def is_letter?(x)
@@ -213,4 +265,26 @@ class PriorityQueue
 
 end
 
+
+def last_stone_weight_ii(stones)
+  ssum = stones.reduce(:+)
+  len = stones.size
+  dp = array_array(ssum + 1, len + 1, false)
+  0.upto(stones.size).each { |i| dp[0][i] = true }
+  s2 = 0
+
+  1.upto(ssum / 2).each do |s|
+    1.upto(stones.size).each do |i|
+      if dp[s][i - 1] || (s >= stones[i - 1] && dp[s - stones[i - 1]][i - 1])
+        dp[s][i] = true
+        s2 = [s2, s].max
+      end
+    end
+  end
+  ssum - s2 * 2
+end
+
+# stones = [2, 7, 4, 1, 8, 1]
+# stones = [8, 2, 4, 4, 8]
+# p last_stone_weight_ii(stones)
 

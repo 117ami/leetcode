@@ -198,14 +198,22 @@ void sort_by_last(VVI & a){
 
 // quick sum, product, max, min elemnt of a vector<int>
 int sum(VI &a) { return accumulate(a.begin(), a.end(), 0); }
+
 LL product(VI &a) {
   LL res = 1; 
   for (auto &i: a) res *= i;
   return res; 
 }
+
 int vec_max(VI &a) { return *max_element(a.begin(), a.end()); }
+
 int vec_min(VI &a) { return *min_element(a.begin(), a.end()); }
 
+unordered_map<int, int> counter(VI &a) {
+  UMII c = {}; 
+  for (auto &x: a) ++ c[x];
+  return c; 
+}
 
 // This class represents a directed graph using adjacency list representation
 class Graph {
