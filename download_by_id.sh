@@ -18,15 +18,16 @@ cat aux.js | tee -a $js_file
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file
 
-# echo -e "\n\n
-# static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
+echo -e "\n\n
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
 
-cat c.cpp > t.cpp
-cat $cpp_file >> t.cpp 
-mv t.cpp $cpp_file
+# cat c.cpp > t.cpp
+# cat $cpp_file >> t.cpp 
+# mv t.cpp $cpp_file
 
 echo "
 #include \"aux.cpp\"
+#include \"c.cpp\"
 #include \"$cpp_file\"
 
 int main(int argc, char const *argv[]) {

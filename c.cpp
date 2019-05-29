@@ -199,7 +199,7 @@ void sort_by_last(VVI & a){
 }
 
 // quick sum, product, max, min elemnt of a vector<int>
-int get_sum(VI &a) { return accumulate(a.begin(), a.end(), 0); }
+int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }
 
 LL product(VI &a) {
   LL res = 1; 
