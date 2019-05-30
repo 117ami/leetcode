@@ -40,12 +40,6 @@
  * 
  * 
  */
-using namespace std; 
-using LL = long long; 
-using VI = vector<int>; 
-using VB = vector<bool>; 
-const int MOD = 1000000007;
-
 
 class Solution {
 public:

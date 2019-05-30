@@ -215,3 +215,4 @@
 * Thu 05/30/19/20:02:53: [Hard] p330 cpp/ruby solutions added
 * Thu 05/30/19/20:54:58: [Medium] p767 cpp/ruby solutions added
 * Thu 05/30/19/23:16:53: add makeup script to make up alias to cpp file
+* Thu 05/30/19/23:23:26: bug fixed in makeup.sh
