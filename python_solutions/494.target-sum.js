@@ -50,9 +50,6 @@
  * @param {number} S
  * @return {number}
  */
-var findTargetSumWays = function(nums, S) {
-    
-};
 var bisect_left = function(nums, target) {
     var i = 0,
         j = nums.length - 1,
@@ -81,8 +78,8 @@ var bisect_right = function(nums, target) {
     return j;
 }
 
-var two_d_array = function(m , n) {
-    return new Array(m).fill(0).map(() => new Array(n).fill(0));   
+var two_d_array = function(m, n) {
+    return new Array(m).fill(0).map(() => new Array(n).fill(0));
 }
 
 var reverse = function(s) {
@@ -105,4 +102,39 @@ var counter = function(array) {
     return dict;
 }
 
+var sum = function(array) {
+    return array.reduce(function(a, b) {
+        return a + b;
+    }, 0);
+}
+
+var isodd = function(n) {
+    return n % 2 == 1;
+}
+
+var iseven = function(n) {
+    return n % 2 == 0;
+}
+
+var list = function(size, value) {
+    return Array(size).fill(value);
+}
+
+var findTargetSumWays = function(nums, S) {
+    var mus = sum(nums);
+    if (S > mus || isodd(mus + S)) return 0;
+    var s2 = (mus + S) >> 1;
+    var dp = list(s2 + 1, 0);
+    dp[0] = 1;
+    for (var n of nums)
+        for (var i = s2; i >= n; i--)
+            dp[i] += dp[i - n];
+    print(dp)
+    return dp[s2];
+};
+
+
+var nums = [1, 1, 1, 1, 1],
+    S = 3;
+print(findTargetSumWays(nums, S))
 

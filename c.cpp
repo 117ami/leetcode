@@ -85,15 +85,10 @@ static auto __2333__ = []() {
 
 #define MK make_pair
 
-#define EACH(i, n) for (int i = 0; i < int(n); ++i) // [0, n)
-#define EACHV(i, n) for (int i = int(n - 1); i >= 0; --i)   // reverse [0, n)
-#define FOR(i, a, b) for (int i = int(a); i < int(b); ++i) // [a, b)
-#define DWN(i, b, a) for (int i = int(b - 1); i >= int(a); --i) // reverse [a, b)
-
-#define EACH_1(i, n) for (int i = 1; i <= int(n); ++i)           // [1, n]
-#define EACHV_1(i, n) for (int i = int(n); i >= 1; --i)          // reverse [1, n]
-#define FOR_1(i, a, b) for (int i = int(a); i <= int(b); ++i)   // [a, b]
-#define DWN_1(i, b, a) for (int i = int(b); i >= a; --i)        // reverse [a, b]
+#define EACH(i, n) for (int i = 0; i <=int(n); ++i) // [0, n)
+#define EACHV(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
+#define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
+#define DWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
 
 // DEBUG PRINT macro
 #define P(x) cerr << (x)
@@ -147,7 +142,7 @@ bool is_prime(LL x)
   if (x == 2) return true;
   assert(x > 1);
   LL m = ceil(sqrt(x));
-  FOR_1(i, 2, m) { if (!(x % i)) return false; }
+  UP(i, 2, m) { if (!(x % i)) return false; }
   return true;
 }
 
@@ -158,7 +153,7 @@ vector<bool> prime_table_bool(PRIME_MAX, true);
 
 void get_prime() 
 {
-  FOR_1(i, 2, PRIME_MAX) 
+  UP(i, 2, PRIME_MAX) 
   {
     if (prime_table_bool[i]) 
     {
