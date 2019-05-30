@@ -53,9 +53,6 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var canPartition = function(nums) {
-    
-};
 var bisect_left = function(nums, target) {
     var i = 0,
         j = nums.length - 1,
@@ -84,8 +81,8 @@ var bisect_right = function(nums, target) {
     return j;
 }
 
-var two_d_array = function(m , n) {
-    return new Array(m).fill(0).map(() => new Array(n).fill(0));   
+var two_d_array = function(m, n) {
+    return new Array(m).fill(0).map(() => new Array(n).fill(0));
 }
 
 var reverse = function(s) {
@@ -98,7 +95,6 @@ var print = function(a) {
     console.log(a);
 }
 
-
 // For counting elements in a list 
 var counter = function(array) {
     var dict = {};
@@ -107,5 +103,46 @@ var counter = function(array) {
     });
     return dict;
 }
+
+var sum = function(array) {
+    return array.reduce(function(a, b) {
+        return a + b;
+    }, 0);
+}
+
+var isodd = function(n) {
+    return n % 2 == 1;
+}
+
+var iseven = function(n) {
+    return n % 2 == 0;
+}
+
+var list = function(size, value) {
+    return Array(size).fill(value);
+}
+
+var canPartition = function(nums) {
+    var mus = sum(nums);
+    if (isodd(mus)) return false;
+    var dp = function(m, i) {
+        if (m == 0) return true;
+        if (i >= 0) {
+            for (let j = i; j >= 0; j--) {
+                // this path wont work, so early stop, 
+                // which is essential, without it, this solution exceeds time limit.
+                if (nums[j] > m) break; 
+                if (dp(m - nums[j], j - 1)) return true;
+            }
+        }
+        return false;
+    }
+    return dp(mus / 2, nums.length - 1);
+};
+
+var nums = [1, 5, 11, 5];
+nums = [4, 3, 1, 2]
+print(canPartition(nums))
+
 
 

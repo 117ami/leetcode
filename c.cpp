@@ -136,8 +136,7 @@ void PRLN(const T& a) { cout << a << "\n"; }
 
 // ==================================================
 // math
-bool is_prime(LL x)
-{
+bool is_prime(LL x) {
   if (x == 1 || x <= 0) return false;
   if (x == 2) return true;
   assert(x > 1);
@@ -151,8 +150,7 @@ const int PRIME_MAX = 10;
 VI prime_table;
 vector<bool> prime_table_bool(PRIME_MAX, true);
 
-void get_prime() 
-{
+void get_prime() {
   UP(i, 2, PRIME_MAX) 
   {
     if (prime_table_bool[i]) 
@@ -206,11 +204,14 @@ int vec_max(VI &a) { return *max_element(a.begin(), a.end()); }
 
 int vec_min(VI &a) { return *min_element(a.begin(), a.end()); }
 
-unordered_map<int, int> counter(VI &a) {
+UMII counter(VI &a) {
   UMII c = {}; 
   for (auto &x: a) ++ c[x];
   return c; 
 }
+
+bool isodd(int &n) { return n % 2 == 1; }
+bool iseven(int &n) { return n % 2 == 0; }
 
 // This class represents a directed graph using adjacency list representation
 class Graph {
