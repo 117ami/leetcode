@@ -31,6 +31,7 @@ grep --quiet 'UP' 	$cppfile && cmd="$cmd \n define UP(i, a, b) for (int i = int(
 grep --quiet 'DWN' 	$cppfile && cmd="$cmd \n define DWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b]"
 
 grep --quiet 'sum_' $cppfile && cmd="$cmd \n int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }"
+grep --quiet 'reverse_' $cppfile && cmd="$cmd \n void reverse_(VI &a) { reverse(a.begin(), a.end()); } "
 grep --quiet 'vec_max' $cppfile && cmd="$cmd \n int vec_max(VI &a) { return *max_element(a.begin(), a.end()); }"
 grep --quiet 'vec_min' $cppfile && cmd="$cmd \n int vec_min(VI &a) { return *min_element(a.begin(), a.end()); }"
 
