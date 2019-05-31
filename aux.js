@@ -41,11 +41,12 @@ var print = function(a) {
 }
 
 // For counting elements in a list 
-var counter = function(array) {
+var counter = function(array_or_string) {
     var dict = {};
-    array.forEach(function(e) {
+    for (let i = 0; i < array_or_string.length; i++) {
+        let e = array_or_string[i];
         dict[e] = dict[e] ? dict[e] += 1 : 1;
-    });
+    }
     return dict;
 }
 
@@ -68,4 +69,6 @@ var list = function(size, value) {
 }
 
 
-var len=function(str_or_array){ return str_or_array.length ;}
+var len = function(str_or_array) {
+    return str_or_array.length;
+}

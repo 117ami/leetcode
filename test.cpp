@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "767.reorganize-string.cpp"
+#include "20.valid-parentheses.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	s.reorganizeString("aaabbaccccadbabbaaa");
+	say(s.isValid("[()(]"));
 	return 0;
 }
 
