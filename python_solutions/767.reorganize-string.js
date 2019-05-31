@@ -44,9 +44,7 @@
  * @param {string} S
  * @return {string}
  */
-var reorganizeString = function(S) {
-    
-};
+
 var bisect_left = function(nums, target) {
     var i = 0,
         j = nums.length - 1,
@@ -92,9 +90,9 @@ var print = function(a) {
 // For counting elements in a list 
 var counter = function(array) {
     var dict = {};
-    array.forEach(function(e) {
-        dict[e] = dict[e] ? dict[e] += 1 : 1;
-    });
+    for (var i = 0; i < array.length; i++) {
+        dict[array[i]] = dict[array[i]] ? dict[array[i]] += 1 : 1;
+    }
     return dict;
 }
 
@@ -116,4 +114,28 @@ var list = function(size, value) {
     return Array(size).fill(value);
 }
 
+var reorganizeString = function(S) {
+    c = counter(S);
+    chars = Object.keys(c);
+    chars.sort(function(a, b) {
+        return c[b] - c[a]
+    });
+    var res = list(S.length, '*'),
+        i = 0, 
+        b = true;
+    chars.forEach(function(k) {
+        for (var j = 0; j < c[k]; j ++) {
+            res[i] = k;
+            if (i > 0 && i < S.length - 1 && (res[i] == res[i - 1] || res[i] == res[i + 1])){
+                b = false;
+                return "";
+            }
+            i += 2;
+            if (i >= S.length) i = 1;
+        }
+    });
+    if (!b) return "";
+    return res.join('');
+};
 
+print(reorganizeString("aaab"));

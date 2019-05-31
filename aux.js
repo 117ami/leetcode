@@ -68,3 +68,4 @@ var list = function(size, value) {
 }
 
 
+var len=function(str_or_array){ return str_or_array.length ;}

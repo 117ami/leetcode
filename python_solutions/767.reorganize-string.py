@@ -13,39 +13,52 @@
 #
 # Given a string S, check if the letters can be rearranged so that two
 # characters that are adjacent to each other are not the same.
-# 
+#
 # If possible, output any possible result.  If not possible, return the empty
 # string.
-# 
+#
 # Example 1:
-# 
-# 
+#
+#
 # Input: S = "aab"
 # Output: "aba"
-# 
-# 
+#
+#
 # Example 2:
-# 
-# 
+#
+#
 # Input: S = "aaab"
 # Output: ""
-# 
-# 
-# Note:
-# 
-# 
-# S will consist of lowercase letters and have length in range [1, 500].
-# 
-# 
-# 
-# 
 #
-class Solution:
-    def reorganizeString(self, S: str) -> str:
-        
+#
+# Note:
+#
+#
+# S will consist of lowercase letters and have length in range [1, 500].
+#
+#
+#
+#
+#
 
+
+class Solution:
+    def reorganizeString(self, S):
+        import collections
+        chars = collections.Counter(S)
+        res = ['*'] * len(S)
+        i = 0
+        for k, v in chars.most_common():
+            for _ in range(v):
+                res[i] = k
+                if i > 0 and i < len(S) - 1 and (res[i] == res[i - 1] or res[i] == res[i + 1]):
+                    # print(i, res)
+                    return ""
+                i += 2
+                if i >= len(S): i = 1
+
+        return ''.join(res)
 
 
 s = Solution()
-
-
+print(s.reorganizeString("vvvlo"))
