@@ -49,9 +49,6 @@
  * @param {number} n
  * @return {number}
  */
-var minPatches = function(nums, n) {
-    
-};
 var bisect_left = function(nums, target) {
     var i = 0,
         j = nums.length - 1,
@@ -121,4 +118,18 @@ var list = function(size, value) {
     return Array(size).fill(value);
 }
 
-
+var minPatches = function(nums, n) {
+    var res = 0,
+        i = 0,
+        missed = 1;
+    while (missed <= n) {
+        if (i < nums.length && nums[i] <= missed) {
+            missed += nums[i];
+            i += 1;
+        } else {
+            missed *= 2;
+            res += 1;
+        }
+    }
+    return res;
+};

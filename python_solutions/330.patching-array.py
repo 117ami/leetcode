@@ -15,12 +15,12 @@
 # elements to the array such that any number in range [1, n] inclusive can be
 # formed by the sum of some elements in the array. Return the minimum number of
 # patches required.
-# 
+#
 # Example 1:
-# 
-# 
+#
+#
 # Input: nums = [1,3], n = 6
-# Output: 1 
+# Output: 1
 # Explanation:
 # Combinations of nums are [1], [3], [1,3], which form possible sums of: 1, 3,
 # 4.
@@ -28,28 +28,39 @@
 # [2,3], [1,2,3].
 # Possible sums are 1, 2, 3, 4, 5, 6, which now covers the range [1, 6].
 # So we only need 1 patch.
-# 
+#
 # Example 2:
-# 
-# 
+#
+#
 # Input: nums = [1,5,10], n = 20
 # Output: 2
 # Explanation: The two patches can be [2, 4].
-# 
-# 
+#
+#
 # Example 3:
-# 
-# 
+#
+#
 # Input: nums = [1,2,2], n = 5
 # Output: 0
-# 
 #
+#
+
+
 class Solution:
-    def minPatches(self, nums: List[int], n: int) -> int:
-        
-
-
+    def minPatches(self, nums, n):
+        res, i, missed = 0, 0, 1
+        while missed <= n:
+            if i < len(nums) and nums[i] <= missed:
+                missed += nums[i]
+                i += 1
+            else:
+                missed *= 2
+                res += 1
+        return res
 
 s = Solution()
-
-
+nums = [1, 2, 2]
+n = 5
+nums = []
+n = 7
+print(s.minPatches(nums, n))
