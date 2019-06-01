@@ -134,6 +134,7 @@ void PRP(const pair<T1, T2>& p) { PRC(p.first); PRLN(p.second); }
 template<typename T>
 void PRLN(const T& a) { cout << a << "\n"; }
 
+
 // ==================================================
 // math
 bool is_prime(LL x) {
@@ -174,6 +175,9 @@ int random_(int m) {
   return int(random_() * (m - 1) + 0.5);
 }
 
+
+// ======================================================
+// CONVENIENT FUNCTIONS
 // whether s is substring of t
 bool is_sub(string s, string t) {
   if (s.size() > t.size()) return false;
@@ -193,6 +197,7 @@ void sort_by_last(VVI & a){
 
 // quick sum, product, max, min elemnt of a vector<int>
 int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }
+
 void reverse_(VI &a) { reverse(a.begin(), a.end()); }
 
 LL product(VI &a) {
@@ -214,6 +219,16 @@ UMII counter(VI &a) {
 bool isodd(int &n) { return n % 2 == 1; }
 bool iseven(int &n) { return n % 2 == 0; }
 
+// whether two rectangles a = {x1,x2,y1,y2} and b = {s1,s2,t1,t2} overlap
+bool isRectangleOverlap(vector<int>& a, vector<int>& b) {
+  if (a[0] > b[0]) return isRectangleOverlap(b, a);
+  return !(a[2] <= b[0] || a[3] <= b[1] || a[1] >= b[3]);
+}
+
+
+
+
+// =========================================================================
 // This class represents a directed graph using adjacency list representation
 class Graph {
   int V; // No. of vertices
