@@ -22,13 +22,13 @@ grep --quiet 'USI' 	$cppfile && cmd="$cmd \n using using = unordered_set<int>;"
 
 grep --quiet 'EPS' 	$cppfile && cmd="$cmd \n const double EPS = 1e-9;"
 grep --quiet 'MOD' 	$cppfile && cmd="$cmd \n const int MOD = 1000000007;"
-grep --quiet 'INF' 	$cppfile && cmd="$cmd \n define INF 0x3f3f3f3f;"
-grep --quiet 'MK' 	$cppfile && cmd="$cmd \n define MK make_pair;"
-grep --quiet 'EACH' $cppfile && cmd="$cmd \n define EACH(i, n) for (int i = 0; i <=int(n); ++i) \n define EACHV(i, n) for (int i = int(n); i >= 0; --i)"
+grep --quiet 'INF' 	$cppfile && cmd="$cmd \n #define INF 0x3f3f3f3f;"
+grep --quiet 'MK' 	$cppfile && cmd="$cmd \n #define MK make_pair;"
+grep --quiet 'EACH' $cppfile && cmd="$cmd \n #define EACH(i, n) for (int i = 0; i <=int(n); ++i) \n define EACHV(i, n) for (int i = int(n); i >= 0; --i)"
 
 
-grep --quiet 'UP' 	$cppfile && cmd="$cmd \n define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b]"
-grep --quiet 'DWN' 	$cppfile && cmd="$cmd \n define DWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b]"
+grep --quiet 'UP' 	$cppfile && cmd="$cmd \n #define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b]"
+grep --quiet 'DWN' 	$cppfile && cmd="$cmd \n #define DWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b]"
 
 grep --quiet 'sum_' $cppfile && cmd="$cmd \n int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }"
 grep --quiet 'reverse_' $cppfile && cmd="$cmd \n void reverse_(VI &a) { reverse(a.begin(), a.end()); } "
