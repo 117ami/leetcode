@@ -236,3 +236,7 @@ def can_partition(nums)
   dfs.call(0, 0)
 end
 
+def gcd(a, b)
+  b == 0 ? a : gcd(b, a.modulo(b))
+end
+

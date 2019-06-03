@@ -24,7 +24,7 @@ grep --quiet 'EPS' 	$cppfile && cmd="$cmd \n const double EPS = 1e-9;"
 grep --quiet 'MOD' 	$cppfile && cmd="$cmd \n const int MOD = 1000000007;"
 grep --quiet 'INF' 	$cppfile && cmd="$cmd \n #define INF 0x3f3f3f3f;"
 grep --quiet 'MK' 	$cppfile && cmd="$cmd \n #define MK make_pair;"
-grep --quiet 'EACH' $cppfile && cmd="$cmd \n #define EACH(i, n) for (int i = 0; i <=int(n); ++i) \n define EACHV(i, n) for (int i = int(n); i >= 0; --i)"
+grep --quiet 'EACH' $cppfile && cmd="$cmd \n #define EACH(i, n) for (int i = 0; i <=int(n); ++i) \n #define EACHV(i, n) for (int i = int(n); i >= 0; --i)"
 
 
 grep --quiet 'UP' 	$cppfile && cmd="$cmd \n #define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b]"
