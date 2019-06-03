@@ -14,8 +14,12 @@ cpp_file=$(ls -t *.cpp | head -n 1)
 # 	console.log(a);
 # } " | tee -a $js_file
 # cat aux.js | tee -a $js_file
-auxjs=$(cat aux.js)
-gsed -i "1i $auxjs\n" $js_file
+cat aux.js > tmpjs
+cat $js_file >> tmpjs
+mv tmpjs $js_file
+
+exit
+
 
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file

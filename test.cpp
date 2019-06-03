@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "1071.greatest-common-divisor-of-strings.cpp"
+#include "1074.number-of-submatrices-that-sum-to-target.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.gcdOfStrings("ABCABC", "ABC"));
+	VVI matrix = {{0, 1, 0}, {1,1,1},{0,1,0}};
+	say(s.numSubmatrixSumTarget(matrix, 3));
 	return 0;
 }
 

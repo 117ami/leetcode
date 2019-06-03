@@ -40,3 +40,7 @@ grep --quiet 'counter' $cppfile && cmd="$cmd \n unordered_map<int, int> counter(
 # finally insert those typedefs 
 gsed -i "$class_line i $cmd\n\n" $cppfile
 
+# Tidy up
+clang-format -i $cppfile
+
+

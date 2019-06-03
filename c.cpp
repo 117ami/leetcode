@@ -85,10 +85,11 @@ static auto __2333__ = []() {
 
 #define MK make_pair
 
+#define fori(n) for (int i = 0; i <=int(n); ++i) // [0, n)
 #define EACH(i, n) for (int i = 0; i <=int(n); ++i) // [0, n)
 #define EACHV(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
 #define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
-#define DWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
+#define DOWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
 
 // DEBUG PRINT macro
 #define P(x) cerr << (x)
