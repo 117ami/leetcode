@@ -213,5 +213,26 @@ class PriorityQueue
 
 end
 
+# decide whether a non-empty array, containing only positive integers, can be partitioned
+# into two equal subsets
+def can_partition(nums)
+  mus = nums.reduce(:+)
+  return false if mus.odd?
 
+  target = mus / 2
+  seen = {}
+
+  dfs = lambda do |i, acc|
+    return true if acc == target
+    return false if i >= nums.size || acc > target
+
+    key = "#{acc},#{i}"
+    return seen[key] if seen.key?(key)
+
+    res = dfs.call(i + 1, acc + nums[i]) || dfs.call(i + 1, acc)
+    seen[key] = res
+    res
+  end
+  dfs.call(0, 0)
+end
 

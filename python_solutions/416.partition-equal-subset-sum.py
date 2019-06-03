@@ -50,11 +50,29 @@
 # 
 #
 class Solution:
-    def canPartition(self, nums: List[int]) -> bool:
+    def canPartition(self, nums):
+    	mus = sum(nums)
+    	if mus % 2 == 1: return False
+    	self.target = mus / 2
+    	self.seen = {}
+    	return self.dfs(0, 0, nums)
+
+    def dfs(self, i, acc, nums):
+    	if acc == self.target: return True
+    	if i >= len(nums) or acc > self.target: return False 
+
+    	key = "{}-{}".format(acc, i)
+    	if key in self.seen: return self.seen[key]
+
+    	res = self.dfs(i+1, acc+nums[i], nums) or self.dfs(i+1, acc, nums) 
+    	self.seen[key] = res
+
+    	return res
         
 
 
 
 s = Solution()
-
+nums = [1, 5, 11, 5, 8]
+print(s.canPartition(nums))
 
