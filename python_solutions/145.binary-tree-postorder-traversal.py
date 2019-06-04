@@ -37,10 +37,16 @@
 #         self.right = None
 
 class Solution:
-    def postorderTraversal(self, root: TreeNode) -> List[int]:
-        
-
-
+    def postorderTraversal(self, root):
+    	sk = [root]
+    	res = []
+    	while sk:
+    		n = sk.pop()
+    		if not n: continue
+    		res.append(n.val)
+    		sk.append(n.left)
+    		sk.append(n.right)
+    	return res[::-1]
 
 s = Solution()
 

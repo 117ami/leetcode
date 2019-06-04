@@ -41,8 +41,17 @@
  * @return {number[]}
  */
 var postorderTraversal = function(root) {
-    
+    var sk = [root], res = [];
+    while (len(sk) > 0)  {
+        node = sk.pop(); 
+        if (node == null) continue; 
+        res.push(node.val);
+        sk.push(node.left);
+        sk.push(node.right);
+    }
+    return res.reverse();
 };
+
 var bisect_left = function(nums, target) {
     var i = 0,
         j = nums.length - 1,
