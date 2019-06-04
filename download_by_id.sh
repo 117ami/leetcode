@@ -18,8 +18,6 @@ cat aux.js > tmpjs
 cat $js_file >> tmpjs
 mv tmpjs $js_file
 
-exit
-
 
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file

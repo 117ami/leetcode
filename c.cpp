@@ -92,7 +92,7 @@ static auto __2333__ = []() {
 #define DOWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
 
 // DEBUG PRINT macro
-#define P(x) cerr << (x)
+#define P(x) cerr << (x) << endl
 #define NLL cerr << endl
 #define PR(x) cerr << #x " = " << (x) << "\t"
 
