@@ -1,14 +1,14 @@
 /*
- * @lc app=leetcode id=1049 lang=javascript
+ * @lc app=leetcode id=1049 lang=cpp
  *
  * [1049] Last Stone Weight II
  *
  * https://leetcode.com/problems/last-stone-weight-ii/description/
  *
  * algorithms
- * Medium (36.44%)
- * Total Accepted:    3K
- * Total Submissions: 8.2K
+ * Medium (38.32%)
+ * Total Accepted:    3.5K
+ * Total Submissions: 9.2K
  * Testcase Example:  '[2,7,4,1,8,1]'
  *
  * We have a collection of rocks, each rock has a positive integer weight.
@@ -49,63 +49,9 @@
  * 1 <= stones[i] <= 100
  * 
  */
-/**
- * @param {number[]} stones
- * @return {number}
- */
-var lastStoneWeightII = function(stones) {
-    
+class Solution {
+public:
+    int lastStoneWeightII(vector<int>& stones) {
+        
+    }
 };
-var bisect_left = function(nums, target) {
-    var i = 0,
-        j = nums.length - 1,
-        mid;
-    while (i < j) {
-        mid = ~~((i + j) / 2);
-        if (nums[mid] < target)
-            i = mid + 1;
-        else
-            j = mid;
-    }
-    return i;
-}
-
-var bisect_right = function(nums, target) {
-    var i = 0,
-        j = nums.length - 1,
-        mid;
-    while (i < j) {
-        mid = Math.ceil((i + j) / 2);
-        if (nums[mid] > target)
-            j = mid - 1;
-        else
-            i = mid;
-    }
-    return j;
-}
-
-var two_d_array = function(m , n) {
-    return new Array(m).fill(0).map(() => new Array(n).fill(0));   
-}
-
-var reverse = function(s) {
-    return [...str].reverse().join('');
-}
-
-
-// simple print
-var print = function(a) {
-    console.log(a);
-}
-
-
-// For counting elements in a list 
-var counter = function(array) {
-    var dict = {};
-    array.forEach(function(e) {
-        dict[e] = dict[e] ? dict[e] += 1 : 1;
-    });
-    return dict;
-}
-
-

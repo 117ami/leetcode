@@ -91,3 +91,28 @@ var gcd = function(a, b) {
 var say = function(a) {
     console.log(a)
 };
+
+
+var two_d_array = function(m, n, v) {
+    return [...Array(m)].map(x => Array(n).fill(v));
+}
+
+function floor(float_number) {
+    return Math.floor(float_number)
+}
+
+function ceil(float_number) {
+    return Math.ceil(float_number)
+}
+
+
+var max = function(arr) {
+    return Math.max(...arr);
+}
+
+var min = function(arr) {
+    return Math.min(...arr)
+};
+
+
+
