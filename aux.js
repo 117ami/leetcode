@@ -77,3 +77,10 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a-b));
 }
 
+// print out a Map 
+function printMap(m){
+    m.forEach(function(v, k){
+        console.log(k + " " + v);
+    })
+}
+

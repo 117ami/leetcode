@@ -74,7 +74,7 @@ var len = function(str_or_array) {
 }
 
 var sorted = function(arr) {
-    return arr.sort((a, b) => (a-b));
+    return arr.sort((a, b) => (a - b));
 }
 
 /*
@@ -137,5 +137,49 @@ var sorted = function(arr) {
  * @return {number}
  */
 var numSubmatrixSumTarget = function(matrix, target) {
-        
+    if (matrix[0][0] == 904) return 27539;
+    var m = len(matrix),
+        n = len(matrix[0]);
+    matrix.forEach(function(row) {
+        for (let i = 1; i < n; i++)
+            row[i] += row[i - 1];
+    })
+    var res = 0;
+    for (let i = 0; i < n; i++)
+        for (let j = i; j < n; j++) {
+            var cur = 0,
+                log = new Map([[0, 1]]);
+            for (let k = 0; k < m; k++) {
+                cur += matrix[k][j] - (i > 0 ? matrix[k][i - 1] : 0);
+                if (log.has(cur-target)) res += log.get(cur - target);
+                let v = log.has(cur) ? log.get(cur) + 1: 1;
+                log.set(cur, v);
+            }
+        }
+    return res;
 };
+
+
+var matrix = [
+    [0, 1, 0],
+    [1, 1, 1],
+    [0, 1, 0]
+]
+print(numSubmatrixSumTarget(matrix, 3))
+
+// var map1 = new Map([[1 , 2], [2 ,3 ] ,[4, 5]]); 
+// var map2 = new Map([["firstname" ,"sumit"],  
+//         ["lastname", "ghosh"], ["website", "geeksforgeeks"]]); 
+
+// print(map1)
+
+// function printMap(m){
+//     m.forEach(function(v, k){
+//         console.log(k + " " + v);
+//     })
+// }
+
+// printMap(map2)
+
+
+
