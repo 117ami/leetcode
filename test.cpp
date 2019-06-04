@@ -1,12 +1,12 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "97.interleaving-string.cpp"
+#include "152.maximum-product-subarray.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac";
-	say(s.isInterleave(s1,s2,s3));
+	VI nums={2,3,-2,4,-1};
+	say(s.maxProduct(nums));
 	return 0;
 }
 
