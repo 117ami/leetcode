@@ -59,11 +59,11 @@
 # For C programmers, try to solve it in-place in O(1) extra space.
 #
 class Solution:
-    def reverseWords(self, s: str) -> str:
+    def reverseWords(self, s):
+    	return ' '.join(s.split()[::-1])
         
 
-
-
 s = Solution()
+print(s.reverseWords("  this        is wordl   "))
 
 

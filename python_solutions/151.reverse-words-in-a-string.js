@@ -187,5 +187,17 @@ var pairmin = function(a, b) {
  * @return {string}
  */
 var reverseWords = function(s) {
-    
+    const res = s.split(' ');
+
+    let resultStr = '';
+    for (let i = res.length - 1; i >= 0; i--) {
+        if (res[i] !== '') {
+            resultStr += res[i] + ' ';
+        }
+    }
+
+    return resultStr.slice(0, resultStr.length - 1);
+
 };
+
+print(reverseWords("    aaa   bbb         cccccccccc "))
