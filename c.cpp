@@ -52,7 +52,8 @@ const int MOD = 1000000007;
 
 // type alias
 using PII = pair<int, int>;
-using LL = long long int;
+using LL = long long;
+using uLL = unsigned long long; 
 using VI = vector<int>;
 using VB = vector<bool>;
 using VC = vector<char>;
@@ -90,7 +91,8 @@ static auto __2333__ = []() {
 #define EACHV(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
 #define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
 #define DOWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
-
+#define unfold(i, arr) for (auto &i: arr)
+                         
 // DEBUG PRINT macro
 #define P(x) cerr << (x) << endl
 #define NLL cerr << endl

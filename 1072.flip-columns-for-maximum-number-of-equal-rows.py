@@ -67,7 +67,9 @@
 # 
 #
 class Solution:
-    def maxEqualRowsAfterFlips(self, matrix: List[List[int]]) -> int:
+    def maxEqualRowsAfterFlips(self, matrix):
+    	pass
+
 
 
 

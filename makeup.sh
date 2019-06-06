@@ -7,6 +7,7 @@ class_line=$(nl $cppfile | grep 'class' | awk '{print $1}')
 cmd=' using namespace std;'
 grep --quiet 'PII'  $cppfile && cmd="$cmd \n using PII = pair<int, int>;"
 grep --quiet 'LL' 	$cppfile && cmd="$cmd \n using LL = long long;"
+grep --quiet 'uLL' 	$cppfile && cmd="$cmd \n using uLL = unsigned long long;"
 grep --quiet 'VI' 	$cppfile && cmd="$cmd \n using VI = vector<int>;"
 grep --quiet 'VB' 	$cppfile && cmd="$cmd \n using VB = vector<bool>;"
 grep --quiet 'VC' 	$cppfile && cmd="$cmd \n using VC = vector<char>;"
@@ -25,6 +26,7 @@ grep --quiet 'MOD' 	$cppfile && cmd="$cmd \n const int MOD = 1000000007;"
 grep --quiet 'INF' 	$cppfile && cmd="$cmd \n #define INF 0x3f3f3f3f;"
 grep --quiet 'MK' 	$cppfile && cmd="$cmd \n #define MK make_pair;"
 grep --quiet 'EACH' $cppfile && cmd="$cmd \n #define EACH(i, n) for (int i = 0; i <=int(n); ++i) \n #define EACHV(i, n) for (int i = int(n); i >= 0; --i)"
+grep --quiet 'unfold' $cppfile && cmd="$cmd \n #define unfold(i, arr) for (auto &i: arr)"
 
 
 grep --quiet 'UP' 	$cppfile && cmd="$cmd \n #define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b]"

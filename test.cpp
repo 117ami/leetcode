@@ -5,6 +5,11 @@
 
 int main(int argc, char const *argv[]) {
 	Solution s;
+
+	VVI matrix={{0,0,0},{0,0,1},{1,1,0}};
+	matrix = {{0,1,0,1},{1,1,1,1},{1,0,1,1},{0,0,1,1},{0,1,0,0},{1,1,0,1},{1,0,0,0},{1,0,1,1},{0,0,1,1},{1,0,1,1}};
+
+	say(s.maxEqualRowsAfterFlips(matrix));
 	return 0;
 }
 
