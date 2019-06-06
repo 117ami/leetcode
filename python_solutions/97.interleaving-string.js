@@ -154,5 +154,25 @@ var min = function(arr) {
  * @return {boolean}
  */
 var isInterleave = function(s1, s2, s3) {
-    
+    var m = len(s1),
+        n = len(s2),
+        k = len(s3);
+    if (m + n != k) return false;
+    var map = new Map();
+    var recur = function(x, y, z) {
+        key = [x, y, z].join('/');
+        if (map.has(key)) return false;
+        map.set(key, 0);
+        if (x == m && y == n && z == k) return true;
+        if (x < m && s1[x] == s3[z] && recur(x + 1, y, z + 1)) return true;
+        if (y < n && s2[y] == s3[z] && recur(x, y + 1, z + 1)) return true;
+        return false;
+    }
+    return recur(0, 0, 0);
+
 };
+
+var s1 = "aa",
+    s2 = "bb",
+    s3 = "abab";
+say(isInterleave(s1, s2, s3));
