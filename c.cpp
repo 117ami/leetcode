@@ -193,6 +193,8 @@ bool is_sub(string s, string t) {
   return (i == s.size());
 }
 
+string join(VS &arr, string del=" ") {string res; for(auto &s: arr) res += s + del; return res.substr(0, res.size() -1);}
+
 // sort vector of vector<int> by first element
 void sort_by_last(VVI & a){
   sort(a.begin(), a.end(), [](const VI &p, const VI &q){return p.back() < q.back();});
@@ -201,23 +203,15 @@ void sort_by_last(VVI & a){
 // quick sum, product, max, min elemnt of a vector<int>
 int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }
 
-void reverse_(VI &a) { reverse(a.begin(), a.end()); }
+template <class T> void reverse_(const vector<T> &vect) { reverse(vect.begin(), vect.end()); }
 
-LL product(VI &a) {
-  LL res = 1; 
-  for (auto &i: a) res *= i;
-  return res; 
-}
+unsigned long long product(vector<int> &a) { unsigned long long res = 1; for (auto &i: a) res *= i; return res; }
 
 int vec_max(VI &a) { return *max_element(a.begin(), a.end()); }
 
 int vec_min(VI &a) { return *min_element(a.begin(), a.end()); }
 
-UMII counter(VI &a) {
-  UMII c = {}; 
-  for (auto &x: a) ++ c[x];
-  return c; 
-}
+UMII counter(VI &a) { UMII c = {};  for (auto &x: a) ++ c[x];  return c; }
 
 bool isodd(int &n) { return n % 2 == 1; }
 bool iseven(int &n) { return n % 2 == 0; }
