@@ -9,8 +9,7 @@
 # Medium (50.64%)
 # Total Accepted:    12.1K
 # Total Submissions: 23.9K
-# Testcase Example:  '["TimeMap","set","get","get","set","get","get"]\n' +
-  '[[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]'
+# Testcase Example:  '["TimeMap","set","get","get","set","get","get"]\n' +  '[[],["foo","bar",1],["foo",1],["foo",3],["foo","bar2",4],["foo",4],["foo",5]]'
 #
 # Create a timebased key-value store class TimeMap, that supports two
 # operations.
@@ -80,28 +79,42 @@
 # 
 # 
 #
-class TimeMap:
+from collections import defaultdict
+import bisect
 
+class TimeMap:
     def __init__(self):
         """
         Initialize your data structure here.
         """
+        self.values = defaultdict(list)
+        self.stamps = defaultdict(list)
+
+    def set(self, key, value, timestamp):
+        self.values[key].append(value)
+        self.stamps[key].append(timestamp)      
         
 
-    def set(self, key: str, value: str, timestamp: int) -> None:
-        
-
-    def get(self, key: str, timestamp: int) -> str:
-        
+    def get(self, key, timestamp):
+        if key not in self.values:
+            return ""
+        else:
+            idx = bisect.bisect_right(self.stamps[key], timestamp)
+            if idx == 0: return ""
+            return self.values[key][idx-1]
 
 
 # Your TimeMap object will be instantiated and called as such:
-# obj = TimeMap()
-# obj.set(key,value,timestamp)
-# param_2 = obj.get(key,timestamp)
-
-
-
-s = Solution()
+obj = TimeMap()
+obj.set('foo', 'bar', 1)
+r = obj.get('foo', 1)
+print(r)
+r = obj.get('foo', 3)
+print(r)
+obj.set('foo', 'bar2', 4)
+r = obj.get('foo', 4)
+print(r)
+r = obj.get('foo', 5)
+print(r)
 
 

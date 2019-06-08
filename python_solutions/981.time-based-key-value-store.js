@@ -23,7 +23,7 @@ var bisect_right = function(nums, target) {
         else
             i = mid;
     }
-    return j;
+    return nums[j] <= target ? j + 1 : j;
 }
 
 var two_d_array = function(m, n) {
@@ -208,7 +208,8 @@ var pairmin = function(a, b) {
  * Initialize your data structure here.
  */
 var TimeMap = function() {
-    
+    this.vs = {};
+    this.ts = {};
 };
 
 /** 
@@ -218,7 +219,13 @@ var TimeMap = function() {
  * @return {void}
  */
 TimeMap.prototype.set = function(key, value, timestamp) {
-    
+    if (key in this.vs) {
+        this.vs[key].push(value);
+        this.ts[key].push(timestamp);
+    } else {
+        this.vs[key] = [value];
+        this.ts[key] = [timestamp];
+    }
 };
 
 /** 
@@ -227,12 +234,23 @@ TimeMap.prototype.set = function(key, value, timestamp) {
  * @return {string}
  */
 TimeMap.prototype.get = function(key, timestamp) {
-    
+    if (!key in this.vs) return "";
+    idx = bisect_right(this.ts[key], timestamp);
+    print(idx)
+    if (idx == 0) return "";
+    return this.vs[key][idx - 1];
 };
 
-/** 
- * Your TimeMap object will be instantiated and called as such:
- * var obj = new TimeMap()
- * obj.set(key,value,timestamp)
- * var param_2 = obj.get(key,timestamp)
- */
+
+// * Your TimeMap object will be instantiated and called as such:
+var obj = new TimeMap()
+obj.set('foo', 'bar', 1)
+r = obj.get('foo', 1)
+print(r)
+r = obj.get('foo', 3)
+print(r)
+obj.set('foo', 'bar2', 4)
+r = obj.get('foo', 4)
+print(r)
+r = obj.get('foo', 5)
+print(r)
