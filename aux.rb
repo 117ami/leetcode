@@ -240,3 +240,12 @@ def gcd(a, b)
   b == 0 ? a : gcd(b, a.modulo(b))
 end
 
+# t is either a string or an array
+def counter(t)
+  cter = Hash.new(0)
+  arr = t.is_a?(String) ? t.chars : t
+  arr.each do |c|
+    cter[c] += 1
+  end
+  cter
+end

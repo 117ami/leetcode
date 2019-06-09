@@ -1,13 +1,11 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "5083.occurrences-after-bigram.cpp"
+#include "5087.letter-tile-possibilities.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string text = "we will we will rock you", first = "we", second = "will"; 
-	text = "alice is a good girl she is a good student", first = "a", second = "good";
-	say(s.findOcurrences(text, first, second));
+	say(s.numTilePossibilities("AAB"));
 	return 0;
 }
 
