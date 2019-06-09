@@ -122,3 +122,7 @@ var pairmin = function(a, b) {
     return Math.min(a, b)
 }
 
+// create an array with elements from 0 to n
+var nlist=function(n) { return [...Array(n+1).keys()] ; }
+
+

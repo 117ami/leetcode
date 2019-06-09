@@ -202,6 +202,55 @@ var pairmin = function(a, b) {
  * @param {number[][]} dislikes
  * @return {boolean}
  */
+
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
+
 var possibleBipartition = function(N, dislikes) {
-    
+    var parents = nlist(N);
+    var m = {};
+
+    dislikes.forEach(function(pair) {
+        var a = pair[0],
+            b = pair[1];
+        if (m[a]) m[a].push(b);
+        else m[a] = [b];
+
+        if (m[b]) m[b].push(a);
+        else m[b] = [a];
+    });
+
+
+    var find = function(i) {
+        while (i != parents[i]) i = parents[i];
+        return i;
+    }
+
+    var res = true;
+    for (let i = 1; i <= N; i++) {
+        if (m[i]) {
+            let p1 = find(i),
+                p2 = find(m[i][0]);
+            if (p1 == p2) return false;
+            m[i].forEach(function(j) {
+                let pj = find(j);
+                if (p1 == pj) {
+                    res = false;
+                    return;
+                }
+                parents[j] = p2;
+                print([i, j, p1, p2]);
+            })
+        }
+    }
+    return res;
 };
+
+dislikes = [
+    [1, 2],
+    [1, 3],
+    [2, 4]
+];
+// dislikes = [[1,2],[1,3],[2,3]];
+print(possibleBipartition(4, dislikes));
