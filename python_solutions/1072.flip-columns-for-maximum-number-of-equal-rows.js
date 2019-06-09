@@ -194,6 +194,31 @@ var pairmin = function(a, b) {
  * @param {number[][]} matrix
  * @return {number}
  */
+
 var maxEqualRowsAfterFlips = function(matrix) {
-    
+    var m = new Map(),
+        res = 0;
+    matrix.forEach(function(row) {
+        var s = "";
+        for (let i = 0; i < len(row); i++)
+            s += row[0] == 0 ? row[i] : (1 - row[i]);
+        m[s] = m[s] ? m[s] + 1 : 1;
+        res = pairmax(m[s], res);
+    })
+    return res;
 };
+
+
+var matrix = [
+    [0, 0, 0],
+    [0, 0, 1],
+    [1, 1, 0]
+];
+print(maxEqualRowsAfterFlips(matrix));
+
+var n = 8; 
+var s = "";
+s += n;
+print(n.toString())
+print(s)
+
