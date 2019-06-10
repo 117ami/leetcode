@@ -8,9 +8,10 @@ add_alias() {
 	cmd="$cmd $extra \n"
 }
 
-extras=('VI' 'VB' 'VC' 'VS' 'VVI' 'VVB' 'PII' 'LL' 'uLL' 'MII' 'MCI' 'SI' 'SPII' 'UMII' 'UMCI'\
+extras=('VI' 'VB' 'VC' 'VS' 'VVI' 'VVB' 'PII' 'LL' 'uLL' 'MII' 'MCI' 'SI' 'SPII' 'UMII' 'UMCI' 'UMSI'\
 	'USI' 'EPS' 'MOD' 'INF' 'MK' 'EACH' 'EACHV' 'UP' 'DWN' \
-	'reverse_' 'join' 'sum_' 'counter' 'isodd' 'iseven' 'vec_max' 'vec_min' 'unfold' \
+	'reverse_' 'join' 'sum_' 'counter' 'isodd' 'iseven' 'vec_max' 'vec_min' 'unfold' 'isPalindrome' \
+	'reverseStr' \
 	'product')
 
 for c in ${extras[@]}; do 

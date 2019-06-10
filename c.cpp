@@ -66,6 +66,7 @@ using SI = set<int>;
 using SPII = set<pair<int, int>>;
 using UMII = unordered_map<int, int>;
 using UMCI = unordered_map<char, int>;
+using UMSI = unordered_map<string, int>;
 using USI = unordered_set<int>;
 
 typedef struct TreeNode TreeNode;
@@ -194,6 +195,8 @@ bool is_sub(string s, string t) {
   return (i == s.size());
 }
 
+bool isPalindrome(string str){int i = 0, j = str.size() - 1; while (i < j) if (str[i++] != str[j--]) return false; return true; }
+
 string join(VS &arr, string del=" ") {string res; for(auto &s: arr) res += s + del; return res.substr(0, res.size() -1);}
 
 // sort vector of vector<int> by first element
@@ -205,6 +208,8 @@ void sort_by_last(VVI & a){
 int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }
 
 template <class T> void reverse_(const vector<T> &vect) { reverse(vect.begin(), vect.end()); }
+
+void reverseStr(string &s){ reverse(s.begin(), s.end()); }
 
 unsigned long long product(vector<int> &a) { unsigned long long res = 1; for (auto &i: a) res *= i; return res; }
 
