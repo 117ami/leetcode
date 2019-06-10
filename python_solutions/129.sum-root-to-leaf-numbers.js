@@ -186,6 +186,14 @@ var pairmin = function(a, b) {
  * @param {TreeNode} root
  * @return {number}
  */
+var dfs = function(root, prev) {
+    if (root == null) return 0;
+    let curv = prev * 10 + root.val;
+    if (root.left == null && root.right == null) return curv;
+    return dfs(root.left, curv) + dfs(root.right, curv);
+}
+
+
 var sumNumbers = function(root) {
-    
+    return dfs(root, 0);
 };
