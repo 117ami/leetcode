@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "5086.smallest-subsequence-of-distinct-characters.cpp"
+#include "316.remove-duplicate-letters.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.smallestSubsequence("leetcode"));
-
+	say(s.removeDuplicateLetters("bbacdab"));
 	return 0;
 }
 
