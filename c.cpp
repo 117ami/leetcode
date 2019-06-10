@@ -65,6 +65,7 @@ using MCI = map<char, int>;
 using SI = set<int>;
 using SPII = set<pair<int, int>>;
 using UMII = unordered_map<int, int>;
+using UMCI = unordered_map<char, int>;
 using USI = unordered_set<int>;
 
 typedef struct TreeNode TreeNode;

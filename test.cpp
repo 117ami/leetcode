@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "5087.letter-tile-possibilities.cpp"
+#include "5086.smallest-subsequence-of-distinct-characters.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.numTilePossibilities("AAB"));
+	say(s.smallestSubsequence("leetcode"));
+
 	return 0;
 }
 

@@ -8,7 +8,7 @@ add_alias() {
 	cmd="$cmd $extra \n"
 }
 
-extras=('VI' 'VB' 'VC' 'VS' 'VVI' 'VVB' 'PII' 'LL' 'uLL' 'MII' 'MCI' 'SI' 'SPII' 'UMII' \
+extras=('VI' 'VB' 'VC' 'VS' 'VVI' 'VVB' 'PII' 'LL' 'uLL' 'MII' 'MCI' 'SI' 'SPII' 'UMII' 'UMCI'\
 	'USI' 'EPS' 'MOD' 'INF' 'MK' 'EACH' 'EACHV' 'UP' 'DWN' \
 	'reverse_' 'join' 'sum_' 'counter' 'isodd' 'iseven' 'vec_max' 'vec_min' 'unfold' \
 	'product')
