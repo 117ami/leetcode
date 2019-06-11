@@ -125,50 +125,57 @@ var pairmin = function(a, b) {
 // create an array with elements from 0 to n
 var nlist=function(n) { return [...Array(n+1).keys()] ; }
 
-
+var ispalindrome = function(s) {
+    var i = 0, j = len(s) - 1; 
+    while (i < j) {
+        if (s[i] != s[j]) return false; 
+        i += 1; 
+        j -= 1;
+    }
+    return true; 
+}
 /*
- * @lc app=leetcode id=336 lang=javascript
+ * @lc app=leetcode id=313 lang=javascript
  *
- * [336] Palindrome Pairs
+ * [313] Super Ugly Number
  *
- * https://leetcode.com/problems/palindrome-pairs/description/
+ * https://leetcode.com/problems/super-ugly-number/description/
  *
  * algorithms
- * Hard (31.02%)
- * Total Accepted:    70.1K
- * Total Submissions: 225.9K
- * Testcase Example:  '["abcd","dcba","lls","s","sssll"]'
+ * Medium (41.44%)
+ * Total Accepted:    60.5K
+ * Total Submissions: 145.8K
+ * Testcase Example:  '12\n[2,7,13,19]'
  *
- * Given a list of unique words, find all pairs of distinct indices (i, j) in
- * the given list, so that the concatenation of the two words, i.e. words[i] +
- * words[j] is a palindrome.
+ * Write a program to find the nth super ugly number.
  * 
- * Example 1:
+ * Super ugly numbers are positive numbers whose all prime factors are in the
+ * given prime list primes of size k.
  * 
- * 
- * 
- * Input: ["abcd","dcba","lls","s","sssll"]
- * Output: [[0,1],[1,0],[3,2],[2,4]] 
- * Explanation: The palindromes are
- * ["dcbaabcd","abcddcba","slls","llssssll"]
+ * Example:
  * 
  * 
+ * Input: n = 12, primes = [2,7,13,19]
+ * Output: 32 
+ * Explanation: [1,2,4,7,8,13,14,16,19,26,28,32] is the sequence of the first
+ * 12 
+ * ⁠            super ugly numbers given primes = [2,7,13,19] of size 4.
  * 
- * Example 2:
+ * Note:
  * 
  * 
- * Input: ["bat","tab","cat"]
- * Output: [[0,1],[1,0]] 
- * Explanation: The palindromes are ["battab","tabbat"]
- * 
- * 
+ * 1 is a super ugly number for any given primes.
+ * The given numbers in primes are in ascending order.
+ * 0 < k ≤ 100, 0 < n ≤ 106, 0 < primes[i] < 1000.
+ * The nth super ugly number is guaranteed to fit in a 32-bit signed integer.
  * 
  * 
  */
 /**
- * @param {string[]} words
- * @return {number[][]}
+ * @param {number} n
+ * @param {number[]} primes
+ * @return {number}
  */
-var palindromePairs = function(words) {
+var nthSuperUglyNumber = function(n, primes) {
     
 };
