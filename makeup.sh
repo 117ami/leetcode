@@ -8,11 +8,12 @@ add_alias() {
 	cmd="$cmd $extra \n"
 }
 
-extras=('VI' 'VB' 'VC' 'VS' 'VVI' 'VVB' 'PII' 'LL' 'uLL' 'MII' 'MCI' 'SI' 'SPII' 'UMII' 'UMCI' 'UMSI'\
-	'USI' 'EPS' 'MOD' 'INF' 'MK' 'EACH' 'EACHV' 'UP' 'DWN' \
+extras=('vi' 'vb' 'vc' 'vs' 'vvi' 'vvb' 'pii' 'll' 'ull' 'mii' 'mci' 'si' 'spii' 'umii' 'umci' 'umsi'\
+	'usi' 'EPS' 'MOD' 'INF' 'MK' 'EACH' 'EACHV' 'UP' 'DWN' \
 	'reverse_' 'join' 'sum_' 'counter' 'isodd' 'iseven' 'vec_max' 'vec_min' 'unfold' 'isPalindrome' \
-	'reverseStr' \
-	'product')
+	'fi' 'se' 'mp' 'pb' 'ALL' 'SIZE' 'SORT' 'REVERSE' 'MAX' 'MIN' \
+	'reverseStr' 'upper' 'lower'\
+	'product' 'itos')
 
 for c in ${extras[@]}; do 
 	grep --quiet $c $cppfile && add_alias $c 

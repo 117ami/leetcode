@@ -51,23 +51,23 @@ const double EPS = 1e-9;
 const int MOD = 1000000007;
 
 // type alias
-using pii = pair<int, int>;
-using ll = long long;
-using ull = unsigned long long; 
-using vi = vector<int>;
-using vb = vector<bool>;
-using vc = vector<char>;
-using vs = vector<string>;
-using vvi = vector<vi>;
-using vvb = vector<vb>; 
-using mii = map<int, int>;
-using mci = map<char, int>;
-using si = set<int>;
-using spii = set<pair<int, int>>;
-using umii = unordered_map<int, int>;
-using umci = unordered_map<char, int>;
-using umsi = unordered_map<string, int>;
-using usi = unordered_set<int>;
+using PII = pair<int, int>;
+using LL = long long;
+using uLL = unsigned long long; 
+using VI = vector<int>;
+using VB = vector<bool>;
+using VC = vector<char>;
+using VS = vector<string>;
+using VVI = vector<VI>;
+using VVB = vector<VB>; 
+using MII = map<int, int>;
+using MCI = map<char, int>;
+using SI = set<int>;
+using SPII = set<pair<int, int>>;
+using UMII = unordered_map<int, int>;
+using UMCI = unordered_map<char, int>;
+using UMSI = unordered_map<string, int>;
+using USI = unordered_set<int>;
 
 typedef struct TreeNode TreeNode;
 using ptn = TreeNode*;
@@ -82,45 +82,78 @@ static auto __2333__ = []() {
 // ==================================================
 
 // some macro for less typing
+#define INF 0x3f3f3f3f                         
+#define max_(x, y) ((x) > (y) ? (x) : (y))
+#define min_(x, y) ((x) > (y) ? (y) : (x))
+
+#define MK make_pair
+
 #define fori(n) for (int i = 0; i <=int(n); ++i) // [0, n)
 #define EACH(i, n) for (int i = 0; i <=int(n); ++i) // [0, n)
 #define EACHV(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
 #define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
 #define DOWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
 #define unfold(i, arr) for (auto &i: arr)
+                         
+// DEBUG PRINT macro
+#define P(x) cerr << (x) << endl
+#define NLL cerr << endl
+#define PR(x) cerr << #x " = " << (x) << "\t"
 
-#define INF 0x3f3f3f3f                         
-#define MAX(a, b) a = max(a, b) 
-#define MIN(a, b) a = min(a, b) 
-#define fi first 
-#define se second 
-#define mp make_pair 
-#define pb push_back 
-#define ALL(v) v.begin(), v.end() 
-#define SIZE(v) (int)v.size() 
-#define SORT(v) sort(ALL(v)) 
-#define REVERSE(v) reverse(ALL(v)) 
+#define NL cout << "\n"
 
-inline string itos(int n) { return to_string(n); }
-inline string upper(string s) { string t(s); transform(ALL(t), t.begin(), ::toupper) ; return t; }
-inline string lower(string s) { string t(s); transform(ALL(t), t.begin(), ::tolower) ; return t; }
+#define PR1(x) PR(x), NLL
+#define PR2(x1, x2) PR(x1), PR1(x2)
+#define PR3(x1, x2, x3) PR(x1), PR2(x2, x3)
+#define PR4(x1, x2, x3, x4) PR(x1), PR3(x2, x3, x4)
 
-int direction[8][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1} };
+int direction[8][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1},
+  {-1, -1}, {-1, 1}, {1, -1}, {1, 1} };
+
+// ==================================================
+
+// simplest print
+template<typename T>
+void PRC(const T& a) { cout << a << " "; }
+void PRB(bool a) { cout << boolalpha << a << " "; }
+
+// print container
+template<typename T>
+void PRCO(const T& c) { for (auto x : c) PRC(x); NL; }
+
+// print vector
+template<typename T>
+void PRV(const vector<T>& c) { PRCO<vector<T>>(c); }
+
+// print C-style array
+template<typename T, size_t N>
+void PRA(const T (&ar)[N]) {
+  for (auto x : ar) PRC(x); NL;
+}
+
+// print pair
+template<typename T1, typename T2>
+void PRP(const pair<T1, T2>& p) { PRC(p.first); PRLN(p.second); }
+
+// print a value and a new line
+template<typename T>
+void PRLN(const T& a) { cout << a << "\n"; }
+
 
 // ==================================================
 // math
-bool is_prime(ll x) {
+bool is_prime(LL x) {
   if (x == 1 || x <= 0) return false;
   if (x == 2) return true;
   assert(x > 1);
-  long long m = ceil(sqrt(x));
+  LL m = ceil(sqrt(x));
   UP(i, 2, m) { if (!(x % i)) return false; }
   return true;
 }
 
 // prime table
 const int PRIME_MAX = 10;
-vi prime_table;
+VI prime_table;
 vector<bool> prime_table_bool(PRIME_MAX, true);
 
 void get_prime() {
@@ -164,15 +197,15 @@ bool is_sub(string s, string t) {
 
 bool isPalindrome(string str){int i = 0, j = str.size() - 1; while (i < j) if (str[i++] != str[j--]) return false; return true; }
 
-string join(vs &arr, string del=" ") {string res; for(auto &s: arr) res += s + del; return res.substr(0, res.size() -1);}
+string join(VS &arr, string del=" ") {string res; for(auto &s: arr) res += s + del; return res.substr(0, res.size() -1);}
 
 // sort vector of vector<int> by first element
-void sort_by_last(vvi & a){
-  sort(a.begin(), a.end(), [](const vi &p, const vi &q){return p.back() < q.back();});
+void sort_by_last(VVI & a){
+  sort(a.begin(), a.end(), [](const VI &p, const VI &q){return p.back() < q.back();});
 }
 
 // quick sum, product, max, min elemnt of a vector<int>
-int sum_(vi &a) { return accumulate(a.begin(), a.end(), 0); }
+int sum_(VI &a) { return accumulate(a.begin(), a.end(), 0); }
 
 template <class T> void reverse_(const vector<T> &vect) { reverse(vect.begin(), vect.end()); }
 
@@ -180,11 +213,11 @@ void reverseStr(string &s){ reverse(s.begin(), s.end()); }
 
 unsigned long long product(vector<int> &a) { unsigned long long res = 1; for (auto &i: a) res *= i; return res; }
 
-int vec_max(vi &a) { return *max_element(a.begin(), a.end()); }
+int vec_max(VI &a) { return *max_element(a.begin(), a.end()); }
 
-int vec_min(vi &a) { return *min_element(a.begin(), a.end()); }
+int vec_min(VI &a) { return *min_element(a.begin(), a.end()); }
 
-umii counter(vi &a) { umii c = {};  for (auto &x: a) ++ c[x];  return c; }
+UMII counter(VI &a) { UMII c = {};  for (auto &x: a) ++ c[x];  return c; }
 
 bool isodd(int &n) { return n % 2 == 1; }
 bool iseven(int &n) { return n % 2 == 0; }
@@ -202,18 +235,18 @@ bool isRectangleOverlap(vector<int>& a, vector<int>& b) {
 // This class represents a directed graph using adjacency list representation
 class Graph {
   int V; // No. of vertices
-  list<pii> *adj;  // In a weighted graph, we need to store vertex and weight pair for every edge
+  list<PII> *adj;  // In a weighted graph, we need to store vertex and weight pair for every edge
 
 public:
   Graph(int V); // Constructor
   void addEdge(int u, int v, int w);
-  vi shortestPath(int s);
+  VI shortestPath(int s);
 };
 
 // Allocates memory for adjacency list
 Graph::Graph(int V) {
   this->V = V;
-  adj = new list<pii>[V];
+  adj = new list<PII>[V];
 }
 
 void Graph::addEdge(int u, int v, int w) {
@@ -222,14 +255,14 @@ void Graph::addEdge(int u, int v, int w) {
 }
 
 // Get shortest paths from src to all other vertices using Dijkstra's algorithm
-vector<int> Graph::shortestPath(int src) {
+VI Graph::shortestPath(int src) {
   // Create a priority queue to store vertices that
   // are being preprocessed. This is weird syntax in C++.
   // Refer below link for details of this syntax
   // https://www.geeksforgeeks.org/implement-min-heap-using-stl/
-  priority_queue<pii, vector<pii>, greater<pii>> pq;
+  priority_queue<PII, vector<PII>, greater<PII>> pq;
 
-  vi dist(V, INF);
+  VI dist(V, INF);
 
   pq.push(make_pair(0, src));
   dist[src] = 0;
