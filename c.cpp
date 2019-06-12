@@ -180,10 +180,8 @@ void reverseStr(string &s){ reverse(s.begin(), s.end()); }
 
 unsigned long long product(vector<int> &a) { unsigned long long res = 1; for (auto &i: a) res *= i; return res; }
 
-int vec_max(vi &a) { return *max_element(a.begin(), a.end()); }
-
-int vec_min(vi &a) { return *min_element(a.begin(), a.end()); }
-
+int vec_max(vi &a) { int r = INT_MIN; for(auto &i: a) r = max(r, i); return r; }
+int vec_min(vi &a) { int r = INT_MAX; for(auto &i: a) r = min(r, i); return r; }
 umii counter(vi &a) { umii c = {};  for (auto &x: a) ++ c[x];  return c; }
 
 bool isodd(int &n) { return n % 2 == 1; }
