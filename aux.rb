@@ -249,3 +249,9 @@ def counter(t)
   end
   cter
 end
+
+
+require 'prime'
+def prime_factors(n)
+  Prime.prime_division(n).map(&:first)
+end
