@@ -123,16 +123,19 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
 
 var ispalindrome = function(s) {
-    var i = 0, j = len(s) - 1; 
+    var i = 0,
+        j = len(s) - 1;
     while (i < j) {
-        if (s[i] != s[j]) return false; 
-        i += 1; 
+        if (s[i] != s[j]) return false;
+        i += 1;
         j -= 1;
     }
-    return true; 
+    return true;
 }
 /*
  * @lc app=leetcode id=949 lang=javascript
@@ -189,6 +192,37 @@ var ispalindrome = function(s) {
  * @param {number[]} A
  * @return {string}
  */
+
+function permutations(inputArr) {
+    var results = [];
+
+    function permute(arr, memo) {
+        var cur, memo = memo || [];
+
+        for (var i = 0; i < arr.length; i++) {
+            cur = arr.splice(i, 1);
+            if (arr.length === 0) {
+                results.push(memo.concat(cur));
+            }
+            permute(arr.slice(), memo.concat(cur));
+            arr.splice(i, 0, cur[0]);
+        }
+
+        return results;
+    }
+
+    return permute(inputArr);
+}
+
 var largestTimeFromDigits = function(A) {
-    
+    var a = sorted(A).reverse();
+    for (var perm of permutations(a)) {
+        if (perm[0] * 10 + perm[1] < 24 && perm[2] * 10 + perm[3] < 60) 
+            return `${perm[0]}${perm[1]}:${perm[2]}${perm[3]}`;
+    }
+    return "";
 };
+
+var A = [1, 3, 2, 4];
+A = [1,9,0,6]
+print(largestTimeFromDigits(A));
