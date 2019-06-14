@@ -123,16 +123,19 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
 
 var ispalindrome = function(s) {
-    var i = 0, j = len(s) - 1; 
+    var i = 0,
+        j = len(s) - 1;
     while (i < j) {
-        if (s[i] != s[j]) return false; 
-        i += 1; 
+        if (s[i] != s[j]) return false;
+        i += 1;
         j -= 1;
     }
-    return true; 
+    return true;
 }
 /*
  * @lc app=leetcode id=264 lang=javascript
@@ -172,5 +175,15 @@ var ispalindrome = function(s) {
  * @return {number}
  */
 var nthUglyNumber = function(n) {
-    
+    var res = list(n, 1),
+        u1 = u2 = u3 = 0;
+    for (let i = 1; i < n; i++) {
+        res[i] = pairmin(res[u1] * 2, pairmin(res[u2] * 3, res[u3] * 5));
+        if (res[i] == res[u1] * 2) u1 += 1;
+        if (res[i] == res[u2] * 3) u2 += 1;
+        if (res[i] == res[u3] * 5) u3 += 1;
+    }
+    return res[res.length - 1];
 };
+
+say(nthUglyNumber(10));

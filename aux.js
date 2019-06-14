@@ -155,3 +155,8 @@ function permutations(inputArr) {
 
   return permute(inputArr);
 }
+
+
+function last(arr){
+    return arr[len(arr)-1];
+}
