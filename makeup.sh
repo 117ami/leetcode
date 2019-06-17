@@ -13,7 +13,7 @@ extras=('vi' 'vb' 'vc' 'vs' 'vvi' 'vvb' 'pii' 'll' 'ull' 'mii' 'mci' 'si' 'spii'
 	'usi' 'EPS' 'MOD' 'INF' 'MK' 'each' 'eachv' 'up' 'dwn' \
 	'reverse_' 'join' 'sum_' 'counter' 'isodd' 'iseven' 'vec_max' 'vec_min' 'unfold' 'isPalindrome' \
 	'fi' 'se' 'mp' 'pb' 'dall' 'dsize' 'dsort' 'rdsort' 'dreverse' 'MAX' 'MIN' \
-	'reverseStr' 'upper' 'lower' 'exist'\
+	'reverseStr' 'upper' 'lower' 'exist' 'direction'\
 	'product' 'itos')
 
 for c in ${extras[@]}; do 
