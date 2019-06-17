@@ -123,7 +123,13 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
+
+function last(arr) {
+    return arr[len(arr) - 1];
+}
 
 
 /*
@@ -195,5 +201,21 @@ var nlist=function(n) { return [...Array(n+1).keys()] ; }
  * @return {string}
  */
 var smallestSubsequence = function(text) {
-    
+    var cnt = counter(text),
+        seen = {},
+        i = 0,
+        res = [];
+    for (var c of text) {
+        cnt[c] -= 1;
+        if ((c in seen) && (seen[c]) > 0) continue;
+        while (len(res) > 0 && last(res) > c && cnt[last(res)] > 0) {
+            seen[res.pop()] = 0;
+        }
+        res.push(c);
+        seen[c] = 1;
+    }
+    return res.join('');
 };
+
+var text = "leetcode";
+print(smallestSubsequence(text));

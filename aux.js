@@ -160,3 +160,7 @@ function permutations(inputArr) {
 function last(arr){
     return arr[len(arr)-1];
 }
+
+function exist(key, hash) {
+    return (key in hash);
+}
