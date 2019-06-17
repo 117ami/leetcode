@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "c.cpp"
-#include "1091.shortest-path-in-binary-matrix.cpp"
+// #include "c.cpp"
+#include "1092.shortest-common-supersequence.cpp"
+
 
 int main(int argc, char const *argv[]) {
-	Solution s;
-	vvi g = {{0,0,0},{1,1,0},{1,1,0}};
-	say(s.shortestPathBinaryMatrix(g));
-	return 0;
+  Solution s;
+  say(s.shortestCommonSupersequence("abac", "cab"));
+  return 0;
 }
-

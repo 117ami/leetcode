@@ -200,6 +200,63 @@ bool isRectangleOverlap(vector<int>& a, vector<int>& b) {
 template <class K, class V> bool exist(unordered_map<K, V> &m, K key){ return m.find(key) != m.end(); }
 
 
+string lcs(string s, string t) {
+  int m = s.size(), n = t.size(), L[m + 1][n + 1];
+  for (int i = 0; i <= m; i++)
+    for (int j = 0; j <= n; j++)
+      if (i == 0 || j == 0)
+        L[i][j] = 0;
+      else if (s[i - 1] == t[j - 1])
+        L[i][j] = L[i - 1][j - 1] + 1;
+      else
+        L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+
+  string res(L[m][n], '#');
+  int i = m, j = n, index = L[m][n];
+
+  while (i > 0 && j > 0) {
+    if (s[i - 1] == t[j - 1])
+      res[index - 1] = s[i - 1], index--, i--, j--;
+    else if (L[i - 1][j] > L[i][j - 1])
+      i--;
+    else
+      j--;
+  }
+  return res;
+}
+
+
+// shortest common supersequence, e.e., scs("abcde", "pkqcze") = "abpkqcdze"
+string scs(string s, string t) {
+    int m = s.size(), n = t.size(), L[m + 1][n + 1];
+    for (int i = 0; i <= m; i++)
+      for (int j = 0; j <= n; j++)
+        if (i == 0 || j == 0)
+          L[i][j] = 0;
+        else if (s[i - 1] == t[j - 1])
+          L[i][j] = L[i - 1][j - 1] + 1;
+        else
+          L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+
+    string res(m + n - L[m][n], '#');
+    int i = m, j = n, index = m + n - L[m][n];
+
+    while (i > 0 && j > 0) {
+      if (s[i - 1] == t[j - 1])
+        res[--index] = s[--i], j--;
+      else if (L[i - 1][j] > L[i][j - 1])
+        res[--index] = s[--i]; 
+      else
+        res[--index] = t[--j];
+    }
+    
+    if (i + j == 0) return res;
+    else if (j > 0) while (j > 0) res[--index] = t[--j];
+    else while (i > 0) res[--index] = s[--i];
+    return res; 
+}
+
+
 // =========================================================================
 // This class represents a directed graph using adjacency list representation
 class Graph {
