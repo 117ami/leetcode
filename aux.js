@@ -93,7 +93,7 @@ var say = function(a) {
 };
 
 
-var two_d_array = function(m, n, v) {
+var two_d_array = function(m, n, v = 0) {
     return [...Array(m)].map(x => Array(n).fill(v));
 }
 
@@ -123,44 +123,97 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
 
 var ispalindrome = function(s) {
-    var i = 0, j = len(s) - 1; 
+    var i = 0,
+        j = len(s) - 1;
     while (i < j) {
-        if (s[i] != s[j]) return false; 
-        i += 1; 
+        if (s[i] != s[j]) return false;
+        i += 1;
         j -= 1;
     }
-    return true; 
+    return true;
 }
 
 function permutations(inputArr) {
-  var results = [];
+    var results = [];
 
-  function permute(arr, memo) {
-    var cur, memo = memo || [];
+    function permute(arr, memo) {
+        var cur, memo = memo || [];
 
-    for (var i = 0; i < arr.length; i++) {
-      cur = arr.splice(i, 1);
-      if (arr.length === 0) {
-        results.push(memo.concat(cur));
-      }
-      permute(arr.slice(), memo.concat(cur));
-      arr.splice(i, 0, cur[0]);
+        for (var i = 0; i < arr.length; i++) {
+            cur = arr.splice(i, 1);
+            if (arr.length === 0) {
+                results.push(memo.concat(cur));
+            }
+            permute(arr.slice(), memo.concat(cur));
+            arr.splice(i, 0, cur[0]);
+        }
+
+        return results;
     }
 
-    return results;
-  }
-
-  return permute(inputArr);
+    return permute(inputArr);
 }
 
 
-function last(arr){
-    return arr[len(arr)-1];
+function last(arr) {
+    return arr[len(arr) - 1];
 }
 
 function exist(key, hash) {
     return (key in hash);
 }
+
+// shortest common super-sequence
+var scs = function(s, t) {
+    var m = len(s),
+        n = len(t),
+        dp = two_d_array(m + 1, n + 1);
+    for (let i = 1; i <= m; i++)
+        for (let j = 1; j <= n; j++)
+            if (s[i - 1] == t[j - 1])
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            else
+                dp[i][j] = pairmax(dp[i - 1][j], dp[i][j - 1]);
+
+    var i = m,
+        j = n,
+        index = m + n - dp[len(dp) - 1][len(dp[0]) - 1];
+    var res = list(index, '*');
+    while (i > 0 && j > 0) {
+
+        if (s[i - 1] == t[j - 1]) {
+            res[index - 1] = s[i - 1];
+            i -= 1;
+            j -= 1;
+        } else if (dp[i - 1][j] > dp[i][j - 1]) {
+            res[index - 1] = s[i - 1];
+            i -= 1;
+        } else {
+            res[index - 1] = t[j - 1];
+            j -= 1;
+        }
+        index -= 1;
+    }
+
+
+    if (i + j == 0) return res.join('');
+    if (j > 0) {
+        i = j;
+        s = t;
+    }
+
+    while (i > 0) {
+        res[index - 1] = s[i - 1];
+        index -= 1;
+        i -= 1;
+    }
+    return res.join('');
+}
+
+
+// print(scs("abac", 'cab'));
