@@ -9,10 +9,11 @@ add_alias() {
 }
 
 extras=('vi' 'vb' 'vc' 'vs' 'vvi' 'vvb' 'pii' 'll' 'ull' 'mii' 'mci' 'si' 'spii' 'umii' 'umci' 'umsi'\
-	'usi' 'EPS' 'MOD' 'INF' 'MK' 'EACH' 'EACHV' 'UP' 'DWN' \
+	'vpii'\
+	'usi' 'EPS' 'MOD' 'INF' 'MK' 'each' 'eachv' 'up' 'dwn' \
 	'reverse_' 'join' 'sum_' 'counter' 'isodd' 'iseven' 'vec_max' 'vec_min' 'unfold' 'isPalindrome' \
-	'fi' 'se' 'mp' 'pb' 'ALL' 'SIZE' 'SORT' 'REVERSE' 'MAX' 'MIN' \
-	'reverseStr' 'upper' 'lower'\
+	'fi' 'se' 'mp' 'pb' 'dall' 'dsize' 'dsort' 'rdsort' 'dreverse' 'MAX' 'MIN' \
+	'reverseStr' 'upper' 'lower' 'exist'\
 	'product' 'itos')
 
 for c in ${extras[@]}; do 

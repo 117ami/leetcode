@@ -68,6 +68,7 @@ using umii = unordered_map<int, int>;
 using umci = unordered_map<char, int>;
 using umsi = unordered_map<string, int>;
 using usi = unordered_set<int>;
+using vpii = vector<pair<int, int>>; 
 
 typedef struct TreeNode TreeNode;
 using ptn = TreeNode*;
@@ -83,27 +84,29 @@ static auto __2333__ = []() {
 
 // some macro for less typing
 #define fori(n) for (int i = 0; i <=int(n); ++i) // [0, n)
-#define EACH(i, n) for (int i = 0; i <=int(n); ++i) // [0, n)
-#define EACHV(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
-#define UP(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
-#define DOWN(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
+#define each(i, n) for (int i = 0; i <=int(n); ++i) // [0, n)
+#define eachv(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
+#define up(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
+#define down(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
 #define unfold(i, arr) for (auto &i: arr)
 
 #define INF 0x3f3f3f3f                         
 #define MAX(a, b) a = max(a, b) 
 #define MIN(a, b) a = min(a, b) 
+
 #define fi first 
 #define se second 
 #define mp make_pair 
 #define pb push_back 
-#define ALL(v) v.begin(), v.end() 
-#define SIZE(v) (int)v.size() 
-#define SORT(v) sort(ALL(v)) 
-#define REVERSE(v) reverse(ALL(v)) 
+#define dall(v) v.begin(), v.end() 
+#define dsize(v) (int)v.size() 
+#define dsort(v) sort(v.begin(), v.end()) 
+#define rdsort(v) sort(v.rbegin(), v.rend())                          
+#define dreverse(v) reverse(v.begin(), r.end()) 
 
 inline string itos(int n) { return to_string(n); }
-inline string upper(string s) { string t(s); transform(ALL(t), t.begin(), ::toupper) ; return t; }
-inline string lower(string s) { string t(s); transform(ALL(t), t.begin(), ::tolower) ; return t; }
+inline string upper(string s) { string t(s); transform(t.begin(), t.end(), t.begin(), ::toupper) ; return t; }
+inline string lower(string s) { string t(s); transform(t.begin(), t.end(), t.begin(), ::tolower) ; return t; }
 
 int direction[8][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1} };
 
@@ -114,7 +117,7 @@ bool is_prime(ll x) {
   if (x == 2) return true;
   assert(x > 1);
   long long m = ceil(sqrt(x));
-  UP(i, 2, m) { if (!(x % i)) return false; }
+  up(i, 2, m) { if (!(x % i)) return false; }
   return true;
 }
 
@@ -124,7 +127,7 @@ vi prime_table;
 vector<bool> prime_table_bool(PRIME_MAX, true);
 
 void get_prime() {
-  UP(i, 2, PRIME_MAX) 
+  up(i, 2, PRIME_MAX) 
   {
     if (prime_table_bool[i]) 
     {
@@ -193,7 +196,8 @@ bool isRectangleOverlap(vector<int>& a, vector<int>& b) {
   return !(a[2] <= b[0] || a[3] <= b[1] || a[1] >= b[3]);
 }
 
-
+// whether a key in a map
+template <class K, class V> bool exist(unordered_map<K, V> &m, K key){ return m.find(key) != m.end(); }
 
 
 // =========================================================================
