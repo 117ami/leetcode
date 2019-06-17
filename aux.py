@@ -1,3 +1,4 @@
+from random import randint
 
 class XString(object):
     def is_p(s):
@@ -12,7 +13,7 @@ class XString(object):
                 return False
         return True
 
-    def lcs(self, word1, word2):
+    def lcslen(self, word1, word2):
         """ longest common substring
         :type word1: str
         :type word2: str
@@ -33,12 +34,150 @@ class XString(object):
         		res = max(res, dp[j])
         return res 
 
+    def lcs(self, s, t):
+        """ return the longest common substring
+        """
+        m, n = len(s), len(t)
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        for i in range(m+1):
+            for j in range(n+1):
+                if i == 0 or j == 0:
+                    dp[i][j] = 0
+                elif s[i-1] == t[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+
+        i, j, idx = m, n, dp[-1][-1]
+        res = ['#'] * idx
+
+        while i > 0 and j > 0:
+            if s[i-1] == t[j-1]:
+                res[idx - 1] = s[i-1]
+                idx -= 1
+                i -= 1
+                j -= 1
+            elif dp[i-1][j] > dp[i][j-1]:
+                i -= 1
+            else:
+                j -= 1
+
+        return ''.join(res)
+
+
+    def scs(self, s, t):
+        # return shortest common super-sequence
+        m, n = len(s), len(t)
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        for i in range(m+1):
+            for j in range(n+1):
+                if i == 0 or j == 0:
+                    dp[i][j] = 0
+                elif s[i-1] == t[j-1]:
+                    dp[i][j] = dp[i-1][j-1] + 1
+                else:
+                    dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+
+        i, j, idx = m, n, m + n - dp[-1][-1]
+        res = ['#'] * idx
+
+        while i > 0 and j > 0:
+            if s[i-1] == t[j-1]:
+                res[idx - 1], i, j = s[i-1], i - 1, j - 1
+            elif dp[i-1][j] > dp[i][j-1]:
+                res[idx - 1], i = s[i - 1], i - 1
+            else:
+                res[idx - 1], j = t[j - 1], j - 1
+            idx -= 1
+
+        if j > 0: 
+            i, s = j, t
+
+        while i > 0:
+            res[idx - 1], idx, i = s[i - 1], idx - 1, i - 1
+
+        return ''.join(res)
+
 
 # for Strings
 # decide whether list(s) in list(t). e.g., is_sub('abc', 'akbkck') == True
 def is_substring(s, t):
     it = iter(t)
     return all(c in it for c in s)
+
+def is_letter(c):
+    return c.isalpha()
+
+def isodd(n):
+    return n % 2 > 0
+
+def iseven(n):
+    return n % 2 == 0
+
+"""decide nums, a list containing only positive integers, can be partitioned
+into two equal subsets. Two methods:
+
+1. recursion, time complexity, 2^n in worst case, can cause "maximum recursion depth exceeded in comparison" when n is large, 
+but usually, this method is VERY FAST.
+
+2. dynamic programming. O(sum * n) (both time and space)
+Not feasible for ARRAYS WITH BIG SUM.
+
+Benchmark: [random(1, 100) x 100] x 5 times.  i.e., 5 rounds x size 100 x domain 1-100
+rec 0.025 second / dp 5.04 seconds
+
+[random(1, 100) x 200] x 5 times. 
+rec 0.04 second / dp 20.22 seconds
+"""
+
+# recursion method
+def find_patition(nums):
+    mus = sum(nums)
+    if isodd(mus): return False
+
+    target = mus // 2
+    visited = {}
+
+    def rec(i, acc):
+        if acc == target: return True
+        if i >= len(nums) or acc > target: return False
+        key = "{}-{}".format(acc, i)
+        if key in visited: return visited[key]
+
+        r = rec(i + 1, acc + nums[i]) or rec(i + 1, acc)
+        visited[key] = r 
+        return r
+
+    return rec(0, 0)
+
+
+# DP method
+def find_patition_dp(nums):
+    mus, n = sum(nums), len(nums)
+    if isodd(mus): return False 
+
+    target = mus // 2
+    part = [[True for i in range(n + 1)] for j in range(target + 1)]
+
+    for i in range(n + 1): part[0][i] = True
+    for i in range(1, target + 1): part[i][0] = False
+
+    for i in range(1, target + 1):
+        for j in range(n + 1):
+            part[i][j] = part[i][j-1]
+            if i >= nums[j-1]:
+                part[i][j] = part[i][j] or part[i - arr[j-1]][j-1]
+
+    return part[target][n]
+
+def sort_by_last(arr):
+    arr.sort(key=lambda x: x[-1])
+
+# Two rectangles overlap if the area of their intersection is positive.  To be
+# clear, two rectangles that only touch at the corner or edges do not overlap.
+def is_rectangle_overlap(a, b):
+    if a[0] > b[0]: return is_rectangle_overlap(b, a)
+    return not (a[2] <= b[0] or a[3] <= b[1] or a[1] >= b[3])
 
 
 class PriorityQueue(object): 
