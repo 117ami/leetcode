@@ -182,10 +182,10 @@ var scs = function(s, t) {
 
     var i = m,
         j = n,
-        index = m + n - dp[len(dp) - 1][len(dp[0]) - 1];
-    var res = list(index, '*');
-    while (i > 0 && j > 0) {
+        index = m + n - last(last(dp)),
+        res = list(index, '*');
 
+    while (i > 0 && j > 0) {
         if (s[i - 1] == t[j - 1]) {
             res[index - 1] = s[i - 1];
             i -= 1;
@@ -215,5 +215,39 @@ var scs = function(s, t) {
     return res.join('');
 }
 
+// longest common subsequence
+var lcs = function(s, t) {
+    var m = len(s),
+        n = len(t),
+        dp = two_d_array(m + 1, n + 1);
+    for (let i = 1; i <= m; i++)
+        for (let j = 1; j <= n; j++)
+            if (s[i - 1] == t[j - 1])
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+            else
+                dp[i][j] = pairmax(dp[i - 1][j], dp[i][j - 1]);
 
-// print(scs("abac", 'cab'));
+    var i = m,
+        j = n,
+        index = last(last(dp)),
+        res = list(index, '*');
+
+    while (i > 0 && j > 0) {
+        if (s[i - 1] == t[j - 1]) {
+            res[index - 1] = s[i - 1];
+            index -= 1;
+            i -= 1;
+            j -= 1;
+        } else if (dp[i - 1][j] > dp[i][j - 1]) {
+            i -= 1;
+        } else {
+            j -= 1;
+        }
+    }
+    return res.join('');
+}
+
+
+
+print(lcs("abac", 'cab'));
+print(scs("abac", 'cab'));

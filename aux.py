@@ -243,3 +243,23 @@ def perms(iterable, r=None):
         else:
             return
 
+# Generates the next permutation lexicographically after a given permutation. 
+# It changes the given permutation in-place.
+def next_permutation(arr):
+    # Find the highest index i such that s[i] < s[i+1]. 
+    # If no such index exists, the permutation is the last permutation.
+    i = len(arr) - 1
+    while i > 0:
+        if arr[i] > arr[i - 1]: break
+        i -= 1
+    if i == 0: return []
+    i -= 1
+
+    # Find the highest index j > i such that s[j] > s[i]. Such a j must exist, since i+1 is such an index.
+    for j in reversed(range(i + 1, len(arr))):
+        if arr[j] > arr[i]: break
+
+    arr[i], arr[j] = arr[j], arr[i]
+    arr[i + 1:] = reversed(arr[i + 1:])
+    return arr
+

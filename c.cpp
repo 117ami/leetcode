@@ -98,6 +98,9 @@ static auto __2333__ = []() {
 #define se second 
 #define mp make_pair 
 #define pb push_back 
+#define pf push_front 
+#define ef emplace_front                          
+#define eb emplace_back                          
 #define dall(v) v.begin(), v.end() 
 #define dsize(v) (int)v.size() 
 #define dsort(v) sort(v.begin(), v.end()) 
