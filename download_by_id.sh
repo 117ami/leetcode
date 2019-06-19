@@ -7,6 +7,7 @@ leetcode show $1 -gx -l javascript
 
 js_file=$(ls -t *.js | head -n 1)
 python_file=$(ls -t *.py | head -n 1)
+ruby_file=$(ls -t *.rb | head -n 1)
 cpp_file=$(ls -t *.cpp | head -n 1)
 
 # echo -e "
@@ -17,6 +18,10 @@ cpp_file=$(ls -t *.cpp | head -n 1)
 cat aux.js > tmpjs
 cat $js_file >> tmpjs
 mv tmpjs $js_file
+
+cat aux.rb > tmprb
+cat $ruby_file >> tmprb
+mv tmprb $ruby_file
 
 
 echo -e "\n\n
