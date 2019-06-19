@@ -123,47 +123,51 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
 
 var ispalindrome = function(s) {
-    var i = 0, j = len(s) - 1; 
+    var i = 0,
+        j = len(s) - 1;
     while (i < j) {
-        if (s[i] != s[j]) return false; 
-        i += 1; 
+        if (s[i] != s[j]) return false;
+        i += 1;
         j -= 1;
     }
-    return true; 
+    return true;
 }
 
 function permutations(inputArr) {
-  var results = [];
+    var results = [];
 
-  function permute(arr, memo) {
-    var cur, memo = memo || [];
+    function permute(arr, memo) {
+        var cur, memo = memo || [];
 
-    for (var i = 0; i < arr.length; i++) {
-      cur = arr.splice(i, 1);
-      if (arr.length === 0) {
-        results.push(memo.concat(cur));
-      }
-      permute(arr.slice(), memo.concat(cur));
-      arr.splice(i, 0, cur[0]);
+        for (var i = 0; i < arr.length; i++) {
+            cur = arr.splice(i, 1);
+            if (arr.length === 0) {
+                results.push(memo.concat(cur));
+            }
+            permute(arr.slice(), memo.concat(cur));
+            arr.splice(i, 0, cur[0]);
+        }
+
+        return results;
     }
 
-    return results;
-  }
-
-  return permute(inputArr);
+    return permute(inputArr);
 }
 
 
-function last(arr){
-    return arr[len(arr)-1];
+function last(arr) {
+    return arr[len(arr) - 1];
 }
 
 function exist(key, hash) {
     return (key in hash);
-}/*
+}
+/*
  * @lc app=leetcode id=1090 lang=javascript
  *
  * [1090] Largest Values From Labels
@@ -251,6 +255,58 @@ function exist(key, hash) {
  * @param {number} use_limit
  * @return {number}
  */
-var largestValsFromLabels = function(values, labels, num_wanted, use_limit) {
-    
+
+var zip = function(lista, listb) {
+    return lista.map(function(e, i) {
+        return [e, listb[i]];
+    });
+}
+
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
+}
+
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
+}
+
+class Counter {
+    constructor() {
+        this.m = {};
+    }
+
+    read(key) {
+        return exist(key, this.m) ? this.m[key] : 0;
+    }
+
+    plusone(key) {
+        if (!this.m[key]) this.m[key] = 0;
+        this.m[key] += 1;
+    }
+}
+
+// var c = new Counter();
+
+var largestValsFromLabels = function(v, l, m, mx) {
+    var arr = sort_by_first(zip(v, l)).reverse();
+    var visited = {},
+        res = 0,
+        cnt = new Counter();
+    for (item of arr) {
+        var vv = item[0],
+            ll = item[1];
+        if (cnt.read(ll) < mx) {
+            res += vv;
+            cnt.plusone(ll);
+            m -= 1;
+        }
+        if (m <= 0) return res;
+    }
+    return res;
 };
+
+var v = [5, 4, 3, 2, 1],
+    l = [1, 1, 2, 2, 3],
+    m = 3,
+    mx = 1;
+print(largestValsFromLabels(v, l, m, mx))

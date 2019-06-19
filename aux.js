@@ -77,6 +77,14 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
+var sort_by_last = function(arr){
+    return arr.sort((a, b)=>(last(a) - last(b)));
+}
+
+var sort_by_first = function(arr){
+    return arr.sort((a, b)=>(a[0] - b[0]));
+}
+
 // print out a Map 
 function printMap(m) {
     m.forEach(function(v, k) {
@@ -248,6 +256,22 @@ var lcs = function(s, t) {
 }
 
 
+var zip = function(lista, listb) {
+    return a.map(function(e, i){return [e, b[i]];});
+}
 
-print(lcs("abac", 'cab'));
-print(scs("abac", 'cab'));
+class Counter {
+    constructor() {
+        this.m = {};
+    }
+
+    read(key) {
+        return exist(key, this.m) ? this.m[key] : 0;
+    }
+
+    plusone(key) {
+        if (!this.m[key]) this.m[key] = 0;
+        this.m[key] += 1;
+    }
+}
+
