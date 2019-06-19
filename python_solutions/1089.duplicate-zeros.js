@@ -123,47 +123,51 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
 
 var ispalindrome = function(s) {
-    var i = 0, j = len(s) - 1; 
+    var i = 0,
+        j = len(s) - 1;
     while (i < j) {
-        if (s[i] != s[j]) return false; 
-        i += 1; 
+        if (s[i] != s[j]) return false;
+        i += 1;
         j -= 1;
     }
-    return true; 
+    return true;
 }
 
 function permutations(inputArr) {
-  var results = [];
+    var results = [];
 
-  function permute(arr, memo) {
-    var cur, memo = memo || [];
+    function permute(arr, memo) {
+        var cur, memo = memo || [];
 
-    for (var i = 0; i < arr.length; i++) {
-      cur = arr.splice(i, 1);
-      if (arr.length === 0) {
-        results.push(memo.concat(cur));
-      }
-      permute(arr.slice(), memo.concat(cur));
-      arr.splice(i, 0, cur[0]);
+        for (var i = 0; i < arr.length; i++) {
+            cur = arr.splice(i, 1);
+            if (arr.length === 0) {
+                results.push(memo.concat(cur));
+            }
+            permute(arr.slice(), memo.concat(cur));
+            arr.splice(i, 0, cur[0]);
+        }
+
+        return results;
     }
 
-    return results;
-  }
-
-  return permute(inputArr);
+    return permute(inputArr);
 }
 
 
-function last(arr){
-    return arr[len(arr)-1];
+function last(arr) {
+    return arr[len(arr) - 1];
 }
 
 function exist(key, hash) {
     return (key in hash);
-}/*
+}
+/*
  * @lc app=leetcode id=1089 lang=javascript
  *
  * [1089] Duplicate Zeros
@@ -217,6 +221,42 @@ function exist(key, hash) {
  * @param {number[]} arr
  * @return {void} Do not return anything, modify arr in-place instead.
  */
+
 var duplicateZeros = function(arr) {
-    
+    for (let i = 0; i < len(arr); i++) {
+        if (arr[i] == 0) {
+            arr.splice(i, 0, 0);
+            arr.pop();
+            i += 1;
+        }
+    }
+}
+
+var duplicateZeros2 = function(arr) {
+    var i = -1,
+        j = -1;
+    while (true) {
+        j += 1;
+        i += arr[j] == 0 ? 2 : 1;
+        if (i >= len(arr) - 1) break;
+    }
+    if (i >= len(arr)) {
+        arr[i - 1] = 0;
+        i -= 2;
+        j -= 1;
+    }
+    while (i >= 0) {
+        if (arr[j] == 0) {
+            arr[i] = arr[i - 1] = 0;
+            i -= 2;
+        } else {
+            arr[i] = arr[j];
+            i -= 1;
+        }
+        j -= 1;
+    }
+    // print(arr)
 };
+
+arr = [1, 0, 2, 3, 0, 4, 5, 0]
+duplicateZeros(arr)
