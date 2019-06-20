@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 leetcode show $1 -gx -l cpp
-leetcode show $1 -gx -l ruby
+# leetcode show $1 -gx -l ruby
 leetcode show $1 -gx -l python3
 leetcode show $1 -gx -l javascript
 
@@ -19,9 +19,9 @@ cat aux.js > tmpjs
 cat $js_file >> tmpjs
 mv tmpjs $js_file
 
-cat aux.rb > tmprb
-cat $ruby_file >> tmprb
-mv tmprb $ruby_file
+# cat aux.rb > tmprb
+# cat $ruby_file >> tmprb
+# mv tmprb $ruby_file
 
 
 echo -e "\n\n
