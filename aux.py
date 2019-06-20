@@ -263,3 +263,37 @@ def next_permutation(arr):
     arr[i + 1:] = reversed(arr[i + 1:])
     return arr
 
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+def tree_from_list(lis):
+    if len(lis) == 0:
+        return None
+    root = TreeNode(lis[0])
+    st = [root]
+    i, j = 0, 1
+    while j < len(lis):
+        r = st[i]
+        i += 1
+        if r is None:
+            j += 1
+        else:
+            lv = lis[j]
+            r.left = TreeNode(lv) if lv else None
+            st.append(r.left)
+
+            if j + 1 >= len(lis):
+                break
+
+            rv = lis[j + 1]
+            r.right = TreeNode(rv) if rv else None
+            st.append(r.right)
+
+            j += 2
+
+    return root
+
