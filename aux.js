@@ -167,10 +167,25 @@ function permutations(inputArr) {
     return permute(inputArr);
 }
 
+var directions = [
+    [-1, -1],
+    [-1, 1],
+    [0, -1],
+    [0, 1],
+    [-1, 0],
+    [1, -1],
+    [1, 0],
+    [1, 1]
+]
 
-function last(arr) {
+var last = function(arr) {
     return arr[len(arr) - 1];
 }
+
+var first = function(arr) {
+    return arr[0];
+}
+
 
 function exist(key, hash) {
     return (key in hash);

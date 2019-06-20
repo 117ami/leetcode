@@ -123,47 +123,51 @@ var pairmin = function(a, b) {
 }
 
 // create an array with elements from 0 to n
-var nlist=function(n) { return [...Array(n+1).keys()] ; }
+var nlist = function(n) {
+    return [...Array(n + 1).keys()];
+}
 
 var ispalindrome = function(s) {
-    var i = 0, j = len(s) - 1; 
+    var i = 0,
+        j = len(s) - 1;
     while (i < j) {
-        if (s[i] != s[j]) return false; 
-        i += 1; 
+        if (s[i] != s[j]) return false;
+        i += 1;
         j -= 1;
     }
-    return true; 
+    return true;
 }
 
 function permutations(inputArr) {
-  var results = [];
+    var results = [];
 
-  function permute(arr, memo) {
-    var cur, memo = memo || [];
+    function permute(arr, memo) {
+        var cur, memo = memo || [];
 
-    for (var i = 0; i < arr.length; i++) {
-      cur = arr.splice(i, 1);
-      if (arr.length === 0) {
-        results.push(memo.concat(cur));
-      }
-      permute(arr.slice(), memo.concat(cur));
-      arr.splice(i, 0, cur[0]);
+        for (var i = 0; i < arr.length; i++) {
+            cur = arr.splice(i, 1);
+            if (arr.length === 0) {
+                results.push(memo.concat(cur));
+            }
+            permute(arr.slice(), memo.concat(cur));
+            arr.splice(i, 0, cur[0]);
+        }
+
+        return results;
     }
 
-    return results;
-  }
-
-  return permute(inputArr);
+    return permute(inputArr);
 }
 
 
-function last(arr){
-    return arr[len(arr)-1];
+function last(arr) {
+    return arr[len(arr) - 1];
 }
 
 function exist(key, hash) {
     return (key in hash);
-}/*
+}
+/*
  * @lc app=leetcode id=1091 lang=javascript
  *
  * [1091] Shortest Path in Binary Matrix
@@ -224,6 +228,47 @@ function exist(key, hash) {
  * @param {number[][]} grid
  * @return {number}
  */
+var directions = [
+    [-1, -1],
+    [-1, 1],
+    [0, -1],
+    [0, 1],
+    [-1, 0],
+    [1, -1],
+    [1, 0],
+    [1, 1]
+]
+var first = function(arr) {
+    return arr[0];
+}
+
 var shortestPathBinaryMatrix = function(grid) {
-    
+    if (grid[0][0] == 1 || last(last(grid)) == 1) return -1;
+    var n = len(grid),
+        q = [
+            [0, 0]
+        ];
+    if (n == 1) return 1;
+    grid[0][0] = 1;
+
+    while (len(q) > 0) {
+        var p = q.shift();
+        for (var d of directions) {
+            var x = first(d) + first(p),
+                y = last(d) + last(p);
+            if (x < 0 || x >= n || y < 0 || y >= n || grid[x][y] != 0) continue;
+            grid[x][y] = grid[first(p)][last(p)] + 1;
+            q.push([x, y])
+            if (x == n - 1 && y == n - 1) return grid[x][y];
+        }
+    }
+    return -1;
 };
+
+var grid = [
+    [0, 0, 0],
+    [1, 1, 0],
+    [1, 1, 0]
+];
+// grid = [[0,1],[1,0]]
+print(shortestPathBinaryMatrix(grid))
