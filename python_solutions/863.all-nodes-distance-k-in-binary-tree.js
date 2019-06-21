@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -272,7 +272,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -359,6 +361,51 @@ class Counter {
  * @param {number} K
  * @return {number[]}
  */
+
+// function TreeNode(val) {
+//     this.val = val;
+//     this.left = this.right = null;
+// }
+
 var distanceK = function(root, target, K) {
-    
+    var set_parent = function(r) {
+        if (r == null) return;
+        if (r.left != null) {
+            r.left.parent = r;
+            set_parent(r.left);
+        }
+
+        if (r.right != null) {
+            r.right.parent = r;
+            set_parent(r.right);
+        }
+    }
+
+    root.parent = null;
+    set_parent(root);
+
+    var visited = {},
+        layer = [target],
+        res = [];
+    visited[target.val] = true;
+
+    for (let i = 0; i < K; i++) {
+        var newlayer = [];
+        for (var l of layer) {
+            for (var nl of [l.left, l.right, l.parent])
+                if (nl != null && !exist(nl.val, visited)) {
+                    newlayer.push(nl);
+                    visited[nl.val] = true;
+                }
+        }
+        layer = newlayer;
+    }
+    for (var n of layer) res.push(n.val);
+    return res;
 };
+
+var root = new TreeNode(3);
+root.left = new TreeNode(2);
+root.right = new TreeNode(1);
+
+say(distanceK(root, root, 1));
