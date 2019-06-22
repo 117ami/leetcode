@@ -350,5 +350,32 @@ public:
     }
 };
 
+TreeNode* growTreeFromList(vector<int> &arr) {
+  if (arr.empty()) return nullptr;
+  TreeNode* root = new TreeNode(arr[0]); 
+  vector<TreeNode*> stack = {root};
+  int i = 0, j = 1;
 
+  while (j < arr.size()){
+    TreeNode* cur_node = stack[i];
+    i += 1; 
+    if (cur_node == nullptr) j += 1; 
+    else {
+      int value = arr[j];
+      if (value == INT_MIN) cur_node->left = nullptr; 
+      else cur_node->left = new TreeNode(value);
+      stack.emplace_back(cur_node->left);
+
+      if (j + 1 >= arr.size()) break;
+
+      value = arr[j + 1];
+      if (value == INT_MIN) cur_node->right = nullptr; 
+      else cur_node->right = new TreeNode(value);
+      stack.emplace_back(cur_node->right);
+
+      j += 2;
+    }
+  }
+  return root;
+}
 
