@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -279,7 +279,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -387,6 +389,66 @@ class Counter {
  * @param {TreeNode} root
  * @return {number[][]}
  */
+
+function TreeNode(val) {
+    this.val = val;
+    this.left = this.right = null;
+}
+
+var growTreeFromList = function(arr) {
+    if (len(arr) == 0) return;
+    var root = new TreeNode(first(arr)),
+        st = [root];
+    var i = 0,
+        j = 1;
+
+    while (j < len(arr)) {
+        let r = st[i];
+        i += 1;
+        if (r == null) j += 1;
+        else {
+
+            let lv = arr[j];
+            r.left = (lv == null ? null : new TreeNode(lv));
+            st.push(r.left);
+
+            if (j + 1 >= len(arr)) break;
+            let rv = arr[j + 1];
+            r.right = (rv == null ? null : new TreeNode(rv));
+            st.push(r.right);
+            j += 2;
+        }
+    }
+    return root;
+}
+
 var verticalTraversal = function(root) {
-    
+    var vs = [];
+    var dfs = function(r, x, y) {
+        if (r == null) return;
+        vs.push([r.val, x, y]);
+        dfs(r.left, x - 1, y - 1);
+        dfs(r.right, x + 1, y - 1);
+    }
+    dfs(root, 0, 0);
+    print(vs)
+    vs.sort((a, b) => (a[1] - b[1] || (b[2] - a[2]) || (a[0] - b[0])));
+    var res = [],
+        x = Infinity;
+    vs.forEach((p) => {
+        if (x != p[1]) {
+            x = p[1];
+            res.push([]);
+        }
+        last(res).push(p[0]);
+    })
+    return res;
 };
+
+arr = [1, 2, 3, 4, 5, 6, 7]
+arr = [0, 5, 1, 9, null, 2, null, null, null, null, 3, 4, 8, 6, null, null, null, 7]
+// var r = growTreeFromList([0,5,1,9,null,2,null,null,null,null,3,4,8,6,null,null,null,7])
+// var r = growTreeFromList([3,9,20,null,null,15,7])
+r = growTreeFromList(arr)
+print(r)
+print(verticalTraversal(r))

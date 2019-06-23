@@ -282,7 +282,7 @@ def tree_from_list(lis):
         if r is None:
             j += 1
         else:
-            lv = lis[j]
+            lv = list[j]
             r.left = TreeNode(lv) if lv else None
             st.append(r.left)
 
