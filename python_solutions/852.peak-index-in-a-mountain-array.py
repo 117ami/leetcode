@@ -6,9 +6,9 @@
 # https://leetcode.com/problems/peak-index-in-a-mountain-array/description/
 #
 # algorithms
-# Easy (68.19%)
-# Total Accepted:    52K
-# Total Submissions: 75.8K
+# Easy (69.71%)
+# Total Accepted:    79.4K
+# Total Submissions: 113.8K
 # Testcase Example:  '[0,1,0]'
 #
 # Let's call an array A a mountain if the following properties hold:
@@ -49,16 +49,17 @@
 
 
 class Solution:
-    def peakIndexInMountainArray(self, A):
-        """
-        :type A: List[int]
-        :rtype: int
-        """
-        # return A.index(max(A))
-        for i in range(1, len(A)-1):
-        	if A[i] > A[i-1] and A[i] > A[i+1]:
-        		return i
+    def peakIndexInMountainArray(self, a):
+        l, r = 0, len(a) - 1
+        while l < r:
+            m = (l + r) // 2
+            if a[m] < a[m + 1]:
+                l = m + 1
+            else:
+                r = m
+        return l
 
 
-# A = [0, 0, 1, 2, 1, 0]
-# print(Solution().peakIndexInMountainArray(A))
+s = Solution()
+a = [0, 2, 1, 0]
+print(s.peakIndexInMountainArray(a))
