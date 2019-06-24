@@ -1,15 +1,13 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "987.vertical-order-traversal-of-a-binary-tree.cpp"
+#include "1094.car-pooling.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi arr ={3,9,20,INT_MIN,INT_MIN,15,7};
-	arr = {1,2,3,4,5,6,7};
-	TreeNode* r = growTreeFromList(arr);
-	vvi res = s.verticalTraversal(r);
-	say(res);
+	vvi trips = {{3,2,7},{3,7,9},{8,3,9}}; 
+	int capacity = 10; 
+	say(s.carPooling(trips, capacity));
 	return 0;
 }
 
