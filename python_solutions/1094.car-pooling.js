@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -279,7 +279,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -385,5 +387,22 @@ class Counter {
  * @return {boolean}
  */
 var carPooling = function(trips, capacity) {
-    
+    var stops = list(1001, 0);
+    for (let i = 0; i < len(trips); i++) {
+        stops[trips[i][1]] += trips[i][0];
+        stops[trips[i][2]] -= trips[i][0];
+    }
+    for (let i = 0; i < 1001; i++) {
+        capacity -= stops[i];
+        if (capacity < 0) return false;
+    }
+    return true;
 };
+
+var trips = [
+        [3, 2, 7],
+        [3, 7, 9],
+        [8, 3, 9]
+    ],
+    capacity = 10;
+say(carPooling(trips, capacity));
