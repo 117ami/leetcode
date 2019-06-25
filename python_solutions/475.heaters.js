@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -279,7 +279,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -363,6 +365,25 @@ class Counter {
  * @param {number[]} heaters
  * @return {number}
  */
+var inf = Infinity;
+
 var findRadius = function(houses, heaters) {
-    
+    var i = 0,
+        res = 0;
+    houses = sorted(houses);
+    heaters = sorted(heaters);
+    heaters.push(inf);
+    say(houses);
+    say(heaters)
+    for (var h of houses) {
+        while (i < len(heaters) && h > heaters[i]) i += 1;
+        if (i == 0) res = pairmax(res, Math.abs(heaters[i] - h));
+        else res = pairmax(res, pairmin(Math.abs(heaters[i] - h), Math.abs(heaters[i - 1] - h)));
+    }
+    return res;
 };
+
+
+var houses = [474833169,264817709,998097157,817129560], 
+heaters = [197493099,404280278,893351816,505795335]; 
+say(findRadius(houses, heaters))

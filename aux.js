@@ -178,6 +178,8 @@ var directions = [
     [1, 1]
 ]
 
+var inf = Infinity;
+
 var last = function(arr) {
     return arr[len(arr) - 1];
 }
