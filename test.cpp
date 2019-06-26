@@ -1,12 +1,13 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "475.heaters.cpp"
+#include "744.find-smallest-letter-greater-than-target.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi houses = {1,2,3}, heaters={2};
-	say(s.findRadius(houses, heaters));
+	vc letters{'c', 'f', 'k'}; 
+	char target = 'k';
+	say(s.nextGreatestLetter(letters, target));
 	return 0;
 }
 

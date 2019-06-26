@@ -379,3 +379,18 @@ TreeNode* growTreeFromList(vector<int> &arr) {
   return root;
 }
 
+
+// Find the index of the first number in sorted nums, that is larger than target
+int bisect_right(vector<int> & nums, int target) {
+  int i = 0, j = nums.size() - 1, mid = 0;
+    while (i < j) {
+        mid = ceil((i + j) * 1.0 / 2);
+        if (nums[mid] > target)
+            j = mid - 1;
+        else
+            i = mid;
+    }
+    return nums[j] > target ? j : j + 1;
+}
+
+
