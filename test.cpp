@@ -1,13 +1,12 @@
 
 #include "aux.cpp"
 #include "c.cpp"
-#include "378.kth-smallest-element-in-a-sorted-matrix.cpp"
+#include "719.find-k-th-smallest-pair-distance.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vvi matrix = {{1,5,9},{10,11,13},{12,13,15}}; 
-	int k = 7; 
-	say(s.kthSmallest(matrix, k));
+	vi nums ={1,3,1}; int k = 1;
+	say(s.smallestDistancePair(nums, k));
 	return 0;
 }
 

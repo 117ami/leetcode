@@ -16,38 +16,36 @@
 # 1 <= k <= len(nums) * (len(nums) - 1) / 2.
 #
 #  https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/
-require './aux.rb'
 
 # @param {Integer[]} nums
 # @param {Integer} k
 # @return {Integer}
 def smallest_distance_pair(nums, k)
   nums.sort!
-  low = -1
-  high = nums.last - nums.first
-  while low < high
-    mi = (low + high) / 2
-    if coutpairs(nums, mi) < k
-      low = mi + 1
+  lo = 0
+  hi = nums.last - nums.first
+  sz = nums.size
+  while lo < hi
+    cter = 0
+    mid = (lo + hi) / 2
+    i = j = 0
+    while i < sz
+      j += 1 while j < sz && nums[j] - nums[i] <= mid
+      cter += j - 1 - i
+      i += 1
+    end
+
+    if cter < k
+      lo = mid + 1
     else
-      high = mi
+      hi = mid
     end
   end
-  low
+  lo
 end
 
-def coutpairs(nums, mi)
-  res = 0
-  0.upto(nums.size - 2).each do |i|
-    next if nums[i + 1] - nums[i] > mi
-    j = i + 1
-    j = (i + 1..nums.size - 1).bsearch { |k| nums[k] - nums[i] > mi } || nums.size
-    res += j - i - 1
-  end
-  res
-end
-
-nums = random_list(10, 100)
-nums.sort!
-p nums
-p smallest_distance_pair(nums, 9)
+# require './aux.rb'
+# nums = random_list(10, 100)
+# nums.sort!
+# p nums
+# p smallest_distance_pair(nums, 9)
