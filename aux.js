@@ -299,3 +299,5 @@ class Counter {
     }
 }
 
+
+var div = function(n, k) { return floor(n / k); }
