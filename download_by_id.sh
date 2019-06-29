@@ -19,9 +19,9 @@ cat aux.js > tmpjs
 cat $js_file >> tmpjs
 mv tmpjs $js_file
 
-# cat aux.rb > tmprb
-# cat $ruby_file >> tmprb
-# mv tmprb $ruby_file
+cat c.cpp > tmpcpp
+cat $cpp_file >> tmpcpp
+mv tmpcpp $cpp_file
 
 
 echo -e "\n\n
@@ -36,7 +36,6 @@ static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0;
 
 echo "
 #include \"aux.cpp\"
-#include \"c.cpp\"
 #include \"$cpp_file\"
 
 int main(int argc, char const *argv[]) {

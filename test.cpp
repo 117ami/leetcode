@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "c.cpp"
-#include "862.shortest-subarray-with-sum-at-least-k.cpp"
+#include "718.maximum-length-of-repeated-subarray.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
+	vi a {1,2,3,2,1}, b{3,2,1,4,7};
+	say(s.findLength(a, b));
 	return 0;
 }
 

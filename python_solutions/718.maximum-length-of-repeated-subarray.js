@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,10 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }/*
+var div = function(n, k) {
+    return floor(n / k);
+}
+/*
  * @lc app=leetcode id=718 lang=javascript
  *
  * [718] Maximum Length of Repeated Subarray
@@ -345,5 +350,15 @@ var div = function(n, k) { return floor(n / k); }/*
  * @return {number}
  */
 var findLength = function(A, B) {
-    
+    let m = len(A),
+        n = len(B),
+        res = 0;
+    var dp = two_d_array(m + 1, n + 1, 0);
+    for (let i = 0; i < m; i++)
+        for (let j = 0; j < m; j++)
+            if (A[i] == B[j]) {
+                dp[i + 1][j + 1] = 1 + dp[i][j];
+                res = pairmax(res, dp[i + 1][j + 1]);
+            }
+    return res;
 };
