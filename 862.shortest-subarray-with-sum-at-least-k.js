@@ -299,51 +299,73 @@ class Counter {
     }
 }
 
-/*
- * @lc app=leetcode id=719 lang=javascript
+
+var div = function(n, k) { return floor(n / k); }/*
+ * @lc app=leetcode id=862 lang=javascript
  *
- * [719] Find K-th Smallest Pair Distance
+ * [862] Shortest Subarray with Sum at Least K
  *
- * https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/
+ * https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/
  *
  * algorithms
- * Hard (29.26%)
- * Total Accepted:    20.2K
- * Total Submissions: 69.1K
- * Testcase Example:  '[1,3,1]\n1'
+ * Hard (22.15%)
+ * Total Accepted:    13.1K
+ * Total Submissions: 59.3K
+ * Testcase Example:  '[1]\n1'
  *
- * Given an integer array, return the k-th smallest distance among all the
- * pairs. The distance of a pair (A, B) is defined as the absolute difference
- * between A and B. 
+ * Return the length of the shortest, non-empty, contiguous subarray of A with
+ * sum at least K.
+ * 
+ * If there is no non-empty subarray with sum at least K, return -1.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * 
  * Example 1:
  * 
- * Input:
- * nums = [1,3,1]
- * k = 1
- * Output: 0 
- * Explanation:
- * Here are all the pairs:
- * (1,3) -> 2
- * (1,1) -> 0
- * (3,1) -> 2
- * Then the 1st smallest distance pair is (1,1), and its distance is 0.
+ * 
+ * Input: A = [1], K = 1
+ * Output: 1
+ * 
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: A = [1,2], K = 4
+ * Output: -1
+ * 
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: A = [2,-1,2], K = 3
+ * Output: 3
+ * 
  * 
  * 
  * 
  * Note:
  * 
- * 2 .
- * 0 .
- * 1 .
+ * 
+ * 1 <= A.length <= 50000
+ * -10 ^ 5 <= A[i] <= 10 ^ 5
+ * 1 <= K <= 10 ^ 9
+ * 
+ * 
+ * 
  * 
  * 
  */
 /**
- * @param {number[]} nums
- * @param {number} k
+ * @param {number[]} A
+ * @param {number} K
  * @return {number}
  */
-var smallestDistancePair = function(nums, k) {
+var shortestSubarray = function(A, K) {
     
 };
