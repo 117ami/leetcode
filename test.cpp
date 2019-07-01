@@ -1,10 +1,10 @@
 
 #include "aux.cpp"
-#include "1103.distribute-candies-to-people.cpp"
+#include "1104.path-in-zigzag-labelled-binary-tree.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.distributeCandies(10,3));
+	say(s.pathInZigZagTree(14));
 	return 0;
 }
 
