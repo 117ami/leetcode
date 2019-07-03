@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,10 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }/*
+var div = function(n, k) {
+    return floor(n / k);
+}
+/*
  * @lc app=leetcode id=1106 lang=javascript
  *
  * [1106] Parsing A Boolean Expression
@@ -372,6 +377,55 @@ var div = function(n, k) { return floor(n / k); }/*
  * @param {string} expression
  * @return {boolean}
  */
-var parseBoolExpr = function(expression) {
-    
+
+var i = 0;
+var p = function(e) {
+    if (e[i] == 't') {
+        i += 1;
+        return true;
+    } else if (e[i] == 'f') {
+        i += 1;
+        return false;
+    } else if (e[i] == '!') return p_not(e);
+    else if (e[i] == '&') return p_and(e);
+    else return p_or(e);
 };
+
+var p_not = function(e) {
+    i += 2;
+    let r = p(e);
+    i += 1;
+    return !r;
+};
+
+var p_and = function(e) {
+    i += 2;
+    let r = p(e);
+    while (e[i] != ')') {
+        i += 1;
+        r &= p(e);
+    }
+    i += 1;
+    return r;
+};
+
+var p_or = function(e) {
+    i += 2;
+    let r = p(e);
+    while (e[i] != ')') {
+        i += 1;
+        r |= p(e);
+    }
+    i += 1;
+    return r;
+};
+
+var parseBoolExpr = function(e) {
+    return p(e);
+};
+
+
+var expr = "|(&(t,f,t),!(f))";
+expr = "!(f)";
+// expr = "&(t,f)"
+print(parseBoolExpr(expr))

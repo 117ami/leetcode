@@ -464,11 +464,56 @@ int bisect_right(vector<int> & nums, int target) {
  */
 class Solution {
 public:
-    bool parseBoolExpr(string expression) {
-        
+    bool p(string &e, int &i){
+      if (e[i] == 't'){
+        i ++;
+        return true;
+      } else if (e[i] == 'f') {
+        i ++;
+        return false;
+      } else if (e[i] == '!'){
+        return p_not(e, i); 
+      } else if (e[i] == '&') {
+        return p_and(e, i); 
+      } else {
+        return p_or(e, i);
+      }
+    }
+
+    bool p_not(string &e, int &i){
+      i += 2;
+      bool r = p(e, i);
+      i ++; 
+      return !r; 
+    }
+
+    bool p_and(string &e, int &i){
+      i += 2;
+      bool r = p(e, i);
+      while (e[i] != ')'){
+        i ++;
+        r &= p(e, i);
+      }
+      i ++;
+      return r;
+    }
+
+    bool p_or(string &e, int &i){
+      i += 2;
+      bool r = p(e, i);
+      while (e[i] != ')'){
+        i ++;
+        r |= p(e, i);
+      }
+      i ++;
+      return r;
+    }
+
+    bool parseBoolExpr(string e) {
+        int i = 0; 
+        return p(e, i);
     }
 };
-
 
 
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
