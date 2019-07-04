@@ -1,0 +1,13 @@
+Leetcode 
+
+========
+
+### Leetcode Solutions 
+
+Python solutions to Leetcode problems in Python3, inspired by [Haoel(CPP solutions)](https://github.com/haoel/leetcode). 
+An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode problems can be found [here](./solutions/). 
+
+(Note: the symbols 𝐇, 𝐌, 𝐄 after each ID imply the difficulties: Hard, Medium, Easy)
+
+| #    | Title | Talk is cheap. Show me the code. | 
+| :---- | :----- | :------- | 

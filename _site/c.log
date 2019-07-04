@@ -1,0 +1,291 @@
+* Sun 12/30/18/13:15:56: [minor-revise] rewrite daily_submit.py, better not rely on extra daemon script
+* Sun 12/30/18/19:49:43: [Easy] p914 solved
+* Sun 12/30/18/20:13:00: [Easy] p342 solved
+* Sun 12/30/18/20:16:00: [trival] no comment necessary
+* Mon 12/31/18/08:37:42: [Easy] p55 solved
+* Mon 12/31/18/09:10:53: [Easy] p21 solved
+* Mon 12/31/18/09:12:56: [Easy] p344 ruby solution added
+* Mon 12/31/18/09:19:01: [minor-revise] p345, 463, 541, 659, 779 ruby solution added
+* Mon 12/31/18/09:23:01: [file-rename] fix a file-rename error that previous rename 541.py to 541.rb
+* Mon 12/31/18/09:38:52: [trivial] contact img changed
+* Tue 01/01/19/07:06:32: [Easy] p110 solved
+* Tue 01/01/19/07:12:49: [Easy] p104 solved
+* Tue 01/01/19/07:35:26: [Easy] p111 solved
+* Wed 01/02/19/08:40:47: e384, m855, e171 solved
+* Thu 01/03/19/06:02:58: [Easy] p965 solved
+* Thu 01/03/19/06:56:16: [Medium] p966 solved
+* Fri 01/04/19/06:31:36: [Medium] p967 solved
+* Fri 01/04/19/07:21:14: [Easy] p235 solved
+* Sat 01/05/19/06:53:03: [Hard] p765 solved
+* Sat 01/05/19/07:03:26: [Easy] p1 solved
+* Sun 01/06/19/07:50:27: [Easy 112] solved
+* Mon 01/07/19/10:41:53: [Medium] p524 solved
+* Mon 01/07/19/10:51:44: [Easy] p26 solved
+* Tue 01/08/19/07:39:55: [Medium] p392 solved
+* Tue 01/08/19/07:56:12: [Medium] p792 solved
+* Tue 01/08/19/09:30:59: [Medium] p954 solved
+* Wed 01/09/19/07:23:12: [Medium] p324 solved
+* Wed 01/09/19/07:50:06: [Easy] p970 solved
+* Thu 01/10/19/08:24:08: [Medium] p380 solved
+* Thu 01/10/19/08:38:02: [Easy] p459 solved
+* Thu 01/10/19/08:51:52: [Easy] p28 solved
+* Fri 01/11/19/18:18:09: [Easy] p728 self dividing numbers solved
+* Fri 01/11/19/18:51:12: [Easy] p507 solved
+* Sat 01/12/19/07:55:27: [Easy] p100 solved
+* Sun 01/13/19/09:26:39: [Medium] p470 solved
+* Sun 01/13/19/10:34:30: [Medium] p519 solved
+* Mon 01/14/19/10:47:53: [Hard] p381 solved
+* Wed 01/16/19/08:13:48: [Hard] p315 solved
+* Thu 01/17/19/08:05:10: [Hard] p381 ruby solution added
+* Thu 01/17/19/08:33:14: [Easy] p172 solved
+* Thu 01/17/19/09:20:48: [Medium] p153 solved
+* Fri 01/18/19/08:11:21: [Easy] p7 solved
+* Fri 01/18/19/08:32:49: [Easy] p485 solved
+* Fri 01/18/19/08:52:35: [Easy] p771 solved
+* Sat 01/19/19/09:15:19: [Easy] p938 solved
+* Sat 01/19/19/09:30:02: [Medium] p807 solved
+* Mon 01/21/19/07:53:17: [Easy] p747 solved
+* Mon 01/21/19/08:25:03: [Easy] p905 solved
+* Mon 01/21/19/09:03:46: [Medium] p40 solved
+* Mon 01/21/19/09:18:58: [Easy] p717 solved
+* Tue 01/22/19/08:26:36: [Easy] p929 solved
+* Tue 01/22/19/08:57:52: [Easy] p387 solved
+* Wed 01/23/19/07:58:20: [Easy] p709 solved
+* Wed 01/23/19/09:00:36: [Easy] p788 solved
+* Thu 01/24/19/11:14:25: [Medium] p535 solved
+* Thu 01/24/19/11:36:47: [Easy] p884 solved
+* Sat 01/26/19/07:26:32: 852
+* Sat 01/26/19/07:36:17: [Easy] p852 solved
+* Sat 01/26/19/07:57:07: [Medium] p162 solved
+* Sat 01/26/19/08:04:46: [Easy] p268 solved
+* Sun 01/27/19/11:28:25: [Easy] p561 solved
+* Sun 01/27/19/11:41:51: [Medium] p216 solved
+* Sun 01/27/19/14:08:18: [Medium] p845 solved
+* Tue 01/29/19/11:53:51: [Easy] p219 solved
+* Tue 01/29/19/11:57:13: [Easy] p217 solved
+* Tue 01/29/19/14:32:58: [Medium] p220 solved
+* Tue 01/29/19/14:58:05: [Easy] p530 solved
+* Wed 01/30/19/13:00:08: [Hard] p316 solved
+* Wed 01/30/19/13:21:11: [Easy] p984 solved
+* Wed 01/30/19/13:21:36: [Easy] p984 solved
+* Wed 01/30/19/14:46:36: [Easy] p976 solved
+* Tue 03/19/19/10:00:55: [Easy] p1013 solved
+* Tue 03/19/19/11:11:43: [Easy] p1012 solved
+* Wed 03/20/19/09:29:02: [Easy] p1008 solved
+* Wed 03/20/19/12:27:32: [Medium] 1007 solved
+* Thu 03/21/19/20:39:15: [medium] p1006 solved
+* Thu 03/21/19/21:06:48: [Easy] p1005 solved
+* Sun 03/24/19/11:06:58: [Medium] p1004 solved
+* Sun 03/24/19/11:39:19: [Medium] p1003 solved
+* Mon 03/25/19/23:30:19: [Medium] p1023 solved
+* Tue 03/26/19/09:04:11: [Easy] p1020 solved
+* Tue 03/26/19/10:00:53: [Medium] p1004 solved
+* Tue 03/26/19/10:03:20: [Medium] p1004 solved
+* Tue 03/26/19/10:04:10: [Medium] p1004 solved
+* Wed 03/27/19/14:55:35: [Medium] p1021 solved
+* Wed 03/27/19/15:32:15: [Medium] p1022 solved
+* Wed 03/27/19/16:49:59: [Easy] p1002 solved
+* Thu 03/28/19/15:24:51: [Hard] p1015 solved
+* Thu 03/28/19/20:05:47: [Easy] p999 solved
+* Fri 03/29/19/22:35:36: [Medium] p654 solved
+* Sat 03/30/19/20:54:59: [Easy] p997 solved
+* Sat 03/30/19/21:46:55: [Medium] p998 solved
+* Sun 03/31/19/12:51:10: [aux.rb] add toBase method
+* Sun 03/31/19/15:33:09: [Easy] p994 solved
+* Sun 03/31/19/15:54:25: [Easy] p993 solved
+* Tue 04/02/19/09:44:51: [Medium] p319 solved
+* Tue 04/02/19/11:22:56: [Hard] p995 solved
+* Tue 04/02/19/11:24:27: [auto_log] add cpp solutions
+* Fri 04/05/19/09:39:46: [Easy] p989 solved
+* Fri 04/05/19/10:41:50: [Easy] p985 solved
+* Sat 04/06/19/10:13:50: [Medium] p973 solved
+* Sat 04/06/19/13:18:34: [Hard] p996 solved
+* Sat 04/06/19/15:04:03: [Hard] p996 solved
+* Sun 04/07/19/08:59:08: [Hard] p996 update 996 Python solution
+* Sun 04/07/19/10:03:45: [Medium] p3 solved
+* Sun 04/07/19/23:40:12: [1024 Medium] ruby/python [2/100] passed
+* Mon 04/08/19/11:47:13: [Medium] p1024 [28/200] passed
+* Mon 04/08/19/21:50:32: [Medium] p1024 [27/200] passed
+* Tue 04/09/19/10:59:30: [Easy] p198 solved
+* Tue 04/09/19/11:57:58: [Medium] p1024 solved
+* Tue 04/09/19/14:26:07: [Easy] p925 solved
+* Wed 04/10/19/09:16:40: [Easy] p917 solved
+* Wed 04/10/19/21:32:47: [Medium] p787 solved
+* Thu 04/11/19/18:31:22: [Medium] 787 solved
+* Thu 04/11/19/19:01:29: [Easy] p867 solved
+* Fri 04/12/19/09:06:16: [Medium] p34 solved
+* Fri 04/12/19/09:31:34: [Medium] p714 solved
+* Fri 04/12/19/18:09:24: [Easy] p34 solved
+* Sat 04/13/19/09:00:45: [Easy] p896 solved
+* Tue 04/16/19/18:47:21: 1025 solved
+* Tue 04/16/19/20:48:00: [Medium] p1026 solved
+* Fri 04/19/19/14:52:35: [Medium] p1027 solved
+* Mon 04/22/19/09:51:45: [Easy] p1030 solved
+* Mon 04/22/19/11:26:20: [Easy] p1029 solved
+* Tue 04/23/19/09:15:11: [Medium] p1031 sovled
+* Tue 04/23/19/10:09:24: [Hard] 1032 sovled
+* Wed 04/24/19/20:31:23: [Easy] p144 solved
+* Wed 04/24/19/20:44:55: [Easy] p589 solved
+* Thu 04/25/19/21:52:30: [Medium] p991 solved
+* Thu 04/25/19/22:18:11: [Medium] p869 solved
+* Fri 04/26/19/11:27:37: [Hard] 968 solved
+* Fri 04/26/19/17:02:10: [Medium] p979 solved
+* Sun 04/28/19/20:04:32: [Easy] p1033 solved
+* Mon 04/29/19/07:13:40: [Medium] 1035 solved
+* Mon 04/29/19/13:47:18: [Medium] simplify solution 1035
+* Mon 04/29/19/21:02:34: [Medium] p930 solved
+* Mon 04/29/19/21:25:32: 983
+* Tue 04/30/19/18:50:47: [Medium] p142 solved
+* Tue 04/30/19/19:10:05: [Medium] p287 done
+* Wed 05/01/19/18:00:00: [Medium] p287 solved
+* Wed 05/01/19/19:28:47: [Hard] p41 solved
+* Thu 05/02/19/08:02:35: [Medium] 856 solved
+* Thu 05/02/19/09:41:56: [Medium] p856 solved
+* Thu 05/02/19/10:49:58: [Easy] p125 solved
+* Thu 05/02/19/12:08:11: [Medium] p 173 solved
+* Fri 05/03/19/13:03:52: [Medium] p273 solved
+* Fri 05/03/19/13:49:20: [Medium] p486 solved
+* Sat 05/04/19/21:22:42: [Medium] 486 sovled
+* Sat 05/04/19/21:32:41: [Easy] p292 solved
+* Sat 05/04/19/21:56:32: [Medium] 877 solved
+* Sun 05/05/19/10:05:57: [Medium] p877 solved
+* Sun 05/05/19/13:02:27: [Medium] p56 solved
+* Mon 05/06/19/16:12:45: [Medium] p435 solved
+* Tue 05/07/19/16:22:57: [Medium] p452 solved
+* Wed 05/08/19/18:52:54: add cpp/js solutions for 1.two.sum
+* Thu 05/09/19/13:14:52: 939 56 solved
+* Fri 05/10/19/16:10:41: Medium p56 solved
+* Fri 05/10/19/19:42:54: [Medium] p5 solved
+* Fri 05/10/19/20:22:11: [Medium] p5 solution updated
+* Sat 05/11/19/21:30:00: [Medium] p5 done
+* Sat 05/11/19/21:51:32: [Easy] p448 cpp/python solution added
+* Sat 05/11/19/22:09:51: [Easy] p922 python/cpp solutions added
+* Sun 05/12/19/13:12:07: [Easy] p448 ruby/js solutions added
+* Sun 05/12/19/13:16:21: [Easy] p922 ruby/js solution added
+* Sun 05/12/19/14:32:49: [Medium] p153 cpp solution added
+* Sun 05/12/19/15:41:04: [Medium] p516 cpp solution added
+* Mon 05/13/19/16:39:11: [Medium] p516 js solution added
+* Mon 05/13/19/16:44:42: [Easy] p153 js solution solved
+* Mon 05/13/19/16:50:00: [Medium] p154 ruby solution solved
+* Mon 05/13/19/17:40:28: [Easy] p687 cpp/py solved
+* Mon 05/13/19/18:15:46: [Easy] p866 cpp/ruby solution added
+* Tue 05/14/19/15:19:50: [Medium] p154 js solution added
+* Tue 05/14/19/15:45:17: [Easy] p687 ruby solution added
+* Tue 05/14/19/15:58:39: [Easy] p860 js/python solutions added
+* Tue 05/14/19/17:10:40: [Medium] p398 ruby /cpp solution added
+* Tue 05/14/19/19:52:56: [Medium] p398 ruby /cpp solution added
+* Wed 05/15/19/21:06:33: [Easy] p398 js/python solved
+* Thu 05/16/19/17:08:58: [Medium] p299 ruby/python3 solutions added
+* Thu 05/16/19/22:13:06: [Hard] p224 python/ruby solutions added
+* Fri 05/17/19/09:48:49: [Medium] p299 cpp/js solutions added
+* Fri 05/17/19/13:31:22: [Easy] p371 ruby/python solutions added
+* Fri 05/17/19/13:57:06: [Easy] p191 ruby/cpp/js solutions added
+* Fri 05/17/19/19:20:57: [Hard] p224 js solution added
+* Sat 05/18/19/13:26:53: [Hard] p224 cpp solution added
+* Sat 05/18/19/13:56:36: [Hard] p371 cpp/js solutions added
+* Sat 05/18/19/15:23:23: [Medium] p898 cpp/ruby/python solutions added
+* Mon 05/20/19/15:58:11: [Hard] p312 cpp/ruby solutions added
+* Mon 05/20/19/16:43:38: [Easy] p824 ruby solution added
+* Tue 05/21/19/14:42:18: [Easy] p824 cpp/python/js solutions added
+* Tue 05/21/19/17:39:06: [Easy] p1047 cpp/ruby/js/python solutions added
+* Tue 05/21/19/17:48:20: [Easy] p1046 ruby solution added
+* Wed 05/22/19/11:11:51: [Easy] p1046 cpp/js solutions added
+* Wed 05/22/19/12:51:11: [Easy] p1046 python solution added
+* Wed 05/22/19/16:07:57: [Easy] p1042 cpp/ruby/python/js solutions added
+* Fri 05/24/19/15:29:07: [Medium] p1048 cpp/js/ruby/python solutions added
+* Fri 05/24/19/20:46:28: [Medium] p1043 cpp/python solutions added
+* Sat 05/25/19/10:20:12: [Easy] p1041 cpp/ruby solutions added
+* Sat 05/25/19/10:52:23: [Medium] p312 solution added
+* Sat 05/25/19/10:58:22: [Easy] p1041 js/python solutions added
+* Mon 05/27/19/08:29:59: [Easy] p1051 cpp/ruby/python/js solutions added
+* Mon 05/27/19/14:18:21: [Medium] 1052 python/ruby/cpp/js solutions added
+* Mon 05/27/19/14:20:35: ddd
+* Mon 05/27/19/14:23:28: ddd
+* Mon 05/27/19/14:23:58: ddd
+* Mon 05/27/19/14:24:12: [Medium] 1052 python/ruby/cpp/js solutions added
+* Mon 05/27/19/19:16:30: cpp lib added
+* Tue 05/28/19/10:17:15: Medium p1054 cpp/js/ruby/python solutions added
+* Tue 05/28/19/22:29:48: [Medium] p1049 ruby solution added
+* Tue 05/28/19/23:31:40: p1049 cpp solution added
+* Wed 05/29/19/16:03:12: p1049 python solution added
+* Wed 05/29/19/17:59:31: p494 python, p416 cpp solution added
+* Thu 05/30/19/10:04:11: p494 cpp solution added
+* Thu 05/30/19/10:09:08: p494 cpp solution added
+* Thu 05/30/19/12:40:45: p494 js/ruby solutions added
+* Thu 05/30/19/20:02:53: [Hard] p330 cpp/ruby solutions added
+* Thu 05/30/19/20:54:58: [Medium] p767 cpp/ruby solutions added
+* Thu 05/30/19/23:16:53: add makeup script to make up alias to cpp file
+* Thu 05/30/19/23:23:26: bug fixed in makeup.sh
+* Fri 05/31/19/16:09:41: p767 python/js solutions added
+* Fri 05/31/19/16:52:19: [Easy] p20 python/js/cpp/ruby solutions added
+* Fri 05/31/19/17:11:33: [Hard] p145 cpp/ruby solutions added
+* Sat 06/01/19/10:59:41: p330 python/js solutions added
+* Sat 06/01/19/11:21:47: [Easy] p836 python/cpp/ruby/js solutions added
+* Sat 06/01/19/11:38:42: [Easy] p258 cpp/js/ruby/python solutions added
+* Sun 06/02/19/10:08:14: [medium] p215 js/cpp solutions added
+* Mon 06/03/19/10:43:26: p416 python/ruby solutions added
+* Mon 06/03/19/12:20:40: [Easy] p1071 cpp/ruby solution added
+* Mon 06/03/19/14:26:48: [Hard] p1074 cpp solution added
+* Tue 06/04/19/11:55:38: [Hard] p1074 ruby/python/cpp solutions added
+* Tue 06/04/19/16:37:02: p1071 python/js solutions added
+* Tue 06/04/19/16:55:22: p145 js/python solutions added
+* Tue 06/04/19/17:30:22: p1049 js solution added
+* Tue 06/04/19/18:53:03: [Hard] p97 cpp/ruby solutions added
+* Wed 06/05/19/00:33:12: [Medium] p152 python/ruby/js/cpp solutions added
+* Thu 06/06/19/11:29:23: p97 python/js solutions added
+* Thu 06/06/19/13:41:28: p1072 cpp/ruby solution added
+* Thu 06/06/19/14:32:26: p981 cpp/ruby solution added
+* Thu 06/06/19/15:40:36: p151 ruby/cpp solutions added
+* Thu 06/06/19/18:09:57: p151 python/js solution added
+* Sat 06/08/19/12:25:11: p981 js/python solution added
+* Sun 06/09/19/09:45:36: p1072 python/js solutions added
+* Sun 06/09/19/11:30:55: [Medium] p886 cpp/ruby solutions added
+* Sun 06/09/19/12:07:21: [Medium] p129 cpp/ruby solutions added
+* Sun 06/09/19/19:30:25: p886 js/python solutions added
+* Sun 06/09/19/19:43:11: [Easy] p5083 cpp/ruby/js/python solutions added
+* Sun 06/09/19/20:33:23: [Medium] p5087 cpp/ruby/js/python solutions added
+* Mon 06/10/19/08:07:57: p129 js/python solution added
+* Mon 06/10/19/11:53:43: [Medium] p5086 cpp/ruby solutions added
+* Mon 06/10/19/12:10:50: p316 cpp/js solutions added
+* Mon 06/10/19/13:56:16: p336 cpp/ruby solution added
+* Tue 06/11/19/11:49:24: p336 python solution added
+* Tue 06/11/19/13:01:06: [Easy] p949 cpp/ruby solutions added
+* Wed 06/12/19/11:53:25: [Easy] p263 solved
+* Wed 06/12/19/13:13:29: [Medium] p264 cpp/ruby p313 cpp solutions added
+* Thu 06/13/19/18:46:58: p949 js/python solutions added
+* Fri 06/14/19/20:09:06: p264 js/python solutions added
+* Fri 06/14/19/20:31:35: p5086 python solution added
+* Mon 06/17/19/11:04:56: p5086 js solution added
+* Mon 06/17/19/11:40:36: [Easy] p1089 ruby /cpp solutions added
+* Mon 06/17/19/12:30:55: [Medium] p1090 ruby/cpp solutions added
+* Mon 06/17/19/13:21:00: [Medium] p1091 py/cpp solutions added
+* Mon 06/17/19/14:33:52: [Hard] p1092 cpp solution added
+* Mon 06/17/19/14:55:38: p1092 js solution added
+* Mon 06/17/19/17:10:22: p1092 python solution added
+* Tue 06/18/19/08:26:50: implemented next_permutation in python
+* Wed 06/19/19/12:03:48: p1089 js/py solutions added
+* Wed 06/19/19/12:42:28: p1090 js/py solutions added
+* Wed 06/19/19/13:28:13: p1092 ruby solution added
+* Thu 06/20/19/12:25:19: p1091 js solution added
+* Thu 06/20/19/13:01:26: [Easy] p429 js/cpp/py3 solutions added
+* Thu 06/20/19/14:55:25: [Medium] p863 cpp/py solutions added
+* Fri 06/21/19/13:47:51: p863 js solution added
+* Sat 06/22/19/10:59:57: [Medium] p236 js/cpp/py solutions added
+* Sat 06/22/19/13:44:55: [Medium] p987 cpp/py solutions added
+* Sun 06/23/19/14:56:08: p987 js solution added
+* Mon 06/24/19/10:01:34: [medium] p1094 cpp/py solutions added
+* Mon 06/24/19/10:19:35: p1094 js solution added
+* Mon 06/24/19/15:30:00: [Easy] p852 cpp/js/py solutions added
+* Tue 06/25/19/15:22:34: p475 cpp/js solutions added
+* Tue 06/25/19/16:42:41: p475 js solution added
+* Wed 06/26/19/15:22:17: [Easy] p744 cpp/js/py solutions added
+* Thu 06/27/19/13:02:57: p378 py/cpp solutions added
+* Thu 06/27/19/13:34:01: [Hard] p719 cpp solution added
+* Fri 06/28/19/10:46:22: p719 py solution added
+* Fri 06/28/19/11:43:35: p378 js solution added
+* Sat 06/29/19/22:44:55: p719 js solution added
+* Sat 06/29/19/23:15:24: p718 js/cpp solutions added
+* Mon 07/01/19/08:06:21: [Easy] p1103 js/cpp/py solutions added
+* Mon 07/01/19/08:48:11: p1104 js/cpp/py solutions added
+* Wed 07/03/19/00:25:29: [Hard] p1106 python solution added
+* Wed 07/03/19/21:37:13: p1106 js/cpp solutions added
