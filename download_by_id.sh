@@ -23,6 +23,9 @@ cat c.cpp > tmpcpp
 cat $cpp_file >> tmpcpp
 mv tmpcpp $cpp_file
 
+cat aux.cpp > tmppy
+cat $python_file >> tmppy
+mv tmppy $python_file
 
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file
