@@ -297,3 +297,21 @@ def tree_from_list(lis):
 
     return root
 
+def arr2linkedlist(arr):
+    if len(arr) == 0:
+        return
+    head = ListNode(arr[0])
+    tail = head
+    for i in arr[1:]:
+        tail.next = ListNode(i)
+        tail = tail.next
+    return head
+
+
+def linkedlist2arr(head):
+    ans = []
+    while head:
+        ans.append(head.val)
+        head = head.next
+    return ans
+

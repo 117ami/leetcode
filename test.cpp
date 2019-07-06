@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "986.interval-list-intersections.cpp"
+#include "206.reverse-linked-list.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
