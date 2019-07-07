@@ -1,6 +1,6 @@
 from random import randint
 import random
-import collections
+
 
 class XString(object):
     def is_p(s):
@@ -23,76 +23,78 @@ class XString(object):
         :return the length of longest common substring, e.g, m('1a2b3c4d', 'a5b6c777d88') return 4 (length of 'abcd')
         """
         m, n = len(word1), len(word2)
-        if m == 0 or n == 0: return 0
+        if m == 0 or n == 0:
+            return 0
 
         dp = [0] * n
         res = 0
         for i, a in enumerate(word1):
-        	cur_max = 1
-        	for j, b in enumerate(word2):
-        		aux = dp[j]
-        		if a == b: dp[j] = cur_max
-        		if aux + 1 > cur_max: cur_max = aux + 1
-        		res = max(res, dp[j])
-        return res 
+            cur_max = 1
+            for j, b in enumerate(word2):
+                aux = dp[j]
+                if a == b:
+                    dp[j] = cur_max
+                if aux + 1 > cur_max:
+                    cur_max = aux + 1
+                res = max(res, dp[j])
+        return res
 
     def lcs(self, s, t):
         """ return the longest common substring
         """
         m, n = len(s), len(t)
         dp = [[0] * (n + 1) for _ in range(m + 1)]
-        for i in range(m+1):
-            for j in range(n+1):
+        for i in range(m + 1):
+            for j in range(n + 1):
                 if i == 0 or j == 0:
                     dp[i][j] = 0
-                elif s[i-1] == t[j-1]:
-                    dp[i][j] = dp[i-1][j-1] + 1
+                elif s[i - 1] == t[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
                 else:
-                    dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
 
         i, j, idx = m, n, dp[-1][-1]
         res = ['#'] * idx
 
         while i > 0 and j > 0:
-            if s[i-1] == t[j-1]:
-                res[idx - 1] = s[i-1]
+            if s[i - 1] == t[j - 1]:
+                res[idx - 1] = s[i - 1]
                 idx -= 1
                 i -= 1
                 j -= 1
-            elif dp[i-1][j] > dp[i][j-1]:
+            elif dp[i - 1][j] > dp[i][j - 1]:
                 i -= 1
             else:
                 j -= 1
 
         return ''.join(res)
 
-
     def scs(self, s, t):
         # return shortest common super-sequence
         m, n = len(s), len(t)
         dp = [[0] * (n + 1) for _ in range(m + 1)]
-        for i in range(m+1):
-            for j in range(n+1):
+        for i in range(m + 1):
+            for j in range(n + 1):
                 if i == 0 or j == 0:
                     dp[i][j] = 0
-                elif s[i-1] == t[j-1]:
-                    dp[i][j] = dp[i-1][j-1] + 1
+                elif s[i - 1] == t[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
                 else:
-                    dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
 
         i, j, idx = m, n, m + n - dp[-1][-1]
         res = ['#'] * idx
 
         while i > 0 and j > 0:
-            if s[i-1] == t[j-1]:
-                res[idx - 1], i, j = s[i-1], i - 1, j - 1
-            elif dp[i-1][j] > dp[i][j-1]:
+            if s[i - 1] == t[j - 1]:
+                res[idx - 1], i, j = s[i - 1], i - 1, j - 1
+            elif dp[i - 1][j] > dp[i][j - 1]:
                 res[idx - 1], i = s[i - 1], i - 1
             else:
                 res[idx - 1], j = t[j - 1], j - 1
             idx -= 1
 
-        if j > 0: 
+        if j > 0:
             i, s = j, t
 
         while i > 0:
@@ -107,19 +109,23 @@ def is_substring(s, t):
     it = iter(t)
     return all(c in it for c in s)
 
+
 def is_letter(c):
     return c.isalpha()
+
 
 def isodd(n):
     return n % 2 > 0
 
+
 def iseven(n):
     return n % 2 == 0
+
 
 """decide nums, a list containing only positive integers, can be partitioned
 into two equal subsets. Two methods:
 
-1. recursion, time complexity, 2^n in worst case, can cause "maximum recursion depth exceeded in comparison" when n is large, 
+1. recursion, time complexity, 2^n in worst case, can cause "maximum recursion depth exceeded in comparison" when n is large,
 but usually, this method is VERY FAST.
 
 2. dynamic programming. O(sum * n) (both time and space)
@@ -128,26 +134,32 @@ Not feasible for ARRAYS WITH BIG SUM.
 Benchmark: [random(1, 100) x 100] x 5 times.  i.e., 5 rounds x size 100 x domain 1-100
 rec 0.025 second / dp 5.04 seconds
 
-[random(1, 100) x 200] x 5 times. 
+[random(1, 100) x 200] x 5 times.
 rec 0.04 second / dp 20.22 seconds
 """
 
 # recursion method
+
+
 def find_patition(nums):
     mus = sum(nums)
-    if isodd(mus): return False
+    if isodd(mus):
+        return False
 
     target = mus // 2
     visited = {}
 
     def rec(i, acc):
-        if acc == target: return True
-        if i >= len(nums) or acc > target: return False
+        if acc == target:
+            return True
+        if i >= len(nums) or acc > target:
+            return False
         key = "{}-{}".format(acc, i)
-        if key in visited: return visited[key]
+        if key in visited:
+            return visited[key]
 
         r = rec(i + 1, acc + nums[i]) or rec(i + 1, acc)
-        visited[key] = r 
+        visited[key] = r
         return r
 
     return rec(0, 0)
@@ -156,56 +168,63 @@ def find_patition(nums):
 # DP method
 def find_patition_dp(nums):
     mus, n = sum(nums), len(nums)
-    if isodd(mus): return False 
+    if isodd(mus):
+        return False
 
     target = mus // 2
     part = [[True for i in range(n + 1)] for j in range(target + 1)]
 
-    for i in range(n + 1): part[0][i] = True
-    for i in range(1, target + 1): part[i][0] = False
+    for i in range(n + 1):
+        part[0][i] = True
+    for i in range(1, target + 1):
+        part[i][0] = False
 
     for i in range(1, target + 1):
         for j in range(n + 1):
-            part[i][j] = part[i][j-1]
-            if i >= nums[j-1]:
-                part[i][j] = part[i][j] or part[i - arr[j-1]][j-1]
+            part[i][j] = part[i][j - 1]
+            if i >= nums[j - 1]:
+                part[i][j] = part[i][j] or part[i - arr[j - 1]][j - 1]
 
     return part[target][n]
+
 
 def sort_by_last(arr):
     arr.sort(key=lambda x: x[-1])
 
 # Two rectangles overlap if the area of their intersection is positive.  To be
 # clear, two rectangles that only touch at the corner or edges do not overlap.
+
+
 def is_rectangle_overlap(a, b):
-    if a[0] > b[0]: return is_rectangle_overlap(b, a)
+    if a[0] > b[0]:
+        return is_rectangle_overlap(b, a)
     return not (a[2] <= b[0] or a[3] <= b[1] or a[1] >= b[3])
 
 
-class PriorityQueue(object): 
-    def __init__(self, li=[]): 
-        self.queue = [] 
+class PriorityQueue(object):
+    def __init__(self, li=[]):
+        self.queue = []
         for i in li:
             self.push(i)
-  
-    def __str__(self): 
-        return ' '.join([str(i) for i in self.queue]) 
-  
-    # for checking if the queue is empty 
-    def isEmpty(self): 
+
+    def __str__(self):
+        return ' '.join([str(i) for i in self.queue])
+
+    # for checking if the queue is empty
+    def isEmpty(self):
         return len(self.queue) == 0
-  
-    # for return the size of queue 
+
+    # for return the size of queue
     def size(self):
         return len(self.queue)
 
-    # for inserting an element in the queue 
+    # for inserting an element in the queue
     def push(self, data):
         insert_idx = bisect_left(self.queue, data)
         self.queue.insert(insert_idx, data)
 
-    # for popping an element based on Priority 
-    def pop(self): 
+    # for popping an element based on Priority
+    def pop(self):
         return self.queue.pop()
 
 
@@ -245,21 +264,27 @@ def perms(iterable, r=None):
         else:
             return
 
-# Generates the next permutation lexicographically after a given permutation. 
+# Generates the next permutation lexicographically after a given permutation.
 # It changes the given permutation in-place.
+
+
 def next_permutation(arr):
-    # Find the highest index i such that s[i] < s[i+1]. 
+    # Find the highest index i such that s[i] < s[i+1].
     # If no such index exists, the permutation is the last permutation.
     i = len(arr) - 1
     while i > 0:
-        if arr[i] > arr[i - 1]: break
+        if arr[i] > arr[i - 1]:
+            break
         i -= 1
-    if i == 0: return []
+    if i == 0:
+        return []
     i -= 1
 
-    # Find the highest index j > i such that s[j] > s[i]. Such a j must exist, since i+1 is such an index.
+    # Find the highest index j > i such that s[j] > s[i]. Such a j must exist,
+    # since i+1 is such an index.
     for j in reversed(range(i + 1, len(arr))):
-        if arr[j] > arr[i]: break
+        if arr[j] > arr[i]:
+            break
 
     arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1:] = reversed(arr[i + 1:])
@@ -271,6 +296,7 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
+
 
 def tree_from_list(lis):
     if len(lis) == 0:
@@ -299,6 +325,7 @@ def tree_from_list(lis):
 
     return root
 
+
 def arr2linkedlist(arr):
     if len(arr) == 0:
         return
@@ -317,3 +344,84 @@ def linkedlist2arr(head):
         head = head.next
     return ans
 
+#
+# @lc app=leetcode id=382 lang=python3
+#
+# [382] Linked List Random Node
+#
+# https://leetcode.com/problems/linked-list-random-node/description/
+#
+# algorithms
+# Medium (49.48%)
+# Total Accepted:    54.1K
+# Total Submissions: 109.3K
+# Testcase Example:  '["Solution","getRandom"]\n[[[1,2,3]],[]]'
+#
+# Given a singly linked list, return a random node's value from the linked
+# list. Each node must have the same probability of being chosen.
+#
+# Follow up:
+# What if the linked list is extremely large and its length is unknown to you?
+# Could you solve this efficiently without using extra space?
+#
+#
+# Example:
+#
+# // Init a singly linked list [1,2,3].
+# ListNode head = new ListNode(1);
+# head.next = new ListNode(2);
+# head.next.next = new ListNode(3);
+# Solution solution = new Solution(head);
+#
+# // getRandom() should return either 1, 2, or 3 randomly. Each element should
+# have equal probability of returning.
+# solution.getRandom();
+#
+#
+#
+# Definition for singly-linked list.
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+class Solution:
+
+    def __init__(self, head: ListNode):
+        """
+        @param head The linked list's head.
+        Note that the head is guaranteed to be not null, so it contains at least one node.
+        """
+        self.head = head
+        # self.arr = []
+        # while head:
+        # 	self.arr.append(head.val)
+        # 	head = head.next
+
+    def getRandom(self) -> int:
+        """
+        Returns a random node's value.
+        """
+        head = self.head
+        res = head.val
+        cnt = 1
+        head = head.next
+        while head:
+            j = random.randint(0, cnt)
+            if j == 0:
+                res = head.val
+            head = head.next
+            cnt += 1
+        return res
+
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(head)
+# param_1 = obj.getRandom()
+
+# s = Solution()
+arr = list(range(1, 10))
+print(random.choice(arr))

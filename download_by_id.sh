@@ -23,7 +23,7 @@ cat c.cpp > tmpcpp
 cat $cpp_file >> tmpcpp
 mv tmpcpp $cpp_file
 
-cat aux.cpp > tmppy
+cat aux.py > tmppy
 cat $python_file >> tmppy
 mv tmppy $python_file
 

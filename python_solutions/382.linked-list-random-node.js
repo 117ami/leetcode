@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,15 +302,89 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
+/*
+ * @lc app=leetcode id=382 lang=javascript
+ *
+ * [382] Linked List Random Node
+ *
+ * https://leetcode.com/problems/linked-list-random-node/description/
+ *
+ * algorithms
+ * Medium (49.48%)
+ * Total Accepted:    54.1K
+ * Total Submissions: 109.3K
+ * Testcase Example:  '["Solution","getRandom"]\n[[[1,2,3]],[]]'
+ *
+ * Given a singly linked list, return a random node's value from the linked
+ * list. Each node must have the same probability of being chosen.
+ * 
+ * Follow up:
+ * What if the linked list is extremely large and its length is unknown to you?
+ * Could you solve this efficiently without using extra space?
+ * 
+ * 
+ * Example:
+ * 
+ * // Init a singly linked list [1,2,3].
+ * ListNode head = new ListNode(1);
+ * head.next = new ListNode(2);
+ * head.next.next = new ListNode(3);
+ * Solution solution = new Solution(head);
+ * 
+ * // getRandom() should return either 1, 2, or 3 randomly. Each element should
+ * have equal probability of returning.
+ * solution.getRandom();
+ * 
+ * 
+ */
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param head The linked list's head.
+        Note that the head is guaranteed to be not null, so it contains at least one node.
+ * @param {ListNode} head
+ */
 
 // inclusive of both endpoints
-var randint = function(min, max) {
+function randint(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
+var Solution = function(head) {
+    this.head = head;
+};
+
+/**
+ * Returns a random node's value.
+ * @return {number}
+ */
+Solution.prototype.getRandom = function() {
+    var res = this.head.val,
+        i = 1;
+    var cur = this.head.next;
+    while (cur != null) {
+        let j = randint(0, i);
+        if (j == 0) res = cur.val;
+        i += 1;
+        cur = cur.next;
+    }
+    return res;
+};
 
 
+/** 
+ * Your Solution object will be instantiated and called as such:
+ * var obj = new Solution(head)
+ * var param_1 = obj.getRandom()
+ */
