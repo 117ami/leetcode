@@ -356,5 +356,12 @@ var randint = function(min, max) {
  * @return {number[]}
  */
 var corpFlightBookings = function(bookings, n) {
-    
+    let res = list(n, 0);
+    for(b of bookings) {
+        res[b[0] - 1] += b[2];
+        if (b[1] < n) res[b[1]] -= b[2];
+    }
+    for (let i = 1; i < n ; i ++)
+        res[i] +=res[i-1];
+    return res; 
 };

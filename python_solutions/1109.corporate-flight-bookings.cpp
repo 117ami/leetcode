@@ -435,7 +435,13 @@ int bisect_right(vector<int> & nums, int target) {
 class Solution {
 public:
     vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
-        
+    	vi res(n, 0); 
+    	for (auto &b: bookings) {
+    		res[b[0] - 1] += b[2];
+    		if (b[1] < n) res[b[1]] -= b[2];
+    	}
+		up (i, 1, n - 1) res[i] += res[i-1]; 
+		return res; 
     }
 };
 
