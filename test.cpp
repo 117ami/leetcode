@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "883.projection-area-of-3d-shapes.cpp"
+#include "908.smallest-range-i.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
