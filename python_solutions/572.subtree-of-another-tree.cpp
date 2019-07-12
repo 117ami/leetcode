@@ -393,8 +393,93 @@ int bisect_right(vector<int> & nums, int target) {
     return nums[j] > target ? j : j + 1;
 }
 
+
+/*
+ * @lc app=leetcode id=572 lang=cpp
+ *
+ * [572] Subtree of Another Tree
+ *
+ * https://leetcode.com/problems/subtree-of-another-tree/description/
+ *
+ * algorithms
+ * Easy (41.85%)
+ * Total Accepted:    105.8K
+ * Total Submissions: 252.7K
+ * Testcase Example:  '[3,4,5,1,2]\n[4,1,2]'
+ *
+ * 
+ * Given two non-empty binary trees s and t, check whether tree t has exactly
+ * the same structure and node values with a subtree of s. A subtree of s is a
+ * tree consists of a node in s and all of this node's descendants. The tree s
+ * could also be considered as a subtree of itself.
+ * 
+ * 
+ * Example 1:
+ * 
+ * Given tree s:
+ * 
+ * ⁠    3
+ * ⁠   / \
+ * ⁠  4   5
+ * ⁠ / \
+ * ⁠1   2
+ * 
+ * Given tree t:
+ * 
+ * ⁠  4 
+ * ⁠ / \
+ * ⁠1   2
+ * 
+ * Return true, because t has the same structure and node values with a subtree
+ * of s.
+ * 
+ * 
+ * Example 2:
+ * 
+ * Given tree s:
+ * 
+ * ⁠    3
+ * ⁠   / \
+ * ⁠  4   5
+ * ⁠ / \
+ * ⁠1   2
+ * ⁠   /
+ * ⁠  0
+ * 
+ * Given tree t:
+ * 
+ * ⁠  4
+ * ⁠ / \
+ * ⁠1   2
+ * 
+ * Return false.
+ * 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 bool in(string str1, string str2) {
   return str1.find(str2) != string::npos; 
 }
 
+class Solution {
+public:
+    bool isSubtree(TreeNode* s, TreeNode* t) {
+        return in(convert(s), convert(t));
+    }
 
+    string convert(TreeNode* r) {
+      if (r == NULL) return "c";
+      return "a" + to_string(r->val) + "b" + convert(r->left) + convert(r->right); 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

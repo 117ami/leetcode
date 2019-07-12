@@ -393,8 +393,52 @@ int bisect_right(vector<int> & nums, int target) {
     return nums[j] > target ? j : j + 1;
 }
 
-bool in(string str1, string str2) {
-  return str1.find(str2) != string::npos; 
-}
+
+/*
+ * @lc app=leetcode id=368 lang=cpp
+ *
+ * [368] Largest Divisible Subset
+ *
+ * https://leetcode.com/problems/largest-divisible-subset/description/
+ *
+ * algorithms
+ * Medium (34.99%)
+ * Total Accepted:    47.8K
+ * Total Submissions: 136.7K
+ * Testcase Example:  '[1,2,3]'
+ *
+ * Given a set of distinct positive integers, find the largest subset such that
+ * every pair (Si, Sj) of elements in this subset satisfies:
+ * 
+ * Si % Sj = 0 or Sj % Si = 0.
+ * 
+ * If there are multiple solutions, return any subset is fine.
+ * 
+ * Example 1:
+ * 
+ * 
+ * 
+ * Input: [1,2,3]
+ * Output: [1,2] (of course, [1,3] will also be ok)
+ * 
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: [1,2,4,8]
+ * Output: [1,2,4,8]
+ * 
+ * 
+ * 
+ */
+class Solution {
+public:
+    vector<int> largestDivisibleSubset(vector<int>& nums) {
+        
+    }
+};
 
 
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
