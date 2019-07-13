@@ -309,7 +309,7 @@ var randint = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var in = function(s1, s2) {
+var isin = function(s1, s2) {
     return s1.includes(s2);
 }
 

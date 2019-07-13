@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -309,51 +313,81 @@ var randint = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
+var isin = function(s1, s2) {
+    return s1.includes(s2);
+}
 
 
 /*
- * @lc app=leetcode id=368 lang=javascript
+ * @lc app=leetcode id=455 lang=javascript
  *
- * [368] Largest Divisible Subset
+ * [455] Assign Cookies
  *
- * https://leetcode.com/problems/largest-divisible-subset/description/
+ * https://leetcode.com/problems/assign-cookies/description/
  *
  * algorithms
- * Medium (34.99%)
- * Total Accepted:    47.8K
- * Total Submissions: 136.7K
- * Testcase Example:  '[1,2,3]'
+ * Easy (48.57%)
+ * Total Accepted:    66.5K
+ * Total Submissions: 136.8K
+ * Testcase Example:  '[1,2,3]\n[1,1]'
  *
- * Given a set of distinct positive integers, find the largest subset such that
- * every pair (Si, Sj) of elements in this subset satisfies:
  * 
- * Si % Sj = 0 or Sj % Si = 0.
+ * Assume you are an awesome parent and want to give your children some
+ * cookies. But, you should give each child at most one cookie. Each child i
+ * has a greed factor gi, which is the minimum size of a cookie that the child
+ * will be content with; and each cookie j has a size sj. If sj >= gi, we can
+ * assign the cookie j to the child i, and the child i will be content. Your
+ * goal is to maximize the number of your content children and output the
+ * maximum number.
  * 
- * If there are multiple solutions, return any subset is fine.
+ * 
+ * Note:
+ * You may assume the greed factor is always positive. 
+ * You cannot assign more than one cookie to one child.
+ * 
  * 
  * Example 1:
  * 
+ * Input: [1,2,3], [1,1]
  * 
+ * Output: 1
  * 
- * Input: [1,2,3]
- * Output: [1,2] (of course, [1,3] will also be ok)
+ * Explanation: You have 3 children and 2 cookies. The greed factors of 3
+ * children are 1, 2, 3. 
+ * And even though you have 2 cookies, since their size is both 1, you could
+ * only make the child whose greed factor is 1 content.
+ * You need to output 1.
  * 
  * 
  * 
  * Example 2:
  * 
+ * Input: [1,2], [1,2,3]
  * 
- * Input: [1,2,4,8]
- * Output: [1,2,4,8]
+ * Output: 2
  * 
+ * Explanation: You have 2 children and 3 cookies. The greed factors of 2
+ * children are 1, 2. 
+ * You have 3 cookies and their sizes are big enough to gratify all of the
+ * children, 
+ * You need to output 2.
  * 
  * 
  */
 /**
- * @param {number[]} nums
- * @return {number[]}
+ * @param {number[]} g
+ * @param {number[]} s
+ * @return {number}
  */
-var largestDivisibleSubset = function(nums) {
-    
+var findContentChildren = function(g, s) {
+    let i = 0,
+        j = 0,
+        res = 0;
+    sorted(g);
+    sorted(s);
+    while (i < len(g) && j < len(s)) {
+        if (g[i] <= s[j]) i += 1;
+        j += 1;
+    }
+    return i;
 };

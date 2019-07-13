@@ -393,80 +393,79 @@ int bisect_right(vector<int> & nums, int target) {
     return nums[j] > target ? j : j + 1;
 }
 
+bool in(string str1, string str2) {
+  return str1.find(str2) != string::npos; 
+}
+
 
 /*
- * @lc app=leetcode id=885 lang=cpp
+ * @lc app=leetcode id=455 lang=cpp
  *
- * [885] Spiral Matrix III
+ * [455] Assign Cookies
  *
- * https://leetcode.com/problems/spiral-matrix-iii/description/
+ * https://leetcode.com/problems/assign-cookies/description/
  *
  * algorithms
- * Medium (64.78%)
- * Total Accepted:    9.6K
- * Total Submissions: 14.7K
- * Testcase Example:  '1\n4\n0\n0'
+ * Easy (48.57%)
+ * Total Accepted:    66.5K
+ * Total Submissions: 136.8K
+ * Testcase Example:  '[1,2,3]\n[1,1]'
  *
- * On a 2 dimensional grid with R rows and C columns, we start at (r0, c0)
- * facing east.
  * 
- * Here, the north-west corner of the grid is at the first row and column, and
- * the south-east corner of the grid is at the last row and column.
+ * Assume you are an awesome parent and want to give your children some
+ * cookies. But, you should give each child at most one cookie. Each child i
+ * has a greed factor gi, which is the minimum size of a cookie that the child
+ * will be content with; and each cookie j has a size sj. If sj >= gi, we can
+ * assign the cookie j to the child i, and the child i will be content. Your
+ * goal is to maximize the number of your content children and output the
+ * maximum number.
  * 
- * Now, we walk in a clockwise spiral shape to visit every position in this
- * grid. 
  * 
- * Whenever we would move outside the boundary of the grid, we continue our
- * walk outside the grid (but may return to the grid boundary later.) 
- * 
- * Eventually, we reach all R * C spaces of the grid.
- * 
- * Return a list of coordinates representing the positions of the grid in the
- * order they were visited.
- * 
+ * Note:
+ * You may assume the greed factor is always positive. 
+ * You cannot assign more than one cookie to one child.
  * 
  * 
  * Example 1:
  * 
+ * Input: [1,2,3], [1,1]
  * 
- * Input: R = 1, C = 4, r0 = 0, c0 = 0
- * Output: [[0,0],[0,1],[0,2],[0,3]]
+ * Output: 1
  * 
- * 
- * 
+ * Explanation: You have 3 children and 2 cookies. The greed factors of 3
+ * children are 1, 2, 3. 
+ * And even though you have 2 cookies, since their size is both 1, you could
+ * only make the child whose greed factor is 1 content.
+ * You need to output 1.
  * 
  * 
  * 
  * Example 2:
  * 
+ * Input: [1,2], [1,2,3]
  * 
- * Input: R = 5, C = 6, r0 = 1, c0 = 4
- * Output:
- * [[1,4],[1,5],[2,5],[2,4],[2,3],[1,3],[0,3],[0,4],[0,5],[3,5],[3,4],[3,3],[3,2],[2,2],[1,2],[0,2],[4,5],[4,4],[4,3],[4,2],[4,1],[3,1],[2,1],[1,1],[0,1],[4,0],[3,0],[2,0],[1,0],[0,0]]
+ * Output: 2
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * Note:
- * 
- * 
- * 1 <= R <= 100
- * 1 <= C <= 100
- * 0 <= r0 < R
- * 0 <= c0 < C
- * 
- * 
+ * Explanation: You have 2 children and 3 cookies. The greed factors of 2
+ * children are 1, 2. 
+ * You have 3 cookies and their sizes are big enough to gratify all of the
+ * children, 
+ * You need to output 2.
  * 
  * 
  */
 class Solution {
 public:
-    vector<vector<int>> spiralMatrixIII(int R, int C, int r0, int c0) {
-        
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        dsort(g), dsort(s);
+        int i = 0, res = 0; 
+        each(j, s.size() - 1) 
+        if (s[j] >= g[i]) {
+          i ++; 
+          res ++; 
+          if (i > g.size() - 1) return res; 
+        }
+        return res; 
     }
 };
 
