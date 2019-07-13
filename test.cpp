@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "955.delete-columns-to-make-sorted-ii.cpp"
+#include "881.boats-to-save-people.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
