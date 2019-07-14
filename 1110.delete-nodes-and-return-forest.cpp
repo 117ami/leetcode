@@ -105,7 +105,7 @@ static auto __2333__ = []() {
 #define dsize(v) (int)v.size() 
 #define dsort(v) sort(v.begin(), v.end()) 
 #define rdsort(v) sort(v.rbegin(), v.rend())                          
-#define dreverse(v) reverse(v.begin(), v.end()) 
+#define dreverse(v) reverse(v.begin(), r.end()) 
 
 inline string itos(int n) { return to_string(n); }
 inline string upper(string s) { string t(s); transform(t.begin(), t.end(), t.begin(), ::toupper) ; return t; }
@@ -398,3 +398,64 @@ bool in(string str1, string str2) {
 }
 
 
+/*
+ * @lc app=leetcode id=1110 lang=cpp
+ *
+ * [1110] Delete Nodes And Return Forest
+ *
+ * https://leetcode.com/problems/delete-nodes-and-return-forest/description/
+ *
+ * algorithms
+ * Medium (60.19%)
+ * Total Accepted:    3.7K
+ * Total Submissions: 6.1K
+ * Testcase Example:  '[1,2,3,4,5,6,7]\n[3,5]'
+ *
+ * Given the root of a binary tree, each node in the tree has a distinct
+ * value.
+ * 
+ * After deleting all nodes with a value in to_delete, we are left with a
+ * forest (a disjoint union of trees).
+ * 
+ * Return the roots of the trees in the remaining forest.  You may return the
+ * result in any order.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * 
+ * 
+ * Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
+ * Output: [[1,2,null,4],[6],[7]]
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * The number of nodes in the given tree is at most 1000.
+ * Each node has a distinct value between 1 and 1000.
+ * to_delete.length <= 1000
+ * to_delete contains distinct values between 1 and 1000.
+ * 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
+        
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

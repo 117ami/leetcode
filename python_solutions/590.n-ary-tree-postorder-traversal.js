@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -309,63 +313,65 @@ var randint = function(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
+var isin = function(s1, s2) {
+    return s1.includes(s2);
+}
 
 
 /*
- * @lc app=leetcode id=1110 lang=javascript
+ * @lc app=leetcode id=590 lang=javascript
  *
- * [1110] Delete Nodes And Return Forest
+ * [590] N-ary Tree Postorder Traversal
  *
- * https://leetcode.com/problems/delete-nodes-and-return-forest/description/
+ * https://leetcode.com/problems/n-ary-tree-postorder-traversal/description/
  *
  * algorithms
- * Medium (60.19%)
- * Total Accepted:    3.7K
- * Total Submissions: 6.1K
- * Testcase Example:  '[1,2,3,4,5,6,7]\n[3,5]'
+ * Easy (67.95%)
+ * Total Accepted:    43.8K
+ * Total Submissions: 64.5K
+ * Testcase Example:  '{"$id":"1","children":[{"$id":"2","children":[{"$id":"5","children":[],"val":5},{"$id":"6","children":[],"val":6}],"val":3},{"$id":"3","children":[],"val":2},{"$id":"4","children":[],"val":4}],"val":1}'
  *
- * Given the root of a binary tree, each node in the tree has a distinct
- * value.
+ * Given an n-ary tree, return the postorder traversal of its nodes' values.
  * 
- * After deleting all nodes with a value in to_delete, we are left with a
- * forest (a disjoint union of trees).
- * 
- * Return the roots of the trees in the remaining forest.  You may return the
- * result in any order.
- * 
- * 
- * Example 1:
+ * For example, given a 3-ary tree:
  * 
  * 
  * 
  * 
- * Input: root = [1,2,3,4,5,6,7], to_delete = [3,5]
- * Output: [[1,2,null,4],[6],[7]]
  * 
  * 
  * 
- * Constraints:
+ * Return its postorder traversal as: [5,6,3,2,4,1].
  * 
  * 
- * The number of nodes in the given tree is at most 1000.
- * Each node has a distinct value between 1 and 1000.
- * to_delete.length <= 1000
- * to_delete contains distinct values between 1 and 1000.
+ * Note:
+ * 
+ * Recursive solution is trivial, could you do it iteratively?
  * 
  */
 /**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
+ * // Definition for a Node.
+ * function Node(val,children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
  */
 /**
- * @param {TreeNode} root
- * @param {number[]} to_delete
- * @return {TreeNode[]}
+ * @param {Node} root
+ * @return {number[]}
  */
-var delNodes = function(root, to_delete) {
-    
+var postorder = function(root) {
+    if (root == null) return [];
+    var todo = [root],
+        res = [];
+    while (len(todo) > 0) {
+        let curnode = todo.pop();
+        res.push(curnode.val);
+        for (c of curnode.children)
+            todo.push(c);
+    }
+    return res.reverse();
 };
+
+
+// say([1, 2].concat([4, 3]).concat([2]));
