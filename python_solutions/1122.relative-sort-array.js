@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -314,3 +318,55 @@ var isin = function(s1, s2) {
 }
 
 
+/*
+ * @lc app=leetcode id=1122 lang=javascript
+ *
+ * [1122] Relative Sort Array
+ *
+ * https://leetcode.com/problems/relative-sort-array/description/
+ *
+ * algorithms
+ * Easy (68.03%)
+ * Total Accepted:    3.1K
+ * Total Submissions: 4.6K
+ * Testcase Example:  '[2,3,1,3,2,4,6,7,9,2,19]\n[2,1,4,3,9,6]'
+ *
+ * Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all
+ * elements in arr2 are also in arr1.
+ * 
+ * Sort the elements of arr1 such that the relative ordering of items in arr1
+ * are the same as in arr2.  Elements that don't appear in arr2 should be
+ * placed at the end of arr1 in ascending order.
+ * 
+ * 
+ * Example 1:
+ * Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]
+ * Output: [2,2,2,1,4,3,3,9,6,7,19]
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * arr1.length, arr2.length <= 1000
+ * 0 <= arr1[i], arr2[i] <= 1000
+ * Each arr2[i] is distinct.
+ * Each arr2[i] is in arr1.
+ * 
+ * 
+ */
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number[]}
+ */
+var relativeSortArray = function(a, b) {
+    var dic = {};
+    for (let i = 0; i < len(b); i++)
+        dic[b[i]] = i;
+    a.sort((x, y) => ((exist(dic, x) ? dic[x] : x + 1001) - (exist(dic, y) ? dic[y] : y + 1001)));
+    return a;
+}
+
+let arr1 = [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19],
+    arr2 = [2, 1, 4, 3, 9, 6];
+print(relativeSortArray(arr1, arr2));
