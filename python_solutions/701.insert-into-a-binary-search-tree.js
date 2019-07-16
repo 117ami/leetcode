@@ -196,7 +196,7 @@ var third = function(arr) {
     return arr[2];
 }
 
-function exist(key, hash) {
+function exist(hash, key) {
     return (key in hash);
 }
 
@@ -300,72 +300,91 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }/*
- * @lc app=leetcode id=862 lang=javascript
+var div = function(n, k) { return floor(n / k); }
+
+// inclusive of both endpoints
+var randint = function(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var isin = function(s1, s2) {
+    return s1.includes(s2);
+}
+
+
+/*
+ * @lc app=leetcode id=701 lang=javascript
  *
- * [862] Shortest Subarray with Sum at Least K
+ * [701] Insert into a Binary Search Tree
  *
- * https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/
+ * https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
  *
  * algorithms
- * Hard (22.15%)
- * Total Accepted:    13.1K
- * Total Submissions: 59.3K
- * Testcase Example:  '[1]\n1'
+ * Medium (76.26%)
+ * Total Accepted:    50K
+ * Total Submissions: 65.6K
+ * Testcase Example:  '[4,2,7,1,3]\n5'
  *
- * Return the length of the shortest, non-empty, contiguous subarray of A with
- * sum at least K.
+ * Given the root node of a binary search tree (BST) and a value to be inserted
+ * into the tree, insert the value into the BST. Return the root node of the
+ * BST after the insertion. It is guaranteed that the new value does not exist
+ * in the original BST.
  * 
- * If there is no non-empty subarray with sum at least K, return -1.
+ * Note that there may exist multiple valid ways for the insertion, as long as
+ * the tree remains a BST after insertion. You can return any of them.
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * Example 1:
+ * For example, 
  * 
  * 
- * Input: A = [1], K = 1
- * Output: 1
+ * Given the tree:
+ * ⁠       4
+ * ⁠      / \
+ * ⁠     2   7
+ * ⁠    / \
+ * ⁠   1   3
+ * And the value to insert: 5
  * 
  * 
- * 
- * Example 2:
- * 
- * 
- * Input: A = [1,2], K = 4
- * Output: -1
+ * You can return this binary search tree:
  * 
  * 
- * 
- * Example 3:
- * 
- * 
- * Input: A = [2,-1,2], K = 3
- * Output: 3
- * 
+ * ⁠        4
+ * ⁠      /   \
+ * ⁠     2     7
+ * ⁠    / \   /
+ * ⁠   1   3 5
  * 
  * 
- * 
- * Note:
- * 
- * 
- * 1 <= A.length <= 50000
- * -10 ^ 5 <= A[i] <= 10 ^ 5
- * 1 <= K <= 10 ^ 9
+ * This tree is also valid:
  * 
  * 
- * 
+ * ⁠        5
+ * ⁠      /   \
+ * ⁠     2     7
+ * ⁠    / \   
+ * ⁠   1   3
+ * ⁠        \
+ * ⁠         4
  * 
  * 
  */
 /**
- * @param {number[]} A
- * @param {number} K
- * @return {number}
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
  */
-var shortestSubarray = function(A, K) {
-    
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
+ */
+var insertIntoBST = function(root, val) {
+    if (root == null) return new TreeNode(val);
+    else if (root.val < val) root.right = insertIntoBST(root.right, val);
+    else root.left = insertIntoBST(root.left, val); 
+    return root;
 };

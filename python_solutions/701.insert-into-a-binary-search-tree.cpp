@@ -432,95 +432,77 @@ vector<vector<int>> valuesOfTree(TreeNode *r) {
 
 
 /*
- * @lc app=leetcode id=443 lang=cpp
+ * @lc app=leetcode id=701 lang=cpp
  *
- * [443] String Compression
+ * [701] Insert into a Binary Search Tree
  *
- * https://leetcode.com/problems/string-compression/description/
+ * https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
  *
  * algorithms
- * Easy (37.99%)
- * Total Accepted:    57K
- * Total Submissions: 150.1K
- * Testcase Example:  '["a","a","b","b","c","c","c"]'
+ * Medium (76.26%)
+ * Total Accepted:    50K
+ * Total Submissions: 65.6K
+ * Testcase Example:  '[4,2,7,1,3]\n5'
  *
- * Given an array of characters, compress it in-place.
+ * Given the root node of a binary search tree (BST) and a value to be inserted
+ * into the tree, insert the value into the BST. Return the root node of the
+ * BST after the insertion. It is guaranteed that the new value does not exist
+ * in the original BST.
  * 
- * The length after compression must always be smaller than or equal to the
- * original array.
+ * Note that there may exist multiple valid ways for the insertion, as long as
+ * the tree remains a BST after insertion. You can return any of them.
  * 
- * Every element of the array should be a character (not int) of length 1.
- * 
- * After you are done modifying the input array in-place, return the new length
- * of the array.
- * 
- * 
- * Follow up:
- * Could you solve it using only O(1) extra space?
+ * For example, 
  * 
  * 
- * Example 1:
+ * Given the tree:
+ * ⁠       4
+ * ⁠      / \
+ * ⁠     2   7
+ * ⁠    / \
+ * ⁠   1   3
+ * And the value to insert: 5
  * 
  * 
- * Input:
- * ["a","a","b","b","c","c","c"]
- * 
- * Output:
- * Return 6, and the first 6 characters of the input array should be:
- * ["a","2","b","2","c","3"]
- * 
- * Explanation:
- * "aa" is replaced by "a2". "bb" is replaced by "b2". "ccc" is replaced by
- * "c3".
+ * You can return this binary search tree:
  * 
  * 
+ * ⁠        4
+ * ⁠      /   \
+ * ⁠     2     7
+ * ⁠    / \   /
+ * ⁠   1   3 5
  * 
  * 
- * Example 2:
+ * This tree is also valid:
  * 
  * 
- * Input:
- * ["a"]
- * 
- * Output:
- * Return 1, and the first 1 characters of the input array should be: ["a"]
- * 
- * Explanation:
- * Nothing is replaced.
- * 
- * 
- * 
- * 
- * Example 3:
- * 
- * 
- * Input:
- * ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
- * 
- * Output:
- * Return 4, and the first 4 characters of the input array should be:
- * ["a","b","1","2"].
- * 
- * Explanation:
- * Since the character "a" does not repeat, it is not compressed.
- * "bbbbbbbbbbbb" is replaced by "b12".
- * Notice each digit has it's own entry in the array.
- * 
- * 
- * 
- * 
- * Note:
- * 
- * 
- * All characters have an ASCII value in [35, 126].
- * 1 <= len(chars) <= 1000.
+ * ⁠        5
+ * ⁠      /   \
+ * ⁠     2     7
+ * ⁠    / \   
+ * ⁠   1   3
+ * ⁠        \
+ * ⁠         4
  * 
  * 
  */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    int compress(vector<char>& chars) {
-        
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if (root == nullptr) {TreeNode* t = new TreeNode(val); return t;}
+        if (root->val < val) root->right = insertIntoBST(root->right, val);
+        else root->left = insertIntoBST(root->left, val);
+        return root;
     }
 };
 
