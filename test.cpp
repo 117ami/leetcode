@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "950.reveal-cards-in-increasing-order.cpp"
+#include "326.power-of-three.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi d {17,13,11,2,3,5,7};
-	say(s.deckRevealedIncreasing(d));
+	say(s.isPowerOfThree(4782968));
+	say(fmod(8, 3));
 	return 0;
 }
 
