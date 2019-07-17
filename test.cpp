@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "147.insertion-sort-list.cpp"
+#include "141.linked-list-cycle.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
