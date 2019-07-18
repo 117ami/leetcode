@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -314,17 +318,79 @@ var isin = function(s1, s2) {
 }
 
 
+/*
+ * @lc app=leetcode id=143 lang=javascript
+ *
+ * [143] Reorder List
+ *
+ * https://leetcode.com/problems/reorder-list/description/
+ *
+ * algorithms
+ * Medium (31.40%)
+ * Total Accepted:    161.7K
+ * Total Submissions: 513.9K
+ * Testcase Example:  '[1,2,3,4]'
+ *
+ * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+ * reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+ * 
+ * You may not modify the values in the list's nodes, only nodes itself may be
+ * changed.
+ * 
+ * Example 1:
+ * 
+ * 
+ * Given 1->2->3->4, reorder it to 1->4->2->3.
+ * 
+ * Example 2:
+ * 
+ * 
+ * Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+ * 
+ * 
+ */
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {void} Do not return anything, modify head in-place instead.
+ */
+
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
 
+var reorderList = function(head) {
+    if (head == null) return; 
+    var h1 = head,
+        h2 = head,
+        cur, pre;
+    while (h2.next && h2.next.next) {
+        h1 = h1.next;
+        h2 = h2.next.next;
+    }
+    h2 = reverseList(h1.next);
+    h1.next = null;
+    h1 = head;
+    while (h2) {
+        cur = h1.next;
+        h1.next = h2;
+        h1 = h2;
+        h2 = cur;
+    }
+};
