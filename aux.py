@@ -649,4 +649,25 @@ def reverseList(head):
         head = cur
     return pre
 
+def list_len(head):
+    _len = 0
+    while head:
+        head = head.next
+        _len += 1
+    return _len
+
+def last_list_value(head):
+    v = head.val
+    while head:
+        v = head.val
+        head = head.next
+    return v
+
+def is_list_sorted(head):
+    if not head: return True
+    while head.next:
+        if head.val > head.next.val:
+            return False
+        head = head.next
+    return True
 

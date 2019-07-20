@@ -75,12 +75,23 @@ template <class T> void say(vector<pair<T, T>> &vv) {
     cout << v.first << " " << v.second << endl;
 }
 
+
+#ifndef NDEBUG
 struct TreeNode {
   int val;
   TreeNode *left;
   TreeNode *right;
   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
+
+struct ListNode {
+     int val;
+     ListNode *next;
+     ListNode(int x) : val(x), next(NULL) {}
+};
+#endif
+
+
 
 // Given a vector of integers, construct a tree
 TreeNode *arr2tree(vector<int> arr) {

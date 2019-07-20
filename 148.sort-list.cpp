@@ -328,15 +328,6 @@ void printMap(unordered_map<T1, T2> &m) {
 // ==================================================
 
 
-#ifdef DEBUG
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
-#endif 
-
 class Node {
 public:
     int val;
@@ -434,7 +425,7 @@ vector<vector<int>> valuesOfTree(TreeNode *r) {
 ListNode* reverseList(ListNode* head) {
   if (!head) return head; 
   ListNode* pre, *cur; 
-  pre = NUll; 
+  pre = NULL; 
   while (head) {
       cur = head->next;
       head->next = pre;
@@ -474,4 +465,58 @@ bool isSortedList(ListNode* head){
     head = head->next; 
   }
   return true; 
-}
+}/*
+ * @lc app=leetcode id=148 lang=cpp
+ *
+ * [148] Sort List
+ *
+ * https://leetcode.com/problems/sort-list/description/
+ *
+ * algorithms
+ * Medium (36.07%)
+ * Total Accepted:    193.6K
+ * Total Submissions: 535.4K
+ * Testcase Example:  '[4,2,1,3]'
+ *
+ * Sort a linked list in O(n log n) time using constant space complexity.
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: 4->2->1->3
+ * Output: 1->2->3->4
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: -1->5->3->4->0
+ * Output: -1->0->3->4->5
+ * 
+ */
+ // Definition for singly-linked list.
+ 
+class Solution {
+public:
+    ListNode* sortList(ListNode* head) {
+        int len = getListLen(head); 
+        if (len < 2 || isSortedList(head)) return head; 
+        if (len == 2) {
+          if (head->val > head->next->val) swap(head->val, head->next->val); 
+          return head; 
+        }
+        return head; 
+    }
+
+    ListNode* partition(ListNode* head) {
+      int pivot = getLastListValue(head);
+      ListNode* pre = new ListNode(-0x3f3f3f3f);
+      pre->next = head; 
+      
+      return pre; 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
