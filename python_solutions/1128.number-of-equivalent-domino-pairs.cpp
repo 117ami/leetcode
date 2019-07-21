@@ -474,18 +474,54 @@ bool isSortedList(ListNode* head){
     head = head->next; 
   }
   return true; 
-}
+}/*
+ * @lc app=leetcode id=1128 lang=cpp
+ *
+ * [1128] Number of Equivalent Domino Pairs
+ *
+ * https://leetcode.com/problems/number-of-equivalent-domino-pairs/description/
+ *
+ * algorithms
+ * Easy (36.41%)
+ * Total Accepted:    3.3K
+ * Total Submissions: 9K
+ * Testcase Example:  '[[1,2],[2,1],[3,4],[5,6]]'
+ *
+ * Given a list of dominoes, dominoes[i] = [a, b] is equivalent to dominoes[j]
+ * = [c, d] if and only if either (a==c and b==d), or (a==d and b==c) - that
+ * is, one domino can be rotated to be equal to another domino.
+ * 
+ * Return the number of pairs (i, j) for which 0 <= i < j < dominoes.length,
+ * and dominoes[i] is equivalent to dominoes[j].
+ * 
+ * 
+ * Example 1:
+ * Input: dominoes = [[1,2],[2,1],[3,4],[5,6]]
+ * Output: 1
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= dominoes.length <= 40000
+ * 1 <= dominoes[i][j] <= 9
+ * 
+ * 
+ */
+class Solution {
+public:
+    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+       vvi res(10, vi(10, 0)) ;
+       int ans = 0; 
+       for(auto &pair: dominoes){
+         int a = min(pair[0], pair[1]), b = max(pair[0], pair[1]);
+         res[a][b] += 1;         
+         if (res[a][b] > 1) ans += res[a][b] - 1;
+       }
+       return ans; 
+    }
+};
 
-/* Translate an array of int to ListNode */
-ListNode* arrayToListNode(vector<int> &arr) {
-  ListNode* head, *pre; 
-  if(arr.size() == 0) return head; 
-  head = new ListNode(-0x3f3f3f3f); 
-  pre = head; 
-  for(auto &i: arr){
-    ListNode* tmp = new ListNode(i);
-    pre->next = tmp; 
-    pre = tmp; 
-  }
-  return head->next; 
-}
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
