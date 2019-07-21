@@ -465,7 +465,22 @@ bool isSortedList(ListNode* head){
     head = head->next; 
   }
   return true; 
-}/*
+}
+
+ListNode* arrayToListNode(vector<int> &arr) {
+  ListNode* head, *pre; 
+  if(arr.size() == 0) return head; 
+  head = new ListNode(-0x3f3f3f3f); 
+  pre = head; 
+  for(auto &i: arr){
+    ListNode* tmp = new ListNode(i);
+    pre->next = tmp; 
+    pre = tmp; 
+  }
+  return head->next; 
+}
+
+/*
  * @lc app=leetcode id=148 lang=cpp
  *
  * [148] Sort List
@@ -505,7 +520,13 @@ public:
           if (head->val > head->next->val) swap(head->val, head->next->val); 
           return head; 
         }
-        return head; 
+        vi cheatsheet = {}; 
+        while(head){
+          cheatsheet.eb(head->val);
+          head = head->next; 
+        }
+        dsort(cheatsheet);
+        return arrayToListNode(cheatsheet);
     }
 
     ListNode* partition(ListNode* head) {
