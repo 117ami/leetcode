@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -317,14 +321,14 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
 
@@ -377,6 +381,25 @@ var reverseList = function(head) {
  * @param {number[]} arr2
  * @return {number}
  */
-var maxAbsValExpr = function(arr1, arr2) {
-    
+var maxAbsValExpr = function(a, b) {
+    var signs = [
+            [-1, 1],
+            [1, 1],
+            [1, -1],
+            [-1, -1]
+        ],
+        res = 0;
+    for (var sign of signs) {
+        let min_abs = sign[0] * a[0] + sign[1] * b[0];
+        for (let i = 0; i < len(a); i++) {
+            let cur = sign[0] * a[i] + sign[1] * b[i] + i;
+            res = pairmax(res, cur - min_abs);
+            min_abs = pairmin(cur, min_abs);
+        }
+    }
+    return res;
 };
+
+let arr1 = [1, -2, -5, 0, 10],
+    arr2 = [0, -2, -1, -7, -4];
+print(maxAbsValExpr(arr1, arr2));

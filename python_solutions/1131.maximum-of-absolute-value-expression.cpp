@@ -536,7 +536,17 @@ ListNode* arrayToListNode(vector<int> &arr) {
 class Solution {
 public:
     int maxAbsValExpr(vector<int>& arr1, vector<int>& arr2) {
-        
+        int res = 0; 
+        vvi signs = {{-1, 1}, {1, 1}, {1, -1}, {-1, -1}}; 
+        for (auto &sign : signs){
+          int min_v = sign[0] * arr1[0]  + sign[1] * arr2[0]; 
+          each(i, arr1.size() - 1) {
+            int cur = sign[0] * arr1[i] + sign[1] * arr2[i] + i; 
+            res = max(res, cur - min_v); 
+            min_v = min(min_v, cur);
+          }
+        }
+        return res; 
     }
 };
 
