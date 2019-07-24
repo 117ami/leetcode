@@ -108,6 +108,7 @@ static auto __2333__ = []() {
 #define dreverse(v) reverse(v.begin(), v.end()) 
 
 inline string itos(int n) { return to_string(n); }
+inline int char_to_int(char &c) { return c - '0' ; }
 inline string upper(string s) { string t(s); transform(t.begin(), t.end(), t.begin(), ::toupper) ; return t; }
 inline string lower(string s) { string t(s); transform(t.begin(), t.end(), t.begin(), ::tolower) ; return t; }
 
@@ -533,7 +534,32 @@ ListNode* arrayToListNode(vector<int> &arr) {
 class Solution {
 public:
     int maximumSwap(int num) {
-        
+      string str = to_string(num);
+      vector<deque<int>> idx(10);
+
+      each(i, str.size()- 1){
+        int n = char_to_int(str[i]); 
+        idx[n].eb(i);
+      }
+
+      int j = 9; 
+      each(i, str.size() - 1) {
+        while (idx[j].size() == 0) j --; 
+
+        int n = char_to_int(str[i]);
+        if (n < j) {
+          swap(str[i], str[idx[j].back()]); 
+          break; 
+        } else {
+          idx[j].pop_front();
+        }
+      }
+      
+      int res = 0; 
+      each(i, str.size() - 1) {
+        res = res * 10 + char_to_int(str[i]);
+      }
+      return res;
     }
 };
 

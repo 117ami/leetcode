@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -317,14 +321,14 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
 
@@ -374,5 +378,30 @@ var reverseList = function(head) {
  * @return {number}
  */
 var maximumSwap = function(num) {
-    
+    var ss = num.toString().split('');
+    var idx = [];
+    for (let i = 0; i < 10; i++) idx.push([]);
+    for (let i = 0; i < len(ss); i++) {
+        idx[parseInt(ss[i])].push(i);
+    }
+
+    var j = 9;
+    for (let i = 0; i < len(ss); i++) {
+        while (len(idx[j]) == 0) j -= 1;
+        if (parseInt(ss[i]) < j) {
+            var tmp = ss[i];
+            ss[i] = j.toString();
+            ss[last(idx[j])] = tmp;
+            break;
+        } else {
+            idx[j].shift();
+        }
+    }
+    var res = 0;
+    for (let i = 0; i < len(ss); i++)
+        res = res * 10 + parseInt(ss[i]);
+    return res;
 };
+
+print(maximumSwap(98368))
+print(maximumSwap(1993))
