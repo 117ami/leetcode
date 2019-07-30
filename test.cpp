@@ -1,14 +1,9 @@
 
 #include "aux.cpp"
-#include "680.valid-palindrome-ii.cpp"
+#include "385.mini-parser.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string st = "deeeeeeee";
-	// st = "abcdefedbcba";
-	st = "abcbdda";
-
-	say(s.validPalindrome(st));
 	return 0;
 }
 
