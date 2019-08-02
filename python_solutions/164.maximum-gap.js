@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -317,14 +321,14 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
 
@@ -375,5 +379,32 @@ var reverseList = function(head) {
  * @return {number}
  */
 var maximumGap = function(nums) {
-    
+    var n = len(nums);
+    if (n < 2) return 0;
+    var minv = min(nums),
+        maxv = max(nums),
+        gap = div(maxv - minv,n - 1) + 1;
+    var bucket_min = list(n - 1, inf),
+        bucket_max = list(n - 1, -1 * inf);
+
+    for (var i of nums) {
+        if (i == minv || i == maxv) continue;
+        var idx = div(i - minv, gap);
+        bucket_max[idx] = pairmax(bucket_max[idx], i);
+        bucket_min[idx] = pairmin(bucket_min[idx], i);
+    }
+
+    var res = -1 * inf,
+        premax = minv;
+    for (var i = 0; i < n - 1; i++) {
+        if (bucket_max[i] == -1 * inf || bucket_min[i] == inf) continue;
+        res = pairmax(res, bucket_min[i] - premax);
+        premax = bucket_max[i];
+    }
+    res = pairmax(res, maxv - premax);
+    return res;
 };
+
+var nums = [3, 9, 19, 0];
+nums = [1, 1000]
+print(maximumGap(nums))
