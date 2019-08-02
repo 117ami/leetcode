@@ -1,10 +1,9 @@
 
 #include "aux.cpp"
-#include "509.fibonacci-number.cpp"
+#include "945.minimum-increment-to-make-array-unique.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.fib(30));
 	return 0;
 }
 
