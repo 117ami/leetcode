@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "76.minimum-window-substring.cpp"
+#include "1154.day-of-the-year.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
