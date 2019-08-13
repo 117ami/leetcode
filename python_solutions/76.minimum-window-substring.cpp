@@ -525,7 +525,27 @@ ListNode* arrayToListNode(vector<int> &arr) {
 class Solution {
 public:
     string minWindow(string s, string t) {
-        
+         if (t.size() > s.size()) return "";
+
+         vi need(128, 0);
+         for (auto &c: t) need[c] += 1; 
+
+         int start = 0, end = 0, i = 0, missing = t.size(); 
+
+         for (int j = 0; j < s.size(); j ++){
+           char c = s[j];
+           if (need[c]-- > 0) missing --; 
+
+           if (missing == 0){
+             while (i <= j && need[s[i]] < 0) need[s[i++]] ++; 
+             if (end == 0 || j + 1 - i < end - start) {
+               start = i;
+               end = j + 1;
+             }
+           }
+         }
+         
+         return s.substr(start, end - start);
     }
 };
 

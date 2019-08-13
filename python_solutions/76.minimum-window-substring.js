@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -317,14 +321,14 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
 
@@ -367,5 +371,39 @@ var reverseList = function(head) {
  * @return {string}
  */
 var minWindow = function(s, t) {
+    if (len(s) < len(t)) return "";
+    var need = counter(t),
+        missing = len(t),
+        start = 0,
+        end = 0,
+        i = 0;
+
+    for (let j = 0; j < len(s); j++) {
+        let c = s[j];
+        if (!(c in need)) need[c] = 0;
+
+        if (need[c] > 0) missing -= 1;
+        need[c] -= 1;
+
+        if (missing == 0) {
+            while (i <= j && need[s[i]] < 0) {
+                need[s[i]] += 1;
+                i += 1;
+            }
+            // print([i, j])
+            if (end == 0 || j + 1 - i < end - start) {
+                // print([start, end, j]);
+                start = i;
+                end = j + 1;
+            }
+        }
+    }
     
+    return s.substr(start, end - start);
 };
+
+var s = "abc",
+    t = "cba";
+s = "ADOBECODEBANC", t = "ABC"
+// s = 'a', t = 'b';
+print(minWindow(s, t))
