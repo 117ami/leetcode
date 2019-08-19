@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -317,21 +321,107 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
-/* Transfer each string to a counter of chars*/
+
+/*
+ * @lc app=leetcode id=1160 lang=javascript
+ *
+ * [1160] Find Words That Can Be Formed by Characters
+ *
+ * https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/description/
+ *
+ * algorithms
+ * Easy (72.76%)
+ * Total Accepted:    4.9K
+ * Total Submissions: 6.8K
+ * Testcase Example:  '["cat","bt","hat","tree"]\n"atach"'
+ *
+ * You are given an array of strings words and a string chars.
+ * 
+ * A string is good if it can be formed by characters from chars (each
+ * character can only be used once).
+ * 
+ * Return the sum of lengths of all good strings in words.
+ * 
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: words = ["cat","bt","hat","tree"], chars = "atach"
+ * Output: 6
+ * Explanation: 
+ * The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 =
+ * 6.
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr"
+ * Output: 10
+ * Explanation: 
+ * The strings that can be formed are "hello" and "world" so the answer is 5 +
+ * 5 = 10.
+ * 
+ * 
+ * 
+ * 
+ * Note:
+ * 
+ * 
+ * 1 <= words.length <= 1000
+ * 1 <= words[i].length, chars.length <= 100
+ * All strings contain lowercase English letters only.
+ * 
+ */
+/**
+ * @param {string[]} words
+ * @param {string} chars
+ * @return {number}
+ */
+
 var char_counter = function(chars) {
     var res = list(26, 0);
     for (var c of chars)
         res[c.charCodeAt(0) - 'a'.charCodeAt(0)] += 1;
     return res;
 }
+
+var countCharacters = function(words, chars) {
+    var cntchars = char_counter(chars),
+        res = 0;
+    // print(cntchars);
+    for (var w of words) {
+        var cnttmp = char_counter(w),
+            valid = true;
+        for (var c of w) {
+            let idx = c.charCodeAt(0) - 'a'.charCodeAt(0);
+            if (cnttmp[idx] > cntchars[idx]) {
+                valid = false;
+                break;
+            }
+        }
+
+        if (valid) {
+            res += len(w);
+        }
+    }
+    return res;
+};
+var words = ["cat", "bt", "hat", "tree"],
+    chars = "atach";
+words = ["dyiclysmffuhibgfvapygkorkqllqlvokosagyelotobicwcmebnpznjbirzrzsrtzjxhsfpiwyfhzyonmuabtlwin", "ndqeyhhcquplmznwslewjzuyfgklssvkqxmqjpwhrshycmvrb", "ulrrbpspyudncdlbkxkrqpivfftrggemkpyjl", "boygirdlggnh", "xmqohbyqwagkjzpyawsydmdaattthmuvjbzwpyopyafphx", "nulvimegcsiwvhwuiyednoxpugfeimnnyeoczuzxgxbqjvegcxeqnjbwnbvowastqhojepisusvsidhqmszbrnynkyop", "hiefuovybkpgzygprmndrkyspoiyapdwkxebgsmodhzpx", "juldqdzeskpffaoqcyyxiqqowsalqumddcufhouhrskozhlmobiwzxnhdkidr", "lnnvsdcrvzfmrvurucrzlfyigcycffpiuoo", "oxgaskztzroxuntiwlfyufddl", "tfspedteabxatkaypitjfkhkkigdwdkctqbczcugripkgcyfezpuklfqfcsccboarbfbjfrkxp", "qnagrpfzlyrouolqquytwnwnsqnmuzphne", "eeilfdaookieawrrbvtnqfzcricvhpiv", "sisvsjzyrbdsjcwwygdnxcjhzhsxhpceqz", "yhouqhjevqxtecomahbwoptzlkyvjexhzcbccusbjjdgcfzlkoqwiwue", "hwxxighzvceaplsycajkhynkhzkwkouszwaiuzqcleyflqrxgjsvlegvupzqijbornbfwpefhxekgpuvgiyeudhncv", "cpwcjwgbcquirnsazumgjjcltitmeyfaudbnbqhflvecjsupjmgwfbjo", "teyygdmmyadppuopvqdodaczob", "qaeowuwqsqffvibrtxnjnzvzuuonrkwpysyxvkijemmpdmtnqxwekbpfzs", "qqxpxpmemkldghbmbyxpkwgkaykaerhmwwjonrhcsubchs"];
+chars = "usdruypficfbpfbivlrhutcgvyjenlxzeovdyjtgvvfdjzcmikjraspdfp";
+print(countCharacters(words, chars));
+
 

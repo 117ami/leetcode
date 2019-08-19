@@ -1,12 +1,12 @@
 
 #include "aux.cpp"
-#include "76.minimum-window-substring.cpp"
+#include "1160.find-words-that-can-be-formed-by-characters.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string ss = "ADOBECODEBANC", t = "ABC"; 
-	ss = "abc", t = "cba";
-	say(s.minWindow(ss, t));
+	vector<string> words = {"cat","bt","hat","tree"}; 
+	string chars = "atach";
+	say(s.countCharacters(words, chars)); 
 	return 0;
 }
 

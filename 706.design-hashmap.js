@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr) {
-    return arr.sort((a, b) => (last(a) - last(b)));
+var sort_by_last = function(arr){
+    return arr.sort((a, b)=>(last(a) - last(b)));
 }
 
-var sort_by_first = function(arr) {
-    return arr.sort((a, b) => (a[0] - b[0]));
+var sort_by_first = function(arr){
+    return arr.sort((a, b)=>(a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,9 +281,7 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i) {
-        return [e, b[i]];
-    });
+    return a.map(function(e, i){return [e, b[i]];});
 }
 
 class Counter {
@@ -302,9 +300,7 @@ class Counter {
 }
 
 
-var div = function(n, k) {
-    return floor(n / k);
-}
+var div = function(n, k) { return floor(n / k); }
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -321,89 +317,109 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null;
-    while (head) {
+    pre = null; 
+    while (head)    {
         cur = head.next;
-        head.next = pre;
-        pre = head;
+        head.next = pre; 
+        pre = head; 
         head = cur;
     }
-    return pre;
+    return pre; 
 };
 
 
 /*
- * @lc app=leetcode id=76 lang=javascript
+ * @lc app=leetcode id=706 lang=javascript
  *
- * [76] Minimum Window Substring
+ * [706] Design HashMap
  *
- * https://leetcode.com/problems/minimum-window-substring/description/
+ * https://leetcode.com/problems/design-hashmap/description/
  *
  * algorithms
- * Hard (31.44%)
- * Total Accepted:    256.6K
- * Total Submissions: 816.1K
- * Testcase Example:  '"ADOBECODEBANC"\n"ABC"'
+ * Easy (56.76%)
+ * Total Accepted:    41.7K
+ * Total Submissions: 73.5K
+ * Testcase Example:  '["MyHashMap","put","put","get","get","put","get", ' +
+  '"remove", "get"]\n' +
+  '[[],[1,1],[2,2],[1],[3],[2,1],[2],[2],[2]]'
  *
- * Given a string S and a string T, find the minimum window in S which will
- * contain all the characters in T in complexity O(n).
+ * Design a HashMap without using any built-in hash table libraries.
+ * 
+ * To be specific, your design should include these functions:
+ * 
+ * 
+ * put(key, value) : Insert a (key, value) pair into the HashMap. If the value
+ * already exists in the HashMap, update the value.
+ * get(key): Returns the value to which the specified key is mapped, or -1 if
+ * this map contains no mapping for the key.
+ * remove(key) : Remove the mapping for the value key if this map contains the
+ * mapping for the key.
+ * 
+ * 
  * 
  * Example:
  * 
  * 
- * Input: S = "ADOBECODEBANC", T = "ABC"
- * Output: "BANC"
+ * MyHashMap hashMap = new MyHashMap();
+ * hashMap.put(1, 1);          
+ * hashMap.put(2, 2);         
+ * hashMap.get(1);            // returns 1
+ * hashMap.get(3);            // returns -1 (not found)
+ * hashMap.put(2, 1);          // update the existing value
+ * hashMap.get(2);            // returns 1 
+ * hashMap.remove(2);          // remove the mapping for 2
+ * hashMap.get(2);            // returns -1 (not found) 
+ * 
  * 
  * 
  * Note:
  * 
  * 
- * If there is no such window in S that covers all characters in T, return the
- * empty string "".
- * If there is such window, you are guaranteed that there will always be only
- * one unique minimum window in S.
+ * All keys and values will be in the range of [0, 1000000].
+ * The number of operations will be in the range of [1, 10000].
+ * Please do not use the built-in HashMap library.
  * 
  * 
  */
 /**
- * @param {string} s
- * @param {string} t
- * @return {string}
+ * Initialize your data structure here.
  */
-var minWindow = function(s, t) {
-    if (len(s) < len(t)) return "";
-    var need = counter(t),
-        missing = len(t),
-        start = 0,
-        end = 0,
-        i = 0;
-
-    for (let j = 0; j < len(s); j++) {
-        let c = s[j];
-        if (!(c in need)) need[c] = 0;
-
-        if (need[c] > 0) missing -= 1;
-        need[c] -= 1;
-
-        if (missing == 0) {
-            while (i <= j && need[s[i]] < 0) {
-                need[s[i]] += 1;
-                i += 1;
-            }
-            // print([i, j])
-            if (end == 0 || j + 1 - i < end - start) {
-                // print([start, end, j]);
-                start = i;
-                end = j + 1;
-            }
-        }
-    }
+var MyHashMap = function() {
     
-    return s.substr(start, end - start);
 };
 
-var s = "abc",
-    t = "cba";
-s = "ADOBECODEBANC", t = "ABC"
-// s = 'a', t = 'b';
-print(minWindow(s, t))
+/**
+ * value will always be non-negative. 
+ * @param {number} key 
+ * @param {number} value
+ * @return {void}
+ */
+MyHashMap.prototype.put = function(key, value) {
+    
+};
+
+/**
+ * Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key 
+ * @param {number} key
+ * @return {number}
+ */
+MyHashMap.prototype.get = function(key) {
+    
+};
+
+/**
+ * Removes the mapping of the specified value key if this map contains a mapping for the key 
+ * @param {number} key
+ * @return {void}
+ */
+MyHashMap.prototype.remove = function(key) {
+    
+};
+
+/** 
+ * Your MyHashMap object will be instantiated and called as such:
+ * var obj = new MyHashMap()
+ * obj.put(key,value)
+ * var param_2 = obj.get(key)
+ * obj.remove(key)
+ */

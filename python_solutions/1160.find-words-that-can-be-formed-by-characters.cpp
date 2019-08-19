@@ -490,62 +490,80 @@ ListNode* arrayToListNode(vector<int> &arr) {
   return head->next; 
 }
 /*
- * @lc app=leetcode id=76 lang=cpp
+ * @lc app=leetcode id=1160 lang=cpp
  *
- * [76] Minimum Window Substring
+ * [1160] Find Words That Can Be Formed by Characters
  *
- * https://leetcode.com/problems/minimum-window-substring/description/
+ * https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/description/
  *
  * algorithms
- * Hard (31.44%)
- * Total Accepted:    256.6K
- * Total Submissions: 816.1K
- * Testcase Example:  '"ADOBECODEBANC"\n"ABC"'
+ * Easy (72.76%)
+ * Total Accepted:    4.9K
+ * Total Submissions: 6.8K
+ * Testcase Example:  '["cat","bt","hat","tree"]\n"atach"'
  *
- * Given a string S and a string T, find the minimum window in S which will
- * contain all the characters in T in complexity O(n).
+ * You are given an array of strings words and a string chars.
  * 
- * Example:
+ * A string is good if it can be formed by characters from chars (each
+ * character can only be used once).
+ * 
+ * Return the sum of lengths of all good strings in words.
  * 
  * 
- * Input: S = "ADOBECODEBANC", T = "ABC"
- * Output: "BANC"
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: words = ["cat","bt","hat","tree"], chars = "atach"
+ * Output: 6
+ * Explanation: 
+ * The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 =
+ * 6.
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: words = ["hello","world","leetcode"], chars = "welldonehoneyr"
+ * Output: 10
+ * Explanation: 
+ * The strings that can be formed are "hello" and "world" so the answer is 5 +
+ * 5 = 10.
+ * 
+ * 
  * 
  * 
  * Note:
  * 
  * 
- * If there is no such window in S that covers all characters in T, return the
- * empty string "".
- * If there is such window, you are guaranteed that there will always be only
- * one unique minimum window in S.
- * 
+ * 1 <= words.length <= 1000
+ * 1 <= words[i].length, chars.length <= 100
+ * All strings contain lowercase English letters only.
  * 
  */
+vector<int> char_counter(string chars) {
+  vector<int>cc(26, 0); 
+  for (auto &c: chars) cc[c - 'a'] += 1;
+  return cc; 
+}
+
 class Solution {
 public:
-    string minWindow(string s, string t) {
-         if (t.size() > s.size()) return "";
-
-         vi need(128, 0);
-         for (auto &c: t) need[c] += 1; 
-
-         int start = 0, end = 0, i = 0, missing = t.size(); 
-
-         for (int j = 0; j < s.size(); j ++){
-           char c = s[j];
-           if (need[c]-- > 0) missing --; 
-
-           if (missing == 0){
-             while (i <= j && need[s[i]] < 0) need[s[i++]] ++; 
-             if (end == 0 || j + 1 - i < end - start) {
-               start = i;
-               end = j + 1;
-             }
-           }
-         }
-         
-         return s.substr(start, end - start);
+    int countCharacters(vector<string>& words, string chars) {
+      vi cchars = char_counter(chars);
+      int res = 0;
+      for (auto &w : words) {
+        vi cw = char_counter(w); 
+        bool valid = true; 
+        for (int i = 0; i < 26 ; i++) 
+          if (cw[i] > cchars[i]) {
+            valid = false;
+            break; 
+          }
+        if (valid) res += w.size(); 
+      }
+      
+      return res;                        
     }
 };
 
