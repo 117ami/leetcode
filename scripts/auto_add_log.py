@@ -29,6 +29,7 @@ def format_print():
     outputs = []
 
     for fs in listfiles:
+        print(fs)
         for line in str(fs).split("\n"):
             arr = line.split()
             rm = re.match(r'\d+.*\.py', arr[-1])
