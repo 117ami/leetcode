@@ -77,12 +77,12 @@ var sorted = function(arr) {
     return arr.sort((a, b) => (a - b));
 }
 
-var sort_by_last = function(arr){
-    return arr.sort((a, b)=>(last(a) - last(b)));
+var sort_by_last = function(arr) {
+    return arr.sort((a, b) => (last(a) - last(b)));
 }
 
-var sort_by_first = function(arr){
-    return arr.sort((a, b)=>(a[0] - b[0]));
+var sort_by_first = function(arr) {
+    return arr.sort((a, b) => (a[0] - b[0]));
 }
 
 // print out a Map 
@@ -281,7 +281,9 @@ var lcs = function(s, t) {
 
 
 var zip = function(lista, listb) {
-    return a.map(function(e, i){return [e, b[i]];});
+    return a.map(function(e, i) {
+        return [e, b[i]];
+    });
 }
 
 class Counter {
@@ -300,7 +302,9 @@ class Counter {
 }
 
 
-var div = function(n, k) { return floor(n / k); }
+var div = function(n, k) {
+    return floor(n / k);
+}
 
 // inclusive of both endpoints
 var randint = function(min, max) {
@@ -317,14 +321,14 @@ var isin = function(s1, s2) {
 var reverseList = function(head) {
     if (head == null) return head;
     var pre, cur;
-    pre = null; 
-    while (head)    {
+    pre = null;
+    while (head) {
         cur = head.next;
-        head.next = pre; 
-        pre = head; 
+        head.next = pre;
+        pre = head;
         head = cur;
     }
-    return pre; 
+    return pre;
 };
 
 /* Transfer each string to a counter of chars*/
@@ -393,5 +397,47 @@ var char_counter = function(chars) {
  * @return {number}
  */
 var maxNumberOfBalloons = function(text) {
-    
+    // var c = counter(text),
+    //     t = counter('balloon'),
+    //     res = len(text);
+
+    // ['b', 'a', 'l', 'o', 'n'].forEach((p) => {
+    //     if (p in c)
+    //         res = pairmin(res, div(c[p], t[p]));
+    // })
+    // return res;
+    let found = 0;
+    let allLetters = [0, 0, 0, 0, 0]; // b=1 a=1 l=2 o=2 n=1
+
+    for (let i = 0; i < text.length; i++) {
+        const curr = text[i];
+        if (curr === 'b') {
+            allLetters[0] += 1;
+        }
+
+        if (curr === 'a') {
+            allLetters[1] += 1;
+        }
+
+        if (curr === 'l') {
+            allLetters[2] += 1;
+        }
+
+        if (curr === 'o') {
+            allLetters[3] += 1;
+        }
+
+        if (curr === 'n') {
+            allLetters[4] += 1;
+        }
+    }
+
+    allLetters[2] = Math.floor(allLetters[2] / 2);
+    allLetters[3] = Math.floor(allLetters[3] / 2);
+
+    return Math.min(...allLetters);
 };
+
+var text = "loonbalxballpoon";
+// text = "leetcode";
+print(maxNumberOfBalloons(text))
