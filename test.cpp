@@ -1,16 +1,11 @@
 
 #include "aux.cpp"
-#include "457.circular-array-loop.cpp"
+#include "1217.play-with-chips.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi nums = {2, -1, 1, 2, 2};
-	// nums = {-2, 1, -1, -2, -2};
-	// nums = {-1, -2, -3, -4, -5};
-	// nums = {-1,2,1,2};
-	vi copy(nums);
-	say(s.circularArrayLoop(nums));
-	say(s.circularArrayLoop_2(copy));
+	vector<int> chips = {2,3,2,3,2};
+	say(s.minCostToMoveChips(chips));
 	return 0;
 }
 

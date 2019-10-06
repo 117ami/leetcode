@@ -24,17 +24,18 @@ cpp_file=$(ls -t *.cpp | head -n 1)
 # 	console.log(a);
 # } " | tee -a $js_file
 # cat aux.js | tee -a $js_file
-cat aux.js > tmpjs
-cat $js_file >> tmpjs
-mv tmpjs $js_file
 
-cat c.cpp > tmpcpp
-cat $cpp_file >> tmpcpp
-mv tmpcpp $cpp_file
+# cat aux.js > tmpjs
+# cat $js_file >> tmpjs
+# mv tmpjs $js_file
 
-cat aux.py > tmppy
-cat $python_file >> tmppy
-mv tmppy $python_file
+# cat c.cpp > tmpcpp
+# cat $cpp_file >> tmpcpp
+# mv tmpcpp $cpp_file
+
+# cat aux.py > tmppy
+# cat $python_file >> tmppy
+# mv tmppy $python_file
 
 echo -e "\n\n
 s = Solution()\n\n" | tee -a $python_file
