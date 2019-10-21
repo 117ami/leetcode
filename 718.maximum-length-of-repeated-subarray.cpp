@@ -37,9 +37,48 @@
  * 
  * 
  */
+
 class Solution {
 public:
+    int maxlen = 0; 
+    void helper(vector<int>& A, vector<int>& B){
+        for (int i = 0 ; i < A.size() - maxlen; i ++ ){
+            int j = i, k = 0, curlen = 0; 
+            while ( j < A.size() && k < B.size()) {
+                if (A[j] == B[k]) maxlen = max(maxlen, ++ curlen); 
+                else curlen = 0; 
+                j ++; 
+                k ++; 
+            }
+        }
+    }
+
     int findLength(vector<int>& A, vector<int>& B) {
+        int size_a = A.size(), size_b = B.size(); 
+        helper(A, B); 
+        helper(B, A);
+        // for (int i = 0 ; i < size_a - maxlen; i ++ ){
+        //     int j = i, k = 0, curlen = 0; 
+        //     while ( j < size_a && k < size_b) {
+        //         if (A[j] == B[k]) maxlen = max(maxlen, ++curlen); 
+        //         else curlen = 0; 
+        //         j ++; 
+        //         k ++; 
+        //     }
+        // }
+        // for (int i = 0; i < size_b - maxlen; i ++) {
+        //     int j = 0, k = i, curlen = 0; 
+        //     while ( j < size_a && k < size_b) {
+        //         if (A[j] == B[k]) maxlen = max(maxlen, ++curlen); 
+        //         else curlen = 0; 
+        //         j ++; 
+        //         k ++; 
+        //     }
+        // }
+        return maxlen; 
+    }
+
+    int findLength2(vector<int>& A, vector<int>& B) {
         int m = A.size(), n = B.size(), res = 0; 
         vector<vector<int>> dp(m + 1, vector<int> (n + 1, 0)); 
         for (int i = 0; i < m; i ++) {
