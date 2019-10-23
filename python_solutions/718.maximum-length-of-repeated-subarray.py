@@ -6,9 +6,9 @@
 # https://leetcode.com/problems/maximum-length-of-repeated-subarray/description/
 #
 # algorithms
-# Medium (46.27%)
-# Total Accepted:    35.1K
-# Total Submissions: 75.8K
+# Medium (47.47%)
+# Total Accepted:    42.6K
+# Total Submissions: 89.5K
 # Testcase Example:  '[1,2,3,2,1]\n[3,2,1,4,7]'
 #
 # Given two integer arrays A and B, return the maximum length of an subarray
@@ -37,24 +37,66 @@
 #
 #
 #
-class Solution:
-    def findLength(self, A,B):
-        def check(i):
-            seen = set(A[x:x + i] for x in range(len(A) - i + 1))
-            return any(B[x:x + i] in seen for x in range(len(B) - i + 1))
-        
-        l, r = 0, min(len(A), len(B))
-        A = ''.join(map(chr, A))
-        B = ''.join(map(chr, B))
-        while l < r:
-            mid = (l + r) // 2
-            if check(mid):
-                l = mid + (l == mid)
-            else:
-                r = mid - 1
-        return l if check(l) else l - 1
 
-a, b = [1, 2, 3, 2, 1], [3, 2, 1, 4, 7]
-# a, b = [0, 1, 1, 1, 1], [1, 0, 1, 0, 1]
-s = Solution()
-print(s.findLength(a, b))
+
+class Solution:
+    def helper(self, a, b):
+        for i in range(len(a) - self.maxlen):
+            j, k, curlen = i, 0, 0
+            while j < len(a) and k < len(b):
+                if a[j] == b[k]:
+                    curlen += 1
+                    self.maxlen = max(self.maxlen, curlen)
+                else:
+                    curlen = 0
+                j += 1
+                k += 1
+
+    # solution 2: check one by one
+    def findLength2(self, a, b):
+        self.maxlen = 0
+        self.helper(a, b)
+        self.helper(b, a)
+        return self.maxlen
+
+    # solution 1: dynamic programming
+    def findLength1(self, a, b):
+        dp = [[0] * (len(a) + 1) for _ in range(len(b) + 1)]
+        res = 0
+        for i in range(len(a)):
+            for j in range(len(b)):
+                if a[i] == b[j]:
+                    dp[i + 1][j + 1] = dp[i][j] + 1
+                    res = max(res, dp[i + 1][j + 1])
+
+        return res
+
+    # solution 3 : binary search
+    def findLength(self, a, b):
+        def check(length):  # O(n^2)
+            # array slicing is O(n)
+            seen = {a[i:i + length] for i in range(len(a) - length + 1)}
+            return any(b[j:j + length]
+                       in seen for j in range(len(b) - length + 1))
+
+        a = ''.join(map(chr, a))
+        b = ''.join(map(chr, b))
+        lo, hi = 0, min(len(a), len(b)) + 1
+
+        while lo <= hi:
+            mi = (hi + lo) // 2
+            if check(mi):
+                lo = mi + 1
+            else:
+                hi = mi - 1
+
+        return lo - 1
+
+
+# a = [1, 2, 3, 2, 1]
+# b = [3, 2, 1, 4, 7]
+# a, b = [1, 0, 0, 0, 0], [0, 0, 0, 0, 1]
+# s = Solution()
+# print(s.findLength(a, b))
+
+
