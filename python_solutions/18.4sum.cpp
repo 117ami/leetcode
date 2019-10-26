@@ -36,7 +36,7 @@
 class Solution {
 public:
     vector<vector<int>> res; 
-    void nsum(int l, int r, int target, int cter, vector<int> nums, vector<int> curres) {
+    void nsum(int l, int r, int target, int cter, vector<int>& nums, vector<int>& curres) {
         if (r - l + 1 < cter || cter < 2 || nums[r] * cter < target || nums[l] * cter > target) return; 
         if (cter == 2) {
             while (l < r) {
