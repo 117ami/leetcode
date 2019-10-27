@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1237.find-positive-integer-solution-for-a-given-equation.cpp"
+#include "1037.valid-boomerang.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
