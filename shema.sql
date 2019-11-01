@@ -1,14 +1,12 @@
-
--- Create table Submissions (sub_id int, parent_id int); 
--- Truncate table Submissions
-insert into Submissions (sub_id, parent_id) values ('1', Null), 
-('2', Null),
-('1', Null),
-('12', Null),
-('3', '1'),
-('5', '2'),
-('3', '1'),
-('4', '1'),
-('9', '1'),
-('10', '2'),
-('6', '7'); 
+-- Create table If Not Exists courses (student varchar(255), class varchar(255))
+-- Truncate table courses
+create table courses(student varchar(255), class varchar(255)); 
+insert into courses (student, class) values ('A', 'Math'),
+('B', 'English'),
+('C', 'Math'),
+('D', 'Biology'),
+('E', 'Math'),
+('F', 'Computer'),
+('G', 'Math'),
+('H', 'Math'),
+('I', 'Math')
