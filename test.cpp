@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1095.find-in-mountain-array.cpp"
+#include "1221.split-a-string-in-balanced-strings.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
