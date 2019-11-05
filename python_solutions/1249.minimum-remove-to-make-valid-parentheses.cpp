@@ -68,7 +68,28 @@
 
 class Solution {
 public:
+  // Method 1: use erase method 
   string minRemoveToMakeValid(string s) {
+      stack <int> st; 
+      for (int i = 0; i < s.size(); ++i){
+        if (s[i] == '(') st.push(i); 
+        else if (s[i] == ')') {
+          if (st.empty()) s[i] = '*'; 
+          else st.pop();
+        }
+      }
+
+      while (!st.empty()) {
+        s[st.top()] = '*'; 
+        st.pop();
+      }
+
+      s.erase(remove(s.begin(), s.end(), '*'), s.end());
+      return s; 
+  }
+
+
+  string minRemoveToMakeValid_2(string s) {
     stack<int> left;
     vector<int> removed;
     for (int i = 0; i < s.size(); i++) {
