@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1248.count-number-of-nice-subarrays.cpp"
+#include "977.squares-of-a-sorted-array.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
