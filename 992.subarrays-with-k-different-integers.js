@@ -54,6 +54,36 @@
  * @param {number} K
  * @return {number}
  */
+
+var atMostK = function(A, K) {
+    let c = {},
+        res = 0,
+        i = 0;
+    for (let j = 0; j < A.length; j += 1) {
+        if (!(A[j] in c)) {
+            c[A[j]] = 0;
+        }
+
+        if (c[A[j]] == 0) K -= 1;
+
+        c[A[j]] += 1;
+        while (K < 0) {
+            c[A[i]] -= 1
+            if (c[A[i]] == 0) {
+                K += 1;
+            }
+            i += 1;
+        }
+        res += j - i + 1;
+    }
+    return res;
+}
+
+
 var subarraysWithKDistinct = function(A, K) {
-    
+    return atMostK(A, K) - atMostK(A, K - 1);
 };
+
+var A = [1, 2, 1, 2, 3],
+    K = 2;
+console.log(subarraysWithKDistinct(A, K))

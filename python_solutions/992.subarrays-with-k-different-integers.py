@@ -53,28 +53,6 @@ import collections
 
 
 class Solution:
-    def subarraysWithKDistinct2(self, A, K):
-        i = j = 0
-        c = collections.Counter()
-        res = 0
-        while j < len(A):
-            print(i, j)
-            while len(c) < K and j < len(A):
-                c[A[j]] += 1
-                j += 1
-            
-            if len(c) < K or j >= len(A): return res 
-            j -= 1
-            
-            while i <= j and len(c) == K:
-                c[A[i]] -= 1
-                if c[A[i]] == 0:
-                    del c[A[i]]
-                res += j - i
-                i += 1
-        return res 
-
-
     def subarraysWithKDistinct(self, A, K):
         return self.atmostk(A, K) - self.atmostk(A, K - 1)
 
@@ -96,6 +74,6 @@ class Solution:
 
 
 s = Solution()
-A = [1, 2, 1, 2, 3]
-K = 2
+A = [1, 2, 1, 3, 4]
+K = 3
 print(s.subarraysWithKDistinct2(A, K))
