@@ -675,3 +675,8 @@ class Numbers():
     INF = 0x3f3f3f3f
     NEGINF = -0x3f3f3f3f
     
+
+
+s = Solution()
+
+

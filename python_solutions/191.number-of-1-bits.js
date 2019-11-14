@@ -67,9 +67,18 @@
  * @param {number} n - a positive integer
  * @return {number}
  */
-var hammingWeight = function(n) {
-	return (n).toString(2).split('1').length - 1;
+var hammingWeight_2 = function(n) {
+    return (n).toString(2).split('1').length - 1;
 };
 
-console.log(hammingWeight(4294967293));
+// Method 2
+var hammingWeight = function(n) {
+    let res = 0;
+    while (n > 0) {
+        if (n & 1) res++;
+        n = n >>> 1;
+    }
+    return res;
+}
 
+console.log(hammingWeight(4294967293));
