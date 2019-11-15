@@ -1,9 +1,10 @@
 
 #include "aux.cpp"
-#include "1254.number-of-closed-islands.cpp"
+#include "1219.path-with-maximum-gold.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
+	
 	return 0;
 }
 
