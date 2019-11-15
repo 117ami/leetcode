@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "191.number-of-1-bits.cpp"
+#include "1254.number-of-closed-islands.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
