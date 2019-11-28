@@ -1,3 +1,12 @@
+// 
+//  @lc app=leetcode id=1222 lang=python3
+// 
+//  [1222] queens that attach the king
+// 
+//  algorithms
+//  Medium (50.43%)
+//  https://leetcode.com/problems/queens-that-can-attack-the-king/
+
 
 class Solution {
 public:
