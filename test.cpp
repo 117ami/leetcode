@@ -1,5 +1,4 @@
 #include "aux.cpp"
-
 // C library
 #include <cassert>
 #include <cmath>
@@ -328,7 +327,16 @@ void printMap(unordered_map<T1, T2> &m) {
 }
 
 // ==================================================
+
 
+#ifdef DEBUG
+struct TreeNode {
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+#endif 
 
 class Node {
 public:
@@ -423,6 +431,7 @@ vector<vector<int>> valuesOfTree(TreeNode *r) {
   return res;
 }
 
+
 ListNode* reverseList(ListNode* head) {
   if (!head) return head; 
   ListNode* pre, *cur; 
@@ -490,14 +499,10 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1273.delete_tree_nodes.cpp"
-
+#include "1274.number_of_ships_in_a_rectangle.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vi parent = {1, 0, 0, 1, 2, 2, 2}, value = {1,-2,4,0,-2,-1,-2};
-      int i = s.deleteTreeNodes(7, parent, value);
-      say(i);
 	    return 0;
 }
         

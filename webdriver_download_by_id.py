@@ -18,11 +18,11 @@ def read_by_id(id='1024'):
     text.append(problem_url)
 
     c.get(problem_url)
-    while 'css-dcmtd5' not in c.page_source:
+    while all([tag not in c.page_source for tag in ['"hard"', '"medium"', '"easy"']]):
         time.sleep(3)
 
     soup = BeautifulSoup(c.page_source, 'lxml')
-    diff = soup.find('div', {'class': 'css-dcmtd5'}).text
+    diff = soup.find('div', {'diff': ["hard", "medium", "easy"]}).text
     text.append(diff + " (Difficulty)\n")
 
     ps = soup.findAll('p') + soup.findAll('pre')
