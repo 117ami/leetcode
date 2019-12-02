@@ -1,7 +1,8 @@
 from selenium import webdriver
 import sys
+import os
 from bs4 import BeautifulSoup
-
+import time
 
 def read_by_id(id='1024'):
     text = []
@@ -17,8 +18,10 @@ def read_by_id(id='1024'):
     text.append(problem_url)
 
     c.get(problem_url)
-    soup = BeautifulSoup(c.page_source, 'lxml')
+    while 'css-dcmtd5' not in c.page_source:
+        time.sleep(3)
 
+    soup = BeautifulSoup(c.page_source, 'lxml')
     diff = soup.find('div', {'class': 'css-dcmtd5'}).text
     text.append(diff + " (Difficulty)\n")
 
@@ -61,6 +64,17 @@ def generate_cpp(text, id='1024'):
         for t in text:
             f.write("// " + t + "\n")
 
+    os.system("echo '#include \"aux.cpp\"' > test.cpp")
+    os.system('cat c.cpp >> test.cpp')
+    
+    with open('test.cpp', 'a') as f:
+        f.write('#include \"{}\"\n\n'.format(fn))
+        ss = """int main(int argc, char const *argv[]) {
+	    Solution s;
+	    return 0;
+}
+        """
+        f.write(ss)
 
 if __name__ == "__main__":
     id = sys.argv[1].rstrip()
