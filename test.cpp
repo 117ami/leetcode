@@ -499,10 +499,11 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1274.number_of_ships_in_a_rectangle.cpp"
+#include "1271.hexspeak.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
+      say(s.toHexspeak("747823223228"));
 	    return 0;
 }
         
