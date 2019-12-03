@@ -499,12 +499,11 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1276.number_of_burgers_with_no_waste_of_ingredients.cpp"
+#include "1269.number_of_ways_to_stay_in_the_same_place_after_some_steps.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vi ans = s.numOfBurgers(2385088, 164763);
-      say(ans);
+      say(s.numWays(27, 7));
 	    return 0;
 }
         
