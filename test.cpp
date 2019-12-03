@@ -499,11 +499,12 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1278.palindrome_partitioning_iii.cpp"
+#include "1276.number_of_burgers_with_no_waste_of_ingredients.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      say(s.palindromePartition("fyhowoxzyrincxivwarjuwxrwealesxsimsepjdqsstfggjnjhilvrwwytbgsqbpnwjaojfnmiqiqnyzijfmvekgakefjaxryyml", 32)); 
+      vi ans = s.numOfBurgers(2385088, 164763);
+      say(ans);
 	    return 0;
 }
         
