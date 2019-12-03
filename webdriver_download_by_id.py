@@ -6,7 +6,9 @@ import time
 
 def read_by_id(id='1024'):
     text = []
-    c = webdriver.Chrome()
+    o = webdriver.chrome.options.Options()
+    o.add_argument('--headless')
+    c = webdriver.Chrome(options=o)
     c.get('https://leetcode.com/problemset/all/?search={}'.format(id))
 
     soup = BeautifulSoup(c.page_source, 'lxml')
@@ -81,3 +83,4 @@ if __name__ == "__main__":
     text = read_by_id(id)
     generate_cpp(text, id)
     generate_python(text, id)
+    print(">> DONE")

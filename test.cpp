@@ -499,11 +499,11 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1271.hexspeak.cpp"
+#include "1278.palindrome_partitioning_iii.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      say(s.toHexspeak("747823223228"));
+      say(s.palindromePartition("fyhowoxzyrincxivwarjuwxrwealesxsimsepjdqsstfggjnjhilvrwwytbgsqbpnwjaojfnmiqiqnyzijfmvekgakefjaxryyml", 32)); 
 	    return 0;
 }
         
