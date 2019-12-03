@@ -7,9 +7,12 @@ import time
 def read_by_id(id='1024'):
     text = []
     o = webdriver.chrome.options.Options()
-    # o.add_argument('--headless')
+    o.add_argument('--headless')
     c = webdriver.Chrome(options=o)
     c.get('https://leetcode.com/problemset/all/?search={}'.format(id))
+    
+    while '/problems/' not in c.page_source:
+        time.sleep(3)
 
     soup = BeautifulSoup(c.page_source, 'lxml')
 

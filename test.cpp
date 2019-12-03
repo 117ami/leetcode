@@ -499,11 +499,10 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1269.number_of_ways_to_stay_in_the_same_place_after_some_steps.cpp"
+#include "1262.greatest_sum_divisible_by_three.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      say(s.numWays(27, 7));
 	    return 0;
 }
         
