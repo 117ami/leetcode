@@ -499,10 +499,13 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1262.greatest_sum_divisible_by_three.cpp"
+#include "1233.remove_sub_folders_from_the_filesystem.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
+      vs folder = {"/a","/a/b","/c/d","/c/d/e","/c/f"};
+      vs ans = s.removeSubfolders(folder);
+      say(ans);
 	    return 0;
 }
         
