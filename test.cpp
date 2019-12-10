@@ -499,13 +499,12 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1233.remove_sub_folders_from_the_filesystem.cpp"
+#include "1281.subtract_the_product_and_sum_of_digits_of_an_integer.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vs folder = {"/a","/a/b","/c/d","/c/d/e","/c/f"};
-      vs ans = s.removeSubfolders(folder);
-      say(ans);
+      int n = 4421; 
+      say(s.subtractProductAndSum(n));
 	    return 0;
 }
         
