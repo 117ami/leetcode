@@ -499,14 +499,11 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-// #include "853.car_fleet.cpp"
-#include "1218.longest_arithmetic_subsequence_of_given_difference.cpp"
+#include "9.palindrome_number.cpp"
+
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vi arr {1,5,7,8,5,3,4,2,1}; 
-      int d = -2; 
-      // arr = {};
-      say(s.longestSubsequence(arr, d));
+      say(s.isPalindrome(101));
 	    return 0;
 }
         
