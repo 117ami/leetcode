@@ -499,15 +499,11 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1283.find_the_smallest_divisor_given_a_threshold.cpp"
+#include "1240.tiling_a_rectangle_with_the_fewest_squares.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vi ns {962551, 933661, 905225, 923035, 990560}; 
-      int t = 10; 
-      ns = {1,2,3};
-      t = 6; 
-      say(s.smallestDivisor(ns, t));
+      say(s.tilingRectangle(11, 13)); 
 	    return 0;
 }
         
