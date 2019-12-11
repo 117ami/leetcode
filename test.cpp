@@ -499,12 +499,14 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1239.maximum_length_of_a_concatenated_string_with_unique_characters.cpp"
+#include "1235.maximum_profit_in_job_scheduling.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vs arr = {"cha","r","act","ers"};
-      say(s.maxLength(arr));
+      vi st = {1,2,3,4,6}, et = {3,5,10,6,9},p = {20,20,100,70,60};
+      st = {1,2,3,3}, et = {3,4,5,6}, p = {50,10,40,70};
+      int ans = s.jobScheduling(st, et, p);
+      say(ans);
 	    return 0;
 }
         
