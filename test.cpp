@@ -499,14 +499,14 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1235.maximum_profit_in_job_scheduling.cpp"
-
+// #include "853.car_fleet.cpp"
+#include "1218.longest_arithmetic_subsequence_of_given_difference.cpp"
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vi st = {1,2,3,4,6}, et = {3,5,10,6,9},p = {20,20,100,70,60};
-      st = {1,2,3,3}, et = {3,4,5,6}, p = {50,10,40,70};
-      int ans = s.jobScheduling(st, et, p);
-      say(ans);
+      vi arr {1,5,7,8,5,3,4,2,1}; 
+      int d = -2; 
+      // arr = {};
+      say(s.longestSubsequence(arr, d));
 	    return 0;
 }
         
