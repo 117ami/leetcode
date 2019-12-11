@@ -499,11 +499,10 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "9.palindrome_number.cpp"
+#include "971.flip_binary_tree_to_match_preorder_traversal.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      say(s.isPalindrome(101));
 	    return 0;
 }
         
