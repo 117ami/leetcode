@@ -499,14 +499,13 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1282.group_the_people_given_the_group_size_they_belong_to.cpp"
+#include "1284.minimum_number_of_flips_to_convert_binary_matrix_to_zero_matrix.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vi gs = {2,1,3,3,3,2};
-      vvi res = s.groupThePeople(gs);
-      say(res);
-      say(res.size());
+      vvi mat = {{0, 0}, {0, 1}};
+      // mat = {{0}};
+      say(s.minFlips(mat));
 	    return 0;
 }
         
