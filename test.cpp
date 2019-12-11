@@ -499,13 +499,15 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1284.minimum_number_of_flips_to_convert_binary_matrix_to_zero_matrix.cpp"
+#include "1283.find_the_smallest_divisor_given_a_threshold.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      vvi mat = {{0, 0}, {0, 1}};
-      // mat = {{0}};
-      say(s.minFlips(mat));
+      vi ns {962551, 933661, 905225, 923035, 990560}; 
+      int t = 10; 
+      ns = {1,2,3};
+      t = 6; 
+      say(s.smallestDivisor(ns, t));
 	    return 0;
 }
         
