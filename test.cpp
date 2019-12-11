@@ -499,12 +499,14 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1281.subtract_the_product_and_sum_of_digits_of_an_integer.cpp"
+#include "1282.group_the_people_given_the_group_size_they_belong_to.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      int n = 4421; 
-      say(s.subtractProductAndSum(n));
+      vi gs = {2,1,3,3,3,2};
+      vvi res = s.groupThePeople(gs);
+      say(res);
+      say(res.size());
 	    return 0;
 }
         

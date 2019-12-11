@@ -64,8 +64,11 @@ template <class K, class V> void say(const map<K, V> &m) {
 // print out a vector of vectors
 template <class T> void say(vector<vector<T>> &vv) {
   // cout << "...printing vector<vector<T>>: \n";
-  for (auto v : vv)
-    say(v);
+  for (auto &v : vv){
+    for (auto i: v) 
+      cout << i << " "; 
+    cout << " " << endl; 
+  }
 }
 
 // print out a vector of pairs
