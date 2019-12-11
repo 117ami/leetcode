@@ -499,11 +499,12 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "1240.tiling_a_rectangle_with_the_fewest_squares.cpp"
+#include "1239.maximum_length_of_a_concatenated_string_with_unique_characters.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
-      say(s.tilingRectangle(11, 13)); 
+      vs arr = {"cha","r","act","ers"};
+      say(s.maxLength(arr));
 	    return 0;
 }
         
