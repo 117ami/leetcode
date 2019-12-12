@@ -299,6 +299,25 @@ def tree_from_list(lis):
 
     return root
 
+
+def print_tree(root):
+    nodes = []
+
+    def dfs(r, d):
+        if not r:
+            return
+        if len(nodes) <= d:
+            nodes.append([])
+        nodes[d].append(r.val)
+        dfs(r.left, d + 1)
+        dfs(r.right, d + 1)
+
+    dfs(root, 0)
+
+    for arr in nodes:
+        print(arr)
+
+
 def arr2linkedlist(arr):
     if len(arr) == 0:
         return
