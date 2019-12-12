@@ -7,20 +7,19 @@ import time
 def read_by_id(id='1024'):
     text = []
     o = webdriver.chrome.options.Options()
-    o.add_argument('--headless')
+    # o.add_argument('--headless')
     c = webdriver.Chrome(options=o)
     c.get('https://leetcode.com/problemset/all/?search={}'.format(id))
     
-    while '/problems/' not in c.page_source:
-        time.sleep(3)
+    pro_hrefs = []
+    while len(pro_hrefs) < 2:
+        soup = BeautifulSoup(c.page_source, 'lxml')
+        pro_hrefs = [e for e in soup.findAll('a') if e.attrs.get('href', '').startswith('/problems/')]
+        time.sleep(1)
 
-    soup = BeautifulSoup(c.page_source, 'lxml')
-
-    first_match = [
-        e for e in soup.findAll('a') if e.attrs.get(
-            'href', '').startswith('/problems/')][1]
-
+    first_match = pro_hrefs[1]
     problem_url = 'https://leetcode.com' + first_match.attrs['href']
+    print('Problem link: {}'.format(problem_url))
     text.append(problem_url)
 
     c.get(problem_url)
@@ -34,7 +33,21 @@ def read_by_id(id='1024'):
     ps = soup.findAll('p') + soup.findAll('pre')
     for p in ps:
         text += p.text.split('\n')
+    
+    while 'ant-select-selection-selected-value' not in c.page_source:
+        time.sleep(1)
 
+    time.sleep(3)        
+    c.find_element_by_xpath('//div[@class="ant-select-selection-selected-value"]').click()
+
+    time.sleep(1)
+    c.find_elements_by_xpath('//li[@class="ant-select-dropdown-menu-item"]')[2].click()  # Choose Python3
+    pycode = BeautifulSoup(c.page_source, 'lxml').find('input', {'name': 'code'})['value'] # Python 3 Code
+    # soup = BeautifulSoup(c.page_source, 'lxml')
+    # py3code = soup.find('input', {'name': 'code'})
+    text += pycode.split("\n")
+
+    # print(c.page_source, text)
     c.quit
     return text
 

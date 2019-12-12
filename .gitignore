@@ -1,2 +1,4 @@
 local/
 local/*
+*.json
+submit.py
