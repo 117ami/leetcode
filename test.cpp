@@ -1,14 +1,11 @@
 
 #include "aux.cpp"
-#include "1028.recover-a-tree-from-preorder-traversal.cpp"
+#include "893.groups-of-special-equivalent-strings.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string t = "1-401--349---90--88"; 
-	t = "1-2--3---4-5--6---7";
-	TreeNode* root = s.recoverFromPreorder(t);
-	vvi vs = valuesOfTree(root); 
-	say(vs);
+	vs a = {"abc","acb","bac","bca","cab","cba"};
+	say(s.numSpecialEquivGroups(a));
 	return 0;
 }
 
