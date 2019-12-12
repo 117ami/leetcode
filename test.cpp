@@ -499,10 +499,20 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
-#include "971.flip_binary_tree_to_match_preorder_traversal.cpp"
+#include "1210.minimum_moves_to_reach_target_with_rotations.cpp"
 
 int main(int argc, char const *argv[]) {
 	    Solution s;
+      vvi grid = {{0,0,0,0,0,1},
+               {1,1,0,0,1,0},
+               {0,0,0,0,1,1},
+               {0,0,1,0,1,0},
+               {0,1,1,0,0,0},
+               {0,1,1,0,0,0}};
+
+      grid = {{0,0,0,0,0,0,0,0,0,1},{0,1,0,0,0,0,0,1,0,1},{1,0,0,1,0,0,1,0,1,0},{0,0,0,1,0,1,0,1,0,0},{0,0,0,0,1,0,0,0,0,1},{0,0,1,0,0,0,0,0,0,0},{1,0,0,1,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{0,0,0,0,0,0,0,0,0,0},{1,1,0,0,0,0,0,0,0,0}};
+      
+      say(s.minimumMoves(grid));
 	    return 0;
 }
         
