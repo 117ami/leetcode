@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1227.airplane-seat-assignment-probability.cpp"
+#include "894.all-possible-full-binary-trees.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
