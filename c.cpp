@@ -1,4 +1,4 @@
-// C library
+for (size_t i =0; )// C library
 #include <cassert>
 #include <cmath>
 #include <climits>
@@ -83,11 +83,11 @@ static auto __2333__ = []() {
 // ==================================================
 
 // some macro for less typing
-#define fori(n) for (int i = 0; i <=int(n); ++i) // [0, n)
-#define each(i, n) for (int i = 0; i <=int(n); ++i) // [0, n)
-#define eachv(i, n) for (int i = int(n); i >= 0; --i)   // reverse [0, n)
-#define up(i, a, b) for (int i = int(a); i <= int(b); ++i) // [a, b)
-#define down(i, b, a) for (int i = int(b); i >= int(a); --i) // reverse [a, b)
+#define fori(n) for (size_t i = 0; i < int(n); ++i) // [0, n)
+#define each(i, n) for (size_t i = 0; i <= int(n); ++i) // [0, n)
+#define eachv(i, n) for (size_t i = int(n); i >= 0; --i)   // reverse [0, n)
+#define up(i, a, b) for (size_t i = int(a); i <= int(b); ++i) // [a, b)
+#define down(i, b, a) for (size_t i = int(b); i >= int(a); --i) // reverse [a, b)
 #define unfold(i, arr) for (auto &i: arr)
 
 #define INF 0x3f3f3f3f                         
