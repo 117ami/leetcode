@@ -793,11 +793,9 @@ def isprime(x):
     given number is prime
     """
     n = 1 + int(x ** 0.5)
-    tables = []
     bool_tables = [True] * (1 + n)
     for i in range(2, n + 1):
         if bool_tables[i]:
-            tables.append(i)
             if x % i == 0:
                 return False
 
