@@ -773,3 +773,36 @@ def intToRoman(self, num: int) -> str:
         d, num = divmod(num, k)
         res += m[k] * d
     return res
+
+
+def sieve_primes(n):
+    """ Find all primes under (inclusive) n
+    """
+    tables = []
+    bool_tables = [True] * (1 + n)
+    for i in range(2, n + 1):
+        if bool_tables[i]:
+            tables.append(i)
+            for j in range(i << 1, n + 1, i):
+                bool_tables[j] = False
+    return tables
+
+
+def isprime(x):
+    """Combining sieve_primes to decide whether a 
+    given number is prime
+    """
+    n = 1 + int(x ** 0.5)
+    tables = []
+    bool_tables = [True] * (1 + n)
+    for i in range(2, n + 1):
+        if bool_tables[i]:
+            tables.append(i)
+            if x % i == 0:
+                return False
+
+            for j in range(i << 1, n + 1, i):
+                bool_tables[j] = False
+    return True
+
+

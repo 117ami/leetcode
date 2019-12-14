@@ -1,11 +1,16 @@
 
 #include "aux.cpp"
-#include "13.roman-to-integer.cpp"
+#include "1175.prime-arrangements.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string si = "MCMXCIV"; 
-	say(s.romanToInt(si));
+	int res = 0; 
+	forup(i, 1, 101) {
+		res = s.numPrimeArrangements(i);
+		cout << i << ":" << res << ", "; 
+	}
+	res = s.numPrimeArrangements(5);
+	say(res);
 	return 0;
 }
 
