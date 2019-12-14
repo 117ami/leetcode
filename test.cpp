@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "1220.count-vowels-permutation.cpp"
+#include "12.integer-to-roman.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.countVowelPermutation(158));
+	int n = 58; 
+	say(s.intToRoman(n));
 	return 0;
 }
 
