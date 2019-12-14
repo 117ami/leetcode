@@ -1,4 +1,3 @@
-for (size_t i =0; )// C library
 #include <cassert>
 #include <cmath>
 #include <climits>
@@ -48,7 +47,7 @@ using namespace std;
 
 // constants
 const double EPS = 1e-9;
-const int MOD = 1000000007;
+const int64_t MOD = 1000000007;
 
 // type alias
 using pii = pair<int, int>;
@@ -178,7 +177,7 @@ void sort_by_last(vvi & a){
 }
 
 // quick sum, product, max, min elemnt of a vector<int>
-// int sum_(vi &a) { return accumulate(a.begin(), a.end(), 0); } quick sum
+template <class T> T sum_(const vector<T> &a) { return accumulate(a.begin(), a.end(), 0); }
 template <class T> T qsum(const vector<T> &ns) { 
   T r = 0; 
   for(auto n: ns) r += n; 
@@ -504,3 +503,90 @@ vector<int> char_counter(string chars) {
   return cc; 
 }
 
+/*
+ * @lc app=leetcode id=1220 lang=cpp
+ *
+ * [1220] Count Vowels Permutation
+ *
+ * https://leetcode.com/problems/count-vowels-permutation/description/
+ *
+ * algorithms
+ * Hard (51.18%)
+ * Total Accepted:    5.7K
+ * Total Submissions: 11.1K
+ * Testcase Example:  '1'
+ *
+ * Given an integer n, your task is to count how many strings of length n can
+ * be formed under the following rules:
+ * 
+ * 
+ * Each character is a lower case vowel ('a', 'e', 'i', 'o', 'u')
+ * Each vowel 'a' may only be followed by an 'e'.
+ * Each vowel 'e' may only be followed by an 'a' or an 'i'.
+ * Each vowel 'i' may not be followed by another 'i'.
+ * Each vowel 'o' may only be followed by an 'i' or a 'u'.
+ * Each vowel 'u' may only be followed by an 'a'.
+ * 
+ * 
+ * Since the answer may be too large, return it modulo 10^9 + 7.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: n = 1
+ * Output: 5
+ * Explanation: All possible strings are: "a", "e", "i" , "o" and "u".
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: n = 2
+ * Output: 10
+ * Explanation: All possible strings are: "ae", "ea", "ei", "ia", "ie", "io",
+ * "iu", "oi", "ou" and "ua".
+ * 
+ * 
+ * Example 3: 
+ * 
+ * 
+ * Input: n = 5
+ * Output: 68
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= n <= 2 * 10^4
+ * 
+ * 
+ */
+
+// int64_t qsum(vector<int64_t> &ns) { 
+//   int64_t r = 0; 
+//   for(auto n: ns) r += n; 
+//   return r; 
+// }
+
+class Solution {
+  vector<vector<int64_t>> cache {{1,1,1,1,1}};
+public:
+    int countVowelPermutation(int n) {
+        if (n <= cache.size()) return qsum(cache[n-1]) % MOD; 
+        for (size_t j = cache.size(); j < n; j++) {
+          vector<int64_t> ce = cache[cache.size()-1]; 
+          int64_t a = (ce[1]+ce[2]+ce[4]) % MOD, e = (ce[0]+ce[2])%MOD, i=(ce[1]+ce[3]) % MOD, o=ce[2]%MOD, u=(ce[2]+ce[3])%MOD; 
+          cache.push_back(vector<int64_t>{a, e, i, o, u});
+        }
+        // return 0;
+        // say(cache[cache.size()-1]);
+        int64_t r  = qsum(cache[cache.size()-1]); 
+        // say(r);
+        return r % MOD; 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
