@@ -682,7 +682,7 @@ class Trees:
             print(layer)
         return res
 
-    def tree_from_list(self, arr):
+    def listToTree(self, arr):
         """Build tree for a list. E.g., [1,2,3,None,4]
         """
         if not arr: return 
@@ -695,7 +695,7 @@ class Trees:
                 jobs.pop(0)
                 children = 0
             
-            if arr[i]:
+            if arr[i] is not None:
                 c = TreeNode(arr[i])
                 if children == 0: jobs[0].left = c
                 else: jobs[0].right = c
@@ -705,7 +705,27 @@ class Trees:
             i += 1
 
         return root  
+    
+    def treeToList(self, root):
+        """Encodes a tree to a list
+        :type root: TreeNode
+        :rtype: list[int]
+        """
+        jobs = [root]
+        res = []
+        while len(jobs):
+            r = jobs.pop(0)
+            if r:
+                res.append(r.val)
+                jobs += [r.left, r.right]
+            else:
+                res.append(0.1)
 
+        while res[-1] == 0.1:  # Do NOT use 0.0, there are nodes with value 0
+            res.pop()
+        return res 
+
+     
 
 def arr2linkedlist(arr):
     if len(arr) == 0:
