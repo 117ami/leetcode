@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "606.construct-string-from-binary-tree.cpp"
+#include "652.find-duplicate-subtrees.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;

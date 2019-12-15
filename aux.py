@@ -659,33 +659,52 @@ class TreeNode:
         self.left = None
         self.right = None
 
+class Trees:
+    def getdepth(self, r):
+        if not r: return 0
+        return 1 + max(self.getdepth(r.left), self.getdepth(r.right))
 
-def tree_from_list(lis):
-    if len(lis) == 0:
-        return None
-    root = TreeNode(lis[0])
-    st = [root]
-    i, j = 0, 1
-    while j < len(lis):
-        r = st[i]
-        i += 1
-        if r is None:
-            j += 1
-        else:
-            lv = lis[j]
-            r.left = TreeNode(lv) if lv else None
-            st.append(r.left)
+    def printTree(self, root):
+        self.d = self.getdepth(root)
+        width = 2**self.d - 1
+        res = [[""] * width for _ in range(self.d)]
 
-            if j + 1 >= len(lis):
-                break
+        def dfs(node, depth, loc):
+            if not node or depth > self.d:
+                return
+            res[depth - 1][loc] = str(node.val) 
+            offset = 2 ** (self.d - depth - 1)
+            dfs(node.left, depth + 1, loc - offset)
+            dfs(node.right, depth + 1, loc + offset)
 
-            rv = lis[j + 1]
-            r.right = TreeNode(rv) if rv else None
-            st.append(r.right)
+        dfs(root, 1, width // 2)
+        for layer in res:
+            print(layer)
+        return res
 
-            j += 2
+    def tree_from_list(self, arr):
+        """Build tree for a list. E.g., [1,2,3,None,4]
+        """
+        if not arr: return 
+        children = 0 
+        i = 1
+        jobs = [TreeNode(arr[0])]
+        root = jobs[0]
+        while i < len(arr):
+            if children == 2: 
+                jobs.pop(0)
+                children = 0
+            
+            if arr[i]:
+                c = TreeNode(arr[i])
+                if children == 0: jobs[0].left = c
+                else: jobs[0].right = c
+                jobs.append(c) 
+            
+            children += 1
+            i += 1
 
-    return root
+        return root  
 
 
 def arr2linkedlist(arr):
