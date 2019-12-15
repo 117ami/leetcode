@@ -1,10 +1,11 @@
 from random import randint
 import random
 import collections
+from bisect import bisect_left
 
 
 class XString(object):
-    def is_p(s):
+    def is_p(self, s):
         """ is palindrome
         type s: string
         rtype : boolean
@@ -184,7 +185,7 @@ def find_patition_dp(nums):
         for j in range(n + 1):
             part[i][j] = part[i][j - 1]
             if i >= nums[j - 1]:
-                part[i][j] = part[i][j] or part[i - arr[j - 1]][j - 1]
+                part[i][j] = part[i][j] or part[i - nums[j - 1]][j - 1]
 
     return part[target][n]
 
@@ -465,25 +466,6 @@ class XString(object):
         return ''.join(res)
 
 
-# for Strings
-# decide whether list(s) in list(t). e.g., is_sub('abc', 'akbkck') == True
-def is_substring(s, t):
-    it = iter(t)
-    return all(c in it for c in s)
-
-
-def is_letter(c):
-    return c.isalpha()
-
-
-def isodd(n):
-    return n % 2 > 0
-
-
-def iseven(n):
-    return n % 2 == 0
-
-
 """decide nums, a list containing only positive integers, can be partitioned
 into two equal subsets. Two methods:
 
@@ -590,75 +572,6 @@ class PriorityQueue(object):
         return self.queue.pop()
 
 
-# # from bisect import bisect_left
-
-# pq = PriorityQueue()
-# for i in [2, 5, 4, 3, 9, 6]:
-#     pq.push(i)
-
-# while not pq.isEmpty():
-#     print(pq.pop())
-
-# same as from itertools import permutations
-def perms(iterable, r=None):
-    # permutations('ABCD', 2) --> AB AC AD BA BC BD CA CB CD DA DB DC
-    # permutations(range(3)) --> 012 021 102 120 201 210
-    pool = tuple(iterable)
-    n = len(pool)
-    r = n if r is None else r
-    if r > n:
-        return
-    indices = list(range(n))
-    cycles = list(range(n, n - r, -1))
-    print(cycles)
-    yield tuple(pool[i] for i in indices[:r])
-    while n:
-        for i in reversed(range(r)):
-            cycles[i] -= 1
-            if cycles[i] == 0:
-                indices[i:] = indices[i + 1:] + indices[i:i + 1]
-                cycles[i] = n - i
-            else:
-                j = cycles[i]
-                indices[i], indices[-j] = indices[-j], indices[i]
-                yield tuple(pool[i] for i in indices[:r])
-                break
-        else:
-            return
-
-# Generates the next permutation lexicographically after a given permutation.
-# It changes the given permutation in-place.
-
-
-def next_permutation(arr):
-    # Find the highest index i such that s[i] < s[i+1].
-    # If no such index exists, the permutation is the last permutation.
-    i = len(arr) - 1
-    while i > 0:
-        if arr[i] > arr[i - 1]:
-            break
-        i -= 1
-    if i == 0:
-        return []
-    i -= 1
-
-    # Find the highest index j > i such that s[j] > s[i]. Such a j must exist,
-    # since i+1 is such an index.
-    for j in reversed(range(i + 1, len(arr))):
-        if arr[j] > arr[i]:
-            break
-
-    arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1:] = reversed(arr[i + 1:])
-    return arr
-
-
-class TreeNode:
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-
 class Trees:
     def getdepth(self, r):
         if not r: return 0
@@ -725,7 +638,26 @@ class Trees:
             res.pop()
         return res 
 
-     
+    def isCompleteTree(self, root: TreeNode) -> bool:
+        """ Whether a given a tree is complete 
+        """
+        if not root: return True 
+        stack = [root]
+        self.empty = False
+        
+        while stack:
+            n = stack.pop(0)
+            if not n: self.empty = True 
+            if n is None and len(stack) > 0 and stack[-1] is not None: return False 
+            if n:
+                if self.empty: return False 
+                # print(n.val, self.empty)
+                stack.append(n.left if n.left else None)
+                stack.append(n.right if n.right else None)
+
+        return True 
+
+
 
 def arr2linkedlist(arr):
     if len(arr) == 0:
@@ -736,14 +668,6 @@ def arr2linkedlist(arr):
         tail.next = ListNode(i)
         tail = tail.next
     return head
-
-
-def linkedlist2arr(head):
-    ans = []
-    while head:
-        ans.append(head.val)
-        head = head.next
-    return ans
 
 
 def reverseList(head):
