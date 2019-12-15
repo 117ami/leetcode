@@ -125,6 +125,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.525 | [contiguous-array](https://leetcode.com/problems/contiguous-array/description/) | [Python](./python_solutions/525.contiguous-array.py)|
 |𝐄.530 | [minimum-absolute-difference-in-bst](https://leetcode.com/problems/minimum-absolute-difference-in-bst/description/) | [Python](./python_solutions/530.minimum-absolute-difference-in-bst.py)/[Ruby](./python_solutions/530.minimum-absolute-difference-in-bst.rb) |
 |𝐄.541 | [reverse-string-ii](https://leetcode.com/problems/reverse-string-ii/description/) | [Python](./python_solutions/541.reverse-string-ii.py)/[Ruby](./python_solutions/541.reverse-string-ii.rb) |
+|𝐄.558 | [quad-tree-intersection](https://leetcode.com/problems/quad-tree-intersection/description/) | [Python](./python_solutions/558.quad-tree-intersection.py)/[C++](./python_solutions/558.quad-tree-intersection.cpp) |
 |𝐄.559 | [maximum-depth-of-n-ary-tree](https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/) | [Python](./python_solutions/559.maximum-depth-of-n-ary-tree.py)/[C++](./python_solutions/559.maximum-depth-of-n-ary-tree.cpp) |
 |𝐄.561 | [array-partition-i](https://leetcode.com/problems/array-partition-i/description/) | [Python](./python_solutions/561.array-partition-i.py)/[Ruby](./python_solutions/561.array-partition-i.rb) |
 |𝐄.563 | [binary-tree-tilt](https://leetcode.com/problems/binary-tree-tilt/description/) | [Python](./python_solutions/563.binary-tree-tilt.py)/[C++](./python_solutions/563.binary-tree-tilt.cpp) |
