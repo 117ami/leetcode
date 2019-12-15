@@ -51,10 +51,21 @@
 
 class Solution:
     def findTilt(self, root: TreeNode) -> int:
+        self.tilt = 0
+        def dfssum(n):
+            if not n: return 0
+            l, r = dfssum(n.left), dfssum(n.right)
+            self.tilt += abs(l - r)
+            return n.val + l + r
         
+        if not root: return 0
+        dfssum(root)
+        # print(Trees().treeToList(root))
+        return self.tilt
 
-
-
-s = Solution()
-
+# from aux import *
+# s = Solution()
+# root = Trees().listToTree([1,2,3])
+# # print(Trees().treeToList(root))
+# print(s.findTilt(root))
 

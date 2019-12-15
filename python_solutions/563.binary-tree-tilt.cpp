@@ -623,8 +623,16 @@ vector<int> char_counter(string chars) {
  */
 class Solution {
 public:
+    int tilt = 0; 
+    int dfs(TreeNode* n){
+      if (!n) return 0; 
+      int l = dfs(n->left), r = dfs(n->right); 
+      tilt += abs(l-r); 
+      return l + r + n->val; 
+    }
     int findTilt(TreeNode* root) {
-        
+        dfs(root); 
+        return tilt; 
     }
 };
 
