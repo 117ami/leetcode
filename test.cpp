@@ -1,13 +1,12 @@
 
 #include "aux.cpp"
-#include "310.minimum-height-trees.cpp"
+#include "662.maximum-width-of-binary-tree.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	int n = 6;
-	vvi edges = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
-	vi res = s.findMinHeightTrees(n, edges);
-	say(res);
+	vi arr = {1,3,2,5,3, INT_MAX, 9};
+	TreeNode* root = growTreeFromList(arr);
+	say(s.widthOfBinaryTree(root));
 	return 0;
 }
 

@@ -5,94 +5,128 @@ import functools
 import bisect
 
 #
-# @lc app=leetcode id=310 lang=python3
+# @lc app=leetcode id=662 lang=python3
 #
-# [310] Minimum Height Trees
+# [662] Maximum Width of Binary Tree
 #
-# https://leetcode.com/problems/minimum-height-trees/description/
+# https://leetcode.com/problems/maximum-width-of-binary-tree/description/
 #
 # algorithms
-# Medium (31.15%)
-# Total Accepted:    78.1K
-# Total Submissions: 250.8K
-# Testcase Example:  '4\n[[1,0],[1,2],[1,3]]'
+# Medium (39.57%)
+# Total Accepted:    43.2K
+# Total Submissions: 109.2K
+# Testcase Example:  '[1,3,2,5,3,None,9]'
 #
-# For an undirected graph with tree characteristics, we can choose any node as
-# the root. The result graph is then a rooted tree. Among all possible rooted
-# trees, those with minimum height are called minimum height trees (MHTs).
-# Given such a graph, write a function to find all the MHTs and return a list
-# of their root labels.
-# 
-# Format
-# The graph contains n nodes which are labeled from 0 to n - 1. You will be
-# given the number n and a list of undirected edges (each edge is a pair of
-# labels).
-# 
-# You can assume that no duplicate edges will appear in edges. Since all edges
-# are undirected, [0, 1] is the same as [1, 0] and thus will not appear
-# together in edges.
-# 
-# Example 1 :
-# 
-# 
-# Input: n = 4, edges = [[1, 0], [1, 2], [1, 3]]
-# 
-# ⁠       0
-# ⁠       |
-# ⁠       1
-# ⁠      / \
-# ⁠     2   3 
-# 
-# Output: [1]
-# 
-# 
-# Example 2 :
-# 
-# 
-# Input: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
-# 
-# ⁠    0  1  2
-# ⁠     \ | /
+# Given a binary tree, write a function to get the maximum width of the given
+# tree. The width of a tree is the maximum width among all levels. The binary
+# tree has the same structure as a full binary tree, but some nodes are None.
+#
+# The width of one level is defined as the length between the end-nodes (the
+# leftmost and right most non-None nodes in the level, where the None nodes
+# between the end-nodes are also counted into the length calculation.
+#
+# Example 1:
+#
+#
+# Input:
+#
+# ⁠          1
+# ⁠        /   \
+# ⁠       3     2
+# ⁠      / \     \
+# ⁠     5   3     9
+#
+# Output: 4
+# Explanation: The maximum width existing in the third level with the length 4
+# (5,3,None,9).
+#
+#
+# Example 2:
+#
+#
+# Input:
+#
+# ⁠         1
+# ⁠        /
 # ⁠       3
-# ⁠       |
-# ⁠       4
-# ⁠       |
-# ⁠       5 
-# 
-# Output: [3, 4]
-# 
-# Note:
-# 
-# 
-# According to the definition of tree on Wikipedia: “a tree is an undirected
-# graph in which any two vertices are connected by exactly one path. In other
-# words, any connected graph without simple cycles is a tree.”
-# The height of a rooted tree is the number of edges on the longest downward
-# path between the root and a leaf.
-# 
-# 
+# ⁠      / \
+# ⁠     5   3
 #
+# Output: 2
+# Explanation: The maximum width existing in the third level with the length 2
+# (5,3).
+#
+#
+# Example 3:
+#
+#
+# Input:
+#
+# ⁠         1
+# ⁠        / \
+# ⁠       3   2
+# ⁠      /
+# ⁠     5
+#
+# Output: 2
+# Explanation: The maximum width existing in the second level with the length 2
+# (3,2).
+#
+#
+# Example 4:
+#
+#
+# Input:
+#
+# ⁠         1
+# ⁠        / \
+# ⁠       3   2
+# ⁠      /     \
+# ⁠     5       9
+# ⁠    /         \
+# ⁠   6           7
+# Output: 8
+# Explanation:The maximum width existing in the fourth level with the length 8
+# (6,None,None,None,None,None,None,7).
+#
+#
+#
+#
+# Note: Answer will in the range of 32-bit signed integer.
+#
+#
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
 class Solution:
-    def findMinHeightTrees(self, n, edges):
-        if n == 1: return [0]
-        adj = [set() for _ in range(n)]
-        for i, j in edges:
-            adj[i].add(j)
-            adj[j].add(i)
-        
-        leaves = [i for i in range(n) if len(adj[i]) == 1]
-        while n > 2:
-            n-=len(leaves)
-            nxt = []
-            for i in leaves:
-                j = adj[i].pop()
-                adj[j].remove(i)
-                if len(adj[j]) == 1: nxt.append(j)
-            leaves = nxt 
-        return leaves
+    def widthOfBinaryTree(self, root: TreeNode) -> int:
+        if not root: return 0
+        jobs = [(root, 0, 0)]
+        cur_d = res = left = 0
+        while len(jobs):
+            n, d, pos = jobs.pop(0)
+            if not n: continue
+            if cur_d != d:
+                cur_d = d
+                left = pos
+            res = max(res, pos - left)
+            newid = 2 * (pos - left)
+            if n.left: jobs.append((n.left, d + 1, newid))
+            if n.right: jobs.append((n.right, d + 1, newid + 1))
 
-s = Solution()
-n = 6
-edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
-print(s.findMinHeightTrees(n, edges))
+        return res + 1
 
+
+# from aux import * 
+# s = Solution()
+# arr = [1, 3, 2, 5, 3, None, 9]
+# arr = [1, 3, 2, 5, None, None, 9, 7, ]
+# arr = [0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,None,0,0]
+# print(arr.count(0))
+# print(arr.count(None))
+# print(s.widthOfBinaryTree(Trees().listToTree(arr)))

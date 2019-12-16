@@ -102,7 +102,6 @@ static auto __speedup__ = []() {
 #define pf push_front
 #define ef emplace_front
 #define eb emplace_back
-#define len(v) v.size() # Python style
 #define dall(v) v.begin(), v.end()
 #define dsize(v) (int)v.size()
 #define dsort(v) sort(v.begin(), v.end())
@@ -569,3 +568,137 @@ vector<int> char_counter(string chars) {
     cc[c - 'a'] += 1;
   return cc;
 }
+/*
+ * @lc app=leetcode id=662 lang=cpp
+ *
+ * [662] Maximum Width of Binary Tree
+ *
+ * https://leetcode.com/problems/maximum-width-of-binary-tree/description/
+ *
+ * algorithms
+ * Medium (39.57%)
+ * Total Accepted:    43.2K
+ * Total Submissions: 109.2K
+ * Testcase Example:  '[1,3,2,5,3,null,9]'
+ *
+ * Given a binary tree, write a function to get the maximum width of the given
+ * tree. The width of a tree is the maximum width among all levels. The binary
+ * tree has the same structure as a full binary tree, but some nodes are null.
+ * 
+ * The width of one level is defined as the length between the end-nodes (the
+ * leftmost and right most non-null nodes in the level, where the null nodes
+ * between the end-nodes are also counted into the length calculation.
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: 
+ * 
+ * ⁠          1
+ * ⁠        /   \
+ * ⁠       3     2
+ * ⁠      / \     \  
+ * ⁠     5   3     9 
+ * 
+ * Output: 4
+ * Explanation: The maximum width existing in the third level with the length 4
+ * (5,3,null,9).
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: 
+ * 
+ * ⁠         1
+ * ⁠        /  
+ * ⁠       3    
+ * ⁠      / \       
+ * ⁠     5   3     
+ * 
+ * Output: 2
+ * Explanation: The maximum width existing in the third level with the length 2
+ * (5,3).
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: 
+ * 
+ * ⁠         1
+ * ⁠        / \
+ * ⁠       3   2 
+ * ⁠      /        
+ * ⁠     5      
+ * 
+ * Output: 2
+ * Explanation: The maximum width existing in the second level with the length
+ * 2 (3,2).
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: 
+ * 
+ * ⁠         1
+ * ⁠        / \
+ * ⁠       3   2
+ * ⁠      /     \  
+ * ⁠     5       9 
+ * ⁠    /         \
+ * ⁠   6           7
+ * Output: 8
+ * Explanation:The maximum width existing in the fourth level with the length 8
+ * (6,null,null,null,null,null,null,7).
+ * 
+ * 
+ * 
+ * 
+ * Note: Answer will in the range of 32-bit signed integer.
+ * 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int widthOfBinaryTree(TreeNode* root) {
+        if (!root) return 0; 
+        int res = 0, left = 0, cur = 0; 
+        queue<TreeNode*> s; 
+        queue<pair<int, int>> pi;  // depth and position 
+        s.push(root); 
+        pi.push(pii{0, 0});
+
+        while(s.size() > 0) {
+          TreeNode* n = s.front(); 
+          pii p = pi.front(); 
+          int d = p.first, pos = p.second; 
+
+          if (cur != d) {
+            cur = d; 
+            left = pos; 
+          }
+          // say(vi{n->val, d, pos});
+          res = max(res, pos - left);
+          int newpos = 2 * (pos - left);
+          if(n->left) {s.push(n->left), pi.push(pii{d + 1, newpos}); };
+          if(n->right) {s.push(n->right), pi.push(pii{d + 1, newpos + 1}); };
+          
+          s.pop(), pi.pop(); 
+        }
+        return 1 + res; 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
