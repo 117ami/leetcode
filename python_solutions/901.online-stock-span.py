@@ -1,9 +1,3 @@
-
-from aux import * 
-import collections
-import functools
-import bisect
-
 #
 # @lc app=leetcode id=901 lang=python3
 #
@@ -76,7 +70,6 @@ class StockSpanner:
         res = 1
         while self.stock and self.stock[-1][0] <= price:
             res += self.stock.pop()[-1]
-            print(price, self.stock)
         self.stock.append([price, res])
         return res
         
