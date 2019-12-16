@@ -102,7 +102,6 @@ static auto __speedup__ = []() {
 #define pf push_front
 #define ef emplace_front
 #define eb emplace_back
-#define len(v) v.size() # Python style
 #define dall(v) v.begin(), v.end()
 #define dsize(v) (int)v.size()
 #define dsort(v) sort(v.begin(), v.end())
@@ -569,3 +568,103 @@ vector<int> char_counter(string chars) {
     cc[c - 'a'] += 1;
   return cc;
 }
+/*
+ * @lc app=leetcode id=310 lang=cpp
+ *
+ * [310] Minimum Height Trees
+ *
+ * https://leetcode.com/problems/minimum-height-trees/description/
+ *
+ * algorithms
+ * Medium (31.15%)
+ * Total Accepted:    78.1K
+ * Total Submissions: 250.8K
+ * Testcase Example:  '4\n[[1,0],[1,2],[1,3]]'
+ *
+ * For an undirected graph with tree characteristics, we can choose any node as
+ * the root. The result graph is then a rooted tree. Among all possible rooted
+ * trees, those with minimum height are called minimum height trees (MHTs).
+ * Given such a graph, write a function to find all the MHTs and return a list
+ * of their root labels.
+ * 
+ * Format
+ * The graph contains n nodes which are labeled from 0 to n - 1. You will be
+ * given the number n and a list of undirected edges (each edge is a pair of
+ * labels).
+ * 
+ * You can assume that no duplicate edges will appear in edges. Since all edges
+ * are undirected, [0, 1] is the same as [1, 0] and thus will not appear
+ * together in edges.
+ * 
+ * Example 1 :
+ * 
+ * 
+ * Input: n = 4, edges = [[1, 0], [1, 2], [1, 3]]
+ * 
+ * ⁠       0
+ * ⁠       |
+ * ⁠       1
+ * ⁠      / \
+ * ⁠     2   3 
+ * 
+ * Output: [1]
+ * 
+ * 
+ * Example 2 :
+ * 
+ * 
+ * Input: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]
+ * 
+ * ⁠    0  1  2
+ * ⁠     \ | /
+ * ⁠       3
+ * ⁠       |
+ * ⁠       4
+ * ⁠       |
+ * ⁠       5 
+ * 
+ * Output: [3, 4]
+ * 
+ * Note:
+ * 
+ * 
+ * According to the definition of tree on Wikipedia: “a tree is an undirected
+ * graph in which any two vertices are connected by exactly one path. In other
+ * words, any connected graph without simple cycles is a tree.”
+ * The height of a rooted tree is the number of edges on the longest downward
+ * path between the root and a leaf.
+ * 
+ * 
+ */
+#define len(v) v.size()
+
+class Solution {
+public:
+    vector<int> findMinHeightTrees(int n, vector<vector<int>>& edges) {
+      if(n==1)  return vi{0}; 
+      vector<set<int>> a(n);
+
+      for(auto &e: edges) {
+        a[e[0]].insert(e[1]);
+        a[e[1]].insert(e[0]);
+      } 
+      vi leaves ; 
+      fori(i, n) if (a[i].size() == 1) leaves.pb(i); 
+
+      while(n >2){
+        n -= leaves.size(); 
+        vi tmp; 
+        for(auto i: leaves){
+          int j = *a[i].begin(); 
+          a[j].erase(i); 
+          if (len(a[j]) == 1) tmp.pb(j); 
+        }
+        leaves = tmp; 
+      }
+      return leaves; 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
