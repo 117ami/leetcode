@@ -1,9 +1,3 @@
-
-from aux import * 
-import collections
-import functools
-import bisect
-
 #
 # @lc app=leetcode id=99 lang=python3
 #
@@ -88,8 +82,7 @@ class Solution:
             if cur.left is None:
                 if last.val > cur.val:
                     ws += [last, cur]
-                last = cur
-                cur = cur.right
+                last, cur = cur, cur.right
             else:
                 prenode = cur.left 
                 while prenode.right is not None and prenode.right is not cur:
@@ -102,20 +95,19 @@ class Solution:
                     prenode.right = None
                     if last.val > cur.val:
                         ws += [last, cur]
-                    last = cur 
-                    cur = cur.right
+                    last, cur = cur, cur.right 
         
         # print(len(wrongnodes))
-        print(ws[0].val, ws[-1].val)
+        # print(ws[0].val, ws[-1].val)
         ws[0].val, ws[-1].val = ws[-1].val, ws[0].val 
 
                 
-s = Solution()
-from aux import * 
-arr = [3,1,4,None,None,2]
-arr = [1,3,None, None, 2]
-arr = [5,3,9,-2147483648,2]
-root = Trees().listToTree(arr)
-s.recoverTree(root)
+# s = Solution()
+# from aux import * 
+# arr = [3,1,4,None,None,2]
+# arr = [1,3,None, None, 2]
+# arr = [5,3,9,-2147483648,2]
+# root = Trees().listToTree(arr)
+# s.recoverTree(root)
 
 

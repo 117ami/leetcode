@@ -568,3 +568,109 @@ vector<int> char_counter(string chars) {
     cc[c - 'a'] += 1;
   return cc;
 }
+/*
+ * @lc app=leetcode id=99 lang=cpp
+ *
+ * [99] Recover Binary Search Tree
+ *
+ * https://leetcode.com/problems/recover-binary-search-tree/description/
+ *
+ * algorithms
+ * Hard (36.61%)
+ * Total Accepted:    137.1K
+ * Total Submissions: 374.1K
+ * Testcase Example:  '[1,3,null,null,2]'
+ *
+ * Two elements of a binary search tree (BST) are swapped by mistake.
+ * 
+ * Recover the tree without changing its structure.
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: [1,3,null,null,2]
+ * 
+ * 1
+ * /
+ * 3
+ * \
+ * 2
+ * 
+ * Output: [3,1,null,null,2]
+ * 
+ * 3
+ * /
+ * 1
+ * \
+ * 2
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: [3,1,4,null,null,2]
+ * 
+ * ⁠ 3
+ * ⁠/ \
+ * 1   4
+ * /
+ * 2
+ * 
+ * Output: [2,1,4,null,null,3]
+ * 
+ * ⁠ 2
+ * ⁠/ \
+ * 1   4
+ * /
+ * ⁠ 3
+ * 
+ * 
+ * Follow up:
+ * 
+ * 
+ * A solution using O(n) space is pretty straight forward.
+ * Could you devise a constant space solution?
+ * 
+ * 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void recoverTree(TreeNode* root) {
+        vector<TreeNode*> res; 
+        TreeNode* pre = new TreeNode(INT_MIN);
+        TreeNode* cur = root; 
+        while(cur) {
+          if (!cur->left) {
+            if(pre->val > cur->val) res.pb(pre), res.pb(cur); 
+            pre = cur, cur = cur->right; 
+          } else {
+            TreeNode* tmp = cur->left; 
+            while (tmp->right && tmp->right != cur) tmp = tmp->right ; 
+            if ( ! tmp -> right ){
+              tmp->right = cur; 
+              cur = cur->left; 
+            } else {
+              tmp->right = nullptr; 
+              if(pre->val > cur->val) res.pb(pre), res.pb(cur); 
+              pre = cur, cur = cur->right; 
+            }
+          }
+        }
+
+        swap(res[0]->val, res[res.size()-1]->val);
+
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
