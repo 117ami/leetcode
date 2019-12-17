@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "791.custom-sort-string.cpp"
+#include "557.reverse-words-in-a-string-iii.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.customSortString("abc", "abcdabaaccabaacaadaabaaceabaccae"));
+	string ss = "Let's take LeetCode contest"; 
+	say(s.reverseWords(ss) + "#");
 	return 0;
 }
 
