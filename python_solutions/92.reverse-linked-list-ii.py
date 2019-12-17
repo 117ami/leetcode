@@ -1,9 +1,3 @@
-
-from aux import * 
-import collections
-import functools
-import bisect
-
 #
 # @lc app=leetcode id=92 lang=python3
 #
@@ -37,7 +31,6 @@ import bisect
 
 class Solution:
     def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
-        cter = 0
         dummy = ListNode(0)
         dummy.next = head 
         pre = dummy
@@ -53,13 +46,13 @@ class Solution:
         pre.next = tail 
         return dummy.next 
 
-s = Solution()
-from aux import *
+# s = Solution()
+# from aux import *
 
-arr = [1,2,3,4,5]
-head = arr2linkedlist(arr)
-res = s.reverseBetween(head, 2, 4)
-arr = linkedlist2arr(res)
-print(arr)
+# arr = [1,2,3,4,5]
+# head = arr2linkedlist(arr)
+# res = s.reverseBetween(head, 2, 4)
+# arr = linkedlist2arr(res)
+# print(arr)
 
 
