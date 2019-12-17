@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "341.flatten-nested-list-iterator.cpp"
+#include "412.fizz-buzz.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
