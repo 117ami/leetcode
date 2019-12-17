@@ -1,9 +1,3 @@
-
-from aux import * 
-import collections
-import functools
-import bisect
-
 #
 # @lc app=leetcode id=445 lang=python3
 #
@@ -62,10 +56,11 @@ class Solution:
         return head 
         
 
-from aux import * 
-l1 = arr2linkedlist([7,2,4,3])        
-l2 = arr2linkedlist([5,6,4])        
-s = Solution()
-print(linkedlist2arr(s.addTwoNumbers(l1, l2)))
+# if __name__ == "__main__":
+#     from aux import * 
+#     l1 = arr2linkedlist([7,2,4,3])        
+#     l2 = arr2linkedlist([5,6,4])        
+#     s = Solution()
+#     print(linkedlist2arr(s.addTwoNumbers(l1, l2)))
 
 

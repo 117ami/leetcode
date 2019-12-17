@@ -345,6 +345,10 @@ def print_tree(root):
     for arr in nodes:
         print(arr)
 
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 def arr2linkedlist(arr):
     if len(arr) == 0:
