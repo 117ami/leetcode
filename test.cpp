@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "386.lexicographical-numbers.cpp"
+#include "796.rotate-string.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
