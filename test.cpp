@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1209.remove-all-adjacent-duplicates-in-string-ii.cpp"
+#include "443.string-compression.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
