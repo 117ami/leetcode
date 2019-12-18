@@ -662,7 +662,15 @@ int last(vector<int> &v) { return v[v.size()-1]; }
 class Solution {
 public:
     string removeDuplicates(string s, int k) {
-        
+        int i = 0, n = s.length(); 
+        vi count(n); 
+        fori(j, n) {
+          s[i] = s[j]; 
+          count[i] = i > 0 && s[i - 1] == s[j] ? count[i-1] + 1 : 1; 
+          if (count[i] == k) i -= k; 
+          i ++; 
+        }
+        return s.substr(0, i);
     }
 };
 

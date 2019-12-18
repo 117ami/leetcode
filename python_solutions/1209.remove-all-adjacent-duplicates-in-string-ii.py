@@ -60,24 +60,31 @@
 
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
-        stack = [''] * len(s)
-        i = 0
-        for c in s:
-            if i == 0 or c != stack[i - 1][0]:
-                stack[i] = (c, 1)
-            elif c == stack[i - 1][0]:
-                if stack[i - 1][1] == k - 1:
-                    i -= k
-                else:
-                    stack[i] = (c, stack[i - 1][1] + 1)
-            i += 1
-        #     print(i, stack)
-        # print(i)
-        return ''.join([a[0] for a in stack[:i]])
+        dups = [e * k for e in set(s)]
+        size = len(s) + 1
+        while size > len(s):
+            size = len(s)
+            for d in dups:
+                s = s.replace(d, '')
+        return s
+        # stack = [''] * len(s)
+        # i = 0
+        # for c in s:
+        #     if i == 0 or c != stack[i - 1][0]:
+        #         stack[i] = (c, 1)
+        #     elif c == stack[i - 1][0]:
+        #         if stack[i - 1][1] == k - 1:
+        #             i -= k
+        #         else:
+        #             stack[i] = (c, stack[i - 1][1] + 1)
+        #     i += 1
+        # #     print(i, stack)
+        # # print(i)
+        # return ''.join([a[0] for a in stack[:i]])
 
 
 s = Solution()
 ss, k = "pbbcggttciiippooaais", 2
-# ss, k = "deeedbbcccbdaa", 3
-# ss, k = "abcd", 2
+ss, k = "deeedbbcccbdaa", 3
+ss, k = "abcd", 2
 print(s.removeDuplicates(ss, k))
