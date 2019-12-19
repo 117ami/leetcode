@@ -1,10 +1,9 @@
 
 #include "aux.cpp"
-#include "1281.subtract-the-product-and-sum-of-digits-of-an-integer.cpp"
+#include "1206.design-skiplist.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.subtractProductAndSum(4421));
 	return 0;
 }
 
