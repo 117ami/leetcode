@@ -1,25 +1,12 @@
 
 #include "aux.cpp"
-// #include "c.cpp"
-#include "1286.iterator-for-combination.cpp"
-
-using vvc = vector<vector<char>>; 
+#include "1288.remove-covered-intervals.cpp"
 
 int main(int argc, char const *argv[]) {
-	CombinationIterator ci("aaaaaaaabbaabb", 8);
-	while(ci.hasNext()) say(ci.next());
-	// vi a = {1, 2, 3, 4}; 
-	// vc b = {'a', 'b', 'c'};
-	// vvc ans; 
-	// vc tmp; 
-	// int n = 4, k = 2; 
-	// makeCombiUtil(ans, b, tmp, 0, k);
-	// say(ans);
-	// vc a = {'c', 'a', 'a', 'b'};
-	
-	// do {
-	// 	say(a);
-	// } while (next_permutation(a.begin(), a.end()) );
+	Solution s;
+	vvi is = {{34335,39239},{15875,91969},{29673,66453},{53548,69161},{40618,93111}};
+	is = {{2, 8}, {4, 8}, {3, 6}};
+	say(s.removeCoveredIntervals(is));
 	return 0;
 }
 
