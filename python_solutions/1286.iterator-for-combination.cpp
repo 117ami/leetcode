@@ -56,9 +56,8 @@ using vi = vector<int>;
 using vb = vector<bool>;
 using vc = vector<char>;
 using vs = vector<string>;
-using vvb = vector<vector<bool>>;
-using vvc = vector<vector<char>>;
 using vvi = vector<vector<int>>;
+using vvb = vector<vector<bool>>;
 using vvs = vector<vector<string>>;
 using mii = map<int, int>;
 using mci = map<char, int>;
@@ -129,16 +128,15 @@ int direction[8][2] = {{-1, 0},  {1, 0},  {0, -1}, {0, 1},
 
 // Get all primes under n (inclusive)
 vector<int> sieve_primes(int n) {
-  vector<int> tables;
-  vector<bool> bools(n + 1, true);
-  for (int i = 2; i <= n; i++) {
-    if (bools[i]) {
-      tables.push_back(i);
-      for (int j = i << 1; j <= n; j += i)
-        bools[j] = false;
+  vector<int> tables; 
+  vector<bool> bools(n + 1, true); 
+  for (int i = 2; i <= n; i ++) {
+    if (bools[i]) { 
+      tables.push_back(i); 
+      for (int j = i << 1; j <= n; j += i) bools[j] = false; 
     }
   }
-  return tables;
+  return tables; 
 }
 
 bool isprime(int x) {
@@ -265,16 +263,16 @@ umii counter(vector<int> &a) {
 
 // Find the most common element in a vector
 template <class T> T most_common(vector<T> &arr) {
-  T res = arr[0];
-  int cter = 0;
-  unordered_map<T, int> um;
-  for (auto i : arr) {
-    um[i]++;
+  T res = arr[0]; 
+  int cter = 0; 
+  unordered_map<T, int> um; 
+  for(auto i: arr)  {
+    um[i] ++; 
     if (um[i] > cter) {
       res = i, cter = um[i];
     }
   }
-  return res;
+  return res; 
 }
 
 bool isodd(int &n) { return n % 2 == 1; }
@@ -441,24 +439,18 @@ public:
 };
 #endif
 
-TreeNode *growTreeFromList(vector<int> &arr) {
-  if (arr.empty())
-    return nullptr;
+TreeNode* growTreeFromList(vector<int> &arr) {
+  if (arr.empty()) return nullptr;
   TreeNode *root = new TreeNode(arr[0]);
-  int children = 0, i = 1;
-  queue<TreeNode *> q;
+  int children = 0, i = 1; 
+  queue<TreeNode *> q; 
   q.push(root);
   while (i < arr.size()) {
-    if (children == 2) {
-      q.pop();
-      children = 0;
-    }
+    if (children == 2) {q.pop(); children = 0;}
     if (arr[i] < INT_MAX) {
-      TreeNode *c = new TreeNode(arr[i]);
-      if (children == 0)
-        q.front()->left = c;
-      else
-        q.front()->right = c;
+      TreeNode* c = new TreeNode(arr[i]);
+      if (children == 0) q.front()->left = c; 
+      else q.front()->right = c; 
       q.push(c);
     }
     ++i, ++children;
@@ -467,11 +459,11 @@ TreeNode *growTreeFromList(vector<int> &arr) {
 }
 
 // Get the depth of Tree
-int getTreeDepth(TreeNode *root) {
-  if (!root)
-    return 0;
+int getTreeDepth(TreeNode * root) {
+  if (!root) return 0; 
   return 1 + max(getTreeDepth(root->left), getTreeDepth(root->right));
 }
+
 
 // Find the index of the first number in sorted nums, that is larger than target
 int bisect_right(vector<int> &nums, int target) {
@@ -583,15 +575,15 @@ ListNode *arrayToListNode(vector<int> &arr) {
   return head->next;
 }
 
-// Extract the values of nodes into a vector
-vector<int> listnodeToArray(ListNode *head) {
-  vector<int> vs;
-  ListNode *tmp = head;
+// Extract the values of nodes into a vector  
+vector<int> listnodeToArray(ListNode* head) {
+  vector<int> vs; 
+  ListNode* tmp = head; 
   while (tmp) {
-    vs.push_back(tmp->val);
-    tmp = tmp->next;
+    vs.push_back(tmp->val); 
+    tmp = tmp->next; 
   }
-  return vs;
+  return vs; 
 }
 
 /* Transfer a lowercase string to a vector of int,
@@ -603,53 +595,133 @@ vector<int> char_counter(string chars) {
   return cc;
 }
 
-vector<int> addTwoVector(vector<int> &a, vector<int> &b) {
-  // Add single-digit-numbers in two vectors, the most significant digit comes
-  // at array[0] E.g., [5, 6] + [1, 5, 8] = [2, 1, 4] To guarantee the size of b
-  // is no smaller than a
-  if (a.size() > b.size())
-    return addTwoVector(b, a);
-  vector<int> res;
-  int i = a.size() - 1, j = b.size() - 1, carry = 0;
-  while (j >= 0) {
-    int s = i >= 0 ? (a[i--] + b[j--] + carry) : (b[j--] + carry);
-    res.push_back(s % 10);
-    carry = s / 10;
-  }
-  if (carry == 1)
-    res.push_back(1);
-  reverse(res.begin(), res.end());
-  return res;
+
+
+vector<int> addTwoVector(vector<int> &a, vector<int>& b) {
+        // Add single-digit-numbers in two vectors, the most significant digit comes at array[0]
+        // E.g., [5, 6] + [1, 5, 8] = [2, 1, 4]
+        // To guarantee the size of b is no smaller than a 
+        if (a.size() > b.size()) return addTwoVector(b, a); 
+        vector<int> res; 
+        int i = a.size() - 1, j = b.size() - 1, carry = 0;
+        while (j >= 0){
+            int s = i >= 0 ? (a[i--] + b[j--] + carry): (b[j--] + carry);
+            res.push_back(s % 10); 
+            carry = s / 10; 
+        }
+        if (carry == 1) res.push_back(1);
+        reverse(res.begin(), res.end())   ;
+        return res; 
 }
 
-int last(vector<int> &v) { return v[v.size() - 1]; }
 
-int find(int x, vector<int> &p) {
-  if (x != p[x])
-    p[x] = find(p[x], p);
-  return p[x];
+int last(vector<int> &v) { return v[v.size()-1]; }
+
+
+int find(int x, vector<int>& p) {
+  if (x != p[x]) p[x] = find(p[x], p);
+  return p[x]; 
 }
 
 // Do not use union, since it's a keyword of CPP
-void merge(int x, int y, vector<int> &p) { p[find(x, p)] = find(y, p); }
-
-// print all combination of size r in an array of size n
-// void combinationUtil(vector<int> &arr, int r, int index, int data[], int i);
-
-template <class T>
-void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
-                   int left, int k) {
-  // Pushing this vector to a vector of vector
-  if (k == 0) {
-    ans.push_back(tmp);
-    return;
-  }
-
-  // i iterates from 0 to arr.size() - 1. First time left will be 0
-  for (int i = left; i < arr.size(); ++i) {
-    tmp.push_back(arr[i]);
-    makeCombiUtil(ans, arr, tmp, i + 1, k - 1);
-    // Popping out last inserted element from the vector
-    tmp.pop_back();
-  }
+void merge(int x, int y, vector<int>& p){
+  p[find(x, p)] = find(y, p);
 }
+/*
+ * @lc app=leetcode id=1286 lang=cpp
+ *
+ * [1286] Iterator for Combination
+ *
+ * https://leetcode.com/problems/iterator-for-combination/description/
+ *
+ * algorithms
+ * Medium (63.51%)
+ * Total Accepted:    2.1K
+ * Total Submissions: 3.3K
+ * Testcase Example:  '["CombinationIterator","next","hasNext","next","hasNext","next","hasNext"]\r' +
+  '\n[["abc",2],[],[],[],[],[],[]]\r'
+ *
+ * Design an Iterator class, which has:
+ * 
+ * 
+ * A constructor that takes a string characters of sorted distinct lowercase
+ * English letters and a number combinationLength as arguments.
+ * A function next() that returns the next combination of length
+ * combinationLength in lexicographical order.
+ * A function hasNext() that returns True if and only if there exists a next
+ * combination.
+ * 
+ * 
+ * 
+ * 
+ * Example:
+ * 
+ * 
+ * CombinationIterator iterator = new CombinationIterator("abc", 2); // creates
+ * the iterator.
+ * 
+ * iterator.next(); // returns "ab"
+ * iterator.hasNext(); // returns true
+ * iterator.next(); // returns "ac"
+ * iterator.hasNext(); // returns true
+ * iterator.next(); // returns "bc"
+ * iterator.hasNext(); // returns false
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= combinationLength <= characters.length <= 15
+ * There will be at most 10^4 function calls per test.
+ * It's guaranteed that all calls of the function next are valid.
+ * 
+ * 
+ */
+class CombinationIterator {
+public:
+    vector<vector<char>> ans; 
+    int i = 0;
+    
+    CombinationIterator(string chars, int r) {
+        vector<char> a (chars.begin(), chars.end()), tmp;
+        makeCombiUtil(ans, a, tmp, 0, r);
+    }
+    
+    template <class T> void makeCombiUtil(vector<vector<T>>& ans, vector<T> & arr, vector<T>& tmp, int left, int k) { 
+      // Pushing this vector to a vector of vector 
+      if (k == 0) { 
+          ans.push_back(tmp); 
+          return; 
+      } 
+    
+      // i iterates from 0 to arr.size() - 1. First time left will be 0 
+      for (int i = left; i < arr.size(); ++i) { 
+          tmp.push_back(arr[i]); 
+          makeCombiUtil(ans, arr, tmp, i + 1, k - 1); 
+          // Popping out last inserted element from the vector 
+          tmp.pop_back(); 
+      } 
+  } 
+
+    string next() {
+        string s(ans[i].begin(), ans[i].end());
+        i ++;
+        return s; 
+    }
+    
+    bool hasNext() {
+        return i < ans.size(); 
+    }
+};
+
+/**
+ * Your CombinationIterator object will be instantiated and called as such:
+ * CombinationIterator* obj = new CombinationIterator(characters, combinationLength);
+ * string param_1 = obj->next();
+ * bool param_2 = obj->hasNext();
+ */
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
