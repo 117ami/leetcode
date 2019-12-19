@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "1288.remove-covered-intervals.cpp"
+#include "1289.minimum-falling-path-sum-ii.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vvi is = {{34335,39239},{15875,91969},{29673,66453},{53548,69161},{40618,93111}};
-	is = {{2, 8}, {4, 8}, {3, 6}};
-	say(s.removeCoveredIntervals(is));
+	vvi arr = {{1, 2, 3},{4,5,6},{7,8,9}};
+	say(s.minFallingPathSum(arr));
 	return 0;
 }
 
