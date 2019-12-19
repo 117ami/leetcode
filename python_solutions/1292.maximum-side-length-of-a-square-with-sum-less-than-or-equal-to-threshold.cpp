@@ -243,8 +243,8 @@ unsigned long long product(vector<int> &a) {
   return res;
 }
 
-int vec_max(vector<int>& arr) { return *max_element(arr); }
-int vec_min(vector<int>& arr) { return *min_element(arr); }
+int vec_max(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
+int vec_min(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
@@ -642,28 +642,105 @@ void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
     tmp.pop_back();
   }
 }
+/*
+ * @lc app=leetcode id=1292 lang=cpp
+ *
+ * [1292] Maximum Side Length of a Square with Sum Less than or Equal to Threshold
+ *
+ * https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/description/
+ *
+ * algorithms
+ * Medium (40.52%)
+ * Total Accepted:    3.4K
+ * Total Submissions: 8.4K
+ * Testcase Example:  '[[1,1,3,2,4,3,2],[1,1,3,2,4,3,2],[1,1,3,2,4,3,2]]\r\n4\r'
+ *
+ * Given a m x n matrix mat and an integer threshold. Return the maximum
+ * side-length of a square with a sum less than or equal to threshold or return
+ * 0 if there is no such square.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: mat = [[1,1,3,2,4,3,2],[1,1,3,2,4,3,2],[1,1,3,2,4,3,2]], threshold =
+ * 4
+ * Output: 2
+ * Explanation: The maximum side length of square with sum less than 4 is 2 as
+ * shown.
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: mat = [[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2],[2,2,2,2,2]],
+ * threshold = 1
+ * Output: 0
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: mat = [[1,1,1,1],[1,0,0,0],[1,0,0,0],[1,0,0,0]], threshold = 6
+ * Output: 3
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: mat = [[18,70],[61,1],[25,85],[14,40],[11,96],[97,96],[63,45]],
+ * threshold = 40184
+ * Output: 2
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= m, n <= 300
+ * m == mat.length
+ * n == mat[i].length
+ * 0 <= mat[i][j] <= 10000
+ * 0 <= threshold <= 10^5
+ * 
+ * 
+ */
+class Solution {
+public:
+    vvi getPrefixSum(vvi & mat){
+      int m = mat.size(), n = mat[0].size(); 
+      vvi res(m+1, vi(n+1, 0)); 
+      forup(i, 1, m + 1)  forup(j, 1, n + 1) res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
+      return res; 
+    }
+
+    bool lessEqual(int k, int t, vvi& prefix){
+          int m = prefix.size() - 1, n = prefix[0].size() - 1, res; 
+          fori(i, m - k + 1) fori(j, n - k + 1) {
+            res = prefix[i+k][j+k] + prefix[i][j] - prefix[i+k][j] - prefix[i][j+k]; 
+            if (res <= t) return true; 
+          }
+          return false; 
+    }
+
+    int maxSideLength(vector<vector<int>>& mat, int t) {
+        int m = mat.size(), n = mat[0].size(); 
+        int lo = 1, hi = min(m, n), mi, res = 0;
+        vvi prefix = getPrefixSum(mat);
+        // say(mat);
+        // say(prefix);
+
+        while (lo <= hi) {
+            mi = (lo + hi) / 2; 
+            if (lessEqual(mi, t, prefix)) lo = mi + 1; 
+            else hi = mi - 1; 
+            // say(vi{lo, hi});
+        }
+
+        return lessEqual(hi + 1, t, prefix) ? hi + 1:hi;
+    }
+};
 
 
-// Get prefix sum of matrix such that res[i][j] = sum(matrix[0..i-1][0..j-1])
-// for i >= 1, j >= 1
-vector<vector<int>> getPrefixSum(vvi & mat){
-  int m = mat.size(), n = mat[0].size(); 
-  vector<vector<int>> res(m+1, vector<int>(n+1, 0)); 
-  for (size_t i = 1; i <= m; ++i)
-    for (size_t j = 1; j <= n; ++j)
-      res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
-    return res; 
-}
 
-// Converting string [[1,2], [3, 4]] to vector(of vector) {{1, 2}, {3, 4}}
-vector<vector<int>> extractMatrixFromString(string s){
-	vector<vector<int>> res; 
-	int carry = INT_MIN;
-	for (size_t i = 1; i < s.size() - 1; ++i) {
-		if (s[i] == '[') res.push_back(vector<int>{});
-		while (isdigit(s[i])) carry = max(carry, 0) * 10 + (s[i++] - '0');
-		if (carry > INT_MIN) res.back().push_back(carry); 
-		carry = INT_MIN;  
-	}
-	return res; 
-}
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

@@ -771,3 +771,17 @@ class UF:
     def find(self, x):
         if x != self.p[x]: self.p[x] = self.find(self.p[x])
         return self.p[x]
+
+
+def getPrefixSum(mat):
+    """ Compute the prefixSum matrix, where prefix_sum[i][j] is the sum of submatrix mat[0...i][0...j]
+    """
+    m, n = len(mat), len(mat[0])
+    res = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]
+    return res
+
+
+
