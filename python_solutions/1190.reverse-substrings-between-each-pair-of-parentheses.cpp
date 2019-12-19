@@ -110,9 +110,6 @@ static auto __speedup__ = []() {
 #define dreverse(v) reverse(v.begin(), v.end())
 
 inline string itos(int n) { return to_string(n); }
-
-string charToString(char c){ return string(1, c); };
-
 inline string upper(string s) {
   string t(s);
   transform(t.begin(), t.end(), t.begin(), ::toupper);
@@ -670,3 +667,92 @@ vector<vector<int>> extractMatrixFromString(string s){
 	}
 	return res; 
 }
+/*
+ * @lc app=leetcode id=1190 lang=cpp
+ *
+ * [1190] Reverse Substrings Between Each Pair of Parentheses
+ *
+ * https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/description/
+ *
+ * algorithms
+ * Medium (58.36%)
+ * Total Accepted:    9.6K
+ * Total Submissions: 16.5K
+ * Testcase Example:  '"(abcd)"'
+ *
+ * You are given a string s that consists of lower case English letters and
+ * brackets. 
+ * 
+ * Reverse the strings in each pair of matching parentheses, starting from the
+ * innermost one.
+ * 
+ * Your result should not contain any brackets.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: s = "(abcd)"
+ * Output: "dcba"
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: s = "(u(love)i)"
+ * Output: "iloveu"
+ * Explanation: The substring "love" is reversed first, then the whole string
+ * is reversed.
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: s = "(ed(et(oc))el)"
+ * Output: "leetcode"
+ * Explanation: First, we reverse the substring "oc", then "etco", and finally,
+ * the whole string.
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: s = "a(bcdefghijkl(mno)p)q"
+ * Output: "apmnolkjihgfedcbq"
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 0 <= s.length <= 2000
+ * s only contains lower case English characters and parentheses.
+ * It's guaranteed that all parentheses are balanced.
+ * 
+ * 
+ */
+class Solution {
+public:
+    string reverseParentheses(string s) {
+        stack<string> st ;
+        for(auto c: s){
+          if (st.empty() || c != ')') st.push(string(1, c)); 
+          else {
+            string x = ""; 
+            while (!st.empty() && st.top() != "("){
+              x = st.top() + x; 
+              st.pop(); 
+            }
+            dreverse(x);
+            st.top() =  x; 
+          }
+        }
+        string res; 
+        while (!st.empty()) res = st.top() + res, st.pop(); 
+        return res; 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
