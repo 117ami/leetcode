@@ -247,7 +247,7 @@ unsigned long long product(vector<int> &a) {
 }
 
 int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
-int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+int vec_min(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
