@@ -56,8 +56,9 @@ using vi = vector<int>;
 using vb = vector<bool>;
 using vc = vector<char>;
 using vs = vector<string>;
-using vvi = vector<vector<int>>;
 using vvb = vector<vector<bool>>;
+using vvc = vector<vector<char>>;
+using vvi = vector<vector<int>>;
 using vvs = vector<vector<string>>;
 using mii = map<int, int>;
 using mci = map<char, int>;
@@ -109,6 +110,9 @@ static auto __speedup__ = []() {
 #define dreverse(v) reverse(v.begin(), v.end())
 
 inline string itos(int n) { return to_string(n); }
+
+string charToString(char c){ return string(1, c); };
+
 inline string upper(string s) {
   string t(s);
   transform(t.begin(), t.end(), t.begin(), ::toupper);
@@ -128,15 +132,16 @@ int direction[8][2] = {{-1, 0},  {1, 0},  {0, -1}, {0, 1},
 
 // Get all primes under n (inclusive)
 vector<int> sieve_primes(int n) {
-  vector<int> tables; 
-  vector<bool> bools(n + 1, true); 
-  for (int i = 2; i <= n; i ++) {
-    if (bools[i]) { 
-      tables.push_back(i); 
-      for (int j = i << 1; j <= n; j += i) bools[j] = false; 
+  vector<int> tables;
+  vector<bool> bools(n + 1, true);
+  for (int i = 2; i <= n; i++) {
+    if (bools[i]) {
+      tables.push_back(i);
+      for (int j = i << 1; j <= n; j += i)
+        bools[j] = false;
     }
   }
-  return tables; 
+  return tables;
 }
 
 bool isprime(int x) {
@@ -241,27 +246,31 @@ unsigned long long product(vector<int> &a) {
   return res;
 }
 
-int vec_max(vi &a) {
-  int r = INT_MIN;
-  for (auto &i : a)
-    r = max(r, i);
-  return r;
-}
-int vec_min(vi &a) {
-  int r = INT_MAX;
-  for (auto &i : a)
-    r = min(r, i);
-  return r;
-}
-umii counter(vi &a) {
-  umii c = {};
-  for (auto &x : a)
-    ++c[x];
+int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
+int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+
+template <class T> unordered_map<T, int> counter(vector<T> &a) {
+  unordered_map<T, int> c = {};
+  for (auto &x : a) ++c[x];
   return c;
 }
 
-bool isodd(int &n) { return n % 2 == 1; }
-bool iseven(int &n) { return n % 2 == 0; }
+// Find the most common element in a vector
+template <class T> T most_common(vector<T> &arr) {
+  T res = arr[0];
+  int cter = 0;
+  unordered_map<T, int> um;
+  for (auto i : arr) {
+    um[i]++;
+    if (um[i] > cter) {
+      res = i, cter = um[i];
+    }
+  }
+  return res;
+}
+
+bool isOdd(int &n) { return n % 2 == 1; }
+bool isEven(int &n) { return n % 2 == 0; }
 
 // whether two rectangles a = {x1,x2,y1,y2} and b = {s1,s2,t1,t2} overlap
 bool isRectangleOverlap(vector<int> &a, vector<int> &b) {
@@ -424,18 +433,24 @@ public:
 };
 #endif
 
-TreeNode* growTreeFromList(vector<int> &arr) {
-  if (arr.empty()) return nullptr;
+TreeNode *growTreeFromList(vector<int> &arr) {
+  if (arr.empty())
+    return nullptr;
   TreeNode *root = new TreeNode(arr[0]);
-  int children = 0, i = 1; 
-  queue<TreeNode *> q; 
+  int children = 0, i = 1;
+  queue<TreeNode *> q;
   q.push(root);
   while (i < arr.size()) {
-    if (children == 2) {q.pop(); children = 0;}
+    if (children == 2) {
+      q.pop();
+      children = 0;
+    }
     if (arr[i] < INT_MAX) {
-      TreeNode* c = new TreeNode(arr[i]);
-      if (children == 0) q.front()->left = c; 
-      else q.front()->right = c; 
+      TreeNode *c = new TreeNode(arr[i]);
+      if (children == 0)
+        q.front()->left = c;
+      else
+        q.front()->right = c;
       q.push(c);
     }
     ++i, ++children;
@@ -444,11 +459,11 @@ TreeNode* growTreeFromList(vector<int> &arr) {
 }
 
 // Get the depth of Tree
-int getTreeDepth(TreeNode * root) {
-  if (!root) return 0; 
+int getTreeDepth(TreeNode *root) {
+  if (!root)
+    return 0;
   return 1 + max(getTreeDepth(root->left), getTreeDepth(root->right));
 }
-
 
 // Find the index of the first number in sorted nums, that is larger than target
 int bisect_right(vector<int> &nums, int target) {
@@ -560,15 +575,15 @@ ListNode *arrayToListNode(vector<int> &arr) {
   return head->next;
 }
 
-// Extract the values of nodes into a vector  
-vector<int> listnodeToArray(ListNode* head) {
-  vector<int> vs; 
-  ListNode* tmp = head; 
+// Extract the values of nodes into a vector
+vector<int> listnodeToArray(ListNode *head) {
+  vector<int> vs;
+  ListNode *tmp = head;
   while (tmp) {
-    vs.push_back(tmp->val); 
-    tmp = tmp->next; 
+    vs.push_back(tmp->val);
+    tmp = tmp->next;
   }
-  return vs; 
+  return vs;
 }
 
 /* Transfer a lowercase string to a vector of int,
@@ -580,93 +595,149 @@ vector<int> char_counter(string chars) {
   return cc;
 }
 
+vector<int> addTwoVector(vector<int> &a, vector<int> &b) {
+  // Add single-digit-numbers in two vectors, the most significant digit comes
+  // at array[0] E.g., [5, 6] + [1, 5, 8] = [2, 1, 4] To guarantee the size of b
+  // is no smaller than a
+  if (a.size() > b.size())
+    return addTwoVector(b, a);
+  vector<int> res;
+  int i = a.size() - 1, j = b.size() - 1, carry = 0;
+  while (j >= 0) {
+    int s = i >= 0 ? (a[i--] + b[j--] + carry) : (b[j--] + carry);
+    res.push_back(s % 10);
+    carry = s / 10;
+  }
+  if (carry == 1)
+    res.push_back(1);
+  reverse(res.begin(), res.end());
+  return res;
+}
 
+int last(vector<int> &v) { return v[v.size() - 1]; }
 
-vector<int> addTwoVector(vector<int> &a, vector<int>& b) {
-        // Add single-digit-numbers in two vectors, the most significant digit comes at array[0]
-        // E.g., [5, 6] + [1, 5, 8] = [2, 1, 4]
-        // To guarantee the size of b is no smaller than a 
-        if (a.size() > b.size()) return addTwoVector(b, a); 
-        vector<int> res; 
-        int i = a.size() - 1, j = b.size() - 1, carry = 0;
-        while (j >= 0){
-            int s = i >= 0 ? (a[i--] + b[j--] + carry): (b[j--] + carry);
-            res.push_back(s % 10); 
-            carry = s / 10; 
-        }
-        if (carry == 1) res.push_back(1);
-        reverse(res.begin(), res.end())   ;
-        return res; 
+int find(int x, vector<int> &p) {
+  if (x != p[x])
+    p[x] = find(p[x], p);
+  return p[x];
+}
+
+// Do not use union, since it's a keyword of CPP
+void merge(int x, int y, vector<int> &p) { p[find(x, p)] = find(y, p); }
+
+// print all combination of size r in an array of size n
+// void combinationUtil(vector<int> &arr, int r, int index, int data[], int i);
+
+template <class T>
+void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
+                   int left, int k) {
+  // Pushing this vector to a vector of vector
+  if (k == 0) {
+    ans.push_back(tmp);
+    return;
+  }
+
+  // i iterates from 0 to arr.size() - 1. First time left will be 0
+  for (int i = left; i < arr.size(); ++i) {
+    tmp.push_back(arr[i]);
+    makeCombiUtil(ans, arr, tmp, i + 1, k - 1);
+    // Popping out last inserted element from the vector
+    tmp.pop_back();
+  }
 }
 
 
-int last(vector<int> &v) { return v[v.size()-1]; }
+// Get prefix sum of matrix such that res[i][j] = sum(matrix[0..i-1][0..j-1])
+// for i >= 1, j >= 1
+vector<vector<int>> getPrefixSum(vvi & mat){
+  int m = mat.size(), n = mat[0].size(); 
+  vector<vector<int>> res(m+1, vector<int>(n+1, 0)); 
+  for (size_t i = 1; i <= m; ++i)
+    for (size_t j = 1; j <= n; ++j)
+      res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
+    return res; 
+}
+
+// Converting string [[1,2], [3, 4]] to vector(of vector) {{1, 2}, {3, 4}}
+vector<vector<int>> extractMatrixFromString(string s){
+	vector<vector<int>> res; 
+	int carry = INT_MIN;
+	for (size_t i = 1; i < s.size() - 1; ++i) {
+		if (s[i] == '[') res.push_back(vector<int>{});
+		while (isdigit(s[i])) carry = max(carry, 0) * 10 + (s[i++] - '0');
+		if (carry > INT_MIN) res.back().push_back(carry); 
+		carry = INT_MIN;  
+	}
+	return res; 
+}
 /*
- * @lc app=leetcode id=854 lang=cpp
+ * @lc app=leetcode id=1130 lang=cpp
  *
- * [854] K-Similar Strings
+ * [1130] Minimum Cost Tree From Leaf Values
  *
- * https://leetcode.com/problems/k-similar-strings/description/
+ * https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/description/
  *
  * algorithms
- * Hard (36.67%)
- * Total Accepted:    12K
- * Total Submissions: 32.7K
- * Testcase Example:  '"ab"\n"ba"'
+ * Medium (63.05%)
+ * Total Accepted:    12.4K
+ * Total Submissions: 19.6K
+ * Testcase Example:  '[6,2,4]'
  *
- * Strings A and B are K-similar (for some non-negative integer K) if we can
- * swap the positions of two letters in A exactly K times so that the resulting
- * string equals B.
+ * Given an array arr of positive integers, consider all binary trees such
+ * that:
  * 
- * Given two anagrams A and B, return the smallest K for which A and B are
- * K-similar.
+ * 
+ * Each node has either 0 or 2 children;
+ * The values of arr correspond to the values of each leaf in an in-order
+ * traversal of the tree.  (Recall that a node is a leaf if and only if it has
+ * 0 children.)
+ * The value of each non-leaf node is equal to the product of the largest leaf
+ * value in its left and right subtree respectively.
+ * 
+ * 
+ * Among all possible binary trees considered, return the smallest possible sum
+ * of the values of each non-leaf node.  It is guaranteed this sum fits into a
+ * 32-bit integer.
+ * 
  * 
  * Example 1:
  * 
  * 
- * Input: A = "ab", B = "ba"
- * Output: 1
+ * Input: arr = [6,2,4]
+ * Output: 32
+ * Explanation:
+ * There are two possible trees.  The first has non-leaf node sum 36, and the
+ * second has non-leaf node sum 32.
+ * 
+ * ⁠   24            24
+ * ⁠  /  \          /  \
+ * ⁠ 12   4        6    8
+ * ⁠/  \               / \
+ * 6    2             2   4
  * 
  * 
  * 
- * Example 2:
+ * Constraints:
  * 
  * 
- * Input: A = "abc", B = "bca"
- * Output: 2
- * 
- * 
- * 
- * Example 3:
- * 
- * 
- * Input: A = "abac", B = "baca"
- * Output: 2
- * 
- * 
- * 
- * Example 4:
- * 
- * 
- * Input: A = "aabc", B = "abca"
- * Output: 2
- * 
- * 
- * 
- * 
- * Note:
- * 
- * 
- * 1 <= A.length == B.length <= 20
- * A and B contain only lowercase letters from the set {'a', 'b', 'c', 'd',
- * 'e', 'f'}
- * 
+ * 2 <= arr.length <= 40
+ * 1 <= arr[i] <= 15
+ * It is guaranteed that the answer fits into a 32-bit signed integer (ie. it
+ * is less than 2^31).
  * 
  */
 class Solution {
 public:
-    int kSimilarity(string A, string B) {
-        
+    int mctFromLeafValues(vector<int>& arr) {
+      int res = 0, idxmin; 
+      while (arr.size() > 1) {
+          idxmin = min_element(arr.begin(), arr.end()) - arr.begin(); 
+          if (idxmin == 0) res += arr[0] * arr[1]; 
+          else if (idxmin == arr.size() - 1) res += arr[idxmin] * arr[idxmin-1];
+          else res += min(arr[idxmin-1], arr[idxmin+1]) * arr[idxmin]; 
+          arr.erase(arr.begin() + idxmin);
+      }
+      return res; 
     }
 };
 
