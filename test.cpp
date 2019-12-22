@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1140.stone-game-ii.cpp"
+#include "5291.find-numbers-with-even-number-of-digits.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi arr = {2, 7, 9, 4, 4};
-	say(s.stoneGameII(arr));	
+	vi a {12, 345, 43};
+	say(s.findNumbers(a));
 	return 0;
 }
 
