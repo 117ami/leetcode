@@ -389,6 +389,8 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.5291 | [find-numbers-with-even-number-of-digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/description/) | [Python](./python_solutions/5291.find-numbers-with-even-number-of-digits.py)/[C++](./python_solutions/5291.find-numbers-with-even-number-of-digits.cpp) |
 |𝐌.5292 | [divide-array-in-sets-of-k-consecutive-numbers](https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/description/) | [Python](./python_solutions/5292.divide-array-in-sets-of-k-consecutive-numbers.py)/[C++](./python_solutions/5292.divide-array-in-sets-of-k-consecutive-numbers.cpp) |
 |𝐌.5293 | [maximum-number-of-occurrences-of-a-substring](https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/description/) | [Python](./python_solutions/5293.maximum-number-of-occurrences-of-a-substring.py)/[C++](./python_solutions/5293.maximum-number-of-occurrences-of-a-substring.cpp) |
+|𝐇.5294 | [maximum-candies-you-can-get-from-boxes](https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes/description/) | [Python](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.py)/[C++](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.cpp) |
+|𝐇.5294 | [maximum-candies-you-can-get-from-boxes](https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes/description/) | [Python](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.py)/[C++](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.cpp) |
 
 
 ### Contact

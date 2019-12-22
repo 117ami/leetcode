@@ -38,8 +38,11 @@ mv tmpcpp $cpp_file
 # mv tmppy $python_file
 
 echo -e "
-from collections import defaultdict, Counter
 s = Solution()\n\n" | tee -a $python_file
+
+/usr/local/bin/gsed -ie '1i from collections import Counter, defaultdict\
+true = True\
+false = False' $python_file
 
 echo -e "\n\n
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
