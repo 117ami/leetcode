@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "5294.maximum-candies-you-can-get-from-boxes.cpp"
+#include "957.prison-cells-after-n-days.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
