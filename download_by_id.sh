@@ -37,7 +37,8 @@ mv tmpcpp $cpp_file
 # cat $python_file >> tmppy
 # mv tmppy $python_file
 
-echo -e "\n\n
+echo -e "
+from collections import defaultdict, Counter, 
 s = Solution()\n\n" | tee -a $python_file
 
 echo -e "\n\n

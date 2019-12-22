@@ -1,11 +1,13 @@
 
 #include "aux.cpp"
-#include "5291.find-numbers-with-even-number-of-digits.cpp"
+#include "5293.maximum-number-of-occurrences-of-a-substring.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi a {12, 345, 43};
-	say(s.findNumbers(a));
+	string ss = "aababcaab"; 
+	int maxLetters = 2, minSize = 3, maxSize = 4; 
+	say(s.maxFreq(ss, maxLetters, minSize, maxSize));
+
 	return 0;
 }
 
