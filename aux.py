@@ -71,6 +71,43 @@ class XString(object):
 
         return ''.join(res)
 
+    def find_all_lcs(self, s, t):
+        """ Find all lcs whether there are multiple choices
+        return type: set<string>
+        """
+        m, n = len(s), len(t)
+        dp = [[0] * (n + 1) for _ in range(m + 1)]
+        for i in range(m + 1):
+            for j in range(n + 1):
+                if i == 0 or j == 0:
+                    dp[i][j] = 0
+                elif s[i - 1] == t[j - 1]:
+                    dp[i][j] = dp[i - 1][j - 1] + 1
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+        def helper(i, j):
+            res = set()
+            if i == 0 or j == 0:
+                res.add("")
+                return res
+
+            if s[i - 1] == t[j - 1]:
+                tmp = helper(i - 1, j - 1)
+                for rs in tmp:
+                    res.add(rs + s[i - 1])
+            else:
+                if dp[i - 1][j] >= dp[i][j - 1]:
+                    res = helper(i - 1, j)
+
+                if dp[i - 1][j] <= dp[i][j - 1]:
+                    tmp = helper(i, j - 1)
+                    for rs in tmp:
+                        res.add(rs)
+            return res
+
+        return helper(m, n)
+
     def scs(self, s, t):
         # return shortest common super-sequence
         m, n = len(s), len(t)
@@ -345,10 +382,12 @@ def print_tree(root):
     for arr in nodes:
         print(arr)
 
+
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 def arr2linkedlist(arr):
     if len(arr) == 0:
@@ -367,107 +406,6 @@ def linkedlist2arr(head):
         ans.append(head.val)
         head = head.next
     return ans
-
-
-class XString(object):
-    def is_p(s):
-        """ is palindrome
-        type s: string
-        rtype : boolean
-        """
-        if len(s) <= 1:
-            return True
-        for i in range(len(s) / 2):
-            if s[i] != s[len(s) - i - 1]:
-                return False
-        return True
-
-    def lcslen(self, word1, word2):
-        """ longest common substring
-        :type word1: str
-        :type word2: str
-        :rtype: int
-        :return the length of longest common substring, e.g, m('1a2b3c4d', 'a5b6c777d88') return 4 (length of 'abcd')
-        """
-        m, n = len(word1), len(word2)
-        if m == 0 or n == 0:
-            return 0
-
-        dp = [0] * n
-        res = 0
-        for i, a in enumerate(word1):
-            cur_max = 1
-            for j, b in enumerate(word2):
-                aux = dp[j]
-                if a == b:
-                    dp[j] = cur_max
-                if aux + 1 > cur_max:
-                    cur_max = aux + 1
-                res = max(res, dp[j])
-        return res
-
-    def lcs(self, s, t):
-        """ return the longest common substring
-        """
-        m, n = len(s), len(t)
-        dp = [[0] * (n + 1) for _ in range(m + 1)]
-        for i in range(m + 1):
-            for j in range(n + 1):
-                if i == 0 or j == 0:
-                    dp[i][j] = 0
-                elif s[i - 1] == t[j - 1]:
-                    dp[i][j] = dp[i - 1][j - 1] + 1
-                else:
-                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-
-        i, j, idx = m, n, dp[-1][-1]
-        res = ['#'] * idx
-
-        while i > 0 and j > 0:
-            if s[i - 1] == t[j - 1]:
-                res[idx - 1] = s[i - 1]
-                idx -= 1
-                i -= 1
-                j -= 1
-            elif dp[i - 1][j] > dp[i][j - 1]:
-                i -= 1
-            else:
-                j -= 1
-
-        return ''.join(res)
-
-    def scs(self, s, t):
-        # return shortest common super-sequence
-        m, n = len(s), len(t)
-        dp = [[0] * (n + 1) for _ in range(m + 1)]
-        for i in range(m + 1):
-            for j in range(n + 1):
-                if i == 0 or j == 0:
-                    dp[i][j] = 0
-                elif s[i - 1] == t[j - 1]:
-                    dp[i][j] = dp[i - 1][j - 1] + 1
-                else:
-                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
-
-        i, j, idx = m, n, m + n - dp[-1][-1]
-        res = ['#'] * idx
-
-        while i > 0 and j > 0:
-            if s[i - 1] == t[j - 1]:
-                res[idx - 1], i, j = s[i - 1], i - 1, j - 1
-            elif dp[i - 1][j] > dp[i][j - 1]:
-                res[idx - 1], i = s[i - 1], i - 1
-            else:
-                res[idx - 1], j = t[j - 1], j - 1
-            idx -= 1
-
-        if j > 0:
-            i, s = j, t
-
-        while i > 0:
-            res[idx - 1], idx, i = s[i - 1], idx - 1, i - 1
-
-        return ''.join(res)
 
 
 """decide nums, a list containing only positive integers, can be partitioned
@@ -578,7 +516,8 @@ class PriorityQueue(object):
 
 class Trees:
     def getdepth(self, r):
-        if not r: return 0
+        if not r:
+            return 0
         return 1 + max(self.getdepth(r.left), self.getdepth(r.right))
 
     def printTree(self, root):
@@ -589,7 +528,7 @@ class Trees:
         def dfs(node, depth, loc):
             if not node or depth > self.d:
                 return
-            res[depth - 1][loc] = str(node.val) 
+            res[depth - 1][loc] = str(node.val)
             offset = 2 ** (self.d - depth - 1)
             dfs(node.left, depth + 1, loc - offset)
             dfs(node.right, depth + 1, loc + offset)
@@ -602,27 +541,30 @@ class Trees:
     def listToTree(self, arr):
         """Build tree for a list. E.g., [1,2,3,None,4]
         """
-        if not arr: return 
-        children = 0 
+        if not arr:
+            return
+        children = 0
         i = 1
         jobs = [TreeNode(arr[0])]
         root = jobs[0]
         while i < len(arr):
-            if children == 2: 
+            if children == 2:
                 jobs.pop(0)
                 children = 0
-            
+
             if arr[i] is not None:
                 c = TreeNode(arr[i])
-                if children == 0: jobs[0].left = c
-                else: jobs[0].right = c
-                jobs.append(c) 
-            
+                if children == 0:
+                    jobs[0].left = c
+                else:
+                    jobs[0].right = c
+                jobs.append(c)
+
             children += 1
             i += 1
 
-        return root  
-    
+        return root
+
     def treeToList(self, root):
         """Encodes a tree to a list
         :type root: TreeNode
@@ -640,28 +582,30 @@ class Trees:
 
         while res[-1] == 0.1:  # Do NOT use 0.0, there are nodes with value 0
             res.pop()
-        return res 
+        return res
 
     def isCompleteTree(self, root: TreeNode) -> bool:
-        """ Whether a given a tree is complete 
+        """ Whether a given a tree is complete
         """
-        if not root: return True 
+        if not root:
+            return True
         stack = [root]
         self.empty = False
-        
+
         while stack:
             n = stack.pop(0)
-            if not n: self.empty = True 
-            if n is None and len(stack) > 0 and stack[-1] is not None: return False 
+            if not n:
+                self.empty = True
+            if n is None and len(stack) > 0 and stack[-1] is not None:
+                return False
             if n:
-                if self.empty: return False 
+                if self.empty:
+                    return False
                 # print(n.val, self.empty)
                 stack.append(n.left if n.left else None)
                 stack.append(n.right if n.right else None)
 
-        return True 
-
-
+        return True
 
 
 def reverseList(head):
@@ -746,7 +690,7 @@ def sieve_primes(n):
 
 
 def isprime(x):
-    """Combining sieve_primes to decide whether a 
+    """Combining sieve_primes to decide whether a
     given number is prime
     """
     n = 1 + int(x ** 0.5)
@@ -762,14 +706,15 @@ def isprime(x):
 
 
 class UF:
-    def __init__(self, n): 
+    def __init__(self, n):
         self.p = list(range(n))
 
     def union(self, x, y):
         self.p[self.find(x)] = self.find(y)
 
     def find(self, x):
-        if x != self.p[x]: self.p[x] = self.find(self.p[x])
+        if x != self.p[x]:
+            self.p[x] = self.find(self.p[x])
         return self.p[x]
 
 
@@ -780,8 +725,6 @@ def getPrefixSum(mat):
     res = [[0] * (n + 1) for _ in range(m + 1)]
     for i in range(1, m + 1):
         for j in range(1, n + 1):
-            res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]
+            res[i][j] = res[i - 1][j] + res[i][j - 1] - \
+                res[i - 1][j - 1] + mat[i - 1][j - 1]
     return res
-
-
-

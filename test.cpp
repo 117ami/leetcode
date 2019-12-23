@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "888.fair-candy-swap.cpp"
+#include "712.minimum-ascii-delete-sum-for-two-strings.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi a = {1, 3}, b = {2}; 
-	say(s.fairCandySwap(a, b));
+	string s1 = "leet", s2 = "delete";
+	say(s.minimumDeleteSum(s1, s2));
 	return 0;
 }
 
