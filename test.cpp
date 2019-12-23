@@ -1,14 +1,11 @@
 
 #include "aux.cpp"
-#include "547.friend-circles.cpp"
+#include "421.maximum-xor-of-two-numbers-in-an-array.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string ss = "[[1,1,0], [1,1,0], [0,0,1]]";
-	ss ="[[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]";
-	vvi m = extractMatrixFromString(ss);
-	say(m);
-	say(s.findCircleNum(m));
+	vi x = {3, 10, 5, 25, 2, 8};
+	say(s.findMaximumXOR(x));
 	return 0;
 }
 
