@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
-#include "421.maximum-xor-of-two-numbers-in-an-array.cpp"
+#include "241.different-ways-to-add-parentheses.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi x = {3, 10, 5, 25, 2, 8};
-	say(s.findMaximumXOR(x));
+	string x = "2*3-4*5"; 
+	// x = "3-4";
+	say(s.diffWaysToCompute(x));
 	return 0;
 }
 
