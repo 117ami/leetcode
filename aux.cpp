@@ -55,6 +55,17 @@ template <class T> void say(const vector<T> &vect) {
   cout << endl;
 }
 
+// print set 
+template <class T> void say(const unordered_set<T> &s) {
+  for (auto i: s) cout << i << " "; 
+  cout << endl; 
+}
+
+template <class T> void say(const set<T> &s) {
+  for (auto i: s) cout << i << " "; 
+  cout << endl; 
+}
+
 template <class K, class V> void say(const map<K, V> &m) {
   // cout << "...printing map: \n";
   for (auto t = m.begin(); t != m.end(); t++)

@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "503.next-greater-element-ii.cpp"
+#include "349.intersection-of-two-arrays.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi x = {1,2,5,3,1,2,6,5,4};
-	say(s.nextGreaterElements(x));
+	vi a = {2,6,3, 4, 4,4, 9, 4,9}, b = {9, 9, 4, 5, 2, 0};
+	say(s.intersection(a, b));
 	return 0;
 }
 
