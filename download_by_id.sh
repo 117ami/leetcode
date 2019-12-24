@@ -41,6 +41,7 @@ echo -e "
 s = Solution()\n\n" | tee -a $python_file
 
 /usr/local/bin/gsed -ie '1i from collections import Counter, defaultdict\
+from bisect import bisect_left, bisect_right \
 true = True\
 false = False' $python_file
 
