@@ -1,9 +1,9 @@
 
 #include "aux.cpp"
-#include "688.knight-probability-in-chessboard.cpp"
+#include "1146.snapshot-array.cpp"
 
 int main(int argc, char const *argv[]) {
-	Solution s;
+	SnapshotArray* s = new SnapshotArray(4);
 	return 0;
 }
 
