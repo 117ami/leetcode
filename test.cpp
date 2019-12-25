@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "403.frog-jump.cpp"
+#include "822.card-flipping-game.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
