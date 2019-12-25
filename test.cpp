@@ -1,9 +1,9 @@
 
 #include "aux.cpp"
-#include "1146.snapshot-array.cpp"
+#include "623.add-one-row-to-tree.cpp"
 
 int main(int argc, char const *argv[]) {
-	SnapshotArray* s = new SnapshotArray(4);
+	Solution s;
 	return 0;
 }
 
