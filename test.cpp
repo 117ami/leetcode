@@ -1,14 +1,15 @@
 
 #include "aux.cpp"
-#include "478.generate-random-point-in-a-circle.cpp"
+#include "14.longest-common-prefix.cpp"
 
 int main(int argc, char const *argv[]) {
-	Solution *s = new Solution(0.01, 5.9, 3.4);
-	fori(i,3){
-		vector<double> vd = s->randPoint();
-		say(vd);
-	}
-
+	Solution s;
+	vs ss {"flower", "flow", "flight"};
+	// ss = {"a", "b"};
+	ss = {"a", "a"};
+	say(s.longestCommonPrefix(ss));
+	string t ="12345"; 
+	say(t.substr(0,3));
 	return 0;
 }
 

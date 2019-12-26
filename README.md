@@ -18,6 +18,8 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.9 | [palindrome_number](https://leetcode.com/problems/palindrome-number) | [Python](./python_solutions/9.palindrome_number.py)/[C++](./python_solutions/9.palindrome_number.cpp) |
 |𝐌.12 | [integer-to-roman](https://leetcode.com/problems/integer-to-roman/description/) | [Python](./python_solutions/12.integer-to-roman.py)/[C++](./python_solutions/12.integer-to-roman.cpp) |
 |𝐄.13 | [roman-to-integer](https://leetcode.com/problems/roman-to-integer/description/) | [Python](./python_solutions/13.roman-to-integer.py)/[C++](./python_solutions/13.roman-to-integer.cpp) |
+|𝐄.14 | [longest-common-prefix](https://leetcode.com/problems/longest-common-prefix/description/) | [Python](./python_solutions/14.longest-common-prefix.py)/[C++](./python_solutions/14.longest-common-prefix.cpp) |
+|𝐄.14 | [longest-common-prefix](https://leetcode.com/problems/longest-common-prefix/description/) | [Python](./python_solutions/14.longest-common-prefix.py)/[C++](./python_solutions/14.longest-common-prefix.cpp) |
 |𝐌.15 | [3sum](https://leetcode.com/problems/3sum/description/) | [Python](./python_solutions/15.3sum.py)/[C++](./python_solutions/15.3sum.cpp) |
 |𝐌.18 | [4sum](https://leetcode.com/problems/4sum/description/) | [Python](./python_solutions/18.4sum.py)/[C++](./python_solutions/18.4sum.cpp) |
 |𝐄.20 | [valid-parentheses](https://leetcode.com/problems/valid-parentheses/description/) | [Python](./python_solutions/20.valid-parentheses.py)/[Ruby](./python_solutions/20.valid-parentheses.rb) /[Javascript](./python_solutions/20.valid-parentheses.js) /[C++](./python_solutions/20.valid-parentheses.cpp) |
