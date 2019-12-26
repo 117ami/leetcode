@@ -1,15 +1,11 @@
 
 #include "aux.cpp"
-#include "14.longest-common-prefix.cpp"
+#include "810.chalkboard-xor-game.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vs ss {"flower", "flow", "flight"};
-	// ss = {"a", "b"};
-	ss = {"a", "a"};
-	say(s.longestCommonPrefix(ss));
-	string t ="12345"; 
-	say(t.substr(0,3));
+	vi vec {0, 1};
+	say(s.xorGame(vec));
 	return 0;
 }
 
