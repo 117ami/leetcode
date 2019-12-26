@@ -27,7 +27,7 @@
 # };
 
 class Solution:
-    def isPalindrome(self, x: int) -> bool:
+    def isPalindrome(self, x):
         if x < 0: return False 
         y, t = 0, x
         while t > 0:
