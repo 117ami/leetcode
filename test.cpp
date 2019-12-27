@@ -1,11 +1,9 @@
 
 #include "aux.cpp"
-#include "504.base-7.cpp"
+#include "880.decoded-string-at-index.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	int n = -7;
-	say(s.convertToBase7(n));
 	return 0;
 }
 
