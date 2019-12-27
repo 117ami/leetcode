@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "81.search-in-rotated-sorted-array-ii.cpp"
+#include "33.search-in-rotated-sorted-array.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
