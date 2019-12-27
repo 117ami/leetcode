@@ -1,12 +1,13 @@
 
 #include "aux.cpp"
-#include "974.subarray-sums-divisible-by-k.cpp"
+#include "689.maximum-sum-of-3-non-overlapping-subarrays.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi a = {4,5,0,-2,-3,1}; int k = 5; 
-	a = {7, 4, -10}; 
-	say(s.subarraysDivByK(a, k));
+	vi ns = {7, 13, 20, 19, 19, 2, 10, 1, 1, 19}; 
+	int k = 3; 
+	ns = {1,2,1,2,6,7,5,1}, k = 2; 
+	say(s.maxSumOfThreeSubarrays(ns, k));
 	return 0;
 }
 

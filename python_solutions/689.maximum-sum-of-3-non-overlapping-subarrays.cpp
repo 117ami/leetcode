@@ -109,10 +109,10 @@ static auto __speedup__ = []() {
 #define rdsort(v) sort(v.rbegin(), v.rend())
 #define dreverse(v) reverse(v.begin(), v.end())
 
-// int to string 
+// int to string
 string itos(int n) { return to_string(n); }
-// char to string 
-string ctos(char c){ return string(1, c); };
+// char to string
+string ctos(char c) { return string(1, c); };
 
 inline string upper(string s) {
   string t(s);
@@ -234,11 +234,11 @@ template <class T> T qsum(const vector<T> &ns) {
   return r;
 }
 
-// Get sum of interval [i, j)
+// Get sum of [i, j)
 template <class T> T partsum(const vector<T> &ns, int i, int j) {
   T r = 0;
-  for (size_t o = i; o < j ; o ++)
-    r += ns[o]; 
+  for (size_t o = i; o < j; o++)
+    r += ns[o];
   return r;
 }
 
@@ -255,12 +255,13 @@ unsigned long long product(vector<int> &a) {
   return res;
 }
 
-int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
-int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+int vecmax(vector<int> &arr) { return *max_element(arr.begin(), arr.end()); }
+int vecmin(vector<int> &arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
-  for (auto &x : a) ++c[x];
+  for (auto &x : a)
+    ++c[x];
   return c;
 }
 
@@ -293,7 +294,6 @@ template <class K, class V> bool exist(unordered_map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
 
-
 template <class K, class V> bool exist(map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
@@ -305,8 +305,6 @@ template <class K> bool exist(unordered_set<K> &m, K key) {
 template <class K> bool exist(set<K> &m, K key) {
   return m.find(key) != m.end();
 }
-
-
 
 string lcs(string s, string t) {
   int m = s.size(), n = t.size(), L[m + 1][n + 1];
@@ -674,27 +672,113 @@ void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
   }
 }
 
-
 // Get prefix sum of matrix such that res[i][j] = sum(matrix[0..i-1][0..j-1])
 // for i >= 1, j >= 1
-vector<vector<int>> getPrefixSum(vvi & mat){
-  int m = mat.size(), n = mat[0].size(); 
-  vector<vector<int>> res(m+1, vector<int>(n+1, 0)); 
+vector<vector<int>> getPrefixSum(vvi &mat) {
+  int m = mat.size(), n = mat[0].size();
+  vector<vector<int>> res(m + 1, vector<int>(n + 1, 0));
   for (size_t i = 1; i <= m; ++i)
     for (size_t j = 1; j <= n; ++j)
-      res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
-    return res; 
+      res[i][j] =
+          res[i - 1][j] + res[i][j - 1] - res[i - 1][j - 1] + mat[i - 1][j - 1];
+  return res;
 }
 
 // Converting string [[1,2], [3, 4]] to vector(of vector) {{1, 2}, {3, 4}}
-vector<vector<int>> extractMatrixFromString(string s){
-	vector<vector<int>> res; 
-	int carry = INT_MIN;
-	for (size_t i = 1; i < s.size() - 1; ++i) {
-		if (s[i] == '[') res.push_back(vector<int>{});
-		while (isdigit(s[i])) carry = max(carry, 0) * 10 + (s[i++] - '0');
-		if (carry > INT_MIN) res.back().push_back(carry); 
-		carry = INT_MIN;  
-	}
-	return res; 
+vector<vector<int>> extractMatrixFromString(string s) {
+  vector<vector<int>> res;
+  int carry = INT_MIN;
+  for (size_t i = 1; i < s.size() - 1; ++i) {
+    if (s[i] == '[')
+      res.push_back(vector<int>{});
+    while (isdigit(s[i]))
+      carry = max(carry, 0) * 10 + (s[i++] - '0');
+    if (carry > INT_MIN)
+      res.back().push_back(carry);
+    carry = INT_MIN;
+  }
+  return res;
 }
+/*
+ * @lc app=leetcode id=689 lang=cpp
+ *
+ * [689] Maximum Sum of 3 Non-Overlapping Subarrays
+ *
+ * https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/description/
+ *
+ * algorithms
+ * Hard (44.74%)
+ * Total Accepted:    31.3K
+ * Total Submissions: 70K
+ * Testcase Example:  '[1,2,1,2,6,7,5,1]\n2'
+ *
+ * In a given array nums of positive integers, find three non-overlapping
+ * subarrays with maximum sum.
+ *
+ * Each subarray will be of size k, and we want to maximize the sum of all 3*k
+ * entries.
+ *
+ * Return the result as a list of indices representing the starting position of
+ * each interval (0-indexed). If there are multiple answers, return the
+ * lexicographically smallest one.
+ *
+ * Example:
+ *
+ *
+ * Input: [1,2,1,2,6,7,5,1], 2
+ * Output: [0, 3, 5]
+ * Explanation: Subarrays [1, 2], [2, 6], [7, 5] correspond to the starting
+ * indices [0, 3, 5].
+ * We could have also taken [2, 1], but an answer of [1, 3, 5] would be
+ * lexicographically larger.
+ *
+ *
+ *
+ *
+ * Note:
+ *
+ *
+ * nums.length will be between 1 and 20000.
+ * nums[i] will be between 1 and 65535.
+ * k will be between 1 and floor(nums.length / 3).
+ *
+ *
+ *
+ *
+ */
+class Solution {
+public:
+  vector<int> maxSumOfThreeSubarrays(vector<int> &nums, int k) {
+    int sum1 = partsum(nums, 0, k), sum2 = partsum(nums, k, k * 2),
+        sum3 = partsum(nums, k * 2, k * 3);
+    int best_sum1 = sum1, best_sum2 = sum1 + sum2,
+        best_sum3 = sum1 + sum2 + sum3;
+    vi iv1{0}, iv2{0, k}, iv3{0, k, 2 * k}; // Best intervals
+    int i1 = 1, i2 = k + 1, i3 = 2 * k + 1;
+    while (i3 <= nums.size() - k) {
+      sum1 += nums[i1 + k - 1] - nums[i1 - 1];
+      sum2 += nums[i2 + k - 1] - nums[i2 - 1];
+      sum3 += nums[i3 + k - 1] - nums[i3 - 1];
+      if (sum1 > best_sum1) {
+        best_sum1 = sum1;
+        iv1 = {i1};
+      }
+      if (best_sum1 + sum2 > best_sum2) {
+        best_sum2 = best_sum1 + sum2;
+        iv2 = {iv1.front(), i2};
+      }
+      if (best_sum2 + sum3 > best_sum3) {
+        best_sum3 = best_sum2 + sum3;
+        iv3 = {iv2.front(), iv2.back(), i3};
+      }
+      i1++, i2++, i3++;
+    }
+    return iv3;
+  }
+};
+
+static const int _ = []() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  return 0;
+}();
