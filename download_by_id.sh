@@ -38,7 +38,7 @@ mv tmpcpp $cpp_file
 # mv tmppy $python_file
 
 echo -e "
-s = Solution()\n\n" | tee -a $python_file
+sol = Solution()\n\n" | tee -a $python_file
 
 /usr/local/bin/gsed -ie '1i from collections import Counter, defaultdict, OrderedDict\
 from bisect import bisect_left, bisect_right \
