@@ -570,18 +570,14 @@ class Trees:
         :type root: TreeNode
         :rtype: list[int]
         """
+        if not root: return []
         jobs = [root]
         res = []
-        while len(jobs):
+        while jobs:
             r = jobs.pop(0)
             if r:
                 res.append(r.val)
                 jobs += [r.left, r.right]
-            else:
-                res.append(0.1)
-
-        while res[-1] == 0.1:  # Do NOT use 0.0, there are nodes with value 0
-            res.pop()
         return res
 
     def isCompleteTree(self, root: TreeNode) -> bool:
