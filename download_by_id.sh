@@ -40,7 +40,7 @@ mv tmpcpp $cpp_file
 echo -e "
 sol = Solution()\n\n" | tee -a $python_file
 
-/usr/local/bin/gsed -ie '1i from collections import Counter, defaultdict, OrderedDict\
+/usr/local/bin/gsed -ie '1i from collections import Counter, defaultdict, OrderedDict, deque\
 from bisect import bisect_left, bisect_right \
 from functools import reduce \
 import string\
