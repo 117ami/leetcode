@@ -68,6 +68,8 @@ using umii = unordered_map<int, int>;
 using umci = unordered_map<char, int>;
 using umsi = unordered_map<string, int>;
 using usi = unordered_set<int>;
+using usc = unordered_set<char>;
+using uss = unordered_set<string>;
 using vpii = vector<pair<int, int>>;
 
 typedef struct TreeNode TreeNode;
@@ -109,9 +111,10 @@ static auto __speedup__ = []() {
 #define rdsort(v) sort(v.rbegin(), v.rend())
 #define dreverse(v) reverse(v.begin(), v.end())
 
-inline string itos(int n) { return to_string(n); }
-
-string charToString(char c){ return string(1, c); };
+// int to string 
+string itos(int n) { return to_string(n); }
+// char to string 
+string ctos(char c){ return string(1, c); };
 
 inline string upper(string s) {
   string t(s);
@@ -233,6 +236,14 @@ template <class T> T qsum(const vector<T> &ns) {
   return r;
 }
 
+// Get sum of interval [i, j)
+template <class T> T partsum(const vector<T> &ns, int i, int j) {
+  T r = 0;
+  for (size_t o = i; o < j ; o ++)
+    r += ns[o]; 
+  return r;
+}
+
 template <class T> void reverse_(const vector<T> &vect) {
   reverse(vect.begin(), vect.end());
 }
@@ -247,7 +258,7 @@ unsigned long long product(vector<int> &a) {
 }
 
 int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
-int vec_min(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
@@ -269,8 +280,8 @@ template <class T> T most_common(vector<T> &arr) {
   return res;
 }
 
-bool isOdd(int &n) { return n % 2 == 1; }
-bool isEven(int &n) { return n % 2 == 0; }
+bool isodd(int n) { return n % 2 == 1; }
+bool iseven(int n) { return n % 2 == 0; }
 
 // whether two rectangles a = {x1,x2,y1,y2} and b = {s1,s2,t1,t2} overlap
 bool isRectangleOverlap(vector<int> &a, vector<int> &b) {
@@ -283,6 +294,21 @@ bool isRectangleOverlap(vector<int> &a, vector<int> &b) {
 template <class K, class V> bool exist(unordered_map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
+
+
+template <class K, class V> bool exist(map<K, V> &m, K key) {
+  return m.find(key) != m.end();
+}
+
+template <class K> bool exist(unordered_set<K> &m, K key) {
+  return m.find(key) != m.end();
+}
+
+template <class K> bool exist(set<K> &m, K key) {
+  return m.find(key) != m.end();
+}
+
+
 
 string lcs(string s, string t) {
   int m = s.size(), n = t.size(), L[m + 1][n + 1];
@@ -409,6 +435,10 @@ template <typename T1, typename T2> void printMap(unordered_map<T1, T2> &m) {
     cout << iter->first << ", " << iter->second << endl;
 }
 
+template <typename T1, typename T2> void printMap(map<T1, T2> &m) {
+  for (auto iter = m.begin(); iter != m.end(); iter++)
+    cout << iter->first << ", " << iter->second << endl;
+}
 // ==================================================
 
 #ifdef DEBUG
@@ -670,3 +700,84 @@ vector<vector<int>> extractMatrixFromString(string s){
 	}
 	return res; 
 }
+/*
+ * @lc app=leetcode id=671 lang=cpp
+ *
+ * [671] Second Minimum Node In a Binary Tree
+ *
+ * https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/description/
+ *
+ * algorithms
+ * Easy (43.04%)
+ * Total Accepted:    62.1K
+ * Total Submissions: 144.2K
+ * Testcase Example:  '[2,2,5,null,null,5,7]'
+ *
+ * Given a non-empty special binary tree consisting of nodes with the
+ * non-negative value, where each node in this tree has exactly two or zero
+ * sub-node. If the node has two sub-nodes, then this node's value is the
+ * smaller value among its two sub-nodes. More formally, the property root.val
+ * = min(root.left.val, root.right.val) always holds.
+ * 
+ * Given such a binary tree, you need to output the second minimum value in the
+ * set made of all the nodes' value in the whole tree.
+ * 
+ * If no such second minimum value exists, output -1 instead.
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: 
+ * ⁠   2
+ * ⁠  / \
+ * ⁠ 2   5
+ * ⁠    / \
+ * ⁠   5   7
+ * 
+ * Output: 5
+ * Explanation: The smallest value is 2, the second smallest value is 5.
+ * 
+ * 
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: 
+ * ⁠   2
+ * ⁠  / \
+ * ⁠ 2   2
+ * 
+ * Output: -1
+ * Explanation: The smallest value is 2, but there isn't any second smallest
+ * value.
+ * 
+ * 
+ * 
+ * 
+ */
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int findSecondMinimumValue(TreeNode* root) {
+        vvi values = valuesOfTree(root);
+        usi tmp; 
+        for(auto &v: values) for(auto n: v) tmp.insert(n);
+        vi x(dall(tmp)); 
+        if (x.size() < 2) return -1; 
+        dsort(x);
+        return x[1];
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
