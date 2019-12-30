@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "649.dota2-senate.cpp"
+#include "946.validate-stack-sequences.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
