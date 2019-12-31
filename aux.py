@@ -515,6 +515,21 @@ class PriorityQueue(object):
 
 
 class Trees:
+    def inorder(self, root):
+        """ A very fast way of traversal tree inorder
+        """
+        def rec(node):
+            if node.left:
+                for other in rec(node.left):
+                    yield other
+            yield node
+            if node.right:
+                for other in rec(node.right):
+                    yield other
+
+        for node in rec(root):
+            yield node
+
     def getdepth(self, r):
         if not r:
             return 0
