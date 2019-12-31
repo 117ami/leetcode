@@ -495,16 +495,6 @@ int getTreeDepth(TreeNode *root) {
   return 1 + max(getTreeDepth(root->left), getTreeDepth(root->right));
 }
 
-int bisect_left(vector<int>& arr, int target) {
-  int lo = 0, hi = arr.size() - 1, mid ; 
-  while (lo < hi) {
-      mid = (lo + hi) / 2; 
-      if (arr[mid] >= target) hi = mid; 
-      else lo = mid + 1 ; 
-  }
-  return lo;
-}
-
 // Find the index of the first number in sorted nums, that is larger than target
 int bisect_right(vector<int> &nums, int target) {
   int i = 0, j = nums.size() - 1, mid = 0;
@@ -710,3 +700,63 @@ vector<vector<int>> extractMatrixFromString(string s){
 	}
 	return res; 
 }
+/*
+ * @lc app=leetcode id=354 lang=cpp
+ *
+ * [354] Russian Doll Envelopes
+ *
+ * https://leetcode.com/problems/russian-doll-envelopes/description/
+ *
+ * algorithms
+ * Hard (34.77%)
+ * Total Accepted:    54.6K
+ * Total Submissions: 157.2K
+ * Testcase Example:  '[[5,4],[6,4],[6,7],[2,3]]'
+ *
+ * You have a number of envelopes with widths and heights given as a pair of
+ * integers (w, h). One envelope can fit into another if and only if both the
+ * width and height of one envelope is greater than the width and height of the
+ * other envelope.
+ * 
+ * What is the maximum number of envelopes can you Russian doll? (put one
+ * inside other)
+ * 
+ * Note:
+ * Rotation is not allowed.
+ * 
+ * Example:
+ * 
+ * 
+ * 
+ * Input: [[5,4],[6,4],[6,7],[2,3]]
+ * Output: 3 
+ * Explanation: The maximum number of envelopes you can Russian doll is 3
+ * ([2,3] => [5,4] => [6,7]).
+ * 
+ * 
+ * 
+ */
+int bisect_left(vector<int>& arr, int target) {
+  int lo = 0, hi = arr.size() - 1, mid ; 
+  while (lo < hi) {
+      mid = (lo + hi) / 2; 
+      if (arr[mid] >= target) hi = mid; 
+      else lo = mid + 1 ; 
+  }
+  return lo;
+}
+
+class Solution {
+public:
+    int maxEnvelopes(vector<vector<int>>& envelopes) {
+        if (envelopes.size() < 2) return envelopes.size(); 
+        sort(dall(envelopes), [](const vi& a, const vi&b){return a.front() < b.front() || (a.front() == b.front() && a.back() > b.back()); });
+        vi heights(envelopes.size(), 0x3f3f3f3f);
+        for(auto &e: envelopes) heights[bisect_left(heights, e[1])] = e[1];
+        return bisect_right(heights, 0x3f3f3f3f - 1); 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
