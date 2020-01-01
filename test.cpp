@@ -1,12 +1,9 @@
 
 #include "aux.cpp"
-#include "793.preimage-size-of-factorial-zeroes-function.cpp"
+#include "102.binary-tree-level-order-traversal.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	int K = 1000000000; 
-	K = 4;
-	say(s.preimageSizeFZF(K));
 	return 0;
 }
 
