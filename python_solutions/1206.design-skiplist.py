@@ -1,3 +1,9 @@
+from collections import Counter, defaultdict, OrderedDict, deque
+from bisect import bisect_left, bisect_right 
+from functools import reduce 
+import string
+true = True
+false = False
 #
 # @lc app=leetcode id=1206 lang=python3
 #
@@ -6,11 +12,11 @@
 # https://leetcode.com/problems/design-skiplist/description/
 #
 # algorithms
-# Hard (58.45%)
-# Total Accepted:    1.7K
-# Total Submissions: 3K
+# Hard (58.29%)
+# Total Accepted:    1.9K
+# Total Submissions: 3.2K
 # Testcase Example:  '["Skiplist","add","add","add","search","add","search","erase","erase","search"]\r' +
-#  '\n[[],[1],[2],[3],[0],[4],[1],[0],[1],[1]]\r'
+#   '\n[[],[1],[2],[3],[0],[4],[1],[0],[1],[1]]\r'
 #
 # Design a Skiplist without using any built-in libraries.
 # 
@@ -71,24 +77,32 @@
 # At most 50000 calls will be made to search, add, and erase.
 # 
 #
-from collections import defaultdict
 class Skiplist:
-    def __init__(self):
-        self.m = defaultdict(int)
 
-    def search(self, target: int) -> bool:
-        return self.m[target] > 0 
+    def __init__(self):
+        self.ds = {}
         
 
+    def search(self, target: int) -> bool:
+        return target in self.ds 
+
     def add(self, num: int) -> None:
-        self.m[num] += 1
+        self.ds[num] = self.ds.get(num, 0) + 1
 
     def erase(self, num: int) -> bool:
-        if self.m[num] <= 0: return False 
-        self.m[num] -= 1
-        return True 
+        if num not in self.ds: return false 
+        self.ds[num] -= 1
+        if self.ds[num] == 0:
+            del self.ds[num]
+        return true 
+        
+
 # Your Skiplist object will be instantiated and called as such:
 # obj = Skiplist()
 # param_1 = obj.search(target)
 # obj.add(num)
 # param_3 = obj.erase(num)
+
+# sol = Solution()
+
+
