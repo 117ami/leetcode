@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "128.longest-consecutive-sequence.cpp"
+#include "432.all-oone-data-structure.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
