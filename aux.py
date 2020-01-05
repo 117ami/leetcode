@@ -5,6 +5,18 @@ from bisect import bisect_left
 
 
 class XString(object):
+    def longestPalindromeSubseq(self, s):
+        n = len(s)
+        if s == s[::-1]: return n
+        cur = [0] * n
+
+        for i in range(len(s))[::-1]:
+            pre = cur[:]
+            cur[i] = 1
+            for j in range(i + 1, n):
+                cur[j] = 2 + pre[j - 1] if s[i] == s[j] else max(cur[j - 1], pre[j])
+        return cur[-1]
+
     def is_p(self, s):
         """ is palindrome
         type s: string
