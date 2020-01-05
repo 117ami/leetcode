@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "859.buddy-strings.cpp"
+#include "106.construct-binary-tree-from-inorder-and-postorder-traversal.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
