@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "715.range-module.cpp"
+#include "1124.longest-well-performing-interval.cpp"
 
 int main(int argc, char const *argv[]) {
-	// Solution s;
-	vi ds = {0,1,2,3};
-	vi tmp(ds.begin(), ds.begin() + 2);
-	say(tmp);
+	Solution s;
+	vi test = {9,9,6,0,6,6,9};
+	say(s.longestWPI(test));
 	return 0;
 }
 

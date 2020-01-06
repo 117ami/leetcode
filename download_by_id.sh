@@ -45,7 +45,8 @@ from bisect import bisect_left as bl, bisect_right as br \
 from functools import reduce \
 import string\
 true = True\
-false = False' $python_file
+false = False\
+MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f' $python_file
 
 echo -e "\n\n
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
