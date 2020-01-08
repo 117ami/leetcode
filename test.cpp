@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "400.nth-digit.cpp"
+#include "664.strange-printer.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.findNthDigit(1000000000));
+	string t = "dddccbdbababaddcbcaabdbdddcccddbbaabddb"; 
+	say(s.strangePrinter(t));
 	return 0;
 }
 
