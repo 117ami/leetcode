@@ -803,8 +803,31 @@ vector<vector<int>> extractMatrixFromString(string s){
  */
 class Solution {
 public:
+    int helper(vvi & scc, umsi & dp, string target){
+        if (exist(dp, target)) return dp[target];
+        umci cc; 
+        for(auto c: target) cc[c] ++; 
+        int ans = INF; 
+        qfor(i, qsize(scc)) {
+          if (scc[i][target[0] - 'a'] == 0) continue; 
+          string s; 
+          for(auto &[c, v]: cc){
+            if (v > scc[i][c - 'a']) s += string(v - scc[i][c - 'a'], c);
+          }
+          ans = min(ans, 1 + helper(scc, dp, s));
+        }
+        dp[target] = ans; 
+        return ans; 
+    }
+
     int minStickers(vector<string>& stickers, string target) {
+      int n = qsize(stickers);
+        vvi scc(n, vi(26, 0));
+        qfor(i, n) for(auto c: stickers[i]) scc[i][c - 'a'] ++; 
+        umsi dp; dp[""] = 0; 
+        int x = helper(scc, dp, target); 
         
+        return x >= INF ? -1 : x; 
     }
 };
 
