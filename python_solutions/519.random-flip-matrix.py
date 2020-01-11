@@ -76,8 +76,8 @@ class Solution:
         """
         r = random.randint(0, self.total)
         idx = self.d.get(r, r)
-        self.d[r], self.d[self.total] = self.d.get(
-            self.total, self.total), self.d.get(r, r)
+        # swap the flipped element with the tail element ~
+        self.d[r], self.d[self.total] = self.d.get(self.total, self.total), self.d.get(r, r)
         self.total -= 1
         return divmod(idx, self.cols)
 
