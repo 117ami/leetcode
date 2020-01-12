@@ -745,9 +745,15 @@ def getPrefixSum(mat):
     """ Compute the prefixSum matrix, where prefix_sum[i][j] is the sum of submatrix mat[0...i][0...j]
     """
     m, n = len(mat), len(mat[0])
-    res = [[0] * (n + 1) for _ in range(m + 1)]
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
-            res[i][j] = res[i - 1][j] + res[i][j - 1] - \
-                res[i - 1][j - 1] + mat[i - 1][j - 1]
-    return res
+    x = [[0] * n for _ in range(m)]
+    for i in range(m):
+        for j in range(n):
+            if i == 0 and j == 0:
+                x[i][j] = mat[0][0]
+            elif i == 0:
+                x[i][j] = mat[0][j] + x[i][j-1]
+            elif j == 0:
+                x[i][j] = mat[i][0] + x[i-1][j]
+            else:
+                x[i][j] = x[i-1][j] + x[i][j-1] - x[i-1][j-1] + mat[i][j] 
+    return x 
