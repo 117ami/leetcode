@@ -476,6 +476,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.5293 | [maximum-number-of-occurrences-of-a-substring](https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/description/) | [Python](./python_solutions/5293.maximum-number-of-occurrences-of-a-substring.py)/[C++](./python_solutions/5293.maximum-number-of-occurrences-of-a-substring.cpp) |
 |𝐇.5294 | [maximum-candies-you-can-get-from-boxes](https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes/description/) | [Python](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.py)/[C++](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.cpp) |
 |𝐌.5297 | [jump-game-iii](https://leetcode.com/problems/jump-game-iii/description/) | [Python](./python_solutions/5297.jump-game-iii.py)|
+|𝐇.5310 | [minimum-distance-to-type-a-word-using-two-fingers](https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/description/) | [Python](./python_solutions/5310.minimum-distance-to-type-a-word-using-two-fingers.py)|
 
 
 ### Contact
