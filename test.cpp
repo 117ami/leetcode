@@ -1,9 +1,11 @@
 
 #include "aux.cpp"
-#include "5310.minimum-distance-to-type-a-word-using-two-fingers.cpp"
+#include "1313.decompress-run-length-encoded-list.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
+	vi ns = {1,2,3,4};
+	say(s.decompressRLElist(ns));
 	return 0;
 }
 
