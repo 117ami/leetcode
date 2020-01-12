@@ -36,20 +36,21 @@ MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f
 #
 class Solution:
     def findIntegers(self, num):
-        memo = {0:1, 1:2, 2:2, 3:3, 4:4, 5:5}
+        memo = {0:1, 1:2}
+        for i in range(2, 32):
+            memo[i] = memo[i-1] + memo[i-2]
         
-        def rec(n):
-            if n in memo: return memo[n]
-            ans = rec(n >> 2)
-            
-
-
-            
-
-
-
-        
+        res, k, pre = 0, 30, 0
+        while k >= 0:
+            if num & (1<<k):
+                res += memo[k]
+                if pre: return res 
+                pre = 1 
+            else:
+                pre = 0
+            k -= 1
+        return res + 1
 
 sol = Solution()
-
+print(sol.findIntegers(5))
 
