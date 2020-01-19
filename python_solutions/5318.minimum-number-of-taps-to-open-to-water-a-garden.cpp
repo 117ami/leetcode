@@ -732,59 +732,101 @@ vector<vector<int>> extractMatrixFromString(string s){
 	return res; 
 }
 /*
- * @lc app=leetcode id=850 lang=cpp
+ * @lc app=leetcode id=5318 lang=cpp
  *
- * [850] Rectangle Area II
+ * [5318] Minimum Number of Taps to Open to Water a Garden
  *
- * https://leetcode.com/problems/rectangle-area-ii/description/
+ * https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/
  *
  * algorithms
- * Hard (46.12%)
- * Total Accepted:    9.3K
- * Total Submissions: 20.2K
- * Testcase Example:  '[[0,0,2,2],[1,0,2,3],[1,0,3,1]]'
+ * Hard (30.49%)
+ * Total Accepted:    1.4K
+ * Total Submissions: 4.8K
+ * Testcase Example:  '5\n[3,4,1,1,0,0]'
  *
- * We are given a list of (axis-aligned) rectangles.  Each rectangle[i] = [x1,
- * y1, x2, y2] , where (x1, y1) are the coordinates of the bottom-left corner,
- * and (x2, y2) are the coordinates of the top-right corner of the ith
- * rectangle.
+ * There is a one-dimensional garden on the x-axis. The garden starts at the
+ * point 0 and ends at the point n. (i.e The length of the garden is n).
  * 
- * Find the total area covered by all rectangles in the plane.  Since the
- * answer may be too large, return it modulo 10^9 + 7.
+ * There are n + 1 taps located at points [0, 1, ..., n] in the garden.
  * 
+ * Given an integer n and an integer array ranges of length n + 1 where
+ * ranges[i] (0-indexed) means the i-th tap can water the area [i - ranges[i],
+ * i + ranges[i]] if it was open.
+ * 
+ * Return the minimum number of taps that should be open to water the whole
+ * garden, If the garden cannot be watered return -1.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: [[0,0,2,2],[1,0,2,3],[1,0,3,1]]
- * Output: 6
- * Explanation: As illustrated in the picture.
+ * Input: n = 5, ranges = [3,4,1,1,0,0]
+ * Output: 1
+ * Explanation: The tap at point 0 can cover the interval [-3,3]
+ * The tap at point 1 can cover the interval [-3,5]
+ * The tap at point 2 can cover the interval [1,3]
+ * The tap at point 3 can cover the interval [2,4]
+ * The tap at point 4 can cover the interval [4,4]
+ * The tap at point 5 can cover the interval [5,5]
+ * Opening Only the second tap will water the whole garden [0,5]
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: [[0,0,1000000000,1000000000]]
- * Output: 49
- * Explanation: The answer is 10^18 modulo (10^9 + 7), which is (10^9)^2 =
- * (-7)^2 = 49.
+ * Input: n = 3, ranges = [0,0,0,0]
+ * Output: -1
+ * Explanation: Even if you activate all the four taps you cannot water the
+ * whole garden.
  * 
  * 
- * Note:
+ * Example 3:
  * 
  * 
- * 1 <= rectangles.length <= 200
- * rectanges[i].length = 4
- * 0 <= rectangles[i][j] <= 10^9
- * The total area covered by all rectangles will never exceed 2^63 - 1 and thus
- * will fit in a 64-bit signed integer.
+ * Input: n = 7, ranges = [1,2,1,0,2,1,0,1]
+ * Output: 3
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: n = 8, ranges = [4,0,0,0,0,0,0,0,4]
+ * Output: 2
+ * 
+ * 
+ * Example 5:
+ * 
+ * 
+ * Input: n = 8, ranges = [4,0,0,0,4,0,0,0,4]
+ * Output: 1
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= n <= 10^4
+ * ranges.length == n + 1
+ * 0 <= ranges[i] <= 100
+ * 
  * 
  */
 class Solution {
 public:
-    int rectangleArea(vector<vector<int>>& rectangles) {
-        
+    int minTaps(int n, vector<int>& ranges) {
+        vector<pair<int, int>> x ; 
+        qfor(i, qsize(ranges)) x.push_back(mp(i - ranges[i], min(n, i + ranges[i])));
+        sort(x.begin(), x.end());
+
+        vector<pair<int, int>> st = {{0, 0}, {0, 0}};
+        qfor(i, x.size()){
+          int a = x[i].first, b = x[i].second; 
+          if (a > st.back().second) return -1; 
+          if (b <= st.back().second) continue; 
+          while (st.size() > 2 && st[st.size() - 2].second >= a)  st.pop_back();
+          st.push_back(mp(a, b));
+        }
+        return st.back().second == n ? st.size() - 2: -1;
     }
 };
 

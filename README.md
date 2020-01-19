@@ -238,6 +238,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.833 | [find-and-replace-in-string](https://leetcode.com/problems/find-and-replace-in-string/description/) | [Python](./python_solutions/833.find-and-replace-in-string.py)/[C++](./python_solutions/833.find-and-replace-in-string.cpp) |
 |𝐄.836 | [rectangle-overlap](https://leetcode.com/problems/rectangle-overlap/description/) | [Python](./python_solutions/836.rectangle-overlap.py)/[Ruby](./python_solutions/836.rectangle-overlap.rb) /[Javascript](./python_solutions/836.rectangle-overlap.js) /[C++](./python_solutions/836.rectangle-overlap.cpp) |
 |𝐌.845 | [longest-mountain-in-array](https://leetcode.com/problems/longest-mountain-in-array/description/) | [Python](./python_solutions/845.longest-mountain-in-array.py)/[Ruby](./python_solutions/845.longest-mountain-in-array.rb) |
+|𝐇.850 | [rectangle-area-ii](https://leetcode.com/problems/rectangle-area-ii/description/) | [Python](./python_solutions/850.rectangle-area-ii.py)|
 |𝐄.852 | [peak-index-in-a-mountain-array](https://leetcode.com/problems/peak-index-in-a-mountain-array/description/) | [Python](./python_solutions/852.peak-index-in-a-mountain-array.py)/[Ruby](./python_solutions/852.peak-index-in-a-mountain-array.rb) /[Javascript](./python_solutions/852.peak-index-in-a-mountain-array.js) /[C++](./python_solutions/852.peak-index-in-a-mountain-array.cpp) |
 |𝐌.855 | [exam-room](https://leetcode.com/problems/exam-room/description/) | [Python](./python_solutions/855.exam-room.py)/[Ruby](./python_solutions/855.exam-room.rb) |
 |𝐌.856 | [score-of-parentheses](https://leetcode.com/problems/score-of-parentheses/description/) | [Python](./python_solutions/856.score-of-parentheses.py)/[Ruby](./python_solutions/856.score-of-parentheses.rb) /[Javascript](./python_solutions/856.score-of-parentheses.js) /[C++](./python_solutions/856.score-of-parentheses.cpp) |
@@ -485,6 +486,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐇.5294 | [maximum-candies-you-can-get-from-boxes](https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes/description/) | [Python](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.py)/[C++](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.cpp) |
 |𝐌.5297 | [jump-game-iii](https://leetcode.com/problems/jump-game-iii/description/) | [Python](./python_solutions/5297.jump-game-iii.py)|
 |𝐇.5310 | [minimum-distance-to-type-a-word-using-two-fingers](https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/description/) | [Python](./python_solutions/5310.minimum-distance-to-type-a-word-using-two-fingers.py)|
+|𝐇.5318 | [minimum-number-of-taps-to-open-to-water-a-garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/) | [Python](./python_solutions/5318.minimum-number-of-taps-to-open-to-water-a-garden.py)/[C++](./python_solutions/5318.minimum-number-of-taps-to-open-to-water-a-garden.cpp) |
 
 
 ### Contact
