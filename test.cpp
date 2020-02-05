@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "1344.jump-game-v.cpp"
+#include "1335.minimum-difficulty-of-a-job-schedule.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi arr = {6,4,14,6,8,13,9,7,10,6,12}; 
-	int d = 2; 
-	say(s.maxJumps(arr, d));
+	vi jobs = {11, 111, 22, 222, 33, 333, 44, 444}; int d = 6; 
+	say(s.minDifficulty(jobs, d));
 	return 0;
 }
 
