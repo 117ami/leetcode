@@ -1,12 +1,12 @@
 
 #include "aux.cpp"
-#include "1342.reduce-array-size-to-the-half.cpp"
+#include "1344.jump-game-v.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi v = {3,3,3,3,5,5,5,7,2,2};
-	v = {1,2,3,4,5,6,7,8,9,10};
-	say(s.minSetSize(v));
+	vi arr = {6,4,14,6,8,13,9,7,10,6,12}; 
+	int d = 2; 
+	say(s.maxJumps(arr, d));
 	return 0;
 }
 
