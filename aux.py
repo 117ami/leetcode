@@ -757,3 +757,18 @@ def getPrefixSum(mat):
             else:
                 x[i][j] = x[i-1][j] + x[i][j-1] - x[i-1][j-1] + mat[i][j] 
     return x 
+
+
+# Floyd Warshell algorithm, n nodes
+def floyd_warshell(n, edges):
+    dis = [[float('inf')] * n for _ in range(n)]
+    for i, j, w in edges:
+        dis[i][j] = dis[j][i] = w
+    
+    for i in range(n):
+        dis[i][i] = 0
+    
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])
