@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1346.check-if-n-and-its-double-exist.cpp"
+#include "1347.minimum-number-of-steps-to-make-two-strings-anagram.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi arr = {0, 0};
-	say(s.checkIfExist(arr));
+	string ss = "friend", t = "family";
+	say(s.minSteps(ss, t));
 	return 0;
 }
 
