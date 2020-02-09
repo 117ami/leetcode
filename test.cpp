@@ -1,11 +1,10 @@
 
 #include "aux.cpp"
-#include "1347.minimum-number-of-steps-to-make-two-strings-anagram.cpp"
+#include "1344.angle-between-hands-of-a-clock.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string ss = "friend", t = "family";
-	say(s.minSteps(ss, t));
+	say(s.angleClock(4, 50));
 	return 0;
 }
 
