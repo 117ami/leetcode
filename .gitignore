@@ -3,3 +3,4 @@ local/*
 *.json
 submit.py
 *.sh 
+conf.d/ssinfo.txt
