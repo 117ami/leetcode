@@ -1,9 +1,9 @@
 
 #include "aux.cpp"
-#include "1352.product-of-the-last-k-numbers.cpp"
+#include "25.reverse-nodes-in-k-group.cpp"
 
 int main(int argc, char const *argv[]) {
-	ProductOfNumbers p; 
+	Solution s;
 	return 0;
 }
 
