@@ -41,7 +41,7 @@ echo -e "
 sol = Solution()\n\n" | tee -a $python_file
 
 /usr/local/bin/gsed -ie '1i from collections import Counter, defaultdict, OrderedDict, deque\
-from bisect import bisect_left as bl, bisect_right as br \
+from bisect import bisect_left, bisect_right \
 from functools import reduce, lru_cache \
 import string\
 true = True\
