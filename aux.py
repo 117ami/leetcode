@@ -772,3 +772,11 @@ def floyd_warshell(n, edges):
         for i in range(n):
             for j in range(n):
                 dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])
+
+
+def string_date_to_number(date):
+    import time 
+    import datetime
+    return time.mktime(datetime.datetime.strptime(date, "%d/%m/%Y").timetuple())
+
+    

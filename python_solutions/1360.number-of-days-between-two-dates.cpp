@@ -737,9 +737,41 @@ vector<vector<int>> extractMatrixFromString(string s){
 	}
 	return res; 
 }
-
-// Split a string s by delimiter, into a vector of string 
-vector<string> split(string s, string delimiter){
+/*
+ * @lc app=leetcode id=1360 lang=cpp
+ *
+ * [1360] Number of Days Between Two Dates
+ *
+ * https://leetcode.com/problems/number-of-days-between-two-dates/description/
+ *
+ * algorithms
+ * Easy (47.88%)
+ * Total Accepted:    3.9K
+ * Total Submissions: 8.2K
+ * Testcase Example:  '"2019-06-29"\n"2019-06-30"'
+ *
+ * Write a program to count the number of days between two dates.
+ * 
+ * The two dates are given as strings, their format is YYYY-MM-DD as shown in
+ * the examples.
+ * 
+ * 
+ * Example 1:
+ * Input: date1 = "2019-06-29", date2 = "2019-06-30"
+ * Output: 1
+ * Example 2:
+ * Input: date1 = "2020-01-15", date2 = "2019-12-31"
+ * Output: 15
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * The given dates are valid dates between the years 1971 and 2100.
+ * 
+ * 
+ */
+ vector<string> split(string s, string delimiter){
 	size_t pos = 0;
 	vector<string> res ; 
 	std::string token;
@@ -752,11 +784,32 @@ vector<string> split(string s, string delimiter){
 	return res; 
 }
 
-int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
-      if (month < 3) year--, month += 12;
+class Solution {
+public:
+  int
+  rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
+      if (month < 3)
+          year--, month += 12;
       // The algorithm shifts February to the end of the year. (153 * m - 457)/5 computes the number of preceding days of the shifted month. There are 306 days between March 1 of the year zero and December 31.
       return 365*year + year/4 - year/100 + year/400 + (153*month - 457)/5 + day - 306;
-}
+  }
 
+    int daysSince1900(string date){
+      vector<string> tmp = split(date, "-");
+      int year = stoi(tmp[0]), m = stoi(tmp[1]), d = stoi(tmp[2]);
+      return rdn(year, m, d);
 
-  
+      // struct std::tm t = {0, 0, 0, d, m, year};
+      // struct std::tm s = {0, 0, 0, 1, 1, 0};
+      // std::time_t x = std::mktime(&t) ; 
+      // std::time_t y = std::mktime(&s);
+      // // say(difftime(x, y) / (3600*24)); 
+      // return (int) (difftime(x, y) / (3600*24)); 
+    }
+
+    int daysBetweenDates(string date1, string date2) {
+        return abs(daysSince1900(date1) - daysSince1900(date2));
+    }
+};
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
