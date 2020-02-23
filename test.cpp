@@ -1,12 +1,12 @@
 
 #include "aux.cpp"
-#include "1356.sort-integers-by-the-number-of-1-bits.cpp"
+#include "1357.apply-discount-every-n-orders.cpp"
 
 int main(int argc, char const *argv[]) {
-	Solution s;
-	vi arr = {1,2,3,4,5,6,7,8};
-	arr = {1024,512,256,128,64,32,16,8,4,2,1};
-	say(s.sortByBits(arr));
+	int n = 3, discount = 50; 
+	vi products = {1,2,3,4,5,6,7}, prices = {100,200,300,400,300,200,100};
+	Cashier* obj = new Cashier(n, discount, products, prices);
+	
 	return 0;
 }
 
