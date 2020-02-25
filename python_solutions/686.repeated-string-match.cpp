@@ -545,7 +545,7 @@ int bisect_right(vector<int> &nums, int target) {
   return nums[j] > target ? j : j + 1;
 }
 
-bool is_substring(string str1, string str2) { return str1.find(str2) != string::npos; }
+bool in(string str1, string str2) { return str1.find(str2) != string::npos; }
 
 // lowest common ancestor of two nodes(values are distinct)
 TreeNode *lca(TreeNode *r, int pv, int qv) {
@@ -760,4 +760,50 @@ int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
 }
 
 
-  
+  /*
+ * @lc app=leetcode id=686 lang=cpp
+ *
+ * [686] Repeated String Match
+ *
+ * https://leetcode.com/problems/repeated-string-match/description/
+ *
+ * algorithms
+ * Easy (32.03%)
+ * Total Accepted:    83.7K
+ * Total Submissions: 261.2K
+ * Testcase Example:  '"abcd"\n"cdabcdab"'
+ *
+ * Given two strings A and B, find the minimum number of times A has to be
+ * repeated such that B is a substring of it. If no such solution, return -1.
+ * 
+ * For example, with A = "abcd" and B = "cdabcdab".
+ * 
+ * Return 3, because by repeating A three times (“abcdabcdabcd”), B is a
+ * substring of it; and B is not a substring of A repeated two times
+ * ("abcdabcd").
+ * 
+ * Note:
+ * The length of A and B will be between 1 and 10000.
+ * 
+ */
+class Solution {
+public:
+    int repeatedStringMatch(string A, string B) {
+        unordered_set<char>sa(A.begin(), A.end()), sb(B.begin(), B.end()); 
+        for(auto a: sa) sb.erase(a);
+        if (sb.size() > 0) return -1; 
+
+        string c(qall(A)); 
+        int i = 1; 
+        while(c.size() <= 2 * B.size() || i <= 4) {
+          if (in(c, B)) return i; 
+          c += A; 
+          i ++; 
+        }
+        return -1; 
+    }
+};
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
