@@ -88,8 +88,8 @@ static auto __speedup__ = []() {
 // ==================================================
 
 // some macro for less typing
-#define qfor(i, n) for (int i = 0; i < n; i++)            //[0, n)
-#define qforr(i, n) for (int i = n - 1; i >= 0; --i)      // reverse [0, n)
+#define qfor(i, n) for (int i = 0; i < n; i++)             //[0, n)
+#define qforr(i, n) for (int i = n - 1; i >= 0; --i)       // reverse [0, n)
 #define qforup(i, a, b) for (int i = a; i < b; ++i)        // [a, b)
 #define qfordown(i, a, b) for (int i = b - 1; i >= a; --i) // reverse [a, b)
 #define qunfold(i, arr) for (auto &i : arr)
@@ -111,10 +111,10 @@ static auto __speedup__ = []() {
 #define rqsort(v) sort(v.rbegin(), v.rend())
 #define qreverse(v) reverse(v.begin(), v.end())
 
-// int to string 
+// int to string
 string itos(int n) { return to_string(n); }
-// char to string 
-string ctos(char c){ return string(1, c); };
+// char to string
+string ctos(char c) { return string(1, c); };
 
 inline string upper(string s) {
   string t(s);
@@ -239,8 +239,8 @@ template <class T> T qsum(const vector<T> &ns) {
 // Get sum of interval [i, j)
 template <class T> T partsum(const vector<T> &ns, int i, int j) {
   T r = 0;
-  for (size_t o = i; o < j ; o ++)
-    r += ns[o]; 
+  for (size_t o = i; o < j; o++)
+    r += ns[o];
   return r;
 }
 
@@ -257,18 +257,20 @@ unsigned long long product(vector<int> &a) {
   return res;
 }
 
-int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
-int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+int vecmax(vector<int> &arr) { return *max_element(arr.begin(), arr.end()); }
+int vecmin(vector<int> &arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
-  for (auto &x : a) ++c[x];
+  for (auto &x : a)
+    ++c[x];
   return c;
 }
 
 unordered_map<char, int> counter(string &a) {
   unordered_map<char, int> c = {};
-  for (auto &x : a) ++c[x];
+  for (auto &x : a)
+    ++c[x];
   return c;
 }
 
@@ -301,7 +303,6 @@ template <class K, class V> bool exist(unordered_map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
 
-
 template <class K, class V> bool exist(map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
@@ -313,8 +314,6 @@ template <class K> bool exist(unordered_set<K> &m, K key) {
 template <class K> bool exist(set<K> &m, K key) {
   return m.find(key) != m.end();
 }
-
-
 
 string lcs(string s, string t) {
   int m = s.size(), n = t.size(), L[m + 1][n + 1];
@@ -494,26 +493,29 @@ TreeNode *growTreeFromList(vector<int> &arr) {
   return root;
 }
 
-// return level's order travesal of tree.. 
+// return level's order travesal of tree..
 // e.g., [3,9,20,null,null,15,7] to [[3], [9, 20], [15, 7]]
 vector<vector<int>> treeToList(TreeNode *root) {
-    vector<vector<int>> tower;
-    queue<pair<TreeNode *, int>> jobs;
-    jobs.push(mp(root, 0));
-    
-    while (!jobs.empty()) {
-      pair<TreeNode *, int> j = jobs.front();
-      jobs.pop();
-      
-      if (j.first == nullptr) continue;
-      if (tower.size() <= j.second) tower.pb(vi{j.first->val});
-      else tower[j.second].pb(j.first->val);
+  vector<vector<int>> tower;
+  queue<pair<TreeNode *, int>> jobs;
+  jobs.push(mp(root, 0));
 
-      jobs.push(mp(j.first->left, j.second + 1));
-      jobs.push(mp(j.first->right, j.second + 1));
-    }
-    return tower;
+  while (!jobs.empty()) {
+    pair<TreeNode *, int> j = jobs.front();
+    jobs.pop();
+
+    if (j.first == nullptr)
+      continue;
+    if (tower.size() <= j.second)
+      tower.pb(vi{j.first->val});
+    else
+      tower[j.second].pb(j.first->val);
+
+    jobs.push(mp(j.first->left, j.second + 1));
+    jobs.push(mp(j.first->right, j.second + 1));
   }
+  return tower;
+}
 
 // Get the depth of Tree
 int getTreeDepth(TreeNode *root) {
@@ -522,12 +524,14 @@ int getTreeDepth(TreeNode *root) {
   return 1 + max(getTreeDepth(root->left), getTreeDepth(root->right));
 }
 
-int bisect_left(vector<int>& arr, int target) {
-  int lo = 0, hi = arr.size() - 1, mid ; 
+int bisect_left(vector<int> &arr, int target) {
+  int lo = 0, hi = arr.size() - 1, mid;
   while (lo < hi) {
-      mid = (lo + hi) / 2; 
-      if (arr[mid] >= target) hi = mid; 
-      else lo = mid + 1 ; 
+    mid = (lo + hi) / 2;
+    if (arr[mid] >= target)
+      hi = mid;
+    else
+      lo = mid + 1;
   }
   return lo;
 }
@@ -713,54 +717,61 @@ void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
   }
 }
 
-
 // Get prefix sum of matrix such that res[i][j] = sum(matrix[0..i-1][0..j-1])
 // for i >= 1, j >= 1
-vector<vector<int>> getPrefixSum(vvi & mat){
-  int m = mat.size(), n = mat[0].size(); 
-  vector<vector<int>> res(m+1, vector<int>(n+1, 0)); 
+vector<vector<int>> getPrefixSum(vvi &mat) {
+  int m = mat.size(), n = mat[0].size();
+  vector<vector<int>> res(m + 1, vector<int>(n + 1, 0));
   for (size_t i = 1; i <= m; ++i)
     for (size_t j = 1; j <= n; ++j)
-      res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
-    return res; 
+      res[i][j] =
+          res[i - 1][j] + res[i][j - 1] - res[i - 1][j - 1] + mat[i - 1][j - 1];
+  return res;
 }
 
 // Converting string [[1,2], [3, 4]] to vector(of vector) {{1, 2}, {3, 4}}
-vector<vector<int>> extractMatrixFromString(string s){
-	vector<vector<int>> res; 
-	int carry = INT_MIN;
-	for (size_t i = 1; i < s.size() - 1; ++i) {
-		if (s[i] == '[') res.push_back(vector<int>{});
-		while (isdigit(s[i])) carry = max(carry, 0) * 10 + (s[i++] - '0');
-		if (carry > INT_MIN) res.back().push_back(carry); 
-		carry = INT_MIN;  
-	}
-	return res; 
+vector<vector<int>> extractMatrixFromString(string s) {
+  vector<vector<int>> res;
+  int carry = INT_MIN;
+  for (size_t i = 1; i < s.size() - 1; ++i) {
+    if (s[i] == '[')
+      res.push_back(vector<int>{});
+    while (isdigit(s[i]))
+      carry = max(carry, 0) * 10 + (s[i++] - '0');
+    if (carry > INT_MIN)
+      res.back().push_back(carry);
+    carry = INT_MIN;
+  }
+  return res;
 }
 
-// Split a string s by delimiter, into a vector of string 
-vector<string> split(string s, string delimiter){
-	size_t pos = 0;
-	vector<string> res ; 
-	std::string token;
-	while ((pos = s.find(delimiter)) != std::string::npos) {
-		token = s.substr(0, pos);
-		res.push_back(token);
-		s.erase(0, pos + delimiter.length());
-	}
-	res.push_back(s);
-	return res; 
+// Split a string s by delimiter, into a vector of string
+vector<string> split(string s, string delimiter) {
+  size_t pos = 0;
+  vector<string> res;
+  std::string token;
+  while ((pos = s.find(delimiter)) != std::string::npos) {
+    token = s.substr(0, pos);
+    res.push_back(token);
+    s.erase(0, pos + delimiter.length());
+  }
+  res.push_back(s);
+  return res;
 }
 
-// Explanation https://stackoverflow.com/questions/54267589/difference-between-two-dates-using-math
+// Explanation
+// https://stackoverflow.com/questions/54267589/difference-between-two-dates-using-math
 int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
-      if (month < 3) year--, month += 12;
-      // The algorithm shifts February to the end of the year. (153 * m - 457)/5 computes the number of preceding days of the shifted month. There are 306 days between March 1 of the year zero and December 31.
-      return 365*year + year/4 - year/100 + year/400 + (153*month - 457)/5 + day - 306;
+  if (month < 3)
+    year--, month += 12;
+  // The algorithm shifts February to the end of the year. (153 * m - 457)/5
+  // computes the number of preceding days of the shifted month. There are 306
+  // days between March 1 of the year zero and December 31.
+  return 365 * year + year / 4 - year / 100 + year / 400 +
+         (153 * month - 457) / 5 + day - 306;
 }
 
-
-  /*
+/*
  * @lc app=leetcode id=1171 lang=cpp
  *
  * [1171] Remove Zero Sum Consecutive Nodes from Linked List
@@ -775,44 +786,44 @@ int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
  *
  * Given the head of a linked list, we repeatedly delete consecutive sequences
  * of nodes that sum to 0 until there are no such sequences.
- * 
+ *
  * After doing so, return the head of the final linked list.  You may return
  * any such answer.
- * 
- * 
+ *
+ *
  * (Note that in the examples below, all sequences are serializations of
  * ListNode objects.)
- * 
+ *
  * Example 1:
- * 
- * 
+ *
+ *
  * Input: head = [1,2,-3,3,1]
  * Output: [3,1]
  * Note: The answer [1,2,1] would also be accepted.
- * 
- * 
+ *
+ *
  * Example 2:
- * 
- * 
+ *
+ *
  * Input: head = [1,2,3,-3,4]
  * Output: [1,2,4]
- * 
- * 
+ *
+ *
  * Example 3:
- * 
- * 
+ *
+ *
  * Input: head = [1,2,3,-3,-2]
  * Output: [1]
- * 
- * 
- * 
+ *
+ *
+ *
  * Constraints:
- * 
- * 
+ *
+ *
  * The given linked list will contain between 1 and 1000 nodes.
  * Each node in the linked list has -1000 <= node.val <= 1000.
- * 
- * 
+ *
+ *
  */
 /**
  * Definition for singly-linked list.
@@ -824,11 +835,37 @@ int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
  */
 class Solution {
 public:
-    ListNode* removeZeroSumSublists(ListNode* head) {
-        
+  ListNode *removeZeroSumSublists(ListNode *head) {
+    ListNode *dummy = new ListNode(0), *cur, *pre;
+    dummy->next = head;
+    cur = dummy->next;
+    unordered_map<int, ListNode *> s;
+    s[0] = dummy;
+    int xsum = 0;
+
+    while (cur != nullptr) {
+      xsum += cur->val;
+      if (exist(s, xsum)) {
+        pre = s[xsum];
+        cur = cur->next;
+        int aux = xsum;
+        while (pre->next != cur) {
+          aux += pre->next->val;
+          s.erase(aux);
+          pre->next = pre->next->next;
+        }
+        s[xsum] = pre;
+      } else {
+        s[xsum] = cur;
+        cur = cur->next;
+      }
     }
+    return dummy->next;
+  }
 };
 
-
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+static const int _ = []() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  return 0;
+}();

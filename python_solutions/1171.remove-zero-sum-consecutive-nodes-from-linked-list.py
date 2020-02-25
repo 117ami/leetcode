@@ -88,25 +88,26 @@ class Solution:
         return head
 
     def removeZeroSumSublists(self, head):
-        arr = self.linkedlist2arr(head)
-        seen = set([0])
-        st = [0]
-        for i, n in enumerate(arr):
-            cur = n + st[-1]
-            # print(i, n, cur, st)
-            if cur in seen:
-                while st and st[-1] != cur:
-                    seen.remove(st[-1])
-                    st.pop()
+        dummy = ListNode(0)
+        dummy.next = head
+        seen = {0: dummy}
+        cur = dummy.next
+        cursum = 0
+        while cur:
+            cursum += cur.val
+            if cursum in seen:
+                pre = seen[cursum]
+                cur = cur.next
+                aux = cursum
+                while pre.next != cur:
+                    aux += pre.next.val
+                    seen.pop(aux)
+                    pre.next = pre.next.next
+                seen[cursum] = pre
             else:
-                seen.add(cur)
-                st.append(cur)
-        st.pop(0)
-        print(st)
-        for i in range(len(st) - 1, 0, -1):
-            st[i] -= st[i - 1]
-
-        return self.arr2linkedlist(st)
+                seen[cursum] = cur
+                cur = cur.next
+        return dummy.next
 
 
 sol = Solution()
