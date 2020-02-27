@@ -89,7 +89,8 @@ fn main() {
     //println!("{:?}", Solution:: ); 
     let i = 2_i32.pow(4);
     println!("{}", i);
-    println!("{}", question::Solution::bitwise_complement(7));
+    println!("{}", question::Solution::number_of_steps(123));
 }
+
 
 
