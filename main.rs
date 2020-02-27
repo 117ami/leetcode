@@ -27,49 +27,69 @@
  * 
  * 
  */
+// mod aux; 
+// use std::collections::HashMap; 
+
+// struct Solution(); 
+// impl Solution {
+//     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+//         let mut seen = HashMap::new();
+//         for (i, num) in nums.iter().enumerate() {
+//             if seen.contains_key(num) {
+//                 return vec![seen[num] as i32, i as i32];
+//             } else {
+//                 seen.insert(target - num, i);
+//             }
+//         }
+//         vec![]
+//     }
+// }
+
+
+// fn main(){
+//     println!("Hello", );
+//     let vec = vec![2,3,5,7,9];
+//     let target = 9; 
+//     let res = Solution::two_sum(vec, target);
+//     println!("{:?}", res);
+
+//     // println!("{:?}", sol::two_sum());
+//     let mut m = HashMap::new(); 
+//     m.insert(0, "book".to_string());
+//     m.insert(0, "computer".to_string());
+//     m.insert(1, "phone".to_string());
+//     m.entry(1).or_insert("fake".to_string());
+    
+//     aux::print_map(&m);
+//     println!("{} {}", 0, m[&0]);
+
+//     println!("The length of map {}", m.len());
+    
+//     let x: i8 = 10; 
+//     println!("{}", x);
+
+//     let arr: [i32; 5] = [1,2,3,4,5];
+//     let y = &arr[1..3];
+//     println!("{:?}", y);
+
+
+//     let mut dp = vec![-1; 5000];
+//     println!("Size of vector {}", dp.len());
+//     dp[0] = 0; 
+//     println!("{:?}", (dp[0], dp[1]));
+//     let cur = dp.to_vec();
+//     println!("{:?}", cur);
+// }
 mod aux; 
-use std::collections::HashMap; 
+mod question; 
 
-struct Solution(); 
-impl Solution {
-    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
-        let mut seen = HashMap::new();
-        for (i, num) in nums.iter().enumerate() {
-            if seen.contains_key(num) {
-                return vec![seen[num] as i32, i as i32];
-            } else {
-                seen.insert(target - num, i);
-            }
-        }
-        vec![]
-    }
+pub struct Solution;
+
+fn main() {
+    //println!("{:?}", Solution:: ); 
+    let i = 2_i32.pow(4);
+    println!("{}", i);
+    println!("{}", question::Solution::bitwise_complement(7));
 }
 
 
-fn main(){
-    println!("Hello", );
-    let vec = vec![2,3,5,7,9];
-    let target = 9; 
-    let res = Solution::two_sum(vec, target);
-    println!("{:?}", res);
-
-    // println!("{:?}", sol::two_sum());
-    let mut m = HashMap::new(); 
-    m.insert(0, "book".to_string());
-    m.insert(0, "computer".to_string());
-    m.insert(1, "phone".to_string());
-    m.entry(1).or_insert("fake".to_string());
-    
-    aux::print_map(&m);
-    println!("{} {}", 0, m[&0]);
-
-    println!("The length of map {}", m.len());
-    
-    let x: i8 = 10; 
-    println!("{}", x);
-
-    let arr: [i32; 5] = [1,2,3,4,5];
-    let y = &arr[1..3];
-    println!("{:?}", y);
-
-}
