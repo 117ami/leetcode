@@ -3,7 +3,6 @@ mod aux;
 mod question; 
 
 fn main() {
-	println!("{}", 0);
+	println!("{:?}", question::Solution::maximum69_number(9696)); 
 }
-
 

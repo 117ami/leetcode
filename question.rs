@@ -1,81 +1,60 @@
 /*
- * @lc app=leetcode id=938 lang=rust
+ * @lc app=leetcode id=1323 lang=rust
  *
- * [938] Range Sum of BST
+ * [1323] Maximum 69 Number
  *
- * https://leetcode.com/problems/range-sum-of-bst/description/
+ * https://leetcode.com/problems/maximum-69-number/description/
  *
  * algorithms
- * Easy (79.26%)
- * Total Accepted:    152K
- * Total Submissions: 191.8K
- * Testcase Example:  '[10,5,15,3,7,null,18]\n7\n15'
+ * Easy (78.99%)
+ * Total Accepted:    20.9K
+ * Total Submissions: 26.5K
+ * Testcase Example:  '9669'
  *
- * Given the root node of a binary search tree, return the sum of values of all
- * nodes with value between L and R (inclusive).
+ * Given a positive integer num consisting only of digits 6 and 9.
  * 
- * The binary search tree is guaranteed to have unique values.
- * 
- * 
+ * Return the maximum number you can get by changing at most one digit (6
+ * becomes 9, and 9 becomes 6).
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: root = [10,5,15,3,7,null,18], L = 7, R = 15
- * Output: 32
- * 
+ * Input: num = 9669
+ * Output: 9969
+ * Explanation: 
+ * Changing the first digit results in 6669.
+ * Changing the second digit results in 9969.
+ * Changing the third digit results in 9699.
+ * Changing the fourth digit results in 9666. 
+ * The maximum number is 9969.
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: root = [10,5,15,3,7,13,18,1,null,6], L = 6, R = 10
- * Output: 23
+ * Input: num = 9996
+ * Output: 9999
+ * Explanation: Changing the last digit 6 to 9 results in the maximum number.
+ * 
+ * Example 3:
  * 
  * 
+ * Input: num = 9999
+ * Output: 9999
+ * Explanation: It is better not to apply any change.
  * 
  * 
- * Note:
+ * Constraints:
  * 
  * 
- * The number of nodes in the tree is at most 10000.
- * The final answer is guaranteed to be less than 2^31.
- * 
- * 
+ * 1 <= num <= 10^4
+ * num's digits are 6 or 9.
  * 
  */
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-
-use std::rc::Rc;
-use std::cell::RefCell;
 impl Solution {
-    pub fn range_sum_bst(root: Option<Rc<RefCell<TreeNode>>>, l: i32, r: i32) -> i32 {
-        if let Some(root) = root {
-            let mut _sum = 0; 
-            if l <= root.borrow().val && r >= root.borrow().val { _sum += root.borrow().val ;}
-            if l < root.borrow().val { _sum += Self::range_sum_bst(root.borrow().left.clone(), l, r); }
-            if r > root.borrow().val { _sum += Self::range_sum_bst(root.borrow().right.clone(), l, r); }
-           return _sum ;
-        }
-        0
+    pub fn maximum69_number (num: i32) -> i32 {
+        num.to_string().replacen("6", "9", 1).parse::<i32>().unwrap()
     }
 }
 
