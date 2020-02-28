@@ -3,6 +3,7 @@ mod aux;
 mod question; 
 
 fn main() {
-	println!("{:?}", question::Solution::defang_i_paddr("1.1".to_string())); 
+	let v = vec![1,2,3,4];
+	println!("{:?}", question::Solution::decompress_rl_elist(v) ); 
 }
 
