@@ -8,3 +8,8 @@ pub fn print_map<K: Debug + Eq + Hash, V: Debug>(map: &HashMap<K, V>) {
         println!("{:?}: {:?}", k, v);
     }
 }
+
+#[allow(dead_code)]
+pub fn say_vec(nums: Vec<i32>){
+	println!("{:?}", nums);
+}

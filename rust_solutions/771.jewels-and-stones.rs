@@ -50,4 +50,4 @@ impl Solution {
         s.chars().filter(|c| hs.contains(c)).count() as i32 
     }
 }
-pub struct Solution; 
+// pub structSolution; 

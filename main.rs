@@ -3,7 +3,6 @@ mod aux;
 mod question; 
 
 fn main() {
-	let v = vec![1,2,3,4];
-	println!("{:?}", question::Solution::decompress_rl_elist(v) ); 
+	println!("{:?}", question::Solution::num_jewels_in_stones("aA".to_string(), "aAAAACC".to_string())); 
 }
 
