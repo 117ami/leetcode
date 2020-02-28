@@ -13,3 +13,9 @@ pub fn print_map<K: Debug + Eq + Hash, V: Debug>(map: &HashMap<K, V>) {
 pub fn say_vec(nums: Vec<i32>){
 	println!("{:?}", nums);
 }
+
+// #[allow(dead_code)]
+// pub fn buildVecOfVec(s: String)->Vec<Vec<i32>>{
+//     let mut res: Vec<Vec<i32>> = vec![]; 
+//     res 
+// }
