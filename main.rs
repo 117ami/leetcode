@@ -3,7 +3,7 @@ mod aux;
 mod question; 
 
 fn main() {
-	println!("{:?}", question::Solution::subtract_product_and_sum(234)); 
-
+	let nums = vec![555,901,482,1771]; 
+	println!("{:?}", question::Solution::find_numbers(nums) ); 
 }
 
