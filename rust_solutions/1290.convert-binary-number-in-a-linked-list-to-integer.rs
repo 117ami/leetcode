@@ -65,7 +65,7 @@
  */
 // Definition for singly-linked list.
 // #[derive(PartialEq, Eq, Clone, Debug)]
-// pub struct ListNode {
+// // pub structListNode {
 //   pub val: i32,
 //   pub next: Option<Box<ListNode>>
 // }
@@ -91,4 +91,4 @@ impl Solution {
         res 
     }
 }
-pub struct Solution; 
+// pub structSolution; 
