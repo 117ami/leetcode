@@ -8,6 +8,7 @@ prepro() {
 		exit 1
     else
 		leetcode show $1 -gx -l python3
+		leetcode show $1 -gx -l rust
 		# leetcode show $1 -gx -l javascript
     fi
 }
@@ -17,6 +18,7 @@ prepro $@
 js_file=$(ls -t *.js | head -n 1)
 python_file=$(ls -t *.py | head -n 1)
 ruby_file=$(ls -t *.rb | head -n 1)
+rust_file=$(ls -t *.rs | head -n 1)
 cpp_file=$(ls -t *.cpp | head -n 1)
 
 # echo -e "
@@ -66,3 +68,18 @@ int main(int argc, char const *argv[]) {
 	return 0;
 }
 " | tee test.cpp
+
+
+cp $rust_file question.rs 
+echo "pub struct Solution; " >> question.rs 
+
+method=$(cat $rust_file | grep fn | awk '{print $3}')
+echo "
+mod aux; 
+mod question; 
+
+fn main(){
+	println!(\"{:?}\", question::Solution::$method());
+}
+" > main.rs 
+
