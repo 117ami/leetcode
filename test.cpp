@@ -1,10 +1,9 @@
 
 #include "aux.cpp"
-#include "509.fibonacci-number.cpp"
+#include "1304.find-n-unique-integers-sum-up-to-zero.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.fib(4));
 	return 0;
 }
 

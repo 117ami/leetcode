@@ -3,6 +3,6 @@ mod aux;
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::fib(4));
+	println!("{:?}", question::Solution::sum_zero(4));
 }
 

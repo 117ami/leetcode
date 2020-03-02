@@ -50,4 +50,4 @@ impl Solution {
         (1-n..n).step_by(2).collect()
     }
 }
-pub struct Solution; 
+// pub structSolution; 
