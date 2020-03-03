@@ -3,6 +3,6 @@ mod aux;
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::sum_zero(4));
+	println!("{:?}", question::Solution::num_tile_possibilities(tiles:());
 }
 

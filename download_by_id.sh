@@ -70,16 +70,3 @@ int main(int argc, char const *argv[]) {
 " | tee test.cpp
 
 
-cp $rust_file question.rs 
-echo "pub struct Solution; " >> question.rs 
-
-method=$(cat $rust_file | grep fn | awk '{print $3}')
-echo "
-mod aux; 
-mod question; 
-
-fn main(){
-	println!(\"{:?}\", question::Solution::$method());
-}
-" > main.rs 
-
