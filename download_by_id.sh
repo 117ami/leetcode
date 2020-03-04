@@ -8,7 +8,6 @@ prepro() {
 		exit 1
     else
 		leetcode show $1 -gx -l python3
-		leetcode show $1 -gx -l rust
 		# leetcode show $1 -gx -l javascript
     fi
 }
