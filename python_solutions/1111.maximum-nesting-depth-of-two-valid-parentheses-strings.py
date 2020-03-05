@@ -402,5 +402,6 @@ class Solution:
 s = Solution()
 seq = "(()())"
 seq = "(((())))"
+seq = "()()"
 print(s.maxDepthAfterSplit(seq))
 

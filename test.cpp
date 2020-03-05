@@ -1,10 +1,9 @@
 
 #include "aux.cpp"
-#include "763.partition-labels.cpp"
+#include "1337.the-k-weakest-rows-in-a-matrix.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.partitionLabels("ababcbacadefegdehijhklij"));
 	return 0;
 }
 
