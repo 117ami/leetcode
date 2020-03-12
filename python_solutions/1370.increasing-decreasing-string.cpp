@@ -848,7 +848,22 @@ int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
 class Solution {
 public:
     string sortString(string s) {
+        vi arr(26, 0); 
+        for (char c: s) arr[c - 'a'] ++; 
+        string res = ""; 
+        int pivot = 0 ; 
         
+        while (res.size() < s.size()) {
+          qfor(i, 26) {
+            int j = pivot == 0 ? i : 25 - i;
+            if (arr[j] > 0){
+              arr[j] -= 1; 
+              res.push_back('a' + j);
+            }
+          }
+          pivot = 1 - pivot;
+        }
+        return res; 
     }
 };
 
