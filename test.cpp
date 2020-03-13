@@ -1,13 +1,12 @@
 
 #include "aux.cpp"
-#include "1371.find-the-longest-substring-containing-vowels-in-even-counts.cpp"
+#include "1368.minimum-cost-to-make-at-least-one-valid-path-in-a-grid.cpp"
 
 int main(int argc, char const *argv[]) {
+	string x = "[[1,1,1,1],[2,2,2,2],[1,1,1,1],[2,2,2,2]]";
+	vvi grid = extractMatrixFromString(x);
 	Solution s;
-	string ss = "leetcodeisgreat"; 
-	say(s.findTheLongestSubstring(ss));
-	
-	say(16 ^16);
+	say(s.minCost(grid));
 	return 0;
 }
 
