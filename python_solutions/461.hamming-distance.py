@@ -47,8 +47,17 @@ MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f
 #
 class Solution:
     def hammingDistance(self, x: int, y: int) -> int:
+        n = x ^ y
+        res = 0 
+        while n > 0:
+            n = n & (n - 1)
+            res += 1
+        return res 
         
 
 sol = Solution()
+print(sol.hammingDistance(1, 4))
 
+for i in range(1, 6):
+    print(i, i & (i - 1))
 
