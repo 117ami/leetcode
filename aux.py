@@ -486,20 +486,28 @@ class Trees:
 
         return root
 
+    def sortedArrayToBST(self, arr):
+        if not arr: return 
+        mid = len(arr) // 2
+        root = TreeNode(arr[mid])
+        root.left = self.sortedArrayToBST(arr[:mid])
+        root.right = self.sortedArrayToBST(arr[mid+1:])
+        return root 
+
     def treeToList(self, root):
         """Encodes a tree to a list
         :type root: TreeNode
         :rtype: list[int]
         """
         if not root: return []
-        jobs = [root]
-        res = []
+        jobs, res = [root], []
         while jobs:
             r = jobs.pop(0)
             if r:
                 res.append(r.val)
                 jobs += [r.left, r.right]
         return res
+
 
     def isCompleteTree(self, root: TreeNode) -> bool:
         """ Whether a given a tree is complete
