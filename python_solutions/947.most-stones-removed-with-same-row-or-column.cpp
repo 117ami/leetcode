@@ -874,6 +874,10 @@ public:
 
   // Do not use union, since it's a keyword of CPP
   void merge(int x, int y, unordered_map<int, int> &p) {
+    if (!exist(p, x))
+      p[x] = x;
+    if (!exist(p, y))
+      p[y] = y;
     p[find(x, p)] = find(y, p);
   }
 
@@ -881,16 +885,15 @@ public:
     unordered_map<int, int> p;
     for (auto &s : stones) {
       int x = s[0], y = s[1];
-      if (!exist(p, x))
-        p[x] = x;
-      if (!exist(p, y))
-        p[y] = y;
       merge(x, ~y, p);
+      // say(vi{x, ~y});
     }
     unordered_set<int> us;
     for (auto &[k, v] : p) {
+      // say(vi{k, v});
       us.insert(find(k, p));
     };
+    // say(us);
     return stones.size() - us.size();
   }
 };
