@@ -1,11 +1,10 @@
 
 #include "aux.cpp"
-#include "1389.create-target-array-in-the-given-order.cpp"
+#include "1387.sort-integers-by-the-power-value.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi nums = {0,1,2,3,4}, index = {0,1,2,2,1}; 
-	say(s.createTargetArray(nums, index));
+	say(s.getKth(1,1000,777));
 	return 0;
 }
 
