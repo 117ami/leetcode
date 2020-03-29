@@ -1,13 +1,11 @@
 
 #include "aux.cpp"
-#include "283.move-zeroes.cpp"
+#include "1395.count-number-of-teams.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi nums = {0, 0, 1};
-	nums = {0,1,0,3,12};
-	s.moveZeroes(nums); 
-	say(nums);
+	vi ns = {1,2,3,4};
+	say(s.numTeams(ns));
 	return 0;
 }
 
