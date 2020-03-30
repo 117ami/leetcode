@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1395.count-number-of-teams.cpp"
+#include "1394.find-lucky-integer-in-an-array.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi ns = {1,2,3,4};
-	say(s.numTeams(ns));
+	vi arr = {2,2,3,4};
+	say(s.findLucky(arr));
 	return 0;
 }
 
