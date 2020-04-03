@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1394.find-lucky-integer-in-an-array.cpp"
+#include "388.longest-absolute-file-path.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi arr = {2,2,3,4};
-	say(s.findLucky(arr));
+	string t = "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext";
+	say(s.lengthLongestPath(t));
 	return 0;
 }
 
