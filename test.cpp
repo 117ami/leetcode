@@ -1,10 +1,12 @@
 
 #include "aux.cpp"
-#include "1399.count-largest-group.cpp"
+#include "49.group-anagrams.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.countLargestGroup(24));
+	vs x = {"eat", "tea", "tan", "ate", "nat", "bat"};
+	vvs y = s.groupAnagrams(x); 
+	say(y);
 	return 0;
 }
 
