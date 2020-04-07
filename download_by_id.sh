@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 prepro() {
-    op=$(leetcode show $1 -gx -l cpp)	
+    op=$(leetcode show $1 -gx -l rust)	
     if [[ $op =~ "ERROR" ]]; then 
     	echo $op
 		echo "Refreshing cache may help resolving this problem [leetcode cache -d]."
@@ -14,10 +14,10 @@ prepro() {
 
 prepro $@
 
+rust_file=$(ls -t *.rs | head -n 1)
 js_file=$(ls -t *.js | head -n 1)
 python_file=$(ls -t *.py | head -n 1)
 ruby_file=$(ls -t *.rb | head -n 1)
-rust_file=$(ls -t *.rs | head -n 1)
 cpp_file=$(ls -t *.cpp | head -n 1)
 
 # echo -e "
@@ -30,9 +30,9 @@ cpp_file=$(ls -t *.cpp | head -n 1)
 # cat $js_file >> tmpjs
 # mv tmpjs $js_file
 
-cat c.cpp > tmpcpp
-cat $cpp_file >> tmpcpp
-mv tmpcpp $cpp_file
+# cat c.cpp > tmpcpp
+# cat $cpp_file >> tmpcpp
+# mv tmpcpp $cpp_file
 
 # cat aux.py > tmppy
 # cat $python_file >> tmppy
@@ -52,21 +52,32 @@ true = True\
 false = False\
 MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f' $python_file
 
-echo -e "\n\n
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
 
-# cat c.cpp > t.cpp
-# cat $cpp_file >> t.cpp 
-# mv t.cpp $cpp_file
+cp $rust_file question.rs 
+echo -e "\n\npub struct Solution; " >> question.rs 
+cat aux.rs >> question.rs 
 
+method=$(cat $rust_file | grep fn | head -n 1 | awk '{print $3}' | cut -d "(" -f 1)
 echo "
-#include \"aux.cpp\"
-#include \"$cpp_file\"
+mod question; 
 
-int main(int argc, char const *argv[]) {
-	Solution s;
-	return 0;
+fn main(){
+	println!(\"{:?}\", question::Solution::$method());
 }
-" | tee test.cpp
+" > main.rs 
+
+# echo -e "\n\n
+# static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
+
+
+# echo "
+# #include \"aux.cpp\"
+# #include \"$cpp_file\"
+
+# int main(int argc, char const *argv[]) {
+# 	Solution s;
+# 	return 0;
+# }
+# " | tee test.cpp
 
 
