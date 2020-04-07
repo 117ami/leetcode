@@ -49,7 +49,15 @@ def find_ruby_solution(local):
     '''
     rlocal = local.replace('.py', '.rb')
     return rlocal if os.path.exists(rlocal) else None
-        
+
+def find_rust_solution(local):
+    '''
+    :type local: a string of .py file
+    :rtype: string if .rb solution was found, or None otherwise
+    '''
+    rlocal = local.replace('.py', '.rs')
+    return rlocal if os.path.exists(rlocal) else None
+
 def find_js_solution(local):
     '''
     :type local: a string of .py file
@@ -63,7 +71,6 @@ def find_cpp_solution(local):
     return rlocal if os.path.exists(rlocal) else None
 
 
-
 def update_readme():
     diff_symbols = {'Hard': '𝐇', 'Medium': '𝐌', 'Easy': '𝐄'}
     readme_head = open('conf.d/readme_head', 'r').read()
@@ -74,11 +81,13 @@ def update_readme():
             ruby_solution = find_ruby_solution(local)
             js_solution = find_js_solution(local)
             cpp_solution = find_cpp_solution(local)
+            rust_solution = find_rust_solution(local)
             tr = "|" + diff_symbols[diffi] + "." + pid + " | [" + \
                 title + "](" + plink + ") | [Python](" + local + ")"
             if ruby_solution: tr += "/[Ruby](" + ruby_solution +") " 
             if js_solution: tr += "/[Javascript](" + js_solution +") "
             if cpp_solution: tr += "/[C++](" + cpp_solution +") "            
+            if rust_solution: tr += "/[Rust](" + cpp_solution +") "            
             tr += "|\n"
             f.write(tr)
         f.write(open('conf.d/readme_tail', 'r').read())
