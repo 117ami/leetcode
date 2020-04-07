@@ -87,7 +87,7 @@ def update_readme():
             if ruby_solution: tr += "/[Ruby](" + ruby_solution +") " 
             if js_solution: tr += "/[Javascript](" + js_solution +") "
             if cpp_solution: tr += "/[C++](" + cpp_solution +") "            
-            if rust_solution: tr += "/[Rust](" + cpp_solution +") "            
+            if rust_solution: tr += "/[Rust](" + rust_solution +") "            
             tr += "|\n"
             f.write(tr)
         f.write(open('conf.d/readme_tail', 'r').read())
