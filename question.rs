@@ -1,72 +1,56 @@
 /*
- * @lc app=leetcode id=877 lang=rust
+ * @lc app=leetcode id=1140 lang=rust
  *
- * [877] Stone Game
+ * [1140] Stone Game II
  *
- * https://leetcode.com/problems/stone-game/description/
+ * https://leetcode.com/problems/stone-game-ii/description/
  *
  * algorithms
- * Medium (63.34%)
- * Total Accepted:    47.3K
- * Total Submissions: 74.7K
- * Testcase Example:  '[5,3,4,5]'
+ * Medium (61.17%)
+ * Total Accepted:    9K
+ * Total Submissions: 14.7K
+ * Testcase Example:  '[2,7,9,4,4]'
  *
- * Alex and Lee play a game with piles of stones.  There are an even number of
- * piles arranged in a row, and each pile has a positive integer number of
- * stones piles[i].
+ * Alex and Lee continue their games with piles of stones.  There are a number
+ * of piles arranged in a row, and each pile has a positive integer number of
+ * stones piles[i].  The objective of the game is to end with the most
+ * stones. 
  * 
- * The objective of the game is to end with the most stones.  The total number
- * of stones is odd, so there are no ties.
+ * Alex and Lee take turns, with Alex starting first.  Initially, M = 1.
  * 
- * Alex and Lee take turns, with Alex starting first.  Each turn, a player
- * takes the entire pile of stones from either the beginning or the end of the
- * row.  This continues until there are no more piles left, at which point the
- * person with the most stones wins.
+ * On each player's turn, that player can take all the stones in the first X
+ * remaining piles, where 1 <= X <= 2M.  Then, we set M = max(M, X).
  * 
- * Assuming Alex and Lee play optimally, return True if and only if Alex wins
- * the game.
+ * The game continues until all the stones have been taken.
  * 
+ * Assuming Alex and Lee play optimally, return the maximum number of stones
+ * Alex can get.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: [5,3,4,5]
- * Output: true
- * Explanation: 
- * Alex starts first, and can only take the first 5 or the last 5.
- * Say he takes the first 5, so that the row becomes [3, 4, 5].
- * If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10
- * points.
- * If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win
- * with 9 points.
- * This demonstrated that taking the first 5 was a winning move for Alex, so we
- * return true.
+ * Input: piles = [2,7,9,4,4]
+ * Output: 10
+ * Explanation:  If Alex takes one pile at the beginning, Lee takes two piles,
+ * then Alex takes 2 piles again. Alex can get 2 + 4 + 4 = 10 piles in total.
+ * If Alex takes two piles at the beginning, then Lee can take all three piles
+ * left. In this case, Alex get 2 + 7 = 9 piles in total. So we return 10 since
+ * it's larger. 
  * 
  * 
  * 
+ * Constraints:
  * 
- * Note:
  * 
- * 
- * 2 <= piles.length <= 500
- * piles.length is even.
- * 1 <= piles[i] <= 500
- * sum(piles) is odd.
+ * 1 <= piles.length <= 100
+ * 1 <= piles[i] <= 10 ^ 4
  * 
  */
 impl Solution {
-    pub fn stone_game(piles: Vec<i32>) -> bool {
-        let n = piles.len(); 
-        let mut cur = piles.to_vec();
-        for d in 1..n {
-            let mut pre = cur.to_vec();            
-            for i in 0..n-d {
-                let j = i + d; 
-                cur[j] = std::cmp::max(piles[i] - pre[j], piles[j] - pre[j-1]);
-            }
-        }
-        *cur.last().unwrap() > 0
+    pub fn dp(&piles:)
+    pub fn stone_game_ii(piles: Vec<i32>) -> i32 {
+        
     }
 }
 
