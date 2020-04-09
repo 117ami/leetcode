@@ -2,7 +2,7 @@
 mod question; 
 
 fn main(){
-	let s = "tree".to_string(); 
-	println!("{:?}", question::Solution::frequency_sort(s));
+	let ps = vec![5,3, 4,5];
+	println!("{:?}", question::Solution::stone_game(ps));
 }
 

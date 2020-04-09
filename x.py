@@ -1,19 +1,21 @@
+from collections import Counter
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution:
-    def isHappy(self, n: int) -> bool:
-        cache = set()
-        if n == 1: return True 
-        ds = [int(e) for e in list(str(n))]
-        while n != 1:
-            n = sum(e * e for e in ds)
-            if n in cache:
-                return False
-            cache.add(n)
-            ds = [int(e) for e in list(str(n))]
-        return True
-
-n = 82
-print(Solution().isHappy(n))
-
-
+    def middleNode(self, head: ListNode) -> ListNode:
+        n = 0
+        dummy = head 
+        while dummy:
+            dummy = dummy.next 
+            n += 1 
+        n = n // 2 
+        dummy = head
+        while n > 0:
+            dummy = dummy.next 
+            n -= 1
+        return dummy
         
