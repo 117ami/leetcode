@@ -15,8 +15,16 @@
 //   }
 // }
 impl Solution {
-    pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
-        let mut size = 0; 
-        let mut dummy = head.borrow();
+    pub fn x(s: String) -> String{ 
+        let mut vs = vec![];
+        for c in s.chars().into_iter() {
+            if c == '#' {
+                if !vs.is_empty()
+            }
+        }
+    }
+    
+    pub fn backspace_compare(s: String, t: String) -> bool {
+        false ;
     }
 }

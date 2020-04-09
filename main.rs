@@ -2,6 +2,7 @@
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::stone_game_ii());
+	let tree = vec![1,2,3,1, 2,2];
+	println!("{:?}", question::Solution::total_fruit(tree));
 }
 
