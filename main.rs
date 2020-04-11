@@ -2,7 +2,7 @@
 mod question; 
 
 fn main(){
-	let s = "LEETCODE".to_string();
-	println!("{:?}", question::Solution::unique_letter_string(s));
+	let s = "11000".to_string();
+	println!("{:?}", question::Solution::num_steps(s));
 }
 

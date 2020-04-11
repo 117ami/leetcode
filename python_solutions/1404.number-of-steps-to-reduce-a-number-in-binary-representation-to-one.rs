@@ -69,9 +69,10 @@
  */
 impl Solution {
     pub fn num_steps(s: String) -> i32 {
-        let (mut res, mut carry) = (0, 0); 
+        let mut res = 0; 
+        let mut carry = 0; 
         let cs: Vec<char> = s.chars().collect();
-        
+        // println!("{:?}", cs);
         for i in 1..s.len() {
             res += 1; 
             
@@ -86,7 +87,7 @@ impl Solution {
 }
 
 
-pub struct Solution; 
+// pub structSolution; 
 
 use std::collections::HashMap;
 use std::collections::HashSet;
