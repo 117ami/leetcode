@@ -100,19 +100,21 @@ impl Solution {
         let mut r = vec![vec![0; 26]; 26];
         for v in &votes {
             for (i, c) in v.chars().enumerate() {
-                r[c as usize - 65][i] += 1;
+                r[c as usize - 'A' as usize][i] += 1;
             }
         }
         let mut teams:Vec<_> = votes[0].clone().chars().collect();
         teams.sort();
-        teams.sort_by(|a, b| r[*b as usize - 65].cmp(&r[*a as usize - 65]));
-        // println!("{:?}", 'A' as usize);
+        teams.sort_by(|a, b| r[*b as usize - 'A' as usize].cmp(&r[*a as usize - 'A' as usize]));
+        // println!("{:?}", teams);
+
+        // println!("{:?}", r);
         teams.iter().collect()
     }
 }
 
 
-pub struct Solution; 
+// pub structSolution; 
 
 use std::collections::HashMap;
 use std::collections::HashSet;
