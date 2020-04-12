@@ -66,11 +66,13 @@ impl Solution {
             }
         }
         res.into_iter().collect::<Vec<String>>()
+        // println!("{:?}", x);
+        // vec!["x".to_string()]
     }
 }
 
 
-pub struct Solution; 
+// pub structSolution; 
 
 use std::collections::HashMap;
 use std::collections::HashSet;

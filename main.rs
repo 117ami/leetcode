@@ -2,7 +2,7 @@
 mod question; 
 
 fn main(){
-	let sv = vec![1,2,3,6];
-	println!("{:?}", question::Solution::stone_game_iii(sv));
+	let words = vec!["mass".to_string(),"as".to_string(),"hero".into(),"superhero".into()];
+	println!("{:?}", question::Solution::string_matching(words));
 }
 
