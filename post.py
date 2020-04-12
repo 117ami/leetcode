@@ -14,7 +14,7 @@ else:
 
 if sys.argv[-1].endswith('rs'):
     print("Submitting Rust solution")
-    f = open('question.rs', 'r').read().__str__().replace('pub struct ', '// pub struct')
+    f = open('question.rs', 'r').read().__str__().replace('pub struct Solution;', '// pub struct Solution;')
     with open(sys.argv[-1], 'w') as wh:
         wh.write(f)
 

@@ -4,6 +4,23 @@ import collections
 from bisect import bisect_left
 
 
+class FenwickTree:
+    def __init__(self, _size):
+        self.tree = [0] * _size
+
+    def prefix_sum(self, i):
+        _sum = 0
+        while i > 0:
+            _sum += self.tree[i]
+            i -= (i & (-i))
+        return _sum
+
+    def update(self, i, val):
+        while i < len(self.tree):
+            self.tree[i] += val
+            i += (i & (-i))
+
+
 class XString(object):
     def longestPalindromeSubseq(self, s):
         n = len(s)

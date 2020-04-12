@@ -66,6 +66,32 @@
  *
  */
 
+
+impl Solution {
+    pub fn process_queries(queries: Vec<i32>, m: i32) -> Vec<i32> {
+        let mut res: Vec<i32> = vec![];
+        let mut m = m as usize;
+        let mut ft = FenwickTree::new(2*m+1);
+        let mut map: Vec<usize> = vec![0; 2*m+1];
+        
+        for i in 1..m+1 {
+            map[i] = i + m; 
+            ft.update(i+m, 1);
+        }
+
+        for q in queries {
+            res.push(ft.get(map[q as usize]) - 1);
+            ft.update(map[q as usize], -1);
+            ft.update(m, 1);
+            map[q as usize] = m; 
+            m -= 1; 
+        }
+        res
+    }
+}
+
+// pub struct Solution;
+
 pub struct FenwickTree {
     vals: Vec<i32>,
 }
@@ -94,31 +120,6 @@ impl FenwickTree {
         res
     }
 }
-
-impl Solution {
-    pub fn process_queries(queries: Vec<i32>, m: i32) -> Vec<i32> {
-        let mut res: Vec<i32> = vec![];
-        let mut m = m as usize;
-        let mut ft = FenwickTree::new(2*m+1);
-        let mut map: Vec<usize> = vec![0; 2*m+1];
-        
-        for i in 1..m+1 {
-            map[i] = i + m; 
-            ft.update(i+m, 1);
-        }
-
-        for q in queries {
-            res.push(ft.get(map[q as usize]) - 1);
-            ft.update(map[q as usize], -1);
-            ft.update(m, 1);
-            map[q as usize] = m; 
-            m -= 1; 
-        }
-        res
-    }
-}
-
-pub struct Solution;
 
 use std::cmp::max;
 use std::cmp::min;

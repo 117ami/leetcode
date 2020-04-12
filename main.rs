@@ -2,7 +2,7 @@
 mod question; 
 
 fn main(){
-	let words = vec!["mass".to_string(),"as".to_string(),"hero".into(),"superhero".into()];
-	println!("{:?}", question::Solution::string_matching(words));
+	let queries = vec![3,1,2,1];
+	println!("{:?}", question::Solution::process_queries(queries, 5));
 }
 
