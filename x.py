@@ -4,14 +4,22 @@ from typing import List
 
 
 class Solution:
-    def lastStoneWeight(self, stones: List[int]) -> int:
-        stones.sort()
-        while len(stones) > 1:
-            a, b = stones.pop(), stones.pop()
-            if a > b:
-                insort(stones, a - b)
-        return stones[0]
+    def findMaxLength(self, nums: List[int]) -> int:
+        diff = res = 0
+        sz = len(nums)
+        cache = [float('-inf')] * (sz * 2 + 1)
+        cache[sz] = -1
+
+        for i, n in enumerate(nums):
+            diff += 1 if n == 1 else -1
+            if cache[diff + sz] < -sz:
+                cache[diff + sz] = i
+            res = max(res, i - cache[diff + sz])
+
+        return res
 
 
-s = [2, 7, 4, 1, 8, 1]
-print(Solution().lastStoneWeight(s))
+nums = [1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1]
+nums = [0, 1, 0]
+nums = []
+print(Solution().findMaxLength(nums))

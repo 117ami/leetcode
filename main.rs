@@ -2,7 +2,8 @@
 mod question; 
 
 fn main(){
-	let stones = vec![2,3,5,4, 1];
-	println!("{:?}", question::Solution::last_stone_weight(stones));
+	// let text = "leetcode.com&frasl;problemset&frasl;all".to_string(); 
+	let text = "x &gt; y &amp;&amp; x &lt; y is always false".to_string();
+	println!("{:?}", question::Solution::entity_parser(text));
 }
 
