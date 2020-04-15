@@ -4,22 +4,15 @@ from typing import List
 
 
 class Solution:
-    def findMaxLength(self, nums: List[int]) -> int:
-        diff = res = 0
-        sz = len(nums)
-        cache = [float('-inf')] * (sz * 2 + 1)
-        cache[sz] = -1
-
-        for i, n in enumerate(nums):
-            diff += 1 if n == 1 else -1
-            if cache[diff + sz] < -sz:
-                cache[diff + sz] = i
-            res = max(res, i - cache[diff + sz])
-
-        return res
+    def stringShift(self, s: str, shift: List[List[int]]) -> str:
+        carry = (sum(sh if d == 1 else -sh for d,
+                     sh in shift) + len(s)) % len(s)
+        print(carry)
+        return s[-carry:] + s[:-carry]
 
 
-nums = [1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1]
-nums = [0, 1, 0]
-nums = []
-print(Solution().findMaxLength(nums))
+s = "abcdefg"
+shift = [[1, 1], [1, 1], [0, 2], [1, 3]]
+s = "xqgwkiqpif"
+shift = [[1,4],[0,7],[0,8],[0,7],[0,6],[1,3],[0,1],[1,7],[0,5],[0,6]]
+print(Solution().stringShift(s, shift))

@@ -2,7 +2,6 @@
 mod question; 
 
 fn main(){
-	let i = 7_i32; 
-	println!("{:?}", question::Solution::num_of_ways(i));
+	println!("{:?}", question::Solution::longest_diverse_string(1,1,7));
 }
 
