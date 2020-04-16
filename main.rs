@@ -2,7 +2,6 @@
 mod question; 
 
 fn main(){
-	let nums = vec![1_i32, 2, 3, 4];
-	println!("{:?}", question::Solution::product_except_self(nums));
+	println!("{:?}", question::Solution::check_overlap(5,7,2,12,0,19,3));
 }
 
