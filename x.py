@@ -1,18 +1,12 @@
 from collections import Counter
 from bisect import insort
 from typing import List
-
+from functools import reduce
 
 class Solution:
-    def stringShift(self, s: str, shift: List[List[int]]) -> str:
-        carry = (sum(sh if d == 1 else -sh for d,
-                     sh in shift) + len(s)) % len(s)
-        print(carry)
-        return s[-carry:] + s[:-carry]
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        s = reduce((lambda x, y: x * y), nums)
+        return [s // e for e in nums]
 
-
-s = "abcdefg"
-shift = [[1, 1], [1, 1], [0, 2], [1, 3]]
-s = "xqgwkiqpif"
-shift = [[1,4],[0,7],[0,8],[0,7],[0,6],[1,3],[0,1],[1,7],[0,5],[0,6]]
-print(Solution().stringShift(s, shift))
+nums= [1,2,3,4]        
+print(Solution().productExceptSelf(nums))

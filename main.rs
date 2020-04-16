@@ -2,8 +2,7 @@
 mod question; 
 
 fn main(){
-	// let s = "Leeecode@mail.cn".to_string();
-	let s = "091234567829".to_string();
-	println!("{:?}", question::Solution::mask_pii(s));
+	let nums = vec![1_i32, 2, 3, 4];
+	println!("{:?}", question::Solution::product_except_self(nums));
 }
 
