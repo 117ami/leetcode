@@ -2,6 +2,8 @@
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::longest_diverse_string(1,1,7));
+	// let s = "Leeecode@mail.cn".to_string();
+	let s = "091234567829".to_string();
+	println!("{:?}", question::Solution::mask_pii(s));
 }
 
