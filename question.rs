@@ -1,103 +1,93 @@
 /*
- * @lc app=leetcode id=1417 lang=rust
+ * @lc app=leetcode id=1415 lang=rust
  *
- * [1417] Reformat The String
+ * [1415] The k-th Lexicographical String of All Happy Strings of Length n
  *
- * https://leetcode.com/problems/reformat-the-string/description/
+ * https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/description/
  *
  * algorithms
- * Easy (54.54%)
- * Total Accepted:    6.9K
- * Total Submissions: 12.6K
- * Testcase Example:  '"a0b1c2"'
+ * Medium (69.34%)
+ * Total Accepted:    4.2K
+ * Total Submissions: 6K
+ * Testcase Example:  '1\n3'
  *
- * Given alphanumeric string s. (Alphanumeric string is a string consisting of
- * lowercase English letters and digits).
- *
- * You have to find a permutation of the string where no letter is followed by
- * another letter and no digit is followed by another digit. That is, no two
- * adjacent characters have the same type.
- *
- * Return the reformatted string or return an empty string if it is impossible
- * to reformat the string.
- *
- *
+ * A happy string is a string that:
+ * 
+ * 
+ * consists only of letters of the set ['a', 'b', 'c'].
+ * s[i] != s[i + 1] for all values of i from 1 to s.length - 1 (string is
+ * 1-indexed).
+ * 
+ * 
+ * For example, strings "abc", "ac", "b" and "abcbabcbcb" are all happy strings
+ * and strings "aa", "baa" and "ababbc" are not happy strings.
+ * 
+ * Given two integers n and k, consider a list of all happy strings of length n
+ * sorted in lexicographical order.
+ * 
+ * Return the kth string of this list or return an empty string if there are
+ * less than k happy strings of length n.
+ * 
+ * 
  * Example 1:
- *
- *
- * Input: s = "a0b1c2"
- * Output: "0a1b2c"
- * Explanation: No two adjacent characters have the same type in "0a1b2c".
- * "a0b1c2", "0a1b2c", "0c2a1b" are also valid permutations.
- *
- *
+ * 
+ * 
+ * Input: n = 1, k = 3
+ * Output: "c"
+ * Explanation: The list ["a", "b", "c"] contains all happy strings of length
+ * 1. The third string is "c".
+ * 
+ * 
  * Example 2:
- *
- *
- * Input: s = "leetcode"
+ * 
+ * 
+ * Input: n = 1, k = 4
  * Output: ""
- * Explanation: "leetcode" has only characters so we cannot separate them by
- * digits.
- *
- *
+ * Explanation: There are only 3 happy strings of length 1.
+ * 
+ * 
  * Example 3:
- *
- *
- * Input: s = "1229857369"
- * Output: ""
- * Explanation: "1229857369" has only digits so we cannot separate them by
- * characters.
- *
- *
+ * 
+ * 
+ * Input: n = 3, k = 9
+ * Output: "cab"
+ * Explanation: There are 12 different happy string of length 3 ["aba", "abc",
+ * "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. You
+ * will find the 9th string = "cab"
+ * 
+ * 
  * Example 4:
- *
- *
- * Input: s = "covid2019"
- * Output: "c2o0v1i9d"
- *
- *
+ * 
+ * 
+ * Input: n = 2, k = 7
+ * Output: ""
+ * 
+ * 
  * Example 5:
- *
- *
- * Input: s = "ab123"
- * Output: "1a2b3"
- *
- *
- *
+ * 
+ * 
+ * Input: n = 10, k = 100
+ * Output: "abacbabacb"
+ * 
+ * 
+ * 
  * Constraints:
- *
- *
- * 1 <= s.length <= 500
- * s consists of only lowercase English letters and/or digits.
- *
- *
+ * 
+ * 
+ * 1 <= n <= 10
+ * 1 <= k <= 100
+ * 
+ * 
+ * 
  */
 impl Solution {
-    pub fn reformat(s: String) -> String {
-        let n = s.len();
-        let mut cache: Vec<char> = vec!['#'; n * 2 + 2];
-        let (mut i, mut j) = (1_i32, 2_i32);
-        for c in s.chars() {
-            if c.is_numeric() {
-                cache[i as usize] = c;
-                i += 2;
-            } else {
-                cache[j as usize] = c;
-                j += 2;
-            }
-        }
-        // println!("{}{}", i, j);
-        if i - j >= 3 || j - i > 3 {
-            return "".to_string();
-        }
-        if (i - j).abs() > 1 {
-            cache.swap(0, j as usize - 2);
-        }
-        cache.iter().filter(|c| **c != '#').collect::<String>()
+    pub fn get_happy_string(n: i32, k: i32) -> String {
+        
     }
 }
 
-pub struct Solution;
+
+pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
