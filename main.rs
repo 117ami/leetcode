@@ -2,7 +2,9 @@
 mod question; 
 
 fn main(){
-	let nums = vec![1, -2, -3];
-	println!("{:?}", question::Solution::min_start_value(nums));
+	let s = "0123dcafd".to_string();
+	// let s = "leetcode".to_string();
+	println!("{:?}", question::Solution::reformat(s));
 }
+
 
