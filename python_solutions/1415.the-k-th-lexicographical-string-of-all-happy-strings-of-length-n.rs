@@ -83,8 +83,6 @@
 impl Solution {
     pub fn get_happy_string(n: i32, k: i32) -> String {
         let mut cc: VecDeque<Vec<char>> = VecDeque::from(vec![vec!['a'], vec!['b'], vec!['c']]);
-
-        // break the loop when all vec in cc has length n 
         while cc.front().unwrap().len() < n as usize {
             let vc = cc.pop_front().unwrap();
             for nc in "abc".chars() {
@@ -99,7 +97,7 @@ impl Solution {
     }
 }
 
-pub struct Solution;
+// pub struct Solution;
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
