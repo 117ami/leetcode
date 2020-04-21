@@ -1,113 +1,81 @@
 /*
- * @lc app=leetcode id=1415 lang=rust
+ * @lc app=leetcode id=352 lang=rust
  *
- * [1415] The k-th Lexicographical String of All Happy Strings of Length n
+ * [352] Data Stream as Disjoint Intervals
  *
- * https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/description/
+ * https://leetcode.com/problems/data-stream-as-disjoint-intervals/description/
  *
  * algorithms
- * Medium (69.34%)
- * Total Accepted:    4.2K
- * Total Submissions: 6K
- * Testcase Example:  '1\n3'
+ * Hard (45.89%)
+ * Total Accepted:    32.1K
+ * Total Submissions: 70K
+ * Testcase Example:  '["SummaryRanges","addNum","getIntervals","addNum","getIntervals","addNum","getIntervals","addNum","getIntervals","addNum","getIntervals"]\n' +
+  '[[],[1],[],[3],[],[7],[],[2],[],[6],[]]'
  *
- * A happy string is a string that:
- *
- *
- * consists only of letters of the set ['a', 'b', 'c'].
- * s[i] != s[i + 1] for all values of i from 1 to s.length - 1 (string is
- * 1-indexed).
- *
- *
- * For example, strings "abc", "ac", "b" and "abcbabcbcb" are all happy strings
- * and strings "aa", "baa" and "ababbc" are not happy strings.
- *
- * Given two integers n and k, consider a list of all happy strings of length n
- * sorted in lexicographical order.
- *
- * Return the kth string of this list or return an empty string if there are
- * less than k happy strings of length n.
- *
- *
- * Example 1:
- *
- *
- * Input: n = 1, k = 3
- * Output: "c"
- * Explanation: The list ["a", "b", "c"] contains all happy strings of length
- * 1. The third string is "c".
- *
- *
- * Example 2:
- *
- *
- * Input: n = 1, k = 4
- * Output: ""
- * Explanation: There are only 3 happy strings of length 1.
- *
- *
- * Example 3:
- *
- *
- * Input: n = 3, k = 9
- * Output: "cab"
- * Explanation: There are 12 different happy string of length 3 ["aba", "abc",
- * "aca", "acb", "bab", "bac", "bca", "bcb", "cab", "cac", "cba", "cbc"]. You
- * will find the 9th string = "cab"
- *
- *
- * Example 4:
- *
- *
- * Input: n = 2, k = 7
- * Output: ""
- *
- *
- * Example 5:
- *
- *
- * Input: n = 10, k = 100
- * Output: "abacbabacb"
- *
- *
- *
- * Constraints:
- *
- *
- * 1 <= n <= 10
- * 1 <= k <= 100
- *
- *
- *
+ * Given a data stream input of non-negative integers a1, a2, ..., an, ...,
+ * summarize the numbers seen so far as a list of disjoint intervals.
+ * 
+ * For example, suppose the integers from the data stream are 1, 3, 7, 2, 6,
+ * ..., then the summary will be:
+ * 
+ * 
+ * [1, 1]
+ * [1, 1], [3, 3]
+ * [1, 1], [3, 3], [7, 7]
+ * [1, 3], [7, 7]
+ * [1, 3], [6, 7]
+ * 
+ * 
+ * 
+ * 
+ * Follow up:
+ * 
+ * What if there are lots of merges and the number of disjoint intervals are
+ * small compared to the data stream's size?
+ * 
  */
-impl Solution {
-    pub fn get_happy_string(n: i32, k: i32) -> String {
-        let mut cc: VecDeque<Vec<char>> = VecDeque::from(vec![vec!['a'], vec!['b'], vec!['c']]);
+struct SummaryRanges {
 
-        // break the loop when all vec in cc has length n 
-        while cc.front().unwrap().len() < n as usize {
-            let vc = cc.pop_front().unwrap();
-            for nc in "abc".chars() {
-                if vc.last().unwrap() != &nc {
-                    let mut x = vc.clone();
-                    x.push(nc);
-                    cc.push_back(x);
-                }
-            }
-        }
-        if cc.len() < k as usize { "".to_string() } else { cc[k as usize - 1].iter().collect::<String>()}
+}
+
+
+/** 
+ * `&self` means the method takes an immutable reference.
+ * If you need a mutable reference, change it to `&mut self` instead.
+ */
+impl SummaryRanges {
+
+    /** Initialize your data structure here. */
+    fn new() -> Self {
+        
+    }
+    
+    fn add_num(&self, val: i32) {
+        
+    }
+    
+    fn get_intervals(&self) -> Vec<Vec<i32>> {
+        
     }
 }
 
-pub struct Solution;
+/**
+ * Your SummaryRanges object will be instantiated and called as such:
+ * let obj = SummaryRanges::new();
+ * obj.add_num(val);
+ * let ret_2: Vec<Vec<i32>> = obj.get_intervals();
+ */
+
+
+pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
 use std::collections::HashSet;
-use std::collections::VecDeque;
 use std::fmt::Debug;
 use std::hash::Hash;
 use std::iter::FromIterator;
+// use std::collections::VecDeque;
 // use std::collections::BTreeMap;
 use std::any::type_name;
 use std::collections::BinaryHeap;
