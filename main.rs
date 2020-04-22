@@ -2,6 +2,7 @@
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::->());
+	let v = vec![1,1,1];
+	println!("{:?}", question::Solution::subarray_sum(v, 2));
 }
 
