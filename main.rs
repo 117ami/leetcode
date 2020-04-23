@@ -2,7 +2,6 @@
 mod question; 
 
 fn main(){
-	let v = vec![1,1,1];
-	println!("{:?}", question::Solution::subarray_sum(v, 2));
+	println!("{:?}", question::Solution::range_bitwise_and(5, 7));
 }
 
