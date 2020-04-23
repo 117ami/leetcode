@@ -2,6 +2,7 @@
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::range_bitwise_and(5, 7));
+	let ns = vec![vec![1_i32,4], vec![2_i32,3], vec![3_i32,4]];
+	println!("{:?}", question::Solution::find_right_interval(ns));
 }
 
