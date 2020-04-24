@@ -1,42 +1,51 @@
 /*
- * @lc app=leetcode id=146 lang=rust
+ * @lc app=leetcode id=460 lang=rust
  *
- * [146] LRU Cache
+ * [460] LFU Cache
  *
- * https://leetcode.com/problems/lru-cache/description/
+ * https://leetcode.com/problems/lfu-cache/description/
  *
  * algorithms
- * Medium (30.71%)
- * Total Accepted:    476.4K
- * Total Submissions: 1.5M
- * Testcase Example:  '["LRUCache","put","put","get","put","get","put","get","get","get"]\n' +
-  '[[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]'
+ * Hard (32.89%)
+ * Total Accepted:    66.2K
+ * Total Submissions: 201.1K
+ * Testcase Example:  '["LFUCache","put","put","get","put","get","get","put","get","get","get"]\n' +
+  '[[2],[1,1],[2,2],[1],[3,3],[2],[3],[4,4],[1],[3],[4]]'
  *
- * Design and implement a data structure for Least Recently Used (LRU) cache.
+ * Design and implement a data structure for Least Frequently Used (LFU) cache.
  * It should support the following operations: get and put.
  * 
  * get(key) - Get the value (will always be positive) of the key if the key
  * exists in the cache, otherwise return -1.
  * put(key, value) - Set or insert the value if the key is not already present.
- * When the cache reached its capacity, it should invalidate the least recently
- * used item before inserting a new item.
+ * When the cache reaches its capacity, it should invalidate the least
+ * frequently used item before inserting a new item. For the purpose of this
+ * problem, when there is a tie (i.e., two or more keys that have the same
+ * frequency), the least recently used key would be evicted.
  * 
- * The cache is initialized with a positive capacity.
+ * Note that the number of times an item is used is the number of calls to the
+ * get and put functions for that item since it was inserted. This number is
+ * set to zero when the item is removed.
+ * 
+ * 
  * 
  * Follow up:
  * Could you do both operations in O(1) time complexity?
  * 
+ * 
+ * 
  * Example:
  * 
  * 
- * LRUCache cache = new LRUCache( 2 /* capacity */ );
+ * LFUCache cache = new LFUCache( 2 /* capacity */ );
  * 
  * cache.put(1, 1);
  * cache.put(2, 2);
  * cache.get(1);       // returns 1
  * cache.put(3, 3);    // evicts key 2
  * cache.get(2);       // returns -1 (not found)
- * cache.put(4, 4);    // evicts key 1
+ * cache.get(3);       // returns 3.
+ * cache.put(4, 4);    // evicts key 1.
  * cache.get(1);       // returns -1 (not found)
  * cache.get(3);       // returns 3
  * cache.get(4);       // returns 4
@@ -45,7 +54,7 @@
  * 
  * 
  */
-struct LRUCache {
+struct LFUCache {
 
 }
 
@@ -54,7 +63,7 @@ struct LRUCache {
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
-impl LRUCache {
+impl LFUCache {
 
     fn new(capacity: i32) -> Self {
         
@@ -70,8 +79,8 @@ impl LRUCache {
 }
 
 /**
- * Your LRUCache object will be instantiated and called as such:
- * let obj = LRUCache::new(capacity);
+ * Your LFUCache object will be instantiated and called as such:
+ * let obj = LFUCache::new(capacity);
  * let ret_1: i32 = obj.get(key);
  * obj.put(key, value);
  */
