@@ -75,10 +75,18 @@ impl Solution {
             .flatten()
             .map(|c| *c)
             .collect::<Vec<_>>()
+        // //  = (0..maxlen+1).map(|k| cc.get(&k).unwrap()).collect::<Vec<Vec<_>>>();
+        // for i in (0..maxlen+1) {
+        //     res.push(cc.get(&i).unwrap().to_vec());
+        // }
+        // println!("{:?}", x);
+        // // res.into_iter().flatten().collect::<Vec<i32>>());
+
+        // vec![]
     }
 }
 
-pub struct Solution;
+// pub struct Solution;
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
