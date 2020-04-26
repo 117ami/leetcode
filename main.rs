@@ -2,6 +2,7 @@
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::i32)());
+	let ns = vec![2,3,1,1,4];
+	println!("{:?}", question::Solution::can_jump(ns));
 }
 
