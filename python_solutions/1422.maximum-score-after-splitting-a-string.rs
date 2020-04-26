@@ -14,69 +14,68 @@
  * Given a string s of zeros and ones, return the maximum score after splitting
  * the string into two non-empty substrings (i.e. left substring and right
  * substring).
- *
+ * 
  * The score after splitting a string is the number of zeros in the left
  * substring plus the number of ones in the right substring.
- *
- *
+ * 
+ * 
  * Example 1:
- *
- *
+ * 
+ * 
  * Input: s = "011101"
- * Output: 5
- * Explanation:
+ * Output: 5 
+ * Explanation: 
  * All possible ways of splitting s into two non-empty substrings are:
- * left = "0" and right = "11101", score = 1 + 4 = 5
- * left = "01" and right = "1101", score = 1 + 3 = 4
- * left = "011" and right = "101", score = 1 + 2 = 3
- * left = "0111" and right = "01", score = 1 + 1 = 2
+ * left = "0" and right = "11101", score = 1 + 4 = 5 
+ * left = "01" and right = "1101", score = 1 + 3 = 4 
+ * left = "011" and right = "101", score = 1 + 2 = 3 
+ * left = "0111" and right = "01", score = 1 + 1 = 2 
  * left = "01110" and right = "1", score = 2 + 1 = 3
- *
- *
+ * 
+ * 
  * Example 2:
- *
- *
+ * 
+ * 
  * Input: s = "00111"
  * Output: 5
  * Explanation: When left = "00" and right = "111", we get the maximum score =
  * 2 + 3 = 5
- *
- *
+ * 
+ * 
  * Example 3:
- *
- *
+ * 
+ * 
  * Input: s = "1111"
  * Output: 3
- *
- *
- *
+ * 
+ * 
+ * 
  * Constraints:
- *
- *
+ * 
+ * 
  * 2 <= s.length <= 500
  * The string s consists of characters '0' and '1' only.
- *
- *
+ * 
+ * 
  */
 impl Solution {
     pub fn max_score(s: String) -> i32 {
-        let C1 = s.chars().filter(|c| *c == '1').collect::<Vec<_>>().len();
+        let C1 = s.chars().filter(|c| *c == '0').collect::<Vec<_>>().len() ;
+        let C2 = s.len() - C1; 
         let (mut cnt_0, mut cnt_1, mut res) = (0, 0, 0);
         let cs: Vec<char> = s.chars().collect();
-
-        for i in (0..s.len() - 1) {
-            if cs[i] == '0' {
-                cnt_0 += 1;
-            } else {
-                cnt_1 += 1;
-            }
-            res = max(res, cnt_0 + C1 - cnt_1);
+        
+        for i in (0..s.len() - 1){
+            if cs[i] == '0' { cnt_0 += 1 ;}
+            else {cnt_1 += 1;}
+            res = max(res, cnt_0 + C2 - cnt_1);
         }
         res as i32
     }
 }
 
-pub struct Solution;
+
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
@@ -159,9 +158,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
