@@ -2,7 +2,7 @@
 mod question; 
 
 fn main(){
-	let s = "001110".to_string();
-	println!("{:?}", question::Solution::max_score(s));
+	let cp = vec![1,2,3,4,5,6,1];
+	println!("{:?}", question::Solution::max_score(cp, 3	));
 }
 
