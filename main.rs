@@ -2,7 +2,7 @@
 mod question; 
 
 fn main(){
-	let A = vec![-5266,4019,7336,-3681,-5767];
-	println!("{:?}", question::Solution::constrained_subset_sum(A, 2));
+	let ns = vec![1,3,-1,-3,5,3,6,7];
+	println!("{:?}", question::Solution::max_sliding_window(ns, 3));
 }
 
