@@ -2,7 +2,8 @@
 mod question; 
 
 fn main(){
-	let ns = vec![1,3,-1,-3,5,3,6,7];
-	println!("{:?}", question::Solution::max_sliding_window(ns, 3));
+	let mat = vec!["10100".chars().collect::<Vec<char>>(), "10111".chars().collect::<Vec<char>>(), "11111".chars().collect::<Vec<char>>(), "10010".chars().collect::<Vec<char>>()];
+	// println!("{:?}", mat);
+	println!("{:?}", question::Solution::maximal_square(mat));
 }
 
