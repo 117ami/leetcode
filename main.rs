@@ -2,8 +2,11 @@
 mod question; 
 
 fn main(){
-	let mat = vec!["10100".chars().collect::<Vec<char>>(), "10111".chars().collect::<Vec<char>>(), "11111".chars().collect::<Vec<char>>(), "10010".chars().collect::<Vec<char>>()];
-	// println!("{:?}", mat);
-	println!("{:?}", question::Solution::maximal_square(mat));
+	let words = vec!["apple".to_string()];
+	let wf = question::WordFilter::new(words);
+	println!("{:?}", wf.f("a".to_string(), "eee".to_string()));
+	
+	let x = "Apple".to_string();
+	println!("{:?}", vec![&x[3..], &x[..3]].join("."));
 }
 

@@ -12,57 +12,61 @@
  * Testcase Example:  '["WordFilter","f"]\n[[["apple"]],["a","e"]]'
  *
  * Given many words, words[i] has weight i.
- *
+ * 
  * Design a class WordFilter that supports one function, WordFilter.f(String
  * prefix, String suffix). It will return the word with given prefix and suffix
  * with maximum weight. If no word exists, return -1.
- *
+ * 
  * Examples:
- *
- *
+ * 
+ * 
  * Input:
  * WordFilter(["apple"])
  * WordFilter.f("a", "e") // returns 0
  * WordFilter.f("b", "") // returns -1
- *
- *
- *
- *
+ * 
+ * 
+ * 
+ * 
  * Note:
- *
- *
+ * 
+ * 
  * words has length in range [1, 15000].
  * For each test case, up to words.length queries WordFilter.f may be made.
  * words[i] has length in range [1, 10].
  * prefix, suffix have lengths in range [0, 10].
  * words[i] and prefix, suffix queries consist of lowercase letters only.
- *
- *
- *
- *
+ * 
+ * 
+ * 
+ * 
  */
 pub struct WordFilter {
-    weight: HashMap<String, i32>,
+    weight: HashMap<String, i32>, 
 }
 
-/**
+
+/** 
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl WordFilter {
+
     pub fn new(words: Vec<String>) -> Self {
-        let mut weight: HashMap<String, i32> = HashMap::new();
+        let mut weight: HashMap<String, i32>  = HashMap::new();
         for (i, w) in words.iter().enumerate() {
             for j in (0..w.len() + 1) {
-                for k in (0..w.len() + 1) {
+                for k in (0..w.len() + 1){
                     let curs = vec![&w[..j], &w[k..]].join(".");
                     weight.insert(curs, i as i32);
                 }
             }
         }
-        WordFilter { weight: weight }
+        WordFilter{
+            weight: weight,
+        }
     }
-
+    
     pub fn f(&self, prefix: String, suffix: String) -> i32 {
         let s = vec![prefix, suffix].join(".");
         self.weight.get(&s).cloned().unwrap_or(-1)
@@ -75,7 +79,8 @@ impl WordFilter {
  * let ret_1: i32 = obj.f(prefix, suffix);
  */
 
-pub struct Solution;
+
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
@@ -158,9 +163,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
