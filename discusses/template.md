@@ -1,6 +1,5 @@
 
 
-Please vote up if you like this solution, it would be encouraging.
 
-If you liked this post, please vote up, it would be encouraging.
-
+If you like this post, please vote up, it would be really encouraging. 
+And if you have any thoughts, please leave a comment. 
