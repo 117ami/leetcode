@@ -2,11 +2,7 @@
 mod question; 
 
 fn main(){
-	let words = vec!["apple".to_string()];
-	let wf = question::WordFilter::new(words);
-	println!("{:?}", wf.f("a".to_string(), "eee".to_string()));
-	
-	let x = "Apple".to_string();
-	println!("{:?}", vec![&x[3..], &x[..3]].join("."));
+	let matrix = vec![vec![1,2,3], vec![4,5,6], vec![7,8,9]];
+	println!("{:?}", question::Solution::find_diagonal_order(matrix));
 }
 
