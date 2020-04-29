@@ -157,3 +157,9 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
         prod
     })
 }
+
+// There is NO gcd in standard lib for Rust, surprise.  
+#[allow(dead_code)]
+fn gcd(a: i32, b: i32) -> i32 {
+    if b == 0 { a } else { gcd(b, a % b)}
+}

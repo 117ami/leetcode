@@ -1,8 +1,7 @@
 
-use std::cmp::max; 
+mod question; 
+
 fn main(){
-	// println!("{:?}", question::Solution::fn());
-	let v = vec![1, 2];
-	println!("{:?}", v.iter().max().unwrap());
+	println!("{:?}", question::Solution::nth_ugly_number(1000000000, 2,  217983653, 336916467));
 }
 
