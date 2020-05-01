@@ -2,6 +2,7 @@
 mod question; 
 
 fn main(){
-	println!("{:?}", question::Solution::nth_ugly_number(1000000000, 2,  217983653, 336916467));
+	let ns = vec![2,3,1,2,4,3]; 
+	println!("{:?}", question::Solution::min_sub_array_len(7, ns));
 }
 

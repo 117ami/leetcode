@@ -7,36 +7,22 @@ from collections import OrderedDict
 from bisect import bisect_left
 
 
-class FirstUnique:
-    def __init__(self, nums: List[int]):
-        self.removed = set()
-        self.uni = OrderedDict()
-        for n in nums:
-            self.add(n)
+# The isBadVersion API is already defined for you.
+# @param version, an integer
+# @return a bool
+# def isBadVersion(version):
 
-    def showFirstUnique(self) -> int:
-        return next(iter(self.uni)) if self.uni else -1
-
-    def add(self, value: int) -> None:
-        if value in self.removed:
-            return
-        if value in self.uni:
-            self.uni.pop(value)
-            self.removed.add(value)
-        else:
-            self.uni[value] = True
-
-
-# Your FirstUnique object will be instantiated and called as such:
-nums = [2, 2, 3, 5]
-obj = FirstUnique(nums)
-print(obj.showFirstUnique())
-obj.add(2)
-obj.add(5)
-print(obj.showFirstUnique())
-
-od = OrderedDict()
-od[9] = 10
-od[1] = 2
-print(od)
-print(next(iter(od)))
+class Solution:
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        lo, hi = 0, n 
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if isBadVersion(mid):
+                hi = mid 
+            else:
+                lo = mid + 1
+        return lo 
