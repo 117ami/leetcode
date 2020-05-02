@@ -72,36 +72,21 @@ MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f
 
 
 class Solution:
-    def shortestSubarray(self, ns: List[int], k: int) -> int:
-        n = len(ns)
-        ctmp = [0] * (n + 1)
-        min_negative = min(ns)
-        for i in range(n):
-            ctmp[i + 1] = ns[i] + ctmp[i] - min_negative
-
-        def is_valid(len_i32):
-            for i in range(len_i32, n + 1):
-                # print('...', ctmp[i], ctmp[i - mid], ctmp[i] - ctmp[i - mid])
-                if ctmp[i] - ctmp[i - len_i32] >= k - len_i32 * min_negative:
-                    return True 
-            return False 
-
-
-        lo, hi = 0, n
-        while lo < hi:
-            mid = lo + (hi - lo) // 2
-            print(lo, hi, mid)
-            if is_valid(mid):
-                hi = mid
-            else:
-                lo = mid + 1
-
-        return lo if lo < n or ctmp[-1] >= k else -1
+    def shortestSubarray(self, A: List[int], K: int) -> int:
+        deq = deque()
+        res = 0x3f3f3f3f
+        _len = len(A)
+        b = [0] + list(itertools.accumulate(A, lambda x, y: x+y))
+        
+        for i in range(_len + 1):
+            while deq and b[i] - b[deq[0]] >= K:
+                res = min(res, i - deq.popleft())
+            while deq and b[i] <= b[deq[-1]]:
+                deq.pop()
+            deq.append(i)
+        return res if res <= _len else -1
 
 
 sol = Solution()
-ns, k = [2, -1, 2], 3
-# ns, k = [84, -37, 32, 40, 95], 167
-# ns, k = [1,2], 4
-ns, k =[-28,81,-20,28,-29], 89
-print(sol.shortestSubarray(ns, k))
+A, K = [2,-1,2], 3
+print(sol.shortestSubarray(A,K))
