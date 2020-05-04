@@ -26,3 +26,7 @@ class Solution:
             else:
                 lo = mid + 1
         return lo 
+
+
+if __name__ == "__main__":
+    pass        

@@ -35,6 +35,7 @@
  * 
  */
 pub fn char2usize(c:char) -> usize {
+    // 
     c as usize - 97
 }
 
@@ -60,7 +61,7 @@ pub fn string_counter(s: String) -> HashMap<char, i32> {
     res
 }
 
-pub struct Solution; 
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
