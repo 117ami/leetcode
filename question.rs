@@ -1,68 +1,37 @@
 /*
- * @lc app=leetcode id=476 lang=rust
+ * @lc app=leetcode id=387 lang=rust
  *
- * [476] Number Complement
+ * [387] First Unique Character in a String
  *
- * https://leetcode.com/problems/number-complement/description/
+ * https://leetcode.com/problems/first-unique-character-in-a-string/description/
  *
  * algorithms
- * Easy (63.38%)
- * Total Accepted:    134.6K
- * Total Submissions: 211.4K
- * Testcase Example:  '5'
+ * Easy (51.91%)
+ * Total Accepted:    438.8K
+ * Total Submissions: 843K
+ * Testcase Example:  '"leetcode"'
  *
- * Given a positive integer, output its complement number. The complement
- * strategy is to flip the bits of its binary representation.
  * 
+ * Given a string, find the first non-repeating character in it and return it's
+ * index. If it doesn't exist, return -1.
  * 
+ * Examples:
  * 
- * Example 1:
+ * s = "leetcode"
+ * return 0.
  * 
- * 
- * Input: 5
- * Output: 2
- * Explanation: The binary representation of 5 is 101 (no leading zero bits),
- * and its complement is 010. So you need to output 2.
- * 
- * 
- * 
- * 
- * Example 2:
- * 
- * 
- * Input: 1
- * Output: 0
- * Explanation: The binary representation of 1 is 1 (no leading zero bits), and
- * its complement is 0. So you need to output 0.
+ * s = "loveleetcode",
+ * return 2.
  * 
  * 
  * 
  * 
- * Note:
- * 
- * 
- * The given integer is guaranteed to fit within the range of a 32-bit signed
- * integer.
- * You could assume no leading zero bit in the integer’s binary
- * representation.
- * This question is the same as 1009:
- * https://leetcode.com/problems/complement-of-base-10-integer/
- * 
+ * Note: You may assume the string contain only lowercase letters.
  * 
  */
 impl Solution {
-    pub fn find_complement(num: i32) -> i32 {
-        let mut res = 0; 
-        let mut n = num; 
-        let mut c = 1; 
-        while n > 0 {
-            if n & 1 == 0 {
-                res += c; 
-            }
-            c <<= 1;
-            n >>= 1; 
-        }
-        res
+    pub fn first_uniq_char(s: String) -> i32 {
+        
     }
 }
 
