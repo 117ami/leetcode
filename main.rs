@@ -1,9 +1,10 @@
 
 mod question; 
 
+// let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
+
 fn main(){
-	let v = vec![1_i32, 7, 11]; 
-	let v2 = vec![2_i32, 4, 6];
-	println!("{:?}", question::Solution::k_smallest_pairs(v, v2, 3));
+	let nums = vec![8,9,8,9,8];
+	println!("{:?}", question::Solution::majority_element(nums));
 }
 

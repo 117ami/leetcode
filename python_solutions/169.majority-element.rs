@@ -39,7 +39,7 @@ impl Solution {
 }
 
 
-pub struct Solution; 
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;

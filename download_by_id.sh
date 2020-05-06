@@ -47,6 +47,7 @@ from functools import reduce, lru_cache \
 from typing import List \
 import itertools \
 import math \
+import heapq \
 import string\
 true = True\
 false = False\
@@ -60,6 +61,8 @@ cat aux.rs >> question.rs
 method=$(cat $rust_file | grep fn | head -n 1 | awk '{print $3}' | cut -d "(" -f 1)
 echo "
 mod question; 
+
+// let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
 
 fn main(){
 	println!(\"{:?}\", question::Solution::$method());

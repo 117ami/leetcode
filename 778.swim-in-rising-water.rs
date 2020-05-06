@@ -1,45 +1,98 @@
 /*
- * @lc app=leetcode id=169 lang=rust
+ * @lc app=leetcode id=778 lang=rust
  *
- * [169] Majority Element
+ * [778] Swim in Rising Water
  *
- * https://leetcode.com/problems/majority-element/description/
+ * https://leetcode.com/problems/swim-in-rising-water/description/
  *
  * algorithms
- * Easy (56.53%)
- * Total Accepted:    546.6K
- * Total Submissions: 966.5K
- * Testcase Example:  '[3,2,3]'
+ * Hard (51.63%)
+ * Total Accepted:    21.4K
+ * Total Submissions: 41.3K
+ * Testcase Example:  '[[0,2],[1,3]]'
  *
- * Given an array of size n, find the majority element. The majority element is
- * the element that appears more than ⌊ n/2 ⌋ times.
+ * On an N x N grid, each square grid[i][j] represents the elevation at that
+ * point (i,j).
  * 
- * You may assume that the array is non-empty and the majority element always
- * exist in the array.
+ * Now rain starts to fall. At time t, the depth of the water everywhere is t.
+ * You can swim from a square to another 4-directionally adjacent square if and
+ * only if the elevation of both squares individually are at most t. You can
+ * swim infinite distance in zero time. Of course, you must stay within the
+ * boundaries of the grid during your swim.
+ * 
+ * You start at the top left square (0, 0). What is the least time until you
+ * can reach the bottom right square (N-1, N-1)?
  * 
  * Example 1:
  * 
  * 
- * Input: [3,2,3]
+ * Input: [[0,2],[1,3]]
  * Output: 3
+ * Explanation:
+ * At time 0, you are in grid location (0, 0).
+ * You cannot go anywhere else because 4-directionally adjacent neighbors have
+ * a higher elevation than t = 0.
+ * 
+ * You cannot reach point (1, 1) until time 3.
+ * When the depth of water is 3, we can swim anywhere inside the grid.
+ * 
  * 
  * Example 2:
  * 
  * 
- * Input: [2,2,1,1,1,2,2]
- * Output: 2
+ * Input:
+ * [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]
+ * Output: 16
+ * Explanation:
+ * ⁠0  1  2  3  4
+ * 24 23 22 21  5
+ * 12 13 14 15 16
+ * 11 17 18 19 20
+ * 10  9  8  7  6
+ * 
+ * The final route is marked in bold.
+ * We need to wait until time 16 so that (0, 0) and (4, 4) are connected.
+ * 
+ * 
+ * Note:
+ * 
+ * 
+ * 2 <= N <= 50.
+ * grid[i][j] is a permutation of [0, ..., N*N - 1].
  * 
  * 
  */
 impl Solution {
-    pub fn majority_element(mut nums: Vec<i32>) -> i32 {
-        nums.sort_unstable(); 
-        nums[nums.len() / 2]
+    pub fn swim_in_water(grid: Vec<Vec<i32>>) -> i32 {
+        let mut pq: BinaryHeap<(i32, i32, i32)> = BinaryHeap::new(); 
+        let mut res = 0; 
+        let n = grid.len(); 
+        let mut cc:HashSet<(i32, i32)> = HashSet::new(); 
+        let directions = [-1_i32, 0, 1, 0, -1];
+        pq.push((-1 * grid[0][0], 0, 0)); 
+        while true {
+            let top = pq.pop().unwrap(); 
+            res = min(res, top.0); 
+            // println!("{:?}", pq);
+            // if pq.len() > 25 { break }
+
+            if top.1 == top.2 && top.2 == (n as i32 - 1) { return -1 * res }
+            cc.insert((top.1, top.2));
+
+            for d in (0..4) {
+                let ni = top.1 + directions[d]; 
+                let nj = top.2 + directions[d+1]; 
+                if 0 <= ni && ni < n as i32 && 0 <= nj && nj < n as i32 && !cc.contains(&(ni, nj)){
+                    pq.push((-1 * grid[ni as usize][nj as usize], ni, nj));
+                }
+            }
+        }
+        0
     }
 }
 
 
-pub struct Solution; 
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
