@@ -48,12 +48,10 @@ impl Solution {
     pub fn k_smallest_pairs(ns1: Vec<i32>, ns2: Vec<i32>, k: i32) -> Vec<Vec<i32>> {
         let mut pq: BinaryHeap<(i32, usize, usize)> = BinaryHeap::new();
         let mut res = vec![];
-
         if ns1.len() == 0 || ns2.len() == 0 { return res }
         for j in (0..ns2.len()) {
             pq.push((-1*(ns1[0] + ns2[j]), 0, j ));
         }
-        
         let mut cnt = k; 
         while cnt > 0 && !pq.is_empty() {
             // println!("{:?}", pq);
@@ -69,7 +67,7 @@ impl Solution {
 }
 
 
-pub struct Solution; 
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
