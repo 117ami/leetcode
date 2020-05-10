@@ -1,6 +1,7 @@
 local/
 local/*
-*.json
+*json
 submit.py
-*.sh 
+*sh 
 conf.d/ssinfo.txt
+*py 

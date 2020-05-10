@@ -698,4 +698,13 @@ def string_date_to_number(date):
     import datetime
     return time.mktime(datetime.datetime.strptime(date, "%d/%m/%Y").timetuple())
 
-    
+
+def flatten(nested_list):
+    """Flatten a list of nested list / tuple into one single list"""
+    res = []
+    for e in nested_list:
+        if type(e) == list or type(e) == tuple:
+            res.extend(flatten(e))
+        else:
+            res.append(e)
+    return res 
