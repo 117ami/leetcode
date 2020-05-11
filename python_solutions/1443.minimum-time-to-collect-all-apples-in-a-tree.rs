@@ -1,78 +1,106 @@
 /*
- * @lc app=leetcode id=1439 lang=rust
+ * @lc app=leetcode id=1443 lang=rust
  *
- * [1439] Find the Kth Smallest Sum of a Matrix With Sorted Rows
+ * [1443] Minimum Time to Collect All Apples in a Tree
  *
- * https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/description/
+ * https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/description/
  *
  * algorithms
- * Hard (56.18%)
- * Total Accepted:    5.3K
- * Total Submissions: 9.4K
- * Testcase Example:  '[[1,3,11],[2,4,6]]\n5'
+ * Medium (52.54%)
+ * Total Accepted:    5.9K
+ * Total Submissions: 10K
+ * Testcase Example:  '7\n' +
+  '[[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]]\n' +
+  '[false,false,true,false,true,true,false]'
  *
- * You are given an m * n matrix, mat, and an integer k, which has its rows
- * sorted in non-decreasing order.
+ * Given an undirected tree consisting of n vertices numbered from 0 to n-1,
+ * which has some apples in their vertices. You spend 1 second to walk over one
+ * edge of the tree. Return the minimum time in seconds you have to spend in
+ * order to collect all apples in the tree starting at vertex 0 and coming back
+ * to this vertex.
  * 
- * You are allowed to choose exactly 1 element from each row to form an array.
- * Return the Kth smallest array sum among all possible arrays.
+ * The edges of the undirected tree are given in the array edges, where
+ * edges[i] = [fromi, toi] means that exists an edge connecting the vertices
+ * fromi and toi. Additionally, there is a boolean array hasApple, where
+ * hasApple[i] = true means that vertex i has an apple, otherwise, it does not
+ * have any apple.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: mat = [[1,3,11],[2,4,6]], k = 5
- * Output: 7
- * Explanation: Choosing one element from each row, the first k smallest sum
- * are:
- * [1,2], [1,4], [3,2], [3,4], [1,6]. Where the 5th sum is 7.  
+ * 
+ * 
+ * Input: n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple =
+ * [false,false,true,false,true,true,false]
+ * Output: 8 
+ * Explanation: The figure above represents the given tree where red vertices
+ * have an apple. One optimal path to collect all apples is shown by the green
+ * arrows.  
+ * 
  * 
  * Example 2:
  * 
  * 
- * Input: mat = [[1,3,11],[2,4,6]], k = 9
- * Output: 17
+ * 
+ * 
+ * Input: n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple =
+ * [false,false,true,false,false,true,false]
+ * Output: 6
+ * Explanation: The figure above represents the given tree where red vertices
+ * have an apple. One optimal path to collect all apples is shown by the green
+ * arrows.  
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: mat = [[1,10,10],[1,4,5],[2,3,6]], k = 7
- * Output: 9
- * Explanation: Choosing one element from each row, the first k smallest sum
- * are:
- * [1,1,2], [1,1,3], [1,4,2], [1,4,3], [1,1,6], [1,5,2], [1,5,3]. Where the 7th
- * sum is 9.  
- * 
- * 
- * Example 4:
- * 
- * 
- * Input: mat = [[1,1,10],[2,2,9]], k = 7
- * Output: 12
+ * Input: n = 7, edges = [[0,1],[0,2],[1,4],[1,5],[2,3],[2,6]], hasApple =
+ * [false,false,false,false,false,false,false]
+ * Output: 0
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * m == mat.length
- * n == mat.length[i]
- * 1 <= m, n <= 40
- * 1 <= k <= min(200, n ^ m)
- * 1 <= mat[i][j] <= 5000
- * mat[i] is a non decreasing array.
- * 
+ * 1 <= n <= 10^5
+ * edges.length == n-1
+ * edges[i].length == 2
+ * 0 <= fromi, toi <= n-1
+ * fromi < toi
+ * hasApple.length == n
  * 
  */
 impl Solution {
-    pub fn kth_smallest(mat: Vec<Vec<i32>>, k: i32) -> i32 {
-        
+    pub fn dfs(node: i32, cc: &HashMap<i32, Vec<i32>>, has_apple: &Vec<bool>) -> i32 {
+        if !cc.contains_key(&node) {
+            if has_apple[node as usize] { 0 } else { -1 }
+        } else {
+            let mut res = 0; 
+            for c in &cc[&node] {
+                let m = Solution::dfs(*c, cc, has_apple); 
+                res += if m >= 0 { m + 2 } else { 0 };
+            }
+            if res > 0 || has_apple[node as usize] { res } else { -1 }
+        }
+    }
+
+    pub fn min_time(n: i32, edges: Vec<Vec<i32>>, has_apple: Vec<bool>) -> i32 {
+        let mut cc:HashMap<i32, Vec<i32>> = HashMap::new();
+        for e in edges.iter() {
+            if !cc.contains_key(&e[0]){
+                cc.insert(e[0], Vec::new());
+            }
+            cc.get_mut(&e[0]).unwrap().push(e[1]);
+        }
+        // println!("{:?}", cc);
+        max(Self::dfs(0, &cc, &has_apple), 0)
     }
 }
 
 
-pub struct Solution; 
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
