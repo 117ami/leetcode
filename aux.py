@@ -708,3 +708,38 @@ def flatten(nested_list):
         else:
             res.append(e)
     return res 
+
+
+class KMP():
+    def get_lhp(self, t: str) -> List[int]:
+        '''Compute the length of LHP for each t[:i], i \in [1..len(t)],
+        where a prefix-suffix of t is a substring, u, of t s.t., t.startswith(u) and t.endswith(u).
+        And proper means, len(u) < len(t), i.e., u != t
+        '''
+        j, lhp = 0, [0] * len(t)
+        for i in range(1, len(t)):
+            while j > 0 and t[i] != t[j]:
+                j = lhp[j-1]
+                
+            if t[i] == t[j]:
+                j += 1
+                lhp[i] = j
+        return lhp
+
+    def pattern_search(self, text: str, pat: str) -> List[int]:
+        """KMP (Knuth Morris Pratt) Pattern Searching
+        Return a list of indexes i, such that t occurs in s starting from i.
+        """
+        j = 0
+        lhp, res = self.get_lhp(pat), []
+        for i in range(len(text)):
+            while j > 0 and text[i] != pat[j]:
+                j = lhp[j-1]
+
+            if text[i] == pat[j]:
+                j += 1 
+
+            if j == len(pat):
+                res.append(i + 1 - len(pat))
+                j = lhp[j - 1]
+        return res

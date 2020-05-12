@@ -4,7 +4,9 @@ mod question;
 // let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
 
 fn main(){
-	let ns = [[1, 1, 1], [1, 1, 0], [1, 0, 1]].iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
-	println!("{:?}", question::Solution::flood_fill(ns, 1, 1, 2));
+	let s = "ababab".to_string(); 
+	let cs:Vec<char> = s.chars().collect();
+	
+	println!("{:?}", question::Solution::longest_prefix(s));
 }
 
