@@ -151,6 +151,8 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.392 | [is-subsequence](https://leetcode.com/problems/is-subsequence/description/) | [Python](./python_solutions/392.is-subsequence.py)/[Ruby](./python_solutions/392.is-subsequence.rb) |
 |𝐌.398 | [random-pick-index](https://leetcode.com/problems/random-pick-index/description/) | [Python](./python_solutions/398.random-pick-index.py)/[Ruby](./python_solutions/398.random-pick-index.rb) /[Javascript](./python_solutions/398.random-pick-index.js) /[C++](./python_solutions/398.random-pick-index.cpp) |
 |𝐌.400 | [nth-digit](https://leetcode.com/problems/nth-digit/description/) | [Python](./python_solutions/400.nth-digit.py)/[C++](./python_solutions/400.nth-digit.cpp) |
+|𝐌.402 | [remove-k-digits](https://leetcode.com/problems/remove-k-digits/description/) | [Python](./python_solutions/402.remove-k-digits.py)/[Rust](./python_solutions/402.remove-k-digits.rs) |
+|𝐌.402 | [remove-k-digits](https://leetcode.com/problems/remove-k-digits/description/) | [Python](./python_solutions/402.remove-k-digits.py)/[Rust](./python_solutions/402.remove-k-digits.rs) |
 |𝐇.403 | [frog-jump](https://leetcode.com/problems/frog-jump/description/) | [Python](./python_solutions/403.frog-jump.py)/[C++](./python_solutions/403.frog-jump.cpp) |
 |𝐄.404 | [sum-of-left-leaves](https://leetcode.com/problems/sum-of-left-leaves/description/) | [Python](./python_solutions/404.sum-of-left-leaves.py)/[Javascript](./python_solutions/404.sum-of-left-leaves.js) /[C++](./python_solutions/404.sum-of-left-leaves.cpp) |
 |𝐄.412 | [fizz-buzz](https://leetcode.com/problems/fizz-buzz/description/) | [Python](./python_solutions/412.fizz-buzz.py)/[C++](./python_solutions/412.fizz-buzz.cpp) |
