@@ -1,80 +1,88 @@
 /*
- * @lc app=leetcode id=438 lang=rust
+ * @lc app=leetcode id=1448 lang=rust
  *
- * [438] Find All Anagrams in a String
+ * [1448] Count Good Nodes in Binary Tree
  *
- * https://leetcode.com/problems/find-all-anagrams-in-a-string/description/
+ * https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/
  *
  * algorithms
- * Medium (41.63%)
- * Total Accepted:    209.4K
- * Total Submissions: 502.6K
- * Testcase Example:  '"cbaebabacd"\n"abc"'
+ * Medium (67.18%)
+ * Total Accepted:    5.5K
+ * Total Submissions: 8.2K
+ * Testcase Example:  '[3,1,4,3,null,1,5]'
  *
- * Given a string s and a non-empty string p, find all the start indices of p's
- * anagrams in s.
- *
- * Strings consists of lowercase English letters only and the length of both
- * strings s and p will not be larger than 20,100.
- *
- * The order of output does not matter.
- *
+ * Given a binary tree root, a node X in the tree is named good if in the path
+ * from root to X there are no nodes with a value greater than X.
+ * 
+ * Return the number of good nodes in the binary tree.
+ * 
+ * 
  * Example 1:
- *
- * Input:
- * s: "cbaebabacd" p: "abc"
- *
- * Output:
- * [0, 6]
- *
- * Explanation:
- * The substring with start index = 0 is "cba", which is an anagram of "abc".
- * The substring with start index = 6 is "bac", which is an anagram of
- * "abc".
- *
- *
- *
+ * 
+ * 
+ * 
+ * 
+ * Input: root = [3,1,4,3,null,1,5]
+ * Output: 4
+ * Explanation: Nodes in blue are good.
+ * Root Node (3) is always a good node.
+ * Node 4 -> (3,4) is the maximum value in the path starting from the root.
+ * Node 5 -> (3,4,5) is the maximum value in the path
+ * Node 3 -> (3,1,3) is the maximum value in the path.
+ * 
  * Example 2:
- *
- * Input:
- * s: "abab" p: "ab"
- *
- * Output:
- * [0, 1, 2]
- *
- * Explanation:
- * The substring with start index = 0 is "ab", which is an anagram of "ab".
- * The substring with start index = 1 is "ba", which is an anagram of "ab".
- * The substring with start index = 2 is "ab", which is an anagram of "ab".
- *
- *
+ * 
+ * 
+ * 
+ * 
+ * Input: root = [3,3,null,4,2]
+ * Output: 3
+ * Explanation: Node 2 -> (3, 3, 2) is not good, because "3" is higher than
+ * it.
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: root = [1]
+ * Output: 1
+ * Explanation: Root is considered as good.
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * The number of nodes in the binary tree is in the range [1, 10^5].
+ * Each node's value is between [-10^4, 10^4].
+ * 
  */
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
 impl Solution {
-    pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
-        let hash = vec![
-            522, -487, 211, -337, 98, -461, 858, -660, -979, -474, -193, -911, 19, -675, -271,
-            -993, -277, 834, -649, -782, 629, -188, 598, -351, 969, 17,
-        ];
-        let (ls, lp) = (s.len(), p.len());
-        if ls < lp {
-            return vec![];
-        }
-        let p_hash: i32 = p.chars().map(|c| hash[char2usize(c)]).sum();
-        let mut s_hash: i32 = s[..lp].chars().map(|c| hash[char2usize(c)]).sum();
-        let mut res = if p_hash == s_hash { vec![0] } else { vec![] };
-
-        let chars_s = s.chars().collect::<Vec<_>>();
-        for i in 0..(ls - lp) {
-            s_hash += hash[char2usize(chars_s[i + lp])] - hash[char2usize(chars_s[i])];
-            if p_hash == s_hash {
-                res.push(i as i32 + 1);
-            }
-        }
-        res
+    pub fn good_nodes(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        
     }
 }
 
-pub struct Solution;
+
+pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
@@ -87,7 +95,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -170,9 +178,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -250,12 +256,8 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
     })
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
