@@ -1,69 +1,83 @@
 /*
- * @lc app=leetcode id=1447 lang=rust
+ * @lc app=leetcode id=1451 lang=rust
  *
- * [1447] Simplified Fractions
+ * [1451] Rearrange Words in a Sentence
  *
- * https://leetcode.com/problems/simplified-fractions/description/
+ * https://leetcode.com/problems/rearrange-words-in-a-sentence/description/
  *
  * algorithms
- * Medium (57.67%)
- * Total Accepted:    6.3K
- * Total Submissions: 10.8K
- * Testcase Example:  '2\r'
+ * Medium (48.91%)
+ * Total Accepted:    8.3K
+ * Total Submissions: 16.6K
+ * Testcase Example:  '"Leetcode is cool"'
  *
- * Given an integer n, return a list of all simplified fractions between 0 and
- * 1 (exclusive) such that the denominator is less-than-or-equal-to n. The
- * fractions can be in any order.
+ * Given a sentence text (A sentence is a string of space-separated words) in
+ * the following format:
+ * 
+ * 
+ * First letter is in upper case.
+ * Each word in text are separated by a single space.
+ * 
+ * 
+ * Your task is to rearrange the words in text such that all words are
+ * rearranged in an increasing order of their lengths. If two words have the
+ * same length, arrange them in their original order.
+ * 
+ * Return the new text following the format shown above.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: n = 2
- * Output: ["1/2"]
- * Explanation: "1/2" is the only unique fraction with a denominator
- * less-than-or-equal-to 2.
+ * Input: text = "Leetcode is cool"
+ * Output: "Is cool leetcode"
+ * Explanation: There are 3 words, "Leetcode" of length 8, "is" of length 2 and
+ * "cool" of length 4.
+ * Output is ordered by length and the new first word starts with capital
+ * letter.
+ * 
  * 
  * Example 2:
  * 
  * 
- * Input: n = 3
- * Output: ["1/2","1/3","2/3"]
+ * Input: text = "Keep calm and code on"
+ * Output: "On and keep calm code"
+ * Explanation: Output is ordered as follows:
+ * "On" 2 letters.
+ * "and" 3 letters.
+ * "keep" 4 letters in case of tie order by position in original text.
+ * "calm" 4 letters.
+ * "code" 4 letters.
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: n = 4
- * Output: ["1/2","1/3","1/4","2/3","3/4"]
- * Explanation: "2/4" is not a simplified fraction because it can be simplified
- * to "1/2".
- * 
- * Example 4:
- * 
- * 
- * Input: n = 1
- * Output: []
+ * Input: text = "To be or not to be"
+ * Output: "To be or to be not"
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * 1 <= n <= 100
+ * text begins with a capital letter and then contains lowercase letters and
+ * single space between words.
+ * 1 <= text.length <= 10^5
+ * 
  * 
  */
 impl Solution {
-    pub fn simplified_fractions(n: i32) -> Vec<String> {
-        let mut res = vec![];
-        for i in 2..n+1{
-            for j in 1..i {
-                if gcd(i, j) == 1 {
-                    res.push(j.to_string() + "/" + &i.to_string());
-                }
-            }
-        }
-        res
+    pub fn arrange_words(text: String) -> String {
+        let text = text.to_lowercase();
+        let mut words: Vec<&str> = text.split_whitespace().collect();
+        words.sort_by(|a, b| a.len().cmp(&b.len()));
+        
+        let mut fw = words[0].to_string(); // first word
+        fw = fw.chars().take(1).flat_map(char::to_uppercase).chain(fw.chars().skip(1)).collect::<String>();
+        words[0] = &fw;
+
+        words.join(" ")
     }
 }
 

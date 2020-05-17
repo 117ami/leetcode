@@ -1,3 +1,90 @@
+/*
+ * @lc app=leetcode id=1451 lang=rust
+ *
+ * [1451] Rearrange Words in a Sentence
+ *
+ * https://leetcode.com/problems/rearrange-words-in-a-sentence/description/
+ *
+ * algorithms
+ * Medium (48.91%)
+ * Total Accepted:    8.3K
+ * Total Submissions: 16.6K
+ * Testcase Example:  '"Leetcode is cool"'
+ *
+ * Given a sentence text (A sentence is a string of space-separated words) in
+ * the following format:
+ * 
+ * 
+ * First letter is in upper case.
+ * Each word in text are separated by a single space.
+ * 
+ * 
+ * Your task is to rearrange the words in text such that all words are
+ * rearranged in an increasing order of their lengths. If two words have the
+ * same length, arrange them in their original order.
+ * 
+ * Return the new text following the format shown above.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: text = "Leetcode is cool"
+ * Output: "Is cool leetcode"
+ * Explanation: There are 3 words, "Leetcode" of length 8, "is" of length 2 and
+ * "cool" of length 4.
+ * Output is ordered by length and the new first word starts with capital
+ * letter.
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: text = "Keep calm and code on"
+ * Output: "On and keep calm code"
+ * Explanation: Output is ordered as follows:
+ * "On" 2 letters.
+ * "and" 3 letters.
+ * "keep" 4 letters in case of tie order by position in original text.
+ * "calm" 4 letters.
+ * "code" 4 letters.
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: text = "To be or not to be"
+ * Output: "To be or to be not"
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * text begins with a capital letter and then contains lowercase letters and
+ * single space between words.
+ * 1 <= text.length <= 10^5
+ * 
+ * 
+ */
+impl Solution {
+    pub fn arrange_words(text: String) -> String {
+        let text = text.to_lowercase();
+        let mut x: Vec<&str> = text.split_whitespace().collect();
+        x.sort_by(|a, b| a.len().cmp(&b.len()));
+        
+        let mut word = x[0].to_string();
+        word = word.chars().take(1).flat_map(char::to_uppercase).chain(word.chars().skip(1)).collect::<String>();
+        x[0] = &word;
+        x.join(" ")
+        // let res = x.join(" ");
+        // println!("{:?}", res);
+        // "42".to_string()
+    }
+}
+
+
+// pub struct Solution; 
 use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
@@ -176,10 +263,3 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 fn gcd(a: i32, b: i32) -> i32 {
     if b == 0 { a } else { gcd(b, a % b)}
 }
-
-#[allow(dead_code)]
-fn capitalize(word: String) -> String { 
-	let mut res = word;
-	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
-}
-
