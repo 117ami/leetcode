@@ -1,3 +1,103 @@
+/*
+ * @lc app=leetcode id=923 lang=rust
+ *
+ * [923] 3Sum With Multiplicity
+ *
+ * https://leetcode.com/problems/3sum-with-multiplicity/description/
+ *
+ * algorithms
+ * Medium (35.39%)
+ * Total Accepted:    17.6K
+ * Total Submissions: 49.6K
+ * Testcase Example:  '[1,1,2,2,3,3,4,4,5,5]\n8'
+ *
+ * Given an integer array A, and an integer target, return the number of tuples
+ * i, j, k  such that i < j < k and A[i] + A[j] + A[k] == target.
+ * 
+ * As the answer can be very large, return it modulo 10^9 + 7.
+ * 
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: A = [1,1,2,2,3,3,4,4,5,5], target = 8
+ * Output: 20
+ * Explanation: 
+ * Enumerating by the values (A[i], A[j], A[k]):
+ * (1, 2, 5) occurs 8 times;
+ * (1, 3, 4) occurs 8 times;
+ * (2, 2, 4) occurs 2 times;
+ * (2, 3, 3) occurs 2 times.
+ * 
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: A = [1,1,2,2,2,2], target = 5
+ * Output: 12
+ * Explanation: 
+ * A[i] = 1, A[j] = A[k] = 2 occurs 12 times:
+ * We choose one 1 from [1,1] in 2 ways,
+ * and two 2s from [2,2,2,2] in 6 ways.
+ * 
+ * 
+ * 
+ * 
+ * 
+ * Note:
+ * 
+ * 
+ * 3 <= A.length <= 3000
+ * 0 <= A[i] <= 100
+ * 0 <= target <= 300
+ * 
+ */
+
+static MOD: i64 = 1000000007;
+
+impl Solution {
+    pub fn three_sum_multi(a: Vec<i32>, target: i32) -> i32 {
+        let cnt = vec_counter(&a).iter().map(|(k, v)| (*k, *v as i64)).collect::<HashMap<i32, i64>>();
+        let mut ns = Vec::from_iter(&a);
+        ns.sort_unstable();
+        ns.dedup();
+        let mut res = 0_i64;
+        // println!("{:?}", ns);
+        for (i, x) in ns.iter().enumerate() {
+            for j in i..ns.len() {
+                let y = ns[j]; 
+                if *x + *y > target { break ; }
+                let z = target - *x - *y ;
+                if z < *y || !cnt.contains_key(&z)  {continue}
+                if j == i {
+                    if z == **x {
+                        res += cnt[x] * (cnt[x] - 1) * (cnt[x] - 2) / 6; 
+                    } else {
+                        res += cnt[x] * (cnt[x] - 1) * cnt[&z] / 2
+                    }
+                } else {
+                    if z == **x {
+                        res += cnt[x] * (cnt[x] - 1) * cnt[y] / 2;
+                    } else if z == * y{
+                        res += cnt[x] * cnt[y] * (cnt[y] - 1) / 2;
+                    } else {
+                        res += cnt[x] * cnt[y] * cnt[&z];
+                    }
+                }
+                res = res % MOD; 
+                // println!("{} {} {}", i, j, res);
+            }
+        }
+        // println!("{:?}, {:?}", ns, cnt);
+        // 42
+        res as i32
+    }
+}
+
+
+// pub struct Solution; 
 static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
@@ -58,7 +158,7 @@ pub fn char_frequency(s: String) -> HashMap<char, i32> {
 }
 
 #[allow(dead_code)]
-pub fn string_counter(s: &str) -> HashMap<char, i32> {
+pub fn string_counter(s: String) -> HashMap<char, i32> {
     let mut res = HashMap::new();
     for c in s.chars() {
         *res.entry(c).or_insert(0) += 1;
@@ -67,7 +167,7 @@ pub fn string_counter(s: &str) -> HashMap<char, i32> {
 }
 
 #[allow(dead_code)]
-pub fn vec_counter(arr: &Vec<i32>) -> HashMap<i32, i32> {
+pub fn vec_counter(arr: & Vec<i32>) -> HashMap<i32, i32> {
     let mut c = HashMap::new();
     for n in arr {
         *c.entry(*n).or_insert(0) += 1;
@@ -76,7 +176,7 @@ pub fn vec_counter(arr: &Vec<i32>) -> HashMap<i32, i32> {
 }
 
 #[allow(dead_code)]
-pub fn vec_to_hashset(arr: &Vec<i32>) -> HashSet<i32> {
+pub fn vec_to_hashset(arr: Vec<i32>) -> HashSet<i32> {
     HashSet::from_iter(arr.iter().cloned())
 }
 

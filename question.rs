@@ -1,88 +1,98 @@
 /*
- * @lc app=leetcode id=1452 lang=rust
+ * @lc app=leetcode id=923 lang=rust
  *
- * [1452] People Whose List of Favorite Companies Is Not a Subset of Another List
+ * [923] 3Sum With Multiplicity
  *
- * https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/description/
+ * https://leetcode.com/problems/3sum-with-multiplicity/description/
  *
  * algorithms
- * Medium (46.05%)
- * Total Accepted:    8K
- * Total Submissions: 15.6K
- * Testcase Example:  '[["leetcode","google","facebook"],["google","microsoft"],["google","facebook"],["google"],["amazon"]]'
+ * Medium (35.39%)
+ * Total Accepted:    17.6K
+ * Total Submissions: 49.6K
+ * Testcase Example:  '[1,1,2,2,3,3,4,4,5,5]\n8'
  *
- * Given the array favoriteCompanies where favoriteCompanies[i] is the list of
- * favorites companies for the ith person (indexed from 0).
+ * Given an integer array A, and an integer target, return the number of tuples
+ * i, j, k  such that i < j < k and A[i] + A[j] + A[k] == target.
  * 
- * Return the indices of people whose list of favorite companies is not a
- * subset of any other list of favorites companies. You must return the indices
- * in increasing order.
+ * As the answer can be very large, return it modulo 10^9 + 7.
+ * 
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: favoriteCompanies =
- * [["leetcode","google","facebook"],["google","microsoft"],["google","facebook"],["google"],["amazon"]]
- * Output: [0,1,4] 
+ * Input: A = [1,1,2,2,3,3,4,4,5,5], target = 8
+ * Output: 20
  * Explanation: 
- * Person with index=2 has favoriteCompanies[2]=["google","facebook"] which is
- * a subset of favoriteCompanies[0]=["leetcode","google","facebook"]
- * corresponding to the person with index 0. 
- * Person with index=3 has favoriteCompanies[3]=["google"] which is a subset of
- * favoriteCompanies[0]=["leetcode","google","facebook"] and
- * favoriteCompanies[1]=["google","microsoft"]. 
- * Other lists of favorite companies are not a subset of another list,
- * therefore, the answer is [0,1,4].
+ * Enumerating by the values (A[i], A[j], A[k]):
+ * (1, 2, 5) occurs 8 times;
+ * (1, 3, 4) occurs 8 times;
+ * (2, 2, 4) occurs 2 times;
+ * (2, 3, 3) occurs 2 times.
+ * 
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: favoriteCompanies =
- * [["leetcode","google","facebook"],["leetcode","amazon"],["facebook","google"]]
- * Output: [0,1] 
- * Explanation: In this case favoriteCompanies[2]=["facebook","google"] is a
- * subset of favoriteCompanies[0]=["leetcode","google","facebook"], therefore,
- * the answer is [0,1].
- * 
- * 
- * Example 3:
- * 
- * 
- * Input: favoriteCompanies = [["leetcode"],["google"],["facebook"],["amazon"]]
- * Output: [0,1,2,3]
+ * Input: A = [1,1,2,2,2,2], target = 5
+ * Output: 12
+ * Explanation: 
+ * A[i] = 1, A[j] = A[k] = 2 occurs 12 times:
+ * We choose one 1 from [1,1] in 2 ways,
+ * and two 2s from [2,2,2,2] in 6 ways.
  * 
  * 
  * 
- * Constraints:
  * 
  * 
- * 1 <= favoriteCompanies.length <= 100
- * 1 <= favoriteCompanies[i].length <= 500
- * 1 <= favoriteCompanies[i][j].length <= 20
- * All strings in favoriteCompanies[i] are distinct.
- * All lists of favorite companies are distinct, that is, If we sort
- * alphabetically each list then favoriteCompanies[i] !=
- * favoriteCompanies[j].
- * All strings consist of lowercase English letters only.
+ * Note:
+ * 
+ * 
+ * 3 <= A.length <= 3000
+ * 0 <= A[i] <= 100
+ * 0 <= target <= 300
  * 
  */
+
+static MOD: i64 = 1000000007;
+
 impl Solution {
-    pub fn people_indexes(fc: Vec<Vec<String>>) -> Vec<i32> {
-        let mut invalid:HashSet<usize> = HashSet::new(); 
-        let sets: Vec<HashSet<String>> = fc.into_iter().map(|vs| HashSet::from_iter(vs)).collect(); 
-        let n = sets.len(); 
-        for i in 0..n {
-            for j in 0..n{
-                if i != j && sets[i].is_subset(&sets[j]) { 
-                    invalid.insert(i);
-                    break; 
+    pub fn three_sum_multi(a: Vec<i32>, target: i32) -> i32 {
+        let cnt = vec_counter(&a).iter().map(|(k, v)| (*k, *v as i64)).collect::<HashMap<i32, i64>>();
+        let mut ns = Vec::from_iter(&a);
+        ns.sort_unstable();
+        ns.dedup();
+        let mut res = 0_i64;
+        // println!("{:?}", ns);
+        for (i, x) in ns.iter().enumerate() {
+            for j in i..ns.len() {
+                let y = ns[j]; 
+                if *x + *y > target { break ; }
+                let z = target - *x - *y ;
+                if z < *y || !cnt.contains_key(&z)  {continue}
+                if j == i {
+                    if z == **x {
+                        res += cnt[x] * (cnt[x] - 1) * (cnt[x] - 2) / 6; 
+                    } else {
+                        res += cnt[x] * (cnt[x] - 1) * cnt[&z] / 2
+                    }
+                } else {
+                    if z == **x {
+                        res += cnt[x] * (cnt[x] - 1) * cnt[y] / 2;
+                    } else if z == * y{
+                        res += cnt[x] * cnt[y] * (cnt[y] - 1) / 2;
+                    } else {
+                        res += cnt[x] * cnt[y] * cnt[&z];
+                    }
                 }
+                res = res % MOD; 
+                // println!("{} {} {}", i, j, res);
             }
         }
-        // println!("{:?}", invalid);
-        (0..n).filter(|c| !invalid.contains(c)).map(|c| c as i32).collect()
+        // println!("{:?}, {:?}", ns, cnt);
+        // 42
+        res as i32
     }
 }
 
@@ -157,10 +167,10 @@ pub fn string_counter(s: String) -> HashMap<char, i32> {
 }
 
 #[allow(dead_code)]
-pub fn vec_counter(arr: Vec<i32>) -> HashMap<i32, i32> {
+pub fn vec_counter(arr: & Vec<i32>) -> HashMap<i32, i32> {
     let mut c = HashMap::new();
     for n in arr {
-        *c.entry(n).or_insert(0) += 1;
+        *c.entry(*n).or_insert(0) += 1;
     }
     c
 }
