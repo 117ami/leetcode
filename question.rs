@@ -1,88 +1,92 @@
 /*
- * @lc app=leetcode id=1455 lang=rust
+ * @lc app=leetcode id=1457 lang=rust
  *
- * [1455] Check If a Word Occurs As a Prefix of Any Word in a Sentence
+ * [1457] Pseudo-Palindromic Paths in a Binary Tree
  *
- * https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/description/
+ * https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/description/
  *
  * algorithms
- * Easy (67.29%)
- * Total Accepted:    8.3K
- * Total Submissions: 12.4K
- * Testcase Example:  '"i love eating burger"\n"burg"'
+ * Medium (65.34%)
+ * Total Accepted:    7.4K
+ * Total Submissions: 11.3K
+ * Testcase Example:  '[2,3,1,3,1,null,1]'
  *
- * Given a sentence that consists of some words separated by a single space,
- * and a searchWord.
+ * Given a binary tree where node values are digits from 1 to 9. A path in the
+ * binary tree is said to be pseudo-palindromic if at least one permutation of
+ * the node values in the path is a palindrome.
  * 
- * You have to check if searchWord is a prefix of any word in sentence.
- * 
- * Return the index of the word in sentence where searchWord is a prefix of
- * this word (1-indexed).
- * 
- * If searchWord is a prefix of more than one word, return the index of the
- * first word (minimum index). If there is no such word return -1.
- * 
- * A prefix of a string S is any leading contiguous substring of S.
+ * Return the number of pseudo-palindromic paths going from the root node to
+ * leaf nodes.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: sentence = "i love eating burger", searchWord = "burg"
- * Output: 4
- * Explanation: "burg" is prefix of "burger" which is the 4th word in the
- * sentence.
+ * 
+ * 
+ * Input: root = [2,3,1,3,1,null,1]
+ * Output: 2 
+ * Explanation: The figure above represents the given binary tree. There are
+ * three paths going from the root node to leaf nodes: the red path [2,3,3],
+ * the green path [2,1,1], and the path [2,3,1]. Among these paths only red
+ * path and green path are pseudo-palindromic paths since the red path [2,3,3]
+ * can be rearranged in [3,2,3] (palindrome) and the green path [2,1,1] can be
+ * rearranged in [1,2,1] (palindrome).
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: sentence = "this problem is an easy problem", searchWord = "pro"
- * Output: 2
- * Explanation: "pro" is prefix of "problem" which is the 2nd and the 6th word
- * in the sentence, but we return 2 as it's the minimal index.
+ * 
+ * 
+ * Input: root = [2,1,1,1,3,null,null,null,null,null,1]
+ * Output: 1 
+ * Explanation: The figure above represents the given binary tree. There are
+ * three paths going from the root node to leaf nodes: the green path [2,1,1],
+ * the path [2,1,3,1], and the path [2,1]. Among these paths only the green
+ * path is pseudo-palindromic since [2,1,1] can be rearranged in [1,2,1]
+ * (palindrome).
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: sentence = "i am tired", searchWord = "you"
- * Output: -1
- * Explanation: "you" is not a prefix of any word in the sentence.
- * 
- * 
- * Example 4:
- * 
- * 
- * Input: sentence = "i use triple pillow", searchWord = "pill"
- * Output: 4
- * 
- * 
- * Example 5:
- * 
- * 
- * Input: sentence = "hello from the other side", searchWord = "they"
- * Output: -1
+ * Input: root = [9]
+ * Output: 1
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * 1 <= sentence.length <= 100
- * 1 <= searchWord.length <= 10
- * sentence consists of lowercase English letters and spaces.
- * searchWord consists of lowercase English letters.
+ * The given binary tree will have between 1 and 10^5 nodes.
+ * Node values are digits from 1 to 9.
  * 
  */
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
 impl Solution {
-    pub fn is_prefix_of_word(sentence: String, sw: String) -> i32 {
-        for (i, w) in sentence.split(' ').enumerate(){
-            if w.starts_with(&sw) {
-                return i as i32 + 1;
-            }
-        }
-        -1
+    pub fn 
+    pub fn pseudo_palindromic_paths (root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
+        
     }
 }
 
