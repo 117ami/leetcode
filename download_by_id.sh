@@ -8,7 +8,7 @@ prepro() {
 		exit 1
     else
 		leetcode show $1 -gx -l python3
-		# leetcode show $1 -gx -l javascript
+		leetcode show $1 -gx -l cpp
     fi
 }
 
@@ -69,18 +69,20 @@ fn main(){
 }
 " > main.rs 
 
-# echo -e "\n\n
-# static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
+
+# For cpp file
+echo -e "\n\n
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
 
 
-# echo "
-# #include \"aux.cpp\"
-# #include \"$cpp_file\"
+echo "
+#include \"aux.cpp\"
+#include \"$cpp_file\"
 
-# int main(int argc, char const *argv[]) {
-# 	Solution s;
-# 	return 0;
-# }
-# " | tee test.cpp
+int main(int argc, char const *argv[]) {
+	Solution s;
+	return 0;
+}
+" | tee test.cpp
 
 
