@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "1456.maximum-number-of-vowels-in-a-substring-of-given-length.cpp"
+#include "1458.max-dot-product-of-two-subsequences.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.maxVowels("leetcode", 3));
+	vector<int> nums1 = {-1,-1}, nums2 = {1,1};
+	say(s.maxDotProduct(nums1, nums2));
 	return 0;
 }
 
