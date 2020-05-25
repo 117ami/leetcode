@@ -1,0 +1,55 @@
+
+This is a variant of the [maximum subarray problem (wikipedia)](https://en.wikipedia.org/wiki/Maximum_subarray_problem), and a typical solution is `Kadane's algorithm`:
+
+```python
+def kadane(numbers):
+    """Find the largest sum of any contiguous subarray."""
+    best_sum = 0  # or: float('-inf')
+    current_sum = 0
+    for x in numbers:
+        current_sum = max(0, current_sum + x)
+        best_sum = max(best_sum, current_sum)
+    return best_sum
+```
+
+A naive solution to our question is to loop over `arr * k`, and return the `best_sum` in the end. However, with large `k` (e.g., 100_000), we will get `Limited Time Error` (try it).
+
+Luckily, we can find patterns. To illustrate, we take `arr = [-2, 5, -1]` as an example. Observe the following facts:
+1. `sum(arr) = 2 > 0`
+2. when `k = 2`, sub-array yields the best sum is `[5, -1, -2, 5]` and its sum is `7`, 
+3. when `k = 3`, sub-array yields the best sum is `[5, -1, -2, 5, -1, -2, 5]`, and its sum is `9`, 
+4. when `k = 4`, sub-array yields the best sum is `[5, -1, -2, 5, -1, -2, 5, -1, -2, 5]`, and its sum is `11`, 
+5. ... and so on
+
+The only difference between cases when `k == m` and `k == m+1` is that: the best sub-array of the later contains one more `arr` and `bust_sum_[m+1] - best_sum[m]` is exactly `sum(arr)`.
+
+Thus, it is safe to say, `res = kadane(arr * 2) + (k - 2) * sum(arr)` when `k >= 2` and `sum(arr) >= 0`. 
+
+So, what about the case when `sum(arr) < 0`, e.g., `arr = [1, -10, 3]` ? 
+
+In this case, the result is simply `res = kadane(arr * 2)` for any `k >= 2`, because `sum(arr) < 0` and any sub-array that contains `arr` will yield a smaller sum than one contains NO `arr`.
+
+Combine the above two possibilities, our result is therefore: `res = kadane(arr * 2) + (k - 2) * max(sum(arr), 0)` when `k >= 2` and `kadane(arr)` otherwise (do not forget to mod `10*9+7` before return the value).
+
+### Rust Solution
+```rust
+impl Solution {
+    pub fn k_concatenation_max_sum(arr: Vec<i32>, k: i32) -> i32 {
+        let MOD = 1_000_000_007_i64;
+        let copy = arr.iter().map(|c| *c as i64).collect::<Vec<i64>>();
+        let mut best = 0_i64;
+        let mut cur = 0_i64;
+        let sum_i64: i64 = copy.iter().sum();
+        let k = k as usize;
+        
+        for i in 0..min(k, 2) * copy.len() {
+            let a = copy[i % arr.len()]; 
+            cur = max(a, cur+a) % MOD;
+            best = max(best, cur) % MOD;
+        }
+        let res = if k > 1 { max(best, best + (k as i64 - 2) * max(sum_i64, 0)) % MOD } else {best % MOD};
+        res as i32
+    }
+}
+```
+

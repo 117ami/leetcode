@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1458.max-dot-product-of-two-subsequences.cpp"
+#include "1191.k-concatenation-maximum-sum.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> nums1 = {-1,-1}, nums2 = {1,1};
-	say(s.maxDotProduct(nums1, nums2));
+	vector<int> arr = {1, -2, 1}; 
+	say(s.kConcatenationMaxSum(arr, 5));
 	return 0;
 }
 
