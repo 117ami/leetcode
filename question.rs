@@ -1,75 +1,105 @@
 /*
- * @lc app=leetcode id=1191 lang=rust
+ * @lc app=leetcode id=1373 lang=rust
  *
- * [1191] K-Concatenation Maximum Sum
+ * [1373] Maximum Sum BST in Binary Tree
  *
- * https://leetcode.com/problems/k-concatenation-maximum-sum/description/
+ * https://leetcode.com/problems/maximum-sum-bst-in-binary-tree/description/
  *
  * algorithms
- * Medium (25.86%)
- * Total Accepted:    10.3K
- * Total Submissions: 39.9K
- * Testcase Example:  '[1,2]\n3'
+ * Hard (42.28%)
+ * Total Accepted:    5.5K
+ * Total Submissions: 13.1K
+ * Testcase Example:  '[1,4,3,2,4,2,5,null,null,null,null,null,null,4,6]'
  *
- * Given an integer array arr and an integer k, modify the array by repeating
- * it k times.
+ * Given a binary tree root, the task is to return the maximum sum of all keys
+ * of any sub-tree which is also a Binary Search Tree (BST).
  * 
- * For example, if arr = [1, 2] and k = 3 then the modified array will be [1,
- * 2, 1, 2, 1, 2].
+ * Assume a BST is defined as follows:
  * 
- * Return the maximum sub-array sum in the modified array. Note that the length
- * of the sub-array can be 0 and its sum in that case is 0.
  * 
- * As the answer can be very large, return the answer modulo 10^9 + 7.
+ * The left subtree of a node contains only nodes with keys less than the
+ * node's key.
+ * The right subtree of a node contains only nodes with keys greater than the
+ * node's key.
+ * Both the left and right subtrees must also be binary search trees.
+ * 
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: arr = [1,2], k = 3
- * Output: 9
+ * 
+ * 
+ * Input: root = [1,4,3,2,4,2,5,null,null,null,null,null,null,4,6]
+ * Output: 20
+ * Explanation: Maximum sum in a valid Binary search tree is obtained in root
+ * node with key equal to 3.
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: arr = [1,-2,1], k = 5
+ * 
+ * 
+ * Input: root = [4,3,null,1,2]
  * Output: 2
+ * Explanation: Maximum sum in a valid Binary search tree is obtained in a
+ * single root node with key equal to 2.
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: arr = [-1,-2], k = 7
+ * Input: root = [-4,-2,-5]
  * Output: 0
+ * Explanation: All values are negatives. Return an empty BST.
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: root = [2,1,3]
+ * Output: 6
+ * 
+ * 
+ * Example 5:
+ * 
+ * 
+ * Input: root = [5,4,8,3,null,6,3]
+ * Output: 7
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * 1 <= arr.length <= 10^5
- * 1 <= k <= 10^5
- * -10^4 <= arr[i] <= 10^4
- * 
+ * Each tree has at most 40000 nodes..
+ * Each node's value is between [-4 * 10^4 , 4 * 10^4].
  * 
  */
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
 impl Solution {
-    pub fn k_concatenation_max_sum(arr: Vec<i32>, k: i32) -> i32 {
-        let MOD = 1_000_000_007_i64;
-        let copy = arr.iter().map(|c| *c as i64).collect::<Vec<i64>>();
-        let mut best = 0_i64;
-        let mut cur = 0_i64;
-        let sum_i64: i64 = copy.iter().sum();
-        let k = k as usize;
+    pub fn max_sum_bst(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
         
-        for i in 0..min(k, 2) * copy.len() {
-            let a = copy[i % arr.len()]; 
-            cur = max(a, cur+a) % MOD;
-            best = max(best, cur) % MOD;
-        }
-        let res = if k > 1 { max(best, best + (k as i64 - 2) * max(sum_i64, 0)) % MOD } else {best % MOD};
-        res as i32
     }
 }
 
