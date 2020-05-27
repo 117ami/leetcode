@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "785.is-graph-bipartite.cpp"
+#include "972.equal-rational-numbers.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<vector<int>> g = {{1,2,3}, {0,2}, {0,1,3}, {0,2}};
-	say(s.isBipartite(g));
+	string ss = "15.(9)", t = "16";
+	say(s.isRationalEqual(ss, t));
 	return 0;
 }
 
