@@ -1,46 +1,52 @@
 /*
- * @lc app=leetcode id=915 lang=rust
+ * @lc app=leetcode id=785 lang=rust
  *
- * [915] Partition Array into Disjoint Intervals
+ * [785] Is Graph Bipartite?
  *
- * https://leetcode.com/problems/partition-array-into-disjoint-intervals/description/
+ * https://leetcode.com/problems/is-graph-bipartite/description/
  *
  * algorithms
- * Medium (44.91%)
- * Total Accepted:    18.5K
- * Total Submissions: 41.2K
- * Testcase Example:  '[5,0,3,8,6]'
+ * Medium (46.56%)
+ * Total Accepted:    101.2K
+ * Total Submissions: 217.1K
+ * Testcase Example:  '[[1,3],[0,2],[1,3],[0,2]]'
  *
- * Given an array A, partition it into two (contiguous) subarrays left and
- * right so that:
+ * Given an undirected graph, return true if and only if it is bipartite.
  * 
+ * Recall that a graph is bipartite if we can split it's set of nodes into two
+ * independent subsets A and B such that every edge in the graph has one node
+ * in A and another node in B.
  * 
- * Every element in left is less than or equal to every element in right.
- * left and right are non-empty.
- * left has the smallest possible size.
- * 
- * 
- * Return the length of left after such a partitioning.  It is guaranteed that
- * such a partitioning exists.
- * 
+ * The graph is given in the following form: graph[i] is a list of indexes j
+ * for which the edge between nodes i and j exists.  Each node is an integer
+ * between 0 and graph.length - 1.  There are no self edges or parallel edges:
+ * graph[i] does not contain i, and it doesn't contain any element twice.
  * 
  * 
  * Example 1:
- * 
- * 
- * Input: [5,0,3,8,6]
- * Output: 3
- * Explanation: left = [5,0,3], right = [8,6]
+ * Input: [[1,3], [0,2], [1,3], [0,2]]
+ * Output: true
+ * Explanation: 
+ * The graph looks like this:
+ * 0----1
+ * |    |
+ * |    |
+ * 3----2
+ * We can divide the vertices into two groups: {0, 2} and {1, 3}.
  * 
  * 
  * 
  * Example 2:
- * 
- * 
- * Input: [1,1,1,0,6,12]
- * Output: 4
- * Explanation: left = [1,1,1,0], right = [6,12]
- * 
+ * Input: [[1,2,3], [0,2], [0,1,3], [0,2]]
+ * Output: false
+ * Explanation: 
+ * The graph looks like this:
+ * 0----1
+ * | \  |
+ * |  \ |
+ * 3----2
+ * We cannot find a way to divide the set of nodes into two independent
+ * subsets.
  * 
  * 
  * 
@@ -48,31 +54,19 @@
  * Note:
  * 
  * 
- * 2 <= A.length <= 30000
- * 0 <= A[i] <= 10^6
- * It is guaranteed there is at least one way to partition A as
- * described.
- * 
- * 
- * 
- * 
+ * graph will have length in range [1, 100].
+ * graph[i] will contain integers in range [0, graph.length - 1].
+ * graph[i] will not contain i or duplicate values.
+ * The graph is undirected: if any element j is in graph[i], then i will be in
+ * graph[j].
  * 
  * 
  */
+
+
 impl Solution {
-    pub fn partition_disjoint(a: Vec<i32>) -> i32 {
-        let mut pre_max = a[0]; 
-        let mut total_max = a[0];
-        let mut pos = 1; 
-        for (i, n) in a.iter().enumerate() {
-            if pre_max > *n {
-                pre_max = total_max; 
-                pos = i + 1; 
-            } else if total_max < *n {
-                total_max = *n ;
-            }
-        }
-        pos as i32 
+    pub fn is_bipartite(graph: Vec<Vec<i32>>) -> bool {
+        
     }
 }
 
