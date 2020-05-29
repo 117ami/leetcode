@@ -1,49 +1,47 @@
 /*
- * @lc app=leetcode id=399 lang=rust
+ * @lc app=leetcode id=37 lang=rust
  *
- * [399] Evaluate Division
+ * [37] Sudoku Solver
  *
- * https://leetcode.com/problems/evaluate-division/description/
+ * https://leetcode.com/problems/sudoku-solver/description/
  *
  * algorithms
- * Medium (50.64%)
- * Total Accepted:    121.3K
- * Total Submissions: 239.3K
- * Testcase Example:  '[["a","b"],["b","c"]]\n' +
-  '[2.0,3.0]\n' +
-  '[["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]'
+ * Hard (42.21%)
+ * Total Accepted:    178.2K
+ * Total Submissions: 421.4K
+ * Testcase Example:  '[["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]'
  *
- * Equations are given in the format A / B = k, where A and B are variables
- * represented as strings, and k is a real number (floating point number).
- * Given some queries, return the answers. If the answer does not exist, return
- * -1.0.
+ * Write a program to solve a Sudoku puzzle by filling the empty cells.
  * 
- * Example:
- * Given  a / b = 2.0, b / c = 3.0.
- * queries are:  a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? .
- * return  [6.0, 0.5, -1.0, 1.0, -1.0 ].
- * 
- * The input is:  vector<pair<string, string>> equations, vector<double>&
- * values, vector<pair<string, string>> queries , where equations.size() ==
- * values.size(), and the values are positive. This represents the equations.
- * Return  vector<double>.
- * 
- * According to the example above:
+ * A sudoku solution must satisfy all of the following rules:
  * 
  * 
- * equations = [ ["a", "b"], ["b", "c"] ],
- * values = [2.0, 3.0],
- * queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]
- * ]. 
+ * Each of the digits 1-9 must occur exactly once in each row.
+ * Each of the digits 1-9 must occur exactly once in each column.
+ * Each of the the digits 1-9 must occur exactly once in each of the 9 3x3
+ * sub-boxes of the grid.
  * 
  * 
+ * Empty cells are indicated by the character '.'.
  * 
- * The input is always valid. You may assume that evaluating the queries will
- * result in no division by zero and there is no contradiction.
+ * 
+ * A sudoku puzzle...
+ * 
+ * 
+ * ...and its solution numbers marked in red.
+ * 
+ * Note:
+ * 
+ * 
+ * The given board contain only digits 1-9 and the character '.'.
+ * You may assume that the given Sudoku puzzle will have a single unique
+ * solution.
+ * The given board size is always 9x9.
+ * 
  * 
  */
 impl Solution {
-    pub fn calc_equation(equations: Vec<Vec<String>>, values: Vec<f64>, queries: Vec<Vec<String>>) -> Vec<f64> {
+    pub fn solve_sudoku(board: &mut Vec<Vec<char>>) {
         
     }
 }
