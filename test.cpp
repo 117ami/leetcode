@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "338.counting-bits.cpp"
+#include "207.course-schedule.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.countBits(5));
+	vector<vector<int>> pre = {{1, 0}, {3, 0}, {1, 3}, {2, 1}};
+	say(s.canFinish(4, pre));
 	return 0;
 }
 
