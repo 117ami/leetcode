@@ -154,6 +154,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.392 | [is-subsequence](https://leetcode.com/problems/is-subsequence/description/) | [Python](./python_solutions/392.is-subsequence.py)/[Ruby](./python_solutions/392.is-subsequence.rb) |
 |𝐌.393 | [utf-8-validation](https://leetcode.com/problems/utf-8-validation/description/) | [Python](./python_solutions/393.utf-8-validation.py)/[Rust](./python_solutions/393.utf-8-validation.rs) |
 |𝐌.398 | [random-pick-index](https://leetcode.com/problems/random-pick-index/description/) | [Python](./python_solutions/398.random-pick-index.py)/[Ruby](./python_solutions/398.random-pick-index.rb) /[Javascript](./python_solutions/398.random-pick-index.js) /[C++](./python_solutions/398.random-pick-index.cpp) |
+|𝐌.399 | [evaluate-division](https://leetcode.com/problems/evaluate-division/description/) | [Python](./python_solutions/399.evaluate-division.py)|
 |𝐌.400 | [nth-digit](https://leetcode.com/problems/nth-digit/description/) | [Python](./python_solutions/400.nth-digit.py)/[C++](./python_solutions/400.nth-digit.cpp) |
 |𝐌.402 | [remove-k-digits](https://leetcode.com/problems/remove-k-digits/description/) | [Python](./python_solutions/402.remove-k-digits.py)/[Rust](./python_solutions/402.remove-k-digits.rs) |
 |𝐌.402 | [remove-k-digits](https://leetcode.com/problems/remove-k-digits/description/) | [Python](./python_solutions/402.remove-k-digits.py)/[Rust](./python_solutions/402.remove-k-digits.rs) |

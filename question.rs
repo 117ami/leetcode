@@ -1,94 +1,56 @@
 /*
- * @lc app=leetcode id=207 lang=rust
+ * @lc app=leetcode id=399 lang=rust
  *
- * [207] Course Schedule
+ * [399] Evaluate Division
  *
- * https://leetcode.com/problems/course-schedule/description/
+ * https://leetcode.com/problems/evaluate-division/description/
  *
  * algorithms
- * Medium (41.64%)
- * Total Accepted:    369K
- * Total Submissions: 884.9K
- * Testcase Example:  '2\n[[1,0]]'
+ * Medium (50.64%)
+ * Total Accepted:    121.3K
+ * Total Submissions: 239.3K
+ * Testcase Example:  '[["a","b"],["b","c"]]\n' +
+  '[2.0,3.0]\n' +
+  '[["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]'
  *
- * There are a total of numCourses courses you have to take, labeled from 0 to
- * numCourses-1.
- *
- * Some courses may have prerequisites, for example to take course 0 you have
- * to first take course 1, which is expressed as a pair: [0,1]
- *
- * Given the total number of courses and a list of prerequisite pairs, is it
- * possible for you to finish all courses?
- *
- *
- * Example 1:
- *
- *
- * Input: numCourses = 2, prerequisites = [[1,0]]
- * Output: true
- * Explanation: There are a total of 2 courses to take.
- * To take course 1 you should have finished course 0. So it is possible.
- *
- *
- * Example 2:
- *
- *
- * Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
- * Output: false
- * Explanation: There are a total of 2 courses to take.
- * To take course 1 you should have finished course 0, and to take course 0 you
- * should
- * also have finished course 1. So it is impossible.
- *
- *
- *
- * Constraints:
- *
- *
- * The input prerequisites is a graph represented by a list of edges, not
- * adjacency matrices. Read more about how a graph is represented.
- * You may assume that there are no duplicate edges in the input
- * prerequisites.
- * 1 <= numCourses <= 10^5
- *
- *
+ * Equations are given in the format A / B = k, where A and B are variables
+ * represented as strings, and k is a real number (floating point number).
+ * Given some queries, return the answers. If the answer does not exist, return
+ * -1.0.
+ * 
+ * Example:
+ * Given  a / b = 2.0, b / c = 3.0.
+ * queries are:  a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? .
+ * return  [6.0, 0.5, -1.0, 1.0, -1.0 ].
+ * 
+ * The input is:  vector<pair<string, string>> equations, vector<double>&
+ * values, vector<pair<string, string>> queries , where equations.size() ==
+ * values.size(), and the values are positive. This represents the equations.
+ * Return  vector<double>.
+ * 
+ * According to the example above:
+ * 
+ * 
+ * equations = [ ["a", "b"], ["b", "c"] ],
+ * values = [2.0, 3.0],
+ * queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]
+ * ]. 
+ * 
+ * 
+ * 
+ * The input is always valid. You may assume that evaluating the queries will
+ * result in no division by zero and there is no contradiction.
+ * 
  */
 impl Solution {
-    pub fn dfs(n: i32, depends: &Vec<Vec<i32>>, visited: &mut Vec<i32>) -> bool {
-        let n = n as usize;
-        if visited[n] == -1 {
-            return false;
-        }
-        if visited[n] == 1 {
-            return true;
-        }
-        visited[n] = -1;
-        for m in depends[n].iter() {
-            if !Self::dfs(*m, depends, visited) {
-                return false;
-            }
-        }
-        visited[n] = 1;
-        true
-    }
-    pub fn can_finish(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> bool {
-        let mut depends: Vec<Vec<i32>> = vec![vec![]; num_courses as usize];
-        for pre in prerequisites.iter() {
-            depends[pre[0] as usize].push(pre[1]);
-        }
-        let mut visited = vec![0; num_courses as usize];
-
-        (0..num_courses)
-            .map(|n| Self::dfs(n as i32, &depends, &mut visited))
-            .all(|b| b)
+    pub fn calc_equation(equations: Vec<Vec<String>>, values: Vec<f64>, queries: Vec<Vec<String>>) -> Vec<f64> {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -106,7 +68,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -189,9 +151,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -269,22 +229,15 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
     })
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
