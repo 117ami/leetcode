@@ -5,11 +5,9 @@ prepro() {
     if [[ $op =~ "ERROR" ]]; then 
     	echo $op
 		echo "Refreshing cache may help resolving this problem [leetcode cache -d]."
-		exit 1
-    else
-		leetcode show $1 -gx -l python3
-		leetcode show $1 -gx -l cpp
-    fi
+	fi 
+	leetcode show $1 -gx -l python3
+	leetcode show $1 -gx -l cpp
 }
 
 prepro $@
