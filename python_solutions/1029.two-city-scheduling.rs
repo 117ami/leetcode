@@ -47,16 +47,18 @@
  */
 impl Solution {
     pub fn two_city_sched_cost(ref mut costs: Vec<Vec<i32>>) -> i32 {
-        costs.sort_by_key(|c| c[0] - c[1]);
+        costs.sort_by(|a, b| (a[0] - a[1]).cmp(&(b[0] - b[1])));
         costs
             .iter()
             .enumerate()
             .map(|(i, c)| c[(i >= costs.len() / 2) as usize])
             .sum()
+        // println!("{:?}",x);
+        // 42
     }
 }
 
-pub struct Solution;
+// pub struct Solution;
 static CHARHASH: [i32; 26] = [
     -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
     -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
