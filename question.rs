@@ -1,88 +1,84 @@
 /*
- * @lc app=leetcode id=940 lang=rust
+ * @lc app=leetcode id=528 lang=rust
  *
- * [940] Distinct Subsequences II
+ * [528] Random Pick with Weight
  *
- * https://leetcode.com/problems/distinct-subsequences-ii/description/
+ * https://leetcode.com/problems/random-pick-with-weight/description/
  *
  * algorithms
- * Hard (41.38%)
- * Total Accepted:    9.7K
- * Total Submissions: 23.5K
- * Testcase Example:  '"abc"'
+ * Medium (43.79%)
+ * Total Accepted:    67.1K
+ * Total Submissions: 153K
+ * Testcase Example:  '["Solution", "pickIndex"]\n[[[1]], []]'
  *
- * Given a string S, count the number of distinct, non-empty subsequences of S
- * .
- *
- * Since the result may be large, return the answer modulo 10^9 + 7.
- *
- *
- *
- * Example 1:
- *
- *
- * Input: "abc"
- * Output: 7
- * Explanation: The 7 distinct subsequences are "a", "b", "c", "ab", "ac",
- * "bc", and "abc".
- *
- *
- *
- * Example 2:
- *
- *
- * Input: "aba"
- * Output: 6
- * Explanation: The 6 distinct subsequences are "a", "b", "ab", "ba", "aa" and
- * "aba".
- *
- *
- *
- * Example 3:
- *
- *
- * Input: "aaa"
- * Output: 3
- * Explanation: The 3 distinct subsequences are "a", "aa" and "aaa".
- *
- *
- *
- *
- *
- *
- *
- *
+ * Given an array w of positive integers, where w[i] describes the weight of
+ * index i, write a function pickIndex which randomly picks an index in
+ * proportion to its weight.
+ * 
  * Note:
- *
- *
- * S contains only lowercase letters.
- * 1 <= S.length <= 2000
- *
- *
- *
- *
- *
- *
- *
- *
- *
+ * 
+ * 
+ * 1 <= w.length <= 10000
+ * 1 <= w[i] <= 10^5
+ * pickIndex will be called at most 10000 times.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: 
+ * ["Solution","pickIndex"]
+ * [[[1]],[]]
+ * Output: [null,0]
+ * 
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: 
+ * ["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+ * [[[1,3]],[],[],[],[],[]]
+ * Output: [null,0,1,1,1,0]
+ * 
+ * 
+ * Explanation of Input Syntax:
+ * 
+ * The input is two lists: the subroutines called and their arguments.
+ * Solution's constructor has one argument, the array w. pickIndex has no
+ * arguments. Arguments are always wrapped with a list, even if there aren't
+ * any.
+ * 
+ */
+struct Solution {
+
+}
+
+
+/** 
+ * `&self` means the method takes an immutable reference.
+ * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl Solution {
-    pub fn distinct_subseq_ii(s: String) -> i32 {
-        let mut e = vec![0_i64; 26];
-        let mode = 10_i64.pow(9) + 7;
-        for c in s.chars() {
-            e[char2usize(c)] = (e.iter().sum::<i64>() + 1) % mode;
-        }
-        (e.iter().sum::<i64>() % mode) as i32
+
+    fn new(w: Vec<i32>) -> Self {
+        
+    }
+    
+    fn pick_index(&self) -> i32 {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+/**
+ * Your Solution object will be instantiated and called as such:
+ * let obj = Solution::new(w);
+ * let ret_1: i32 = obj.pick_index();
+ */
+
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -100,7 +96,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -183,9 +179,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -263,22 +257,15 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
     })
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
