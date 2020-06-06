@@ -46,7 +46,7 @@ impl Solution {
 }
 
 
-pub struct Solution; 
+// pub struct Solution; 
 static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
