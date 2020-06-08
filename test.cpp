@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1470.shuffle-the-array.cpp"
+#include "231.power-of-two.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
