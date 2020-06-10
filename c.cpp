@@ -534,16 +534,19 @@ int bisect_left(vector<int>& arr, int target) {
 
 // Find the index of the first number in sorted nums, that is larger than target
 int bisect_right(vector<int> &nums, int target) {
-  int i = 0, j = nums.size() - 1, mid = 0;
-  while (i < j) {
-    mid = ceil((i + j) * 1.0 / 2);
-    if (nums[mid] > target)
-      j = mid - 1;
+  int l = 0, r = nums.size() - 1, m = 0;
+  while (l <= r){
+    m = l + (r - l) / 2;
+    if (nums[m] == target)
+      return m;
+    else if (nums[m] > target)
+      r = m - 1;
     else
-      i = mid;
+      l = m + 1;
   }
-  return nums[j] > target ? j : j + 1;
+  return l;
 }
+
 
 bool is_substring(string str1, string str2) { return str1.find(str2) != string::npos; }
 
