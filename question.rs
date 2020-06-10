@@ -1,57 +1,68 @@
 /*
- * @lc app=leetcode id=438 lang=rust
+ * @lc app=leetcode id=934 lang=rust
  *
- * [438] Find All Anagrams in a String
+ * [934] Shortest Bridge
  *
- * https://leetcode.com/problems/find-all-anagrams-in-a-string/description/
+ * https://leetcode.com/problems/shortest-bridge/description/
  *
  * algorithms
- * Medium (42.66%)
- * Total Accepted:    255.8K
- * Total Submissions: 599.7K
- * Testcase Example:  '"cbaebabacd"\n"abc"'
+ * Medium (46.96%)
+ * Total Accepted:    23.4K
+ * Total Submissions: 49.8K
+ * Testcase Example:  '[[0,1],[1,0]]'
  *
- * Given a string s and a non-empty string p, find all the start indices of p's
- * anagrams in s.
+ * In a given 2D binary array A, there are two islands.  (An island is a
+ * 4-directionally connected group of 1s not connected to any other 1s.)
  * 
- * Strings consists of lowercase English letters only and the length of both
- * strings s and p will not be larger than 20,100.
+ * Now, we may change 0s to 1s so as to connect the two islands together to
+ * form 1 island.
  * 
- * The order of output does not matter.
+ * Return the smallest number of 0s that must be flipped.  (It is guaranteed
+ * that the answer is at least 1.)
+ * 
  * 
  * Example 1:
- * 
- * Input:
- * s: "cbaebabacd" p: "abc"
- * 
- * Output:
- * [0, 6]
- * 
- * Explanation:
- * The substring with start index = 0 is "cba", which is an anagram of "abc".
- * The substring with start index = 6 is "bac", which is an anagram of
- * "abc".
- * 
- * 
- * 
+ * Input: A = [[0,1],[1,0]]
+ * Output: 1
  * Example 2:
+ * Input: A = [[0,1,0],[0,0,0],[0,0,1]]
+ * Output: 2
+ * Example 3:
+ * Input: A = [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+ * Output: 1
  * 
- * Input:
- * s: "abab" p: "ab"
  * 
- * Output:
- * [0, 1, 2]
+ * Constraints:
  * 
- * Explanation:
- * The substring with start index = 0 is "ab", which is an anagram of "ab".
- * The substring with start index = 1 is "ba", which is an anagram of "ab".
- * The substring with start index = 2 is "ab", which is an anagram of "ab".
+ * 
+ * 2 <= A.length == A[0].length <= 100
+ * A[i][j] == 0 or A[i][j] == 1
  * 
  * 
  */
 impl Solution {
-    pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
-        
+    pub fn first(a: Vec<Vec<i32>>) -> (usize, usize) {
+        for i in 0..a.len() {
+            for j in 0..a.len() {
+                if a[i][j] == 1 {
+                    return (i, j)
+                }
+            }
+        }
+    }
+
+    pub fn dfs(i: usize, j:usize, ref mut border: Vec<(usize, usize)>, ref mut a: Vec<Vec<i32>>) {
+        border.push((i, j));
+        a[i][j] = 2; 
+        let dirs = vec![-1,0,1,0,-1];
+        for k in 0..4 {
+            let x = i + dirs[k] ; 
+        }
+    }
+
+    pub fn shortest_bridge(a: Vec<Vec<i32>>) -> i32 {
+        let n = a.len(); 
+
     }
 }
 
