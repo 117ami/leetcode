@@ -1,12 +1,10 @@
 
 #include "aux.cpp"
-#include "75.sort-colors.cpp"
+#include "1472.design-browser-history.cpp"
 
 int main(int argc, char const *argv[]) {
-	Solution s;
-	vector<int> v = {2,1,0};
-	s.sortColors(v);
-	say(v);
+	BrowserHistory bh("lc");
+	bh.visit("google");
 	return 0;
 }
 
