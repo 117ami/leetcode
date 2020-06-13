@@ -44,29 +44,32 @@ impl Solution {
         let mut max_key = -1;
         let mut cnt = vec![1; n];
         let mut pre = vec![-1; n];
-        for i in 0..n {
+        for i in 0..n{
             for j in 0..i {
-                if nums[i] % nums[j] == 0 && 1 + cnt[j] > cnt[i] {
-                    cnt[i] = 1 + cnt[j];
-                    pre[i] = j as i32;
+                if nums[i]%nums[j]==0 && 1+cnt[j]> cnt[i]{
+                    cnt[i]=1+cnt[j];
+                    pre[i]=j as i32;
                 }
             }
-            if cnt[i] > max_len {
-                max_len = cnt[i];
-                max_key = i as i32;
+            if cnt[i]>max_len{
+                max_len=cnt[i];
+                max_key=i as i32;
             }
+
         }
-        let mut res = vec![];
-        while max_key >= 0 {
+        let mut res=vec![];
+        while max_key>=0 {
             res.push(nums[max_key as usize]);
+            // println!("{}", max_key);
             max_key = pre[max_key as usize];
         }
         res
     }
 
+    
     pub fn largest_divisible_subset2(ref mut nums: Vec<i32>) -> Vec<i32> {
         /* Method 2, use hashmap of set
-         */
+        */
         let mut res: HashMap<i32, HashSet<i32>> = HashMap::new();
         res.insert(-1, HashSet::new());
         nums.sort_unstable();
@@ -98,7 +101,7 @@ impl Solution {
     }
 }
 
-pub struct Solution;
+// pub struct Solution;
 static CHARHASH: [i32; 26] = [
     -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
     -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
