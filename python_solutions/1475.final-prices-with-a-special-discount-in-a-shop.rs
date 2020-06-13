@@ -16,50 +16,50 @@
  * item, then you will receive a discount equivalent to prices[j] where j is
  * the minimum index such that j > i and prices[j] <= prices[i], otherwise, you
  * will not receive any discount at all.
- *
+ * 
  * Return an array where the ith element is the final price you will pay for
  * the ith item of the shop considering the special discount.
- *
- *
+ * 
+ * 
  * Example 1:
- *
- *
+ * 
+ * 
  * Input: prices = [8,4,6,2,3]
  * Output: [4,2,4,2,3]
- * Explanation:
+ * Explanation: 
  * For item 0 with price[0]=8 you will receive a discount equivalent to
- * prices[1]=4, therefore, the final price you will pay is 8 - 4 = 4.
+ * prices[1]=4, therefore, the final price you will pay is 8 - 4 = 4. 
  * For item 1 with price[1]=4 you will receive a discount equivalent to
- * prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2.
+ * prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2. 
  * For item 2 with price[2]=6 you will receive a discount equivalent to
- * prices[3]=2, therefore, the final price you will pay is 6 - 2 = 4.
+ * prices[3]=2, therefore, the final price you will pay is 6 - 2 = 4. 
  * For items 3 and 4 you will not receive any discount at all.
- *
- *
+ * 
+ * 
  * Example 2:
- *
- *
+ * 
+ * 
  * Input: prices = [1,2,3,4,5]
  * Output: [1,2,3,4,5]
  * Explanation: In this case, for all items, you will not receive any discount
  * at all.
- *
- *
+ * 
+ * 
  * Example 3:
- *
- *
+ * 
+ * 
  * Input: prices = [10,1,1,6]
  * Output: [9,0,1,6]
- *
- *
- *
+ * 
+ * 
+ * 
  * Constraints:
- *
- *
+ * 
+ * 
  * 1 <= prices.length <= 500
  * 1 <= prices[i] <= 10^3
- *
- *
+ * 
+ * 
  */
 impl Solution {
     pub fn final_prices(ref mut ns: Vec<i32>) -> Vec<i32> {
@@ -76,11 +76,9 @@ impl Solution {
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+// pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -90,15 +88,15 @@ use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
 use std::collections::HashSet;
-use std::collections::VecDeque;
 use std::fmt::Debug;
 use std::hash::Hash;
 use std::iter::FromIterator;
+use std::collections::VecDeque;
 // use std::collections::BTreeMap;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -181,9 +179,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -261,22 +257,15 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
     })
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+

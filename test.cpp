@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "368.largest-divisible-subset.cpp"
+#include "1475.final-prices-with-a-special-discount-in-a-shop.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> v = {1,3,9,18,90,180,360,720,540, 108};
-	v={1};
-	say(s.largestDivisibleSubset(v));
+	vector<int> a = {8,4,6,2,3};
+	say(s.finalPrices(a));
 	return 0;
 }
 
