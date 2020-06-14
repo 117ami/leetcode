@@ -663,6 +663,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.5297 | [jump-game-iii](https://leetcode.com/problems/jump-game-iii/description/) | [Python](./python_solutions/5297.jump-game-iii.py)|
 |𝐇.5310 | [minimum-distance-to-type-a-word-using-two-fingers](https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/description/) | [Python](./python_solutions/5310.minimum-distance-to-type-a-word-using-two-fingers.py)|
 |𝐇.5318 | [minimum-number-of-taps-to-open-to-water-a-garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/) | [Python](./python_solutions/5318.minimum-number-of-taps-to-open-to-water-a-garden.py)/[C++](./python_solutions/5318.minimum-number-of-taps-to-open-to-water-a-garden.cpp) |
+|𝐄.5453 | [running-sum-of-1d-array](https://leetcode.com/problems/running-sum-of-1d-array/description/) | [Python](./python_solutions/5453.running-sum-of-1d-array.py)/[C++](./python_solutions/5453.running-sum-of-1d-array.cpp) /[Rust](./python_solutions/5453.running-sum-of-1d-array.rs) |
 
 
 ### Contact

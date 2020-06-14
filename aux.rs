@@ -177,6 +177,16 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
     })
 }
 
+#[allow(dead_code)]
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
+    nums.iter()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
+}
+
 // There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
