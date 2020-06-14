@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "5453.running-sum-of-1d-array.cpp"
+#include "5454.least-number-of-unique-integers-after-k-removals.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> a = {1,2,3,4,5};
-	say(s.runningSum(a));
+	vector<int> a = {1,1,1,2,2,3}; 
+	say(s.findLeastNumOfUniqueInts(a, 2));
 	return 0;
 }
 
