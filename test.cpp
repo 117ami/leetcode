@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "5454.least-number-of-unique-integers-after-k-removals.cpp"
+#include "188.best-time-to-buy-and-sell-stock-iv.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> a = {1,1,1,2,2,3}; 
-	say(s.findLeastNumOfUniqueInts(a, 2));
+	vector<int> p ={3, 2, 6, 5, 0, 3};
+	say(s.maxProfit(2,p));
 	return 0;
 }
 
