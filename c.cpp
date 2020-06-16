@@ -447,7 +447,7 @@ template <typename T1, typename T2> void printMap(map<T1, T2> &m) {
 }
 // ==================================================
 
-#ifdef DEBUG
+// #ifdef DEBUG
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -467,7 +467,7 @@ public:
     children = _children;
   }
 };
-#endif
+// #endif
 
 TreeNode *growTreeFromList(vector<int> &arr) {
   if (arr.empty())
