@@ -1,74 +1,100 @@
 /*
- * @lc app=leetcode id=123 lang=rust
+ * @lc app=leetcode id=468 lang=rust
  *
- * [123] Best Time to Buy and Sell Stock III
+ * [468] Validate IP Address
  *
- * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+ * https://leetcode.com/problems/validate-ip-address/description/
  *
  * algorithms
- * Hard (36.88%)
- * Total Accepted:    206.6K
- * Total Submissions: 560.1K
- * Testcase Example:  '[3,3,5,0,0,3,1,4]'
+ * Medium (22.47%)
+ * Total Accepted:    49.6K
+ * Total Submissions: 219.4K
+ * Testcase Example:  '"172.16.254.1"'
  *
- * Say you have an array for which the i^th element is the price of a given
- * stock on day i.
- *
- * Design an algorithm to find the maximum profit. You may complete at most two
- * transactions.
- *
- * Note: You may not engage in multiple transactions at the same time (i.e.,
- * you must sell the stock before you buy again).
- *
+ * 
+ * Write a function to check whether an input string is a valid IPv4 address or
+ * IPv6 address or neither.
+ * 
+ * 
+ * 
+ * IPv4 addresses are canonically represented in dot-decimal notation, which
+ * consists of four decimal numbers, each ranging from 0 to 255, separated by
+ * dots ("."), e.g.,172.16.254.1;
+ * 
+ * 
+ * 
+ * Besides, leading zeros in the IPv4 is invalid. For example, the address
+ * 172.16.254.01 is invalid.
+ * 
+ * 
+ * 
+ * IPv6 addresses are represented as eight groups of four hexadecimal digits,
+ * each group representing 16 bits. The groups are separated by colons (":").
+ * For example, the address 2001:0db8:85a3:0000:0000:8a2e:0370:7334 is a valid
+ * one. Also, we could omit some leading zeros among four hexadecimal digits
+ * and some low-case characters in the address to upper-case ones, so
+ * 2001:db8:85a3:0:0:8A2E:0370:7334 is also a valid IPv6 address(Omit leading
+ * zeros and using upper cases).
+ * 
+ * 
+ * 
+ * 
+ * However, we don't replace a consecutive group of zero value with a single
+ * empty group using two consecutive colons (::) to pursue simplicity. For
+ * example, 2001:0db8:85a3::8A2E:0370:7334 is an invalid IPv6 address.
+ * 
+ * 
+ * 
+ * Besides, extra leading zeros in the IPv6 is also invalid. For example, the
+ * address 02001:0db8:85a3:0000:0000:8a2e:0370:7334 is invalid.
+ * 
+ * 
+ * 
+ * Note:
+ * You may assume there is no extra space or special characters in the input
+ * string.
+ * 
+ * 
  * Example 1:
- *
- *
- * Input: [3,3,5,0,0,3,1,4]
- * Output: 6
- * Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit
- * = 3-0 = 3.
- * Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 =
- * 3.
- *
+ * 
+ * Input: "172.16.254.1"
+ * 
+ * Output: "IPv4"
+ * 
+ * Explanation: This is a valid IPv4 address, return "IPv4".
+ * 
+ * 
+ * 
+ * 
  * Example 2:
- *
- *
- * Input: [1,2,3,4,5]
- * Output: 4
- * Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit
- * = 5-1 = 4.
- * Note that you cannot buy on day 1, buy on day 2 and sell them later, as you
- * are
- * engaging multiple transactions at the same time. You must sell before buying
- * again.
- *
- *
+ * 
+ * Input: "2001:0db8:85a3:0:0:8A2E:0370:7334"
+ * 
+ * Output: "IPv6"
+ * 
+ * Explanation: This is a valid IPv6 address, return "IPv6".
+ * 
+ * 
+ * 
  * Example 3:
- *
- *
- * Input: [7,6,4,3,1]
- * Output: 0
- * Explanation: In this case, no transaction is done, i.e. max profit = 0.
- *
+ * 
+ * Input: "256.256.256.256"
+ * 
+ * Output: "Neither"
+ * 
+ * Explanation: This is neither a IPv4 address nor a IPv6 address.
+ * 
+ * 
  */
 impl Solution {
-    pub fn max_profit(ps: Vec<i32>) -> i32 {
-        let (mut b1, mut b2, mut p1, mut p2) = (i32::min_value(), i32::min_value(), 0, 0);
-        for p in ps {
-            b1 = max(b1, -p);
-            p1 = max(p1, p + b1);
-            b2 = max(b2, p1 - p);
-            p2 = max(p2, b2 + p);
-        }
-        p2
+    pub fn valid_ip_address(ip: String) -> String {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -86,7 +112,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -169,9 +195,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -250,31 +274,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
