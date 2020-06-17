@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
-#include "680.valid-palindrome-ii.cpp"
+#include "130.surrounded-regions.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string t = "aba";
-	say(s.validPalindrome(t));
+	vvc b = {{'O', 'O'}};
+	s.solve(b);
+	say(b);
 	return 0;
 }
 

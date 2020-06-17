@@ -131,7 +131,6 @@ inline string lower(string s) {
 int direction[8][2] = {{-1, 0},  {1, 0},  {0, -1}, {0, 1},
                        {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-vector<int> dirs = {-1, 0, 1, 0, -1};
 // ==================================================
 // ** math function **
 
@@ -805,7 +804,83 @@ vector<int> unfoldTree(TreeNode *r) {
   return arr;
 }
 
-bool border_check(int i, int left, int right) {
-  // checking whether is is between [left, right], inclusive on both sides.
-  return i <= right && i >= left;
-}
+/*
+ * @lc app=leetcode id=130 lang=cpp
+ *
+ * [130] Surrounded Regions
+ *
+ * https://leetcode.com/problems/surrounded-regions/description/
+ *
+ * algorithms
+ * Medium (26.44%)
+ * Total Accepted:    211K
+ * Total Submissions: 792.6K
+ * Testcase Example:
+ * '[["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]'
+ *
+ * Given a 2D board containing 'X' and 'O' (the letter O), capture all regions
+ * surrounded by 'X'.
+ *
+ * A region is captured by flipping all 'O's into 'X's in that surrounded
+ * region.
+ *
+ * Example:
+ *
+ *
+ * X X X X
+ * X O O X
+ * X X O X
+ * X O X X
+ *
+ *
+ * After running your function, the board should be:
+ *
+ *
+ * X X X X
+ * X X X X
+ * X X X X
+ * X O X X
+ *
+ *
+ * Explanation:
+ *
+ * Surrounded regions shouldn’t be on the border, which means that any 'O' on
+ * the border of the board are not flipped to 'X'. Any 'O' that is not on the
+ * border and it is not connected to an 'O' on the border will be flipped to
+ * 'X'. Two cells are connected if they are adjacent cells connected
+ * horizontally or vertically.
+ *
+ */
+class Solution {
+public:
+  int m, n;
+  vi dirs = {-1, 0, 1, 0, -1};
+  bool border_check(int i, int left, int right) {
+    // checking whether is is between [left, right], inclusive on both sides.
+    return i <= right && i >= left;
+  }
+
+  void dfs(int i, int j, char sa, char sb, vector<vector<char>> &board) {
+    if (border_check(i, 0, m - 1) && border_check(j, 0, n - 1) &&
+        board[i][j] == sa) {
+      board[i][j] = sb;
+      qfor(k, 4) dfs(i + dirs[k], j + dirs[k + 1], sa, sb, board);
+    }
+  }
+  void solve(vector<vector<char>> &board) {
+    if (board.empty())
+      return;
+    m = board.size(), n = board[0].size();
+
+    qfor(i, m) dfs(i, 0, 'O', '#', board), dfs(i, n - 1, 'O', '#', board);
+    qfor(j, n) dfs(0, j, 'O', '#', board), dfs(m - 1, j, 'O', '#', board);
+    //  say(board);
+    qfor(i, m) qfor(j, n) board[i][j] = board[i][j] == '#' ? 'O' : 'X';
+  }
+};
+
+static const int _ = []() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  return 0;
+}();

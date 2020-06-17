@@ -1,75 +1,58 @@
 /*
- * @lc app=leetcode id=680 lang=rust
+ * @lc app=leetcode id=130 lang=rust
  *
- * [680] Valid Palindrome II
+ * [130] Surrounded Regions
  *
- * https://leetcode.com/problems/valid-palindrome-ii/description/
+ * https://leetcode.com/problems/surrounded-regions/description/
  *
  * algorithms
- * Easy (36.35%)
- * Total Accepted:    162K
- * Total Submissions: 445.3K
- * Testcase Example:  '"aba"'
+ * Medium (26.44%)
+ * Total Accepted:    211K
+ * Total Submissions: 792.6K
+ * Testcase Example:  '[["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]'
  *
- *
- * Given a non-empty string s, you may delete at most one character.  Judge
- * whether you can make it a palindrome.
- *
- *
- * Example 1:
- *
- * Input: "aba"
- * Output: True
- *
- *
- *
- * Example 2:
- *
- * Input: "abca"
- * Output: True
- * Explanation: You could delete the character 'c'.
- *
- *
- *
- * Note:
- *
- * The string will only contain lowercase characters a-z.
- * The maximum length of the string is 50000.
- *
- *
+ * Given a 2D board containing 'X' and 'O' (the letter O), capture all regions
+ * surrounded by 'X'.
+ * 
+ * A region is captured by flipping all 'O's into 'X's in that surrounded
+ * region.
+ * 
+ * Example:
+ * 
+ * 
+ * X X X X
+ * X O O X
+ * X X O X
+ * X O X X
+ * 
+ * 
+ * After running your function, the board should be:
+ * 
+ * 
+ * X X X X
+ * X X X X
+ * X X X X
+ * X O X X
+ * 
+ * 
+ * Explanation:
+ * 
+ * Surrounded regions shouldn’t be on the border, which means that any 'O' on
+ * the border of the board are not flipped to 'X'. Any 'O' that is not on the
+ * border and it is not connected to an 'O' on the border will be flipped to
+ * 'X'. Two cells are connected if they are adjacent cells connected
+ * horizontally or vertically.
+ * 
  */
 impl Solution {
-    fn is_palindrome(s: String) -> bool {
-        let cs: Vec<char> = s.chars().collect();
-        for i in 0..s.len() / 2 {
-            if cs[i] != cs[s.len() - i - 1] {
-                return false;
-            }
-        }
-        true
-    }
-    pub fn valid_palindrome(s: String) -> bool {
-        if Self::is_palindrome(s.to_string()) {
-            return true;
-        }
-        let n = s.len();
-        let cs: Vec<char> = s.chars().collect();
-
-        for i in 0..n / 2 {
-            if cs[i] != cs[n - i - 1] {
-                return Self::is_palindrome(s[i..n - i - 1].to_string())
-                    || Self::is_palindrome(s[i + 1..n - i].to_string());
-            }
-        }
-        false
+    pub fn solve(board: &mut Vec<Vec<char>>) {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -87,7 +70,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -99,6 +82,15 @@ impl Helper {
             .iter()
             .map(|c| c.to_string())
             .collect::<Vec<String>>()
+    }
+    pub fn is_palindrome(s: String) -> bool {
+        let cs: Vec<char> = s.chars().collect();
+        for i in 0..s.len() / 2 {
+            if cs[i] != cs[s.len() - i - 1] {
+                return false;
+            }
+        }
+        true
     }
 }
 
@@ -170,9 +162,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -251,31 +241,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
