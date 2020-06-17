@@ -28,9 +28,9 @@ cpp_file=$(ls -t *.cpp | head -n 1)
 # cat $js_file >> tmpjs
 # mv tmpjs $js_file
 
-# cat c.cpp > tmpcpp
-# cat $cpp_file >> tmpcpp
-# mv tmpcpp $cpp_file
+cat cpp/helper.cpp > tmpcpp
+cat $cpp_file >> tmpcpp
+mv tmpcpp $cpp_file
 
 # cat aux.py > tmppy
 # cat $python_file >> tmppy

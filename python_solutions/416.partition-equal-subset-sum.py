@@ -50,6 +50,18 @@
 # 
 #
 class Solution:
+	def canPartition_2(self, nums: List[int]) -> bool:
+        ''' Typical Kanpsack proble problem
+		Way faster than the following method
+        '''
+        sum_val = 0
+        bits = 1
+        for n in nums:
+            sum_val += n
+            bits |= bits << n
+        return sum_val % 2 == 0 and (bits >> (sum_val // 2)) & 1 == 1
+
+
     def canPartition(self, nums):
     	mus = sum(nums)
     	if mus % 2 == 1: return False
