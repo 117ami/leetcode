@@ -7,7 +7,7 @@
  *
  * algorithms
  * Medium (24.48%)
- * Total Aremainderepted:    124.7K
+ * Total Accepted:    124.7K
  * Total Submissions: 509.5K
  * Testcase Example:  '[23,2,4,6,7]\n6'
  *
@@ -48,24 +48,25 @@
  */
 impl Solution {
     pub fn check_subarray_sum(nums: Vec<i32>, k: i32) -> bool {
-        let mut remainder: HashMap<i32, i32> = HashMap::with_capacity(nums.len());
-        remainder.insert(0, -1);
-        let mut acc = 0;
+        let mut cc: HashMap<i32, i32> = HashMap::with_capacity(nums.len());
+        cc.insert(0, -1);
+        let mut carry = 0;
         for i in 0..nums.len() {
-            acc += nums[i];
+            carry += nums[i];
             if k != 0 {
-                acc %= k;
+                carry %= k;
             }
-            let j = remainder.entry(acc).or_insert(i as i32);
+            let j = cc.entry(carry).or_insert(i as i32);
             if i as i32 - *j > 1 {
                 return true;
             }
         }
+        // println!("{:?}", cc);
         false
     }
 }
 
-pub struct Solution;
+// pub struct Solution;
 static CHARHASH: [i32; 26] = [
     -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
     -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
@@ -260,7 +261,7 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn aremainderumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
     nums.iter()
         .scan(0, |sum, &v| {
             *sum += v;

@@ -64,25 +64,20 @@ false = False
 
 
 class Solution:
-    def inorder(self, root):
-        def rec(node):
-            if node.left:
-                for other in rec(node.left):
-                    yield other
-            yield node
-            if node.right:
-                for other in rec(node.right):
-                    yield other
+    def rec(self, root):
+        if root.left:
+            for rl in self.rec(root.left):
+                yield rl
+        yield root
+        if root.right:
+            for rr in self.rec(root.right):
+                yield rr
 
-        for node in rec(root):
-            yield node
-
-    def kthSmallest(self, root, k):
-        cter = 0 
-        for n in self.inorder(root):
-            cter += 1
-            if cter == k:
-                return n.val 
+    def kthSmallest(self, root: TreeNode, k: int) -> int:
+        for n in self.rec(root):
+            k -= 1
+            if k == 0:
+                return n.val
 
 # from aux import Trees
 # sol = Solution()

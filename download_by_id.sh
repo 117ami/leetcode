@@ -13,9 +13,9 @@ prepro() {
 prepro $@
 
 rust_file=$(ls -t *.rs | head -n 1)
-js_file=$(ls -t *.js | head -n 1)
+# js_file=$(ls -t *.js | head -n 1)
 python_file=$(ls -t *.py | head -n 1)
-ruby_file=$(ls -t *.rb | head -n 1)
+# ruby_file=$(ls -t *.rb | head -n 1)
 cpp_file=$(ls -t *.cpp | head -n 1)
 
 # echo -e "
