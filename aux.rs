@@ -29,6 +29,15 @@ impl Helper {
             .map(|c| c.to_string())
             .collect::<Vec<String>>()
     }
+    pub fn is_palindrome(s: String) -> bool {
+        let cs: Vec<char> = s.chars().collect();
+        for i in 0..s.len() / 2 {
+            if cs[i] != cs[s.len() - i - 1] {
+                return false;
+            }
+        }
+        true
+    }
 }
 
 // To get the type of a variable

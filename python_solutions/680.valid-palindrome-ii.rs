@@ -40,11 +40,13 @@
  */
 impl Solution {
     fn is_palindrome(s: String) -> bool {
+        let mut i = 0;
         let cs: Vec<char> = s.chars().collect();
-        for i in 0..s.len() / 2 {
+        while i < s.len() / 2 {
             if cs[i] != cs[s.len() - i - 1] {
                 return false;
             }
+            i += 1;
         }
         true
     }
@@ -65,7 +67,7 @@ impl Solution {
     }
 }
 
-pub struct Solution;
+// pub struct Solution;
 static CHARHASH: [i32; 26] = [
     -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
     -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
