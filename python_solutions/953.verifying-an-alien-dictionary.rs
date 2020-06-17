@@ -14,77 +14,76 @@
  * In an alien language, surprisingly they also use english lowercase letters,
  * but possibly in a different order. The order of the alphabet is some
  * permutation of lowercase letters.
- *
+ * 
  * Given a sequence of words written in the alien language, and the order of
  * the alphabet, return true if and only if the given words are sorted
  * lexicographicaly in this alien language.
- *
+ * 
  * Example 1:
- *
- *
+ * 
+ * 
  * Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
  * Output: true
  * Explanation: As 'h' comes before 'l' in this language, then the sequence is
  * sorted.
- *
- *
+ * 
+ * 
  * Example 2:
- *
- *
+ * 
+ * 
  * Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
  * Output: false
  * Explanation: As 'd' comes after 'l' in this language, then words[0] >
  * words[1], hence the sequence is unsorted.
- *
- *
+ * 
+ * 
  * Example 3:
- *
- *
+ * 
+ * 
  * Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
  * Output: false
  * Explanation: The first three characters "app" match, and the second string
  * is shorter (in size.) According to lexicographical rules "apple" > "app",
  * because 'l' > '∅', where '∅' is defined as the blank character which is less
  * than any other character (More info).
- *
- *
- *
+ * 
+ * 
+ * 
  * Constraints:
- *
- *
+ * 
+ * 
  * 1 <= words.length <= 100
  * 1 <= words[i].length <= 20
  * order.length == 26
  * All characters in words[i] and order are English lowercase letters.
- *
- *
+ * 
+ * 
  */
 impl Solution {
-    pub fn is_sort(s: String, t: String, cc: &HashMap<char, i32>) -> bool {
-        let cs: Vec<char> = s.chars().collect();
-        let ct: Vec<char> = t.chars().collect();
+    pub fn is_sort(s: String, t: String, cc: & HashMap<char, i32>) -> bool {
+        let cs:Vec<char> = s.chars().collect();
+        let ct:Vec<char> = t.chars().collect();
         for i in 0..s.len() {
-            if i == t.len() || cc[&ct[i]] < cc[&cs[i]] { return false; }
-            if cc[&cs[i]] < cc[&ct[i]] { return true; }
+            if i == t.len() || cc[&ct[i]] < cc[&cs[i]] { return false }
+            if cc[&cs[i]] < cc[&ct[i]] { return true }
         }
-        true
+        true 
     }
     pub fn is_alien_sorted(words: Vec<String>, order: String) -> bool {
-        let cc: HashMap<char, i32> = order.chars().enumerate().map(|(i, c)| (c, i as i32)).collect();
-        for i in 0..words.len() - 1 {
-            if !Self::is_sort(words[i].to_string(), words[i + 1].to_string(), &cc) {
-                return false;
+        let cc:HashMap<char, i32> = order.chars().enumerate().map(|(i, c)| (c, i as i32)).collect();
+        for i in 0..words.len()-1 {
+            if ! Self::is_sort(words[i].to_string(), words[i+1].to_string(), & cc) {
+                return false 
             }
         }
         true
+
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+// pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -102,7 +101,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -194,9 +193,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -275,31 +272,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+

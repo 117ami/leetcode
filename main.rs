@@ -4,7 +4,8 @@ mod question;
 // let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
 
 fn main(){
-	let a = vec![23,2,4,6,7];
-	println!("{:?}", question::Solution::check_subarray_sum(a, 6));
+	let ws = vec!["word".to_string(), "world".into(), "row".into()];
+	let o = "worldabcefghijkmnpqstuvxyz".to_string();
+	println!("{:?}", question::Solution::is_alien_sorted(ws, o));
 }
 
