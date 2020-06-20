@@ -40,6 +40,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.53 | [maximum-subarray](https://leetcode.com/problems/maximum-subarray/description/) | [Python](./python_solutions/53.maximum-subarray.py)/[C++](./python_solutions/53.maximum-subarray.cpp) |
 |𝐌.55 | [jump-game](https://leetcode.com/problems/jump-game/description/) | [Python](./python_solutions/55.jump-game.py)/[Ruby](./python_solutions/55.jump-game.rb) /[Rust](./python_solutions/55.jump-game.rs) |
 |𝐌.56 | [merge-intervals](https://leetcode.com/problems/merge-intervals/description/) | [Python](./python_solutions/56.merge-intervals.py)/[Ruby](./python_solutions/56.merge-intervals.rb) /[Javascript](./python_solutions/56.merge-intervals.js) /[C++](./python_solutions/56.merge-intervals.cpp) |
+|𝐌.60 | [permutation-sequence](https://leetcode.com/problems/permutation-sequence/description/) | [Python](./python_solutions/60.permutation-sequence.py)|
 |𝐌.64 | [minimum-path-sum](https://leetcode.com/problems/minimum-path-sum/description/) | [Python](./python_solutions/64.minimum-path-sum.py)/[Rust](./python_solutions/64.minimum-path-sum.rs) |
 |𝐄.66 | [plus-one](https://leetcode.com/problems/plus-one/description/) | [Python](./python_solutions/66.plus-one.py)/[C++](./python_solutions/66.plus-one.cpp) /[Rust](./python_solutions/66.plus-one.rs) |
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb) |

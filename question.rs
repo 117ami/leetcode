@@ -1,50 +1,56 @@
 /*
- * @lc app=leetcode id=1044 lang=rust
+ * @lc app=leetcode id=60 lang=rust
  *
- * [1044] Longest Duplicate Substring
+ * [60] Permutation Sequence
  *
- * https://leetcode.com/problems/longest-duplicate-substring/description/
+ * https://leetcode.com/problems/permutation-sequence/description/
  *
  * algorithms
- * Hard (25.86%)
- * Total Accepted:    10.4K
- * Total Submissions: 39K
- * Testcase Example:  '"banana"'
+ * Medium (36.08%)
+ * Total Accepted:    180.2K
+ * Total Submissions: 494.4K
+ * Testcase Example:  '3\n3'
  *
- * Given a string S, consider all duplicated substrings: (contiguous)
- * substrings of S that occur 2 or more times.  (The occurrences may overlap.)
+ * The set [1,2,3,...,n] contains a total of n! unique permutations.
  * 
- * Return any duplicated substring that has the longest possible length.  (If S
- * does not have a duplicated substring, the answer is "".)
+ * By listing and labeling all of the permutations in order, we get the
+ * following sequence for n = 3:
  * 
+ * 
+ * "123"
+ * "132"
+ * "213"
+ * "231"
+ * "312"
+ * "321"
+ * 
+ * 
+ * Given n and k, return the k^th permutation sequence.
+ * 
+ * Note:
+ * 
+ * 
+ * Given n will be between 1 and 9 inclusive.
+ * Given k will be between 1 and n! inclusive.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: "banana"
- * Output: "ana"
+ * Input: n = 3, k = 3
+ * Output: "213"
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: "abcd"
- * Output: ""
- * 
- * 
- * 
- * 
- * Note:
- * 
- * 
- * 2 <= S.length <= 10^5
- * S consists of lowercase English letters.
+ * Input: n = 4, k = 9
+ * Output: "2314"
  * 
  * 
  */
 impl Solution {
-    pub fn longest_dup_substring(s: String) -> String {
+    pub fn get_permutation(n: i32, k: i32) -> String {
         
     }
 }

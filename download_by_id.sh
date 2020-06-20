@@ -1,13 +1,13 @@
 #!/bin/bash 
 
 prepro() {
-    op=$(leetcode show $1 -gx -l rust)	
+    op=$(proxychains4 leetcode show $1 -gx -l rust)	
     if [[ $op =~ "ERROR" ]]; then 
     	echo $op
 		echo "Refreshing cache may help resolving this problem [leetcode cache -d]."
 	fi 
-	leetcode show $1 -gx -l python3
-	leetcode show $1 -gx -l cpp
+	proxychains4 leetcode show $1 -gx -l python3
+	proxychains4 leetcode show $1 -gx -l cpp
 }
 
 prepro $@
