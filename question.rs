@@ -1,68 +1,57 @@
 /*
- * @lc app=leetcode id=274 lang=rust
+ * @lc app=leetcode id=1044 lang=rust
  *
- * [274] H-Index
+ * [1044] Longest Duplicate Substring
  *
- * https://leetcode.com/problems/h-index/description/
+ * https://leetcode.com/problems/longest-duplicate-substring/description/
  *
  * algorithms
- * Medium (35.43%)
- * Total Accepted:    151.9K
- * Total Submissions: 425.3K
- * Testcase Example:  '[3,0,6,1,5]'
+ * Hard (25.86%)
+ * Total Accepted:    10.4K
+ * Total Submissions: 39K
+ * Testcase Example:  '"banana"'
  *
- * Given an array of citations (each citation is a non-negative integer) of a
- * researcher, write a function to compute the researcher's h-index.
- *
- * According to the definition of h-index on Wikipedia: "A scientist has index
- * h if h of his/her N papers have at least h citations each, and the other N −
- * h papers have no more than h citations each."
- *
- * Example:
- *
- *
- * Input: citations = [3,0,6,1,5]
- * Output: 3
- * Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each
- * of them had
- * ⁠            received 3, 0, 6, 1, 5 citations respectively.
- * Since the researcher has 3 papers with at least 3 citations each and the
- * remaining
- * two with no more than 3 citations each, her h-index is 3.
- *
- * Note: If there are several possible values for h, the maximum one is taken
- * as the h-index.
- *
+ * Given a string S, consider all duplicated substrings: (contiguous)
+ * substrings of S that occur 2 or more times.  (The occurrences may overlap.)
+ * 
+ * Return any duplicated substring that has the longest possible length.  (If S
+ * does not have a duplicated substring, the answer is "".)
+ * 
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: "banana"
+ * Output: "ana"
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: "abcd"
+ * Output: ""
+ * 
+ * 
+ * 
+ * 
+ * Note:
+ * 
+ * 
+ * 2 <= S.length <= 10^5
+ * S consists of lowercase English letters.
+ * 
+ * 
  */
 impl Solution {
-    pub fn h_index(ref mut cs: Vec<i32>) -> i32 {
-        cs.sort_unstable();
-        let n = cs.len();
-        if n == 0 {
-            return 0;
-        }
-        let mut l = 0;
-        let mut r = n as i32 - 1;
-        let mut m = 0;
-        while l <= r {
-            m = ((r - l) / 2 + l) as usize;
-            if cs[m] == (n - m) as i32 {
-                return cs[m];
-            } else if cs[m] > (n - m) as i32 {
-                r = m as i32 - 1
-            } else {
-                l = m as i32 + 1
-            }
-        }
-        n as i32 - r - 1
+    pub fn longest_dup_substring(s: String) -> String {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -80,7 +69,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -172,9 +161,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -253,31 +240,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
