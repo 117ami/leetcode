@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1486.xor-operation-in-an-array.cpp"
+#include "1487.making-file-names-unique.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
