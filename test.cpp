@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "60.permutation-sequence.cpp"
+#include "1486.xor-operation-in-an-array.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;

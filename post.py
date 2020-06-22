@@ -18,6 +18,6 @@ if sys.argv[-1].endswith('rs'):
     with open(sys.argv[-1], 'w') as wh:
         wh.write(f)
 
-os.system('/usr/local/bin/proxychains4 leetcode submit {}'.format(sys.argv[-1]))
+os.system('/usr/local/bin/proxychains4 -q leetcode submit {}'.format(sys.argv[-1]))
 
 
