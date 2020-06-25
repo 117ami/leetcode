@@ -1,60 +1,60 @@
 /*
- * @lc app=leetcode id=96 lang=rust
+ * @lc app=leetcode id=839 lang=rust
  *
- * [96] Unique Binary Search Trees
+ * [839] Similar String Groups
  *
- * https://leetcode.com/problems/unique-binary-search-trees/description/
+ * https://leetcode.com/problems/similar-string-groups/description/
  *
  * algorithms
- * Medium (51.06%)
- * Total Accepted:    278.6K
- * Total Submissions: 544K
- * Testcase Example:  '3'
+ * Hard (38.35%)
+ * Total Accepted:    22.9K
+ * Total Submissions: 59.6K
+ * Testcase Example:  '["tars","rats","arts","star"]'
  *
- * Given n, how many structurally unique BST's (binary search trees) that store
- * values 1 ... n?
- *
- * Example:
- *
- *
- * Input: 3
- * Output: 5
- * Explanation:
- * Given n = 3, there are a total of 5 unique BST's:
- *
- * ⁠  1         3     3      2      1
- * ⁠   \       /     /      / \      \
- * ⁠    3     2     1      1   3      2
- * ⁠   /     /       \                 \
- * ⁠  2     1         2                 3
- *
- *
+ * Two strings X and Y are similar if we can swap two letters (in different
+ * positions) of X, so that it equals Y. Also two strings X and Y are similar
+ * if they are equal.
+ * 
+ * For example, "tars" and "rats" are similar (swapping at positions 0 and 2),
+ * and "rats" and "arts" are similar, but "star" is not similar to "tars",
+ * "rats", or "arts".
+ * 
+ * Together, these form two connected groups by similarity: {"tars", "rats",
+ * "arts"} and {"star"}.  Notice that "tars" and "arts" are in the same group
+ * even though they are not similar.  Formally, each group is such that a word
+ * is in the group if and only if it is similar to at least one other word in
+ * the group.
+ * 
+ * We are given a list A of strings.  Every string in A is an anagram of every
+ * other string in A.  How many groups are there?
+ * 
+ * 
+ * Example 1:
+ * Input: A = ["tars","rats","arts","star"]
+ * Output: 2
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= A.length <= 2000
+ * 1 <= A[i].length <= 1000
+ * A.length * A[i].length <= 20000
+ * All words in A consist of lowercase letters only.
+ * All words in A have the same length and are anagrams of each other.
+ * The judging time limit has been increased for this question.
+ * 
+ * 
  */
-
 impl Solution {
-    pub fn num_trees(n: i32) -> i32 {
-        let mut cc: HashMap<i32, i32> = [(0, 1), (1, 1), (2, 2), (3, 5)].iter().cloned().collect();
-        if cc.contains_key(&n) {
-            return cc[&n];
-        }
-
-        for i in 2..n + 1 {
-            let mut ans = 0;
-            for j in 1..i + 1 {
-                ans += cc[&(j - 1)] * cc[&(i - j)];
-            }
-            cc.insert(i, ans);
-        }
-
-        cc[&n]
+    pub fn num_similar_groups(a: Vec<String>) -> i32 {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -72,7 +72,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -164,9 +164,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -245,31 +243,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+

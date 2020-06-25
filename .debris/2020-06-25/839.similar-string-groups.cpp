@@ -1,3 +1,4 @@
+// C libraries
 #include <cassert>
 #include <cctype>
 #include <climits>
@@ -88,11 +89,11 @@ static auto __speedup__ = []() {
 // ==================================================
 
 // some macro for less typing
-#define qfor(i, n) for (int i = 0; i < n; i++)            //[0, n)
-#define qforr(i, n) for (int i = n - 1; i >= 0; --i)      // reverse [0, n)
-#define qforup(i, a, b) for (int i = a; i < b; ++i)        // [a, b)
-#define qfordown(i, a, b) for (int i = b - 1; i >= a; --i) // reverse [a, b)
-#define qunfold(i, arr) for (auto &i : arr)
+#define forloop(i, n) for (int i = 0; i < n; i++)             //[0, n)
+#define forloopr(i, n) for (int i = n - 1; i >= 0; --i)       // reverse [0, n)
+#define forloopup(i, a, b) for (int i = a; i < b; ++i)        // [a, b)
+#define forloopdown(i, a, b) for (int i = b - 1; i >= a; --i) // reverse [a, b)
+#define forunfold(i, arr) for (auto &i : arr)
 
 #define INF 0x3f3f3f3f
 #define MAX(a, b) a = max(a, b)
@@ -111,10 +112,10 @@ static auto __speedup__ = []() {
 #define rqsort(v) sort(v.rbegin(), v.rend())
 #define qreverse(v) reverse(v.begin(), v.end())
 
-// int to string 
+// int to string
 string itos(int n) { return to_string(n); }
-// char to string 
-string ctos(char c){ return string(1, c); };
+// char to string
+string ctos(char c) { return string(1, c); };
 
 inline string upper(string s) {
   string t(s);
@@ -130,6 +131,7 @@ inline string lower(string s) {
 int direction[8][2] = {{-1, 0},  {1, 0},  {0, -1}, {0, 1},
                        {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
+vector<int> dirs = {-1, 0, 1, 0, -1};
 // ==================================================
 // ** math function **
 
@@ -206,7 +208,7 @@ bool is_sub(string s, string t) {
   return (i == s.size());
 }
 
-bool isPalindrome(string str) {
+bool is_palindrome(string str) {
   int i = 0, j = str.size() - 1;
   while (i < j)
     if (str[i++] != str[j--])
@@ -239,8 +241,8 @@ template <class T> T qsum(const vector<T> &ns) {
 // Get sum of interval [i, j)
 template <class T> T partsum(const vector<T> &ns, int i, int j) {
   T r = 0;
-  for (size_t o = i; o < j ; o ++)
-    r += ns[o]; 
+  for (size_t o = i; o < j; o++)
+    r += ns[o];
   return r;
 }
 
@@ -257,18 +259,20 @@ unsigned long long product(vector<int> &a) {
   return res;
 }
 
-int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
-int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+int vecmax(vector<int> &arr) { return *max_element(arr.begin(), arr.end()); }
+int vecmin(vector<int> &arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
-  for (auto &x : a) ++c[x];
+  for (auto &x : a)
+    ++c[x];
   return c;
 }
 
 unordered_map<char, int> counter(string &a) {
   unordered_map<char, int> c = {};
-  for (auto &x : a) ++c[x];
+  for (auto &x : a)
+    ++c[x];
   return c;
 }
 
@@ -301,7 +305,6 @@ template <class K, class V> bool exist(unordered_map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
 
-
 template <class K, class V> bool exist(map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
@@ -313,8 +316,6 @@ template <class K> bool exist(unordered_set<K> &m, K key) {
 template <class K> bool exist(set<K> &m, K key) {
   return m.find(key) != m.end();
 }
-
-
 
 string lcs(string s, string t) {
   int m = s.size(), n = t.size(), L[m + 1][n + 1];
@@ -447,7 +448,7 @@ template <typename T1, typename T2> void printMap(map<T1, T2> &m) {
 }
 // ==================================================
 
-// #ifdef DEBUG
+#ifdef DEBUG
 struct TreeNode {
   int val;
   TreeNode *left;
@@ -467,7 +468,7 @@ public:
     children = _children;
   }
 };
-// #endif
+#endif
 
 TreeNode *growTreeFromList(vector<int> &arr) {
   if (arr.empty())
@@ -494,26 +495,29 @@ TreeNode *growTreeFromList(vector<int> &arr) {
   return root;
 }
 
-// return level's order travesal of tree.. 
+// return level's order travesal of tree..
 // e.g., [3,9,20,null,null,15,7] to [[3], [9, 20], [15, 7]]
 vector<vector<int>> treeToList(TreeNode *root) {
-    vector<vector<int>> tower;
-    queue<pair<TreeNode *, int>> jobs;
-    jobs.push(mp(root, 0));
-    
-    while (!jobs.empty()) {
-      pair<TreeNode *, int> j = jobs.front();
-      jobs.pop();
-      
-      if (j.first == nullptr) continue;
-      if (tower.size() <= j.second) tower.pb(vi{j.first->val});
-      else tower[j.second].pb(j.first->val);
+  vector<vector<int>> tower;
+  queue<pair<TreeNode *, int>> jobs;
+  jobs.push(mp(root, 0));
 
-      jobs.push(mp(j.first->left, j.second + 1));
-      jobs.push(mp(j.first->right, j.second + 1));
-    }
-    return tower;
+  while (!jobs.empty()) {
+    pair<TreeNode *, int> j = jobs.front();
+    jobs.pop();
+
+    if (j.first == nullptr)
+      continue;
+    if (tower.size() <= j.second)
+      tower.pb(vi{j.first->val});
+    else
+      tower[j.second].pb(j.first->val);
+
+    jobs.push(mp(j.first->left, j.second + 1));
+    jobs.push(mp(j.first->right, j.second + 1));
   }
+  return tower;
+}
 
 // Get the depth of Tree
 int getTreeDepth(TreeNode *root) {
@@ -522,33 +526,34 @@ int getTreeDepth(TreeNode *root) {
   return 1 + max(getTreeDepth(root->left), getTreeDepth(root->right));
 }
 
-int bisect_left(vector<int>& arr, int target) {
-  int lo = 0, hi = arr.size() - 1, mid ; 
+int bisect_left(vector<int> &arr, int target) {
+  int lo = 0, hi = arr.size() - 1, mid;
   while (lo < hi) {
-      mid = (lo + hi) / 2; 
-      if (arr[mid] >= target) hi = mid; 
-      else lo = mid + 1 ; 
+    mid = (lo + hi) / 2;
+    if (arr[mid] >= target)
+      hi = mid;
+    else
+      lo = mid + 1;
   }
   return lo;
 }
 
 // Find the index of the first number in sorted nums, that is larger than target
 int bisect_right(vector<int> &nums, int target) {
-  int l = 0, r = nums.size() - 1, m = 0;
-  while (l <= r){
-    m = l + (r - l) / 2;
-    if (nums[m] == target)
-      return m;
-    else if (nums[m] > target)
-      r = m - 1;
+  int i = 0, j = nums.size() - 1, mid = 0;
+  while (i < j) {
+    mid = ceil((i + j) * 1.0 / 2);
+    if (nums[mid] > target)
+      j = mid - 1;
     else
-      l = m + 1;
+      i = mid;
   }
-  return l;
+  return nums[j] > target ? j : j + 1;
 }
 
-
-bool is_substring(string str1, string str2) { return str1.find(str2) != string::npos; }
+bool is_substring(string str1, string str2) {
+  return str1.find(str2) != string::npos;
+}
 
 // lowest common ancestor of two nodes(values are distinct)
 TreeNode *lca(TreeNode *r, int pv, int qv) {
@@ -686,6 +691,15 @@ vector<int> addTwoVector(vector<int> &a, vector<int> &b) {
 
 int last(vector<int> &v) { return v[v.size() - 1]; }
 
+int find(int x, vector<int> &p) {
+  if (x != p[x])
+    p[x] = find(p[x], p);
+  return p[x];
+}
+
+// Do not use union, since it's a keyword of CPP
+void merge(int x, int y, vector<int> &p) { p[find(x, p)] = find(y, p); }
+
 // print all combination of size r in an array of size n
 // void combinationUtil(vector<int> &arr, int r, int index, int data[], int i);
 
@@ -707,50 +721,58 @@ void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
   }
 }
 
-
 // Get prefix sum of matrix such that res[i][j] = sum(matrix[0..i-1][0..j-1])
 // for i >= 1, j >= 1
-vector<vector<int>> getPrefixSum(vvi & mat){
-  int m = mat.size(), n = mat[0].size(); 
-  vector<vector<int>> res(m+1, vector<int>(n+1, 0)); 
+vector<vector<int>> getPrefixSum(vvi &mat) {
+  int m = mat.size(), n = mat[0].size();
+  vector<vector<int>> res(m + 1, vector<int>(n + 1, 0));
   for (size_t i = 1; i <= m; ++i)
     for (size_t j = 1; j <= n; ++j)
-      res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
-    return res; 
+      res[i][j] =
+          res[i - 1][j] + res[i][j - 1] - res[i - 1][j - 1] + mat[i - 1][j - 1];
+  return res;
 }
 
 // Converting string [[1,2], [3, 4]] to vector(of vector) {{1, 2}, {3, 4}}
-vector<vector<int>> extractMatrixFromString(string s){
-	vector<vector<int>> res; 
-	int carry = INT_MIN;
-	for (size_t i = 1; i < s.size() - 1; ++i) {
-		if (s[i] == '[') res.push_back(vector<int>{});
-		while (isdigit(s[i])) carry = max(carry, 0) * 10 + (s[i++] - '0');
-		if (carry > INT_MIN) res.back().push_back(carry); 
-		carry = INT_MIN;  
-	}
-	return res; 
+vector<vector<int>> extractMatrixFromString(string s) {
+  vector<vector<int>> res;
+  int carry = INT_MIN;
+  for (size_t i = 1; i < s.size() - 1; ++i) {
+    if (s[i] == '[')
+      res.push_back(vector<int>{});
+    while (isdigit(s[i]))
+      carry = max(carry, 0) * 10 + (s[i++] - '0');
+    if (carry > INT_MIN)
+      res.back().push_back(carry);
+    carry = INT_MIN;
+  }
+  return res;
 }
 
-// Split a string s by delimiter, into a vector of string 
-vector<string> split(string s, string delimiter){
-	size_t pos = 0;
-	vector<string> res ; 
-	std::string token;
-	while ((pos = s.find(delimiter)) != std::string::npos) {
-		token = s.substr(0, pos);
-		res.push_back(token);
-		s.erase(0, pos + delimiter.length());
-	}
-	res.push_back(s);
-	return res; 
+// Split a string s by delimiter, into a vector of string
+vector<string> split(string s, string delimiter) {
+  size_t pos = 0;
+  vector<string> res;
+  std::string token;
+  while ((pos = s.find(delimiter)) != std::string::npos) {
+    token = s.substr(0, pos);
+    res.push_back(token);
+    s.erase(0, pos + delimiter.length());
+  }
+  res.push_back(s);
+  return res;
 }
 
-// Explanation https://stackoverflow.com/questions/54267589/difference-between-two-dates-using-math
+// Explanation
+// https://stackoverflow.com/questions/54267589/difference-between-two-dates-using-math
 int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
-      if (month < 3) year--, month += 12;
-      // The algorithm shifts February to the end of the year. (153 * m - 457)/5 computes the number of preceding days of the shifted month. There are 306 days between March 1 of the year zero and December 31.
-      return 365*year + year/4 - year/100 + year/400 + (153*month - 457)/5 + day - 306;
+  if (month < 3)
+    year--, month += 12;
+  // The algorithm shifts February to the end of the year. (153 * m - 457)/5
+  // computes the number of preceding days of the shifted month. There are 306
+  // days between March 1 of the year zero and December 31.
+  return 365 * year + year / 4 - year / 100 + year / 400 +
+         (153 * month - 457) / 5 + day - 306;
 }
 
 TreeNode *sortedArrayToBST(vector<int> &arr, int i, int j) {
@@ -775,7 +797,7 @@ vector<int> unfoldTree(TreeNode *r) {
     q.pop();
     if (cur == nullptr)
       continue;
-    
+
     arr.push_back(cur->val);
     q.push(cur->left);
     q.push(cur->right);
@@ -783,35 +805,65 @@ vector<int> unfoldTree(TreeNode *r) {
   return arr;
 }
 
-
-class UF {
+bool border_check(int i, int left, int right) {
+  // checking whether is is between [left, right], inclusive on both sides.
+  return i <= right && i >= left;
+}
+/*
+ * @lc app=leetcode id=839 lang=cpp
+ *
+ * [839] Similar String Groups
+ *
+ * https://leetcode.com/problems/similar-string-groups/description/
+ *
+ * algorithms
+ * Hard (38.35%)
+ * Total Accepted:    22.9K
+ * Total Submissions: 59.6K
+ * Testcase Example:  '["tars","rats","arts","star"]'
+ *
+ * Two strings X and Y are similar if we can swap two letters (in different
+ * positions) of X, so that it equals Y. Also two strings X and Y are similar
+ * if they are equal.
+ * 
+ * For example, "tars" and "rats" are similar (swapping at positions 0 and 2),
+ * and "rats" and "arts" are similar, but "star" is not similar to "tars",
+ * "rats", or "arts".
+ * 
+ * Together, these form two connected groups by similarity: {"tars", "rats",
+ * "arts"} and {"star"}.  Notice that "tars" and "arts" are in the same group
+ * even though they are not similar.  Formally, each group is such that a word
+ * is in the group if and only if it is similar to at least one other word in
+ * the group.
+ * 
+ * We are given a list A of strings.  Every string in A is an anagram of every
+ * other string in A.  How many groups are there?
+ * 
+ * 
+ * Example 1:
+ * Input: A = ["tars","rats","arts","star"]
+ * Output: 2
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= A.length <= 2000
+ * 1 <= A[i].length <= 1000
+ * A.length * A[i].length <= 20000
+ * All words in A consist of lowercase letters only.
+ * All words in A have the same length and are anagrams of each other.
+ * The judging time limit has been increased for this question.
+ * 
+ * 
+ */
+class Solution {
 public:
-  vector<int> parent;
-  vector<int> rank;
-  UF(int n) : parent(n), rank(n, 0) {
-    for (int i = 0; i < n; ++i) {
-      parent[i] = i;
+    int numSimilarGroups(vector<string>& A) {
+        
     }
-  }
-
-  int find(int x) {
-    if (x != parent[x]) {
-      parent[x] = find(parent[x]);
-    }
-    return parent[x];
-  }
-
-  void unite(int x, int y) {
-    // merge node x and y
-    int fx = find(x);
-    int fy = find(y);
-    if (rank[fx] > rank[fy]) {
-      parent[fy] = fx;
-    } else if (rank[fx] == rank[fy]) {
-      rank[fy] += 1;
-      parent[fx] = fy;
-    } else {
-      parent[fx] = fy;
-    }
-  }
 };
+
+
+
+static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();

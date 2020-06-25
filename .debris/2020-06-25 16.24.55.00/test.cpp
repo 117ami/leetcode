@@ -5,16 +5,6 @@
 int main(int argc, char const *argv[]) {
 	Solution s;
 	vs a ={"tars","rats","arts","star"}	;
-	a={"ajdidocuyh",
-    "djdyaohuic",
-    "ddjyhuicoa",
-    "djdhaoyuic",
-    "ddjoiuycha",
-    "ddhoiuycja",
-    "ajdydocuih",
-    "ddjiouycha",
-    "ajdydohuic",
-    "ddjyouicha"};
 	say(s.numSimilarGroups(a));
 	return 0;
 }
