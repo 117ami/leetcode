@@ -1,21 +1,10 @@
 
 #include "aux.cpp"
-#include "839.similar-string-groups.cpp"
+#include "790.domino-and-tromino-tiling.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vs a ={"tars","rats","arts","star"}	;
-	a={"ajdidocuyh",
-    "djdyaohuic",
-    "ddjyhuicoa",
-    "djdhaoyuic",
-    "ddjoiuycha",
-    "ddhoiuycja",
-    "ajdydocuih",
-    "ddjiouycha",
-    "ajdydohuic",
-    "ddjyouicha"};
-	say(s.numSimilarGroups(a));
+	say(s.numTilings(50));
 	return 0;
 }
 
