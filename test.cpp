@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "279.perfect-squares.cpp"
+#include "1491.average-salary-excluding-the-minimum-and-maximum-salary.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.numSquares(18));
-	say(s.numSquares(3));
+	vi sa = {1, 2, 3, 4};
+	say(s.average(sa));
 	return 0;
 }
 
