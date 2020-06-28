@@ -1,79 +1,61 @@
 /*
- * @lc app=leetcode id=1496 lang=rust
+ * @lc app=leetcode id=332 lang=rust
  *
- * [1496] Path Crossing
+ * [332] Reconstruct Itinerary
  *
- * https://leetcode.com/problems/path-crossing/description/
+ * https://leetcode.com/problems/reconstruct-itinerary/description/
  *
  * algorithms
- * Easy (52.68%)
- * Total Accepted:    5.3K
- * Total Submissions: 10K
- * Testcase Example:  '"NES"'
+ * Medium (35.08%)
+ * Total Accepted:    139.3K
+ * Total Submissions: 396.5K
+ * Testcase Example:  '[["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]'
  *
- * Given a string path, where path[i] = 'N', 'S', 'E' or 'W', each representing
- * moving one unit north, south, east, or west, respectively. You start at the
- * origin (0, 0) on a 2D plane and walk on the path specified by path.
- *
- * Return True if the path crosses itself at any point, that is, if at any time
- * you are on a location you've previously visited. Return False otherwise.
- *
- *
+ * Given a list of airline tickets represented by pairs of departure and
+ * arrival airports [from, to], reconstruct the itinerary in order. All of the
+ * tickets belong to a man who departs from JFK. Thus, the itinerary must begin
+ * with JFK.
+ * 
+ * Note:
+ * 
+ * 
+ * If there are multiple valid itineraries, you should return the itinerary
+ * that has the smallest lexical order when read as a single string. For
+ * example, the itinerary ["JFK", "LGA"] has a smaller lexical order than
+ * ["JFK", "LGB"].
+ * All airports are represented by three capital letters (IATA code).
+ * You may assume all tickets form at least one valid itinerary.
+ * One must use all the tickets once and only once.
+ * 
+ * 
  * Example 1:
- *
- *
- *
- *
- * Input: path = "NES"
- * Output: false
- * Explanation: Notice that the path doesn't cross any point more than once.
- *
- *
+ * 
+ * 
+ * Input: [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
+ * Output: ["JFK", "MUC", "LHR", "SFO", "SJC"]
+ * 
+ * 
  * Example 2:
- *
- *
- *
- *
- * Input: path = "NESWW"
- * Output: true
- * Explanation: Notice that the path visits the origin twice.
- *
- *
- * Constraints:
- *
- *
- * 1 <= path.length <= 10^4
- * path will only consist of characters in {'N', 'S', 'E', 'W}
- *
- *
+ * 
+ * 
+ * Input:
+ * [["JFK","SFO"],["JFK","ATL"],["SFO","ATL"],["ATL","JFK"],["ATL","SFO"]]
+ * Output: ["JFK","ATL","JFK","SFO","ATL","SFO"]
+ * Explanation: Another possible reconstruction is
+ * ["JFK","SFO","ATL","JFK","ATL","SFO"].
+ * But it is larger in lexical order.
+ * 
+ * 
  */
 impl Solution {
-    pub fn is_path_crossing(path: String) -> bool {
-        let mut cc: HashSet<(i32, i32)> = HashSet::new();
-        let mut x = 0;
-        let mut y = 0;
-        cc.insert((x, y));
-        for c in path.chars() {
-            match c  {
-                'E' => x += 1,
-                'W' => x -= 1,
-                'N' => y += 1,
-                _ => y -= 1,
-            }
-            if cc.contains(&(x, y)) {
-                return true;
-            }
-            cc.insert((x, y));
-        }
-        false
+    pub fn find_itinerary(tickets: Vec<Vec<String>>) -> Vec<String> {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -91,7 +73,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -183,9 +165,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -264,31 +244,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
