@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "790.domino-and-tromino-tiling.cpp"
+#include "279.perfect-squares.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.numTilings(50));
+	say(s.numSquares(18));
+	say(s.numSquares(3));
 	return 0;
 }
 
