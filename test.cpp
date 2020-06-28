@@ -1,11 +1,9 @@
 
 #include "aux.cpp"
-#include "332.reconstruct-itinerary.cpp"
+#include "1493.longest-subarray-of-1s-after-deleting-one-element.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vvs xx = {{"JFK", "A"}};
-	say(s.findItinerary(xx));
 	return 0;
 }
 

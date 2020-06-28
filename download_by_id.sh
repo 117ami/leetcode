@@ -27,15 +27,7 @@ cpp_file=$(ls -t *.cpp | head -n 1)
 # cat aux.js > tmpjs
 # cat $js_file >> tmpjs
 # mv tmpjs $js_file
-
-cat cpp/helper.cpp > tmpcpp
-cat $cpp_file >> tmpcpp
-mv tmpcpp $cpp_file
-
-# cat aux.py > tmppy
-# cat $python_file >> tmppy
-# mv tmppy $python_file
-
+# ================================================================= Python soluton file
 echo -e "
 sol = Solution()\n\n" | tee -a $python_file
 
@@ -51,7 +43,11 @@ true = True\
 false = False\
 MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f' $python_file
 
+proxychains4 leetcode show $1 > tmp.file 
+python3 scripts/add_inputs_to_solution_file.py $python_file >> $python_file
+rm tmp.file 
 
+# ================================================================= Rust soluton file
 cp $rust_file question.rs 
 echo -e "\n\npub struct Solution; " >> question.rs 
 cat aux.rs >> question.rs 
@@ -68,7 +64,11 @@ fn main(){
 " > main.rs 
 
 
-# For cpp file
+# ================================================================= C++ soluton file
+cat cpp/helper.cpp > tmpcpp
+cat $cpp_file >> tmpcpp
+mv tmpcpp $cpp_file
+
 echo -e "\n\n
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
 
