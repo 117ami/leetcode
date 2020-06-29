@@ -16,10 +16,13 @@ formated_date = '/'.join([str(i) for i in [x.day, x.month, x.year]])
 def parse_problem(pro_file):
         # extract problem [link, difficulty, id]
     con = open(pro_file, 'r').read()
-    plink = re.search(r'(https://.*)', con, re.M | re.I).group(1)
-    diffi = re.search(r'# (Medium|Easy|Hard)', con, re.M | re.I).group(1)
+    plink = re.search(r'(https:.*)', con, re.M | re.I).group(1)
+    plink = plink.replace(' ', '') # There are cases such as https: // www...
+    diffi = re.search(r'#\s*(Medium|Easy|Hard)', con, re.M | re.I).group(1)
     pid = pro_file.replace('/', '.').split(".")[1]
     title = pro_file.replace('/', '.').split(".")[2]
+    # print([plink, diffi, pid, title])
+    # sys.exit(0)
     return [plink, diffi, pid, title]
 
 
@@ -31,6 +34,7 @@ def format_print():
     for fs in listfiles:
         # print(fs)
         for line in str(fs).split("\n"):
+            # print(line)
             arr = line.split()
             rm = re.match(r'\d+.*\.py', arr[-1])
             if rm is not None:
