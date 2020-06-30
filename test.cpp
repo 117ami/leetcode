@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "1497.check-if-array-pairs-are-divisible-by-k.cpp"
+#include "1499.max-value-of-equation.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi ns = {-1,1,-2,2,-3,3,-4,4};
-	int k = 3; 
-	say(s.canArrange(ns, k));
+	vvi ps = {{0, 0}, {3, 0}, {9, 2}}; 
+	say(s.findMaxValueOfEquation(ps, 3));
 	return 0;
 }
 
