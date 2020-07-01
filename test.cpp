@@ -1,11 +1,10 @@
 
 #include "aux.cpp"
-#include "1425.constrained-subsequence-sum.cpp"
+#include "441.arranging-coins.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi ns = {10,-2,-10,-5,20}; 
-	say(s.constrainedSubsetSum(ns, 2));
+	say(s.arrangeCoins(8));
 	return 0;
 }
 
