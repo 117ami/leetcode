@@ -1,85 +1,69 @@
 /*
- * @lc app=leetcode id=1499 lang=rust
+ * @lc app=leetcode id=1425 lang=rust
  *
- * [1499] Max Value of Equation
+ * [1425] Constrained Subsequence Sum
  *
- * https://leetcode.com/problems/max-value-of-equation/description/
+ * https://leetcode.com/problems/constrained-subsequence-sum/description/
  *
  * algorithms
- * Hard (31.72%)
- * Total Accepted:    1.7K
- * Total Submissions: 3.9K
- * Testcase Example:  '[[1,3],[2,0],[5,10],[6,-10]]\n1'
+ * Hard (43.60%)
+ * Total Accepted:    6.9K
+ * Total Submissions: 15.8K
+ * Testcase Example:  '[10,2,-10,5,20]\n2'
  *
- * Given an array points containing the coordinates of points on a 2D plane,
- * sorted by the x-values, where points[i] = [xi, yi] such that xi < xj for all
- * 1 <= i < j <= points.length. You are also given an integer k.
- *
- * Find the maximum value of the equation yi + yj + |xi - xj| where |xi - xj|
- * <= k and 1 <= i < j <= points.length. It is guaranteed that there exists at
- * least one pair of points that satisfy the constraint |xi - xj| <= k.
- *
- *
+ * Given an integer array nums and an integer k, return the maximum sum of a
+ * non-empty subsequence of that array such that for every two consecutive
+ * integers in the subsequence, nums[i] and nums[j], where i < j, the condition
+ * j - i <= k is satisfied.
+ * 
+ * A subsequence of an array is obtained by deleting some number of elements
+ * (can be zero) from the array, leaving the remaining elements in their
+ * original order.
+ * 
+ * 
  * Example 1:
- *
- *
- * Input: points = [[1,3],[2,0],[5,10],[6,-10]], k = 1
- * Output: 4
- * Explanation: The first two points satisfy the condition |xi - xj| <= 1 and
- * if we calculate the equation we get 3 + 0 + |1 - 2| = 4. Third and fourth
- * points also satisfy the condition and give a value of 10 + -10 + |5 - 6| =
- * 1.
- * No other pairs satisfy the condition, so we return the max of 4 and 1.
- *
+ * 
+ * 
+ * Input: nums = [10,2,-10,5,20], k = 2
+ * Output: 37
+ * Explanation: The subsequence is [10, 2, 5, 20].
+ * 
+ * 
  * Example 2:
- *
- *
- * Input: points = [[0,0],[3,0],[9,2]], k = 3
- * Output: 3
- * Explanation: Only the first two points have an absolute difference of 3 or
- * less in the x-values, and give the value of 0 + 0 + |0 - 3| = 3.
- *
- *
- *
+ * 
+ * 
+ * Input: nums = [-1,-2,-3], k = 1
+ * Output: -1
+ * Explanation: The subsequence must be non-empty, so we choose the largest
+ * number.
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: nums = [10,-2,-10,-5,20], k = 2
+ * Output: 23
+ * Explanation: The subsequence is [10, -2, -5, 20].
+ * 
+ * 
+ * 
  * Constraints:
- *
- *
- * 2 <= points.length <= 10^5
- * points[i].length == 2
- * -10^8 <= points[i][0], points[i][1] <= 10^8
- * 0 <= k <= 2 * 10^8
- * points[i][0] < points[j][0] for all 1 <= i < j <= points.length
- * xi form a strictly increasing sequence.
- *
- *
+ * 
+ * 
+ * 1 <= k <= nums.length <= 10^5
+ * -10^4 <= nums[i] <= 10^4
+ * 
+ * 
  */
 impl Solution {
-    pub fn find_max_value_of_equation(points: Vec<Vec<i32>>, k: i32) -> i32 {
-        let mut d: VecDeque<(i32, i32)> = VecDeque::new();
-        let mut ans = i32::min_value();
-        for p in points {
-            let x = p[0];
-            let y = p[1];
-            while !d.is_empty() && d[0].0 + k < x {
-                d.pop_front();
-            }
-            if !d.is_empty() {
-                ans = max(ans, y + x + d[0].1);
-            }
-            while !d.is_empty() && d.back().unwrap().1 <= y - x {
-                d.pop_back();
-            }
-            d.push_back((x, y - x));
-        }
-        ans
+    pub fn constrained_subset_sum(nums: Vec<i32>, k: i32) -> i32 {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -89,15 +73,15 @@ use std::cmp::max;
 use std::cmp::min;
 use std::collections::HashMap;
 use std::collections::HashSet;
-use std::collections::VecDeque;
 use std::fmt::Debug;
 use std::hash::Hash;
 use std::iter::FromIterator;
+// use std::collections::VecDeque;
 // use std::collections::BTreeMap;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -189,9 +173,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -270,31 +252,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
