@@ -1,54 +1,64 @@
 /*
- * @lc app=leetcode id=441 lang=rust
+ * @lc app=leetcode id=107 lang=rust
  *
- * [441] Arranging Coins
+ * [107] Binary Tree Level Order Traversal II
  *
- * https://leetcode.com/problems/arranging-coins/description/
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
  *
  * algorithms
- * Easy (39.93%)
- * Total Accepted:    101.2K
- * Total Submissions: 252.6K
- * Testcase Example:  '5'
+ * Easy (51.56%)
+ * Total Accepted:    312.8K
+ * Total Submissions: 604.2K
+ * Testcase Example:  '[3,9,20,null,null,15,7]'
  *
- * You have a total of n coins that you want to form in a staircase shape,
- * where every k-th row must have exactly k coins.
- * ⁠
- * Given n, find the total number of full staircase rows that can be formed.
+ * Given a binary tree, return the bottom-up level order traversal of its
+ * nodes' values. (ie, from left to right, level by level from leaf to root).
  * 
- * n is a non-negative integer and fits within the range of a 32-bit signed
- * integer.
  * 
- * Example 1:
+ * For example:
+ * Given binary tree [3,9,20,null,null,15,7],
  * 
- * n = 5
- * 
- * The coins can form the following rows:
- * ¤
- * ¤ ¤
- * ¤ ¤
- * 
- * Because the 3rd row is incomplete, we return 2.
+ * ⁠   3
+ * ⁠  / \
+ * ⁠ 9  20
+ * ⁠   /  \
+ * ⁠  15   7
  * 
  * 
  * 
- * Example 2:
+ * return its bottom-up level order traversal as:
  * 
- * n = 8
- * 
- * The coins can form the following rows:
- * ¤
- * ¤ ¤
- * ¤ ¤ ¤
- * ¤ ¤
- * 
- * Because the 4th row is incomplete, we return 3.
+ * [
+ * ⁠ [15,7],
+ * ⁠ [9,20],
+ * ⁠ [3]
+ * ]
  * 
  * 
  */
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
 impl Solution {
-    pub fn arrange_coins(n: i32) -> i32 {
-        ((2_f64 * n as f64 + 0.25).sqrt()-0.5).floor() as i32
+    pub fn level_order_bottom(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
+        
     }
 }
 

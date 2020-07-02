@@ -810,87 +810,79 @@ bool border_check(int i, int left, int right) {
   return i <= right && i >= left;
 }
 /*
- * @lc app=leetcode id=839 lang=cpp
+ * @lc app=leetcode id=107 lang=cpp
  *
- * [839] Similar String Groups
+ * [107] Binary Tree Level Order Traversal II
  *
- * https://leetcode.com/problems/similar-string-groups/description/
+ * https://leetcode.com/problems/binary-tree-level-order-traversal-ii/description/
  *
  * algorithms
- * Hard (38.35%)
- * Total Accepted:    22.9K
- * Total Submissions: 59.6K
- * Testcase Example:  '["tars","rats","arts","star"]'
+ * Easy (51.56%)
+ * Total Accepted:    312.8K
+ * Total Submissions: 604.2K
+ * Testcase Example:  '[3,9,20,null,null,15,7]'
  *
- * Two strings X and Y are similar if we can swap two letters (in different
- * positions) of X, so that it equals Y. Also two strings X and Y are similar
- * if they are equal.
- * 
- * For example, "tars" and "rats" are similar (swapping at positions 0 and 2),
- * and "rats" and "arts" are similar, but "star" is not similar to "tars",
- * "rats", or "arts".
- * 
- * Together, these form two connected groups by similarity: {"tars", "rats",
- * "arts"} and {"star"}.  Notice that "tars" and "arts" are in the same group
- * even though they are not similar.  Formally, each group is such that a word
- * is in the group if and only if it is similar to at least one other word in
- * the group.
- * 
- * We are given a list A of strings.  Every string in A is an anagram of every
- * other string in A.  How many groups are there?
- * 
- * 
- * Example 1:
- * Input: A = ["tars","rats","arts","star"]
- * Output: 2
- * 
- * 
- * Constraints:
- * 
- * 
- * 1 <= A.length <= 2000
- * 1 <= A[i].length <= 1000
- * A.length * A[i].length <= 20000
- * All words in A consist of lowercase letters only.
- * All words in A have the same length and are anagrams of each other.
- * The judging time limit has been increased for this question.
- * 
- * 
+ * Given a binary tree, return the bottom-up level order traversal of its
+ * nodes' values. (ie, from left to right, level by level from leaf to root).
+ *
+ *
+ * For example:
+ * Given binary tree [3,9,20,null,null,15,7],
+ *
+ * ⁠   3
+ * ⁠  / \
+ * ⁠ 9  20
+ * ⁠   /  \
+ * ⁠  15   7
+ *
+ *
+ *
+ * return its bottom-up level order traversal as:
+ *
+ * [
+ * ⁠ [15,7],
+ * ⁠ [9,20],
+ * ⁠ [3]
+ * ]
+ *
+ *
  */
-
-int find(int x, vector<int> &p) {
-  if (x != p[x])
-    p[x] = find(p[x], p);
-  return p[x];
-}
-
-// Do not use union, since it's a keyword of CPP
-void merge(int x, int y, vector<int> &p) { p[find(x, p)] = find(y, p); }
-
-
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
+ * right(right) {}
+ * };
+ */
 class Solution {
 public:
-    bool similar(int i, int j, vs &A) {
-      int cnt = 0; 
-      forloop(k, A[i].size()) {
-        if (A[i][k] != A[j][k] && ++cnt > 2) return false; 
-      }
-      return true; 
+  vector<vector<int>> levelOrderBottom(TreeNode *root) {
+    deque<pair<TreeNode *, int>> dq;
+    dq.push_back(make_pair(root, 0));
+    vvi ans;
+    while (!dq.empty()) {
+      pair<TreeNode *, int> p = dq.front();
+      dq.pop_front();
+      if (p.first == nullptr)
+        continue;
+      if (ans.size() <= p.second)
+        ans.push_back({});
+      ans[p.second].pb(p.first->val);
+      dq.push_back({p.first->left, p.second + 1});
+      dq.push_back({p.first->right, p.second + 1});
     }
-    int numSimilarGroups(vector<string>& A) {
-        int n = A.size(); 
-        vi p; 
-        forloop(i, n) p.pb(i);
-        forloop(i, n) {
-          forloopup(j, i+1, n){
-            
-          }
-        }
-        
-    }
+    qreverse(ans);
+    return ans;
+  }
 };
 
-
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+static const int _ = []() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  return 0;
+}();
