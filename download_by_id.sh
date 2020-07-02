@@ -41,7 +41,7 @@ import heapq \
 import string\
 true = True\
 false = False\
-MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f' $python_file
+MIN, MAX, MOD = -0x3f3f3f3f, 0x3f3f3f3f, 1000000007' $python_file
 
 proxychains4 leetcode show $1 > tmp.file 
 python3 scripts/add_inputs_to_solution_file.py $python_file >> $python_file
