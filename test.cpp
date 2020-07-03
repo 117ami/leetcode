@@ -1,12 +1,15 @@
 
 #include "aux.cpp"
-#include "1498.number-of-subsequences-that-satisfy-the-given-sum-condition.cpp"
+#include "957.prison-cells-after-n-days.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi x = {5,2,4,1,7,6,8}; 
-	x = {14,4,6,6,20,8,5,6,8,12,6,10,14,9,17,16,9,7,14,11,14,15,13,11,10,18,13,17,17,14,17,7,9,5,10,13,8,5,18,20,7,5,5,15,19,14};
-	say(s.numSubseq(x, 22));
+	vi x = {1,0,0,1,0,0,1,0}; int N = 1000000000;
+	say(s.prisonAfterNDays(x, N));
+	string xxs = bitset<8>(12).to_string(); 
+	vector<char> vcs (xxs.begin(), xxs.end());
+	
+	say(vcs);
 	return 0;
 }
 

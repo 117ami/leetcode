@@ -1,3 +1,4 @@
+// C libraries
 #include <cassert>
 #include <cctype>
 #include <climits>
@@ -68,6 +69,8 @@ using umii = unordered_map<int, int>;
 using umci = unordered_map<char, int>;
 using umsi = unordered_map<string, int>;
 using usi = unordered_set<int>;
+using usc = unordered_set<char>;
+using uss = unordered_set<string>;
 using vpii = vector<pair<int, int>>;
 
 typedef struct TreeNode TreeNode;
@@ -86,11 +89,11 @@ static auto __speedup__ = []() {
 // ==================================================
 
 // some macro for less typing
-#define fori(i, n) for (int i = 0; i < n; i++)            //[0, n)
-#define forir(i, n) for (int i = n - 1; i >= 0; --i)      // reverse [0, n)
-#define forup(i, a, b) for (int i = a; i < b; ++i)        // [a, b)
-#define fordown(i, a, b) for (int i = b - 1; i >= a; --i) // reverse [a, b)
-#define unfold(i, arr) for (auto &i : arr)
+#define forloop(i, n) for (int i = 0; i < n; i++)             //[0, n)
+#define forloopr(i, n) for (int i = n - 1; i >= 0; --i)       // reverse [0, n)
+#define forloopup(i, a, b) for (int i = a; i < b; ++i)        // [a, b)
+#define forloopdown(i, a, b) for (int i = b - 1; i >= a; --i) // reverse [a, b)
+#define forunfold(i, arr) for (auto &i : arr)
 
 #define INF 0x3f3f3f3f
 #define MAX(a, b) a = max(a, b)
@@ -103,15 +106,16 @@ static auto __speedup__ = []() {
 #define pf push_front
 #define ef emplace_front
 #define eb emplace_back
-#define dall(v) v.begin(), v.end()
-#define dsize(v) (int)v.size()
-#define dsort(v) sort(v.begin(), v.end())
-#define rdsort(v) sort(v.rbegin(), v.rend())
-#define dreverse(v) reverse(v.begin(), v.end())
+#define qall(v) v.begin(), v.end()
+#define qsize(v) (int)v.size()
+#define qsort(v) sort(v.begin(), v.end())
+#define rqsort(v) sort(v.rbegin(), v.rend())
+#define qreverse(v) reverse(v.begin(), v.end())
 
+// int to string
 string itos(int n) { return to_string(n); }
-
-string charToString(char c){ return string(1, c); };
+// char to string
+string ctos(char c) { return string(1, c); };
 
 inline string upper(string s) {
   string t(s);
@@ -127,6 +131,7 @@ inline string lower(string s) {
 int direction[8][2] = {{-1, 0},  {1, 0},  {0, -1}, {0, 1},
                        {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
+vector<int> dirs = {-1, 0, 1, 0, -1};
 // ==================================================
 // ** math function **
 
@@ -203,7 +208,7 @@ bool is_sub(string s, string t) {
   return (i == s.size());
 }
 
-bool isPalindrome(string str) {
+bool is_palindrome(string str) {
   int i = 0, j = str.size() - 1;
   while (i < j)
     if (str[i++] != str[j--])
@@ -233,6 +238,14 @@ template <class T> T qsum(const vector<T> &ns) {
   return r;
 }
 
+// Get sum of interval [i, j)
+template <class T> T partsum(const vector<T> &ns, int i, int j) {
+  T r = 0;
+  for (size_t o = i; o < j; o++)
+    r += ns[o];
+  return r;
+}
+
 template <class T> void reverse_(const vector<T> &vect) {
   reverse(vect.begin(), vect.end());
 }
@@ -246,12 +259,20 @@ unsigned long long product(vector<int> &a) {
   return res;
 }
 
-int vecmax(vector<int>& arr) { return *max_element(arr.begin(), arr.end()); }
-int vecmin(vector<int>& arr) { return *min_element(arr.begin(), arr.end()); }
+int vecmax(vector<int> &arr) { return *max_element(arr.begin(), arr.end()); }
+int vecmin(vector<int> &arr) { return *min_element(arr.begin(), arr.end()); }
 
 template <class T> unordered_map<T, int> counter(vector<T> &a) {
   unordered_map<T, int> c = {};
-  for (auto &x : a) ++c[x];
+  for (auto &x : a)
+    ++c[x];
+  return c;
+}
+
+unordered_map<char, int> counter(string &a) {
+  unordered_map<char, int> c = {};
+  for (auto &x : a)
+    ++c[x];
   return c;
 }
 
@@ -284,7 +305,6 @@ template <class K, class V> bool exist(unordered_map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
 
-
 template <class K, class V> bool exist(map<K, V> &m, K key) {
   return m.find(key) != m.end();
 }
@@ -296,8 +316,6 @@ template <class K> bool exist(unordered_set<K> &m, K key) {
 template <class K> bool exist(set<K> &m, K key) {
   return m.find(key) != m.end();
 }
-
-
 
 string lcs(string s, string t) {
   int m = s.size(), n = t.size(), L[m + 1][n + 1];
@@ -477,11 +495,47 @@ TreeNode *growTreeFromList(vector<int> &arr) {
   return root;
 }
 
+// return level's order travesal of tree..
+// e.g., [3,9,20,null,null,15,7] to [[3], [9, 20], [15, 7]]
+vector<vector<int>> treeToList(TreeNode *root) {
+  vector<vector<int>> tower;
+  queue<pair<TreeNode *, int>> jobs;
+  jobs.push(mp(root, 0));
+
+  while (!jobs.empty()) {
+    pair<TreeNode *, int> j = jobs.front();
+    jobs.pop();
+
+    if (j.first == nullptr)
+      continue;
+    if (tower.size() <= j.second)
+      tower.pb(vi{j.first->val});
+    else
+      tower[j.second].pb(j.first->val);
+
+    jobs.push(mp(j.first->left, j.second + 1));
+    jobs.push(mp(j.first->right, j.second + 1));
+  }
+  return tower;
+}
+
 // Get the depth of Tree
 int getTreeDepth(TreeNode *root) {
   if (!root)
     return 0;
   return 1 + max(getTreeDepth(root->left), getTreeDepth(root->right));
+}
+
+int bisect_left(vector<int> &arr, int target) {
+  int lo = 0, hi = arr.size() - 1, mid;
+  while (lo < hi) {
+    mid = (lo + hi) / 2;
+    if (arr[mid] >= target)
+      hi = mid;
+    else
+      lo = mid + 1;
+  }
+  return lo;
 }
 
 // Find the index of the first number in sorted nums, that is larger than target
@@ -497,7 +551,9 @@ int bisect_right(vector<int> &nums, int target) {
   return nums[j] > target ? j : j + 1;
 }
 
-bool in(string str1, string str2) { return str1.find(str2) != string::npos; }
+bool is_substring(string str1, string str2) {
+  return str1.find(str2) != string::npos;
+}
 
 // lowest common ancestor of two nodes(values are distinct)
 TreeNode *lca(TreeNode *r, int pv, int qv) {
@@ -665,29 +721,93 @@ void makeCombiUtil(vector<vector<T>> &ans, vector<T> &arr, vector<T> &tmp,
   }
 }
 
-
 // Get prefix sum of matrix such that res[i][j] = sum(matrix[0..i-1][0..j-1])
 // for i >= 1, j >= 1
-vector<vector<int>> getPrefixSum(vvi & mat){
-  int m = mat.size(), n = mat[0].size(); 
-  vector<vector<int>> res(m+1, vector<int>(n+1, 0)); 
+vector<vector<int>> getPrefixSum(vvi &mat) {
+  int m = mat.size(), n = mat[0].size();
+  vector<vector<int>> res(m + 1, vector<int>(n + 1, 0));
   for (size_t i = 1; i <= m; ++i)
     for (size_t j = 1; j <= n; ++j)
-      res[i][j] = res[i-1][j] + res[i][j-1] - res[i-1][j-1] + mat[i-1][j-1]; 
-    return res; 
+      res[i][j] =
+          res[i - 1][j] + res[i][j - 1] - res[i - 1][j - 1] + mat[i - 1][j - 1];
+  return res;
 }
 
 // Converting string [[1,2], [3, 4]] to vector(of vector) {{1, 2}, {3, 4}}
-vector<vector<int>> extractMatrixFromString(string s){
-	vector<vector<int>> res; 
-	int carry = INT_MIN;
-	for (size_t i = 1; i < s.size() - 1; ++i) {
-		if (s[i] == '[') res.push_back(vector<int>{});
-		while (isdigit(s[i])) carry = max(carry, 0) * 10 + (s[i++] - '0');
-		if (carry > INT_MIN) res.back().push_back(carry); 
-		carry = INT_MIN;  
-	}
-	return res; 
+vector<vector<int>> extractMatrixFromString(string s) {
+  vector<vector<int>> res;
+  int carry = INT_MIN;
+  for (size_t i = 1; i < s.size() - 1; ++i) {
+    if (s[i] == '[')
+      res.push_back(vector<int>{});
+    while (isdigit(s[i]))
+      carry = max(carry, 0) * 10 + (s[i++] - '0');
+    if (carry > INT_MIN)
+      res.back().push_back(carry);
+    carry = INT_MIN;
+  }
+  return res;
+}
+
+// Split a string s by delimiter, into a vector of string
+vector<string> split(string s, string delimiter) {
+  size_t pos = 0;
+  vector<string> res;
+  std::string token;
+  while ((pos = s.find(delimiter)) != std::string::npos) {
+    token = s.substr(0, pos);
+    res.push_back(token);
+    s.erase(0, pos + delimiter.length());
+  }
+  res.push_back(s);
+  return res;
+}
+
+// Explanation
+// https://stackoverflow.com/questions/54267589/difference-between-two-dates-using-math
+int rdn(int year, int month, int day) { /* Rata Die day one is 0001-01-01 */
+  if (month < 3)
+    year--, month += 12;
+  // The algorithm shifts February to the end of the year. (153 * m - 457)/5
+  // computes the number of preceding days of the shifted month. There are 306
+  // days between March 1 of the year zero and December 31.
+  return 365 * year + year / 4 - year / 100 + year / 400 +
+         (153 * month - 457) / 5 + day - 306;
+}
+
+TreeNode *sortedArrayToBST(vector<int> &arr, int i, int j) {
+  if (i > j)
+    return nullptr;
+  int m = (i + j) / 2;
+  TreeNode *r = new TreeNode(arr[m]);
+  r->left = sortedArrayToBST(arr, i, m - 1);
+  r->right = sortedArrayToBST(arr, m + 1, j);
+  return r;
+}
+
+vector<int> unfoldTree(TreeNode *r) {
+  vector<int> arr = {};
+  if (!r)
+    return arr;
+  queue<TreeNode *> q;
+  q.push(r);
+
+  while (!q.empty()) {
+    TreeNode *cur = q.front();
+    q.pop();
+    if (cur == nullptr)
+      continue;
+
+    arr.push_back(cur->val);
+    q.push(cur->left);
+    q.push(cur->right);
+  }
+  return arr;
+}
+
+bool border_check(int i, int left, int right) {
+  // checking whether is is between [left, right], inclusive on both sides.
+  return i <= right && i >= left;
 }
 /*
  * @lc app=leetcode id=957 lang=cpp
@@ -697,46 +817,46 @@ vector<vector<int>> extractMatrixFromString(string s){
  * https://leetcode.com/problems/prison-cells-after-n-days/description/
  *
  * algorithms
- * Medium (38.72%)
- * Total Accepted:    31.5K
- * Total Submissions: 81.3K
+ * Medium (39.62%)
+ * Total Accepted:    54.2K
+ * Total Submissions: 136.8K
  * Testcase Example:  '[0,1,0,1,1,0,0,1]\n7'
  *
  * There are 8 prison cells in a row, and each cell is either occupied or
  * vacant.
- * 
+ *
  * Each day, whether the cell is occupied or vacant changes according to the
  * following rules:
- * 
- * 
+ *
+ *
  * If a cell has two adjacent neighbors that are both occupied or both vacant,
  * then the cell becomes occupied.
  * Otherwise, it becomes vacant.
- * 
- * 
+ *
+ *
  * (Note that because the prison is a row, the first and the last cells in the
  * row can't have two adjacent neighbors.)
- * 
+ *
  * We describe the current state of the prison in the following way: cells[i]
  * == 1 if the i-th cell is occupied, else cells[i] == 0.
- * 
+ *
  * Given the initial state of the prison, return the state of the prison after
  * N days (and N such changes described above.)
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  * Example 1:
- * 
- * 
+ *
+ *
  * Input: cells = [0,1,0,1,1,0,0,1], N = 7
  * Output: [0,0,1,1,0,0,0,0]
- * Explanation: 
+ * Explanation:
  * The following table summarizes the state of the prison on each day:
  * Day 0: [0, 1, 0, 1, 1, 0, 0, 1]
  * Day 1: [0, 1, 1, 0, 0, 0, 0, 0]
@@ -746,44 +866,59 @@ vector<vector<int>> extractMatrixFromString(string s){
  * Day 5: [0, 1, 1, 1, 0, 1, 0, 0]
  * Day 6: [0, 0, 1, 0, 1, 1, 0, 0]
  * Day 7: [0, 0, 1, 1, 0, 0, 0, 0]
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  * Example 2:
- * 
- * 
+ *
+ *
  * Input: cells = [1,0,0,1,0,0,1,0], N = 1000000000
  * Output: [0,0,1,1,1,1,1,0]
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  * Note:
- * 
- * 
+ *
+ *
  * cells.length == 8
  * cells[i] is in {0, 1}
  * 1 <= N <= 10^9
- * 
- * 
- * 
- * 
+ *
+ *
+ *
+ *
  */
 class Solution {
 public:
-    vi trans(vi &cells) {
-      vi res(8, 0); 
-      fori(i, 8) res[i] = i == 0 || i == 7 || cells[i-1] != cells[i+1] ? 0 : 1; 
-      return res; 
+  vector<int> prisonAfterNDays(vector<int> &cells, int N) {
+    unordered_map<int, int> cc;
+    unordered_map<int, int> rcc;
+    forloop(i, N) {
+      vi tmp(8, 0);
+      forloopup(i, 1, 7) tmp[i] = cells[i - 1] == cells[i + 1];
+      cells = tmp;
+      auto k = std::accumulate(cells.begin(), cells.end(), 0,
+                               [](int l, int r) { return l * 2 + r; });
+
+      if (exist(cc, k)) {
+        int idx = (N - 1 - cc[k]) % (i - cc[k]) + cc[k];
+        string cs = bitset<8>(rcc[idx]).to_string();
+        vi v_ans(8, 0);
+        forloop(i, 8) v_ans[i] = int(cs[i] - '0');
+        return v_ans;
+      } else {
+        cc[k] = i;
+        rcc[i] = k;
+      }
     }
-    vector<int> prisonAfterNDays(vector<int>& cells, int N) {
-        int b = (N - 1) % 14 + 1; 
-        fori(i, b) cells = trans(cells); 
-        return cells; 
-    }
+    return cells;
+  }
 };
 
-
-
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+static const int _ = []() {
+  ios::sync_with_stdio(false);
+  cin.tie(NULL);
+  return 0;
+}();

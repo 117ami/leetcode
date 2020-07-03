@@ -1,105 +1,93 @@
 /*
- * @lc app=leetcode id=1498 lang=rust
+ * @lc app=leetcode id=957 lang=rust
  *
- * [1498] Number of Subsequences That Satisfy the Given Sum Condition
+ * [957] Prison Cells After N Days
  *
- * https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/description/
+ * https://leetcode.com/problems/prison-cells-after-n-days/description/
  *
  * algorithms
- * Medium (27.12%)
- * Total Accepted:    4.4K
- * Total Submissions: 12.1K
- * Testcase Example:  '[3,5,6,7]\n9'
+ * Medium (39.62%)
+ * Total Accepted:    54.2K
+ * Total Submissions: 136.8K
+ * Testcase Example:  '[0,1,0,1,1,0,0,1]\n7'
  *
- * Given an array of integers nums and an integer target.
- *
- * Return the number of non-empty subsequences of nums such that the sum of the
- * minimum and maximum element on it is less or equal than target.
- *
- * Since the answer may be too large, return it modulo 10^9 + 7.
- *
- *
+ * There are 8 prison cells in a row, and each cell is either occupied or
+ * vacant.
+ * 
+ * Each day, whether the cell is occupied or vacant changes according to the
+ * following rules:
+ * 
+ * 
+ * If a cell has two adjacent neighbors that are both occupied or both vacant,
+ * then the cell becomes occupied.
+ * Otherwise, it becomes vacant.
+ * 
+ * 
+ * (Note that because the prison is a row, the first and the last cells in the
+ * row can't have two adjacent neighbors.)
+ * 
+ * We describe the current state of the prison in the following way: cells[i]
+ * == 1 if the i-th cell is occupied, else cells[i] == 0.
+ * 
+ * Given the initial state of the prison, return the state of the prison after
+ * N days (and N such changes described above.)
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * Example 1:
- *
- *
- * Input: nums = [3,5,6,7], target = 9
- * Output: 4
- * Explanation: There are 4 subsequences that satisfy the condition.
- * [3] -> Min value + max value <= target (3 + 3 <= 9)
- * [3,5] -> (3 + 5 <= 9)
- * [3,5,6] -> (3 + 6 <= 9)
- * [3,6] -> (3 + 6 <= 9)
- *
- *
+ * 
+ * 
+ * Input: cells = [0,1,0,1,1,0,0,1], N = 7
+ * Output: [0,0,1,1,0,0,0,0]
+ * Explanation: 
+ * The following table summarizes the state of the prison on each day:
+ * Day 0: [0, 1, 0, 1, 1, 0, 0, 1]
+ * Day 1: [0, 1, 1, 0, 0, 0, 0, 0]
+ * Day 2: [0, 0, 0, 0, 1, 1, 1, 0]
+ * Day 3: [0, 1, 1, 0, 0, 1, 0, 0]
+ * Day 4: [0, 0, 0, 0, 0, 1, 0, 0]
+ * Day 5: [0, 1, 1, 1, 0, 1, 0, 0]
+ * Day 6: [0, 0, 1, 0, 1, 1, 0, 0]
+ * Day 7: [0, 0, 1, 1, 0, 0, 0, 0]
+ * 
+ * 
+ * 
+ * 
  * Example 2:
- *
- *
- * Input: nums = [3,3,6,8], target = 10
- * Output: 6
- * Explanation: There are 6 subsequences that satisfy the condition. (nums can
- * have repeated numbers).
- * [3] , [3] , [3,3], [3,6] , [3,6] , [3,3,6]
- *
- * Example 3:
- *
- *
- * Input: nums = [2,3,3,4,6,7], target = 12
- * Output: 61
- * Explanation: There are 63 non-empty subsequences, two of them don't satisfy
- * the condition ([6,7], [7]).
- * Number of valid subsequences (63 - 2 = 61).
- *
- *
- * Example 4:
- *
- *
- * Input: nums = [5,2,4,1,7,6,8], target = 16
- * Output: 127
- * Explanation: All non-empty subset satisfy the condition (2^7 - 1) = 127
- *
- *
- * Constraints:
- *
- *
- * 1 <= nums.length <= 10^5
- * 1 <= nums[i] <= 10^6
- * 1 <= target <= 10^6
- *
- *
+ * 
+ * 
+ * Input: cells = [1,0,0,1,0,0,1,0], N = 1000000000
+ * Output: [0,0,1,1,1,1,1,0]
+ * 
+ * 
+ * 
+ * 
+ * Note:
+ * 
+ * 
+ * cells.length == 8
+ * cells[i] is in {0, 1}
+ * 1 <= N <= 10^9
+ * 
+ * 
+ * 
+ * 
  */
 impl Solution {
-    pub fn num_subseq(ref mut nums: Vec<i32>, target: i32) -> i32 {
-        nums.sort();
-        let n = nums.len();
-        let MOD = 1000000007;
-        let mut pw = vec![1; n];
-        for i in 1..n {
-            pw[i] = (pw[i - 1] << 1) % MOD;
-        }
-        let mut l = 0;
-        let mut r = n - 1;
-        let mut ans = 0;
-        while l <= r {
-            if nums[l] + nums[r] > target {
-                if r == 0 {
-                    break;
-                }
-                r -= 1;
-            } else {
-                // println!("{}", ans);
-                ans = (ans + pw[r - l]) % MOD;
-                l += 1;
-            }
-        }
-        ans % MOD
+    pub fn prison_after_n_days(cells: Vec<i32>, n: i32) -> Vec<i32> {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -117,7 +105,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -209,9 +197,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -290,31 +276,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+

@@ -85,11 +85,22 @@ false = False
 
 
 class Solution:
+    def transform(self, cells):
+        return [0] + [cells[i - 1] ^ cells[i + 1]
+                      ^ 1 for i in range(1, 7)] + [0]
+
     def prisonAfterNDays(self, cells, n):
-        n = (n - 1) % 14 + 1
-        for _ in range(n):
-            cells = [0] + [cells[i - 1] ^ cells[i + 1]
-                           ^ 1 for i in range(1, 7)] + [0]
+        cc, rcc = {}, {}
+        for i in range(n):
+            cells = self.transform(cells)
+            tc = tuple(cells)
+            if tc in cc:
+                idx = (n - 1 - cc[tc]) % (i - cc[tc]) + cc[tc]
+                return rcc[idx]
+            else:
+                cc[tc] = i
+                rcc[i] = cells
+
         return cells
 
 
@@ -97,5 +108,7 @@ s = Solution()
 cells = [0, 1, 0, 1, 1, 0, 0, 1]
 cells = [1, 0, 0, 1, 0, 0, 1, 0]
 cells = [1, 0, 0, 1, 0, 0, 0, 1]
-print(s.prisonAfterNDays(cells, 826))
-print(1 ^ 1)
+cells, N = [1, 0, 0, 1, 0, 0, 1, 0], 1000000000
+# N = 10
+print(s.prisonAfterNDays(cells, N))
+# print(1 ^ 1)
