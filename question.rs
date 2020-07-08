@@ -1,72 +1,86 @@
 /*
- * @lc app=leetcode id=463 lang=rust
+ * @lc app=leetcode id=1504 lang=rust
  *
- * [463] Island Perimeter
+ * [1504] Count Submatrices With All Ones
  *
- * https://leetcode.com/problems/island-perimeter/description/
+ * https://leetcode.com/problems/count-submatrices-with-all-ones/description/
  *
  * algorithms
- * Easy (63.89%)
- * Total Accepted:    189.5K
- * Total Submissions: 296.3K
- * Testcase Example:  '[[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]'
+ * Medium (49.18%)
+ * Total Accepted:    5.5K
+ * Total Submissions: 9.3K
+ * Testcase Example:  '[[1,0,1],[1,1,0],[1,1,0]]'
  *
- * You are given a map in form of a two-dimensional integer grid where 1
- * represents land and 0 represents water.
- *
- * Grid cells are connected horizontally/vertically (not diagonally). The grid
- * is completely surrounded by water, and there is exactly one island (i.e.,
- * one or more connected land cells).
- *
- * The island doesn't have "lakes" (water inside that isn't connected to the
- * water around the island). One cell is a square with side length 1. The grid
- * is rectangular, width and height don't exceed 100. Determine the perimeter
- * of the island.
- *
- *
- *
- * Example:
- *
- *
- * Input:
- * [[0,1,0,0],
- * ⁠[1,1,1,0],
- * ⁠[0,1,0,0],
- * ⁠[1,1,0,0]]
- *
- * Output: 16
- *
- * Explanation: The perimeter is the 16 yellow stripes in the image below:
- *
- *
- *
- *
+ * Given a rows * columns matrix mat of ones and zeros, return how many
+ * submatrices have all ones.
+ * 
+ * 
+ * Example 1:
+ * 
+ * 
+ * Input: mat = [[1,0,1],
+ * [1,1,0],
+ * [1,1,0]]
+ * Output: 13
+ * Explanation:
+ * There are 6 rectangles of side 1x1.
+ * There are 2 rectangles of side 1x2.
+ * There are 3 rectangles of side 2x1.
+ * There is 1 rectangle of side 2x2. 
+ * There is 1 rectangle of side 3x1.
+ * Total number of rectangles = 6 + 2 + 3 + 1 + 1 = 13.
+ * 
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: mat = [[0,1,1,0],
+ * [0,1,1,1],
+ * [1,1,1,0]]
+ * Output: 24
+ * Explanation:
+ * There are 8 rectangles of side 1x1.
+ * There are 5 rectangles of side 1x2.
+ * There are 2 rectangles of side 1x3. 
+ * There are 4 rectangles of side 2x1.
+ * There are 2 rectangles of side 2x2. 
+ * There are 2 rectangles of side 3x1. 
+ * There is 1 rectangle of side 3x2. 
+ * Total number of rectangles = 8 + 5 + 2 + 4 + 2 + 2 + 1 = 24.
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: mat = [[1,1,1,1,1,1]]
+ * Output: 21
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: mat = [[1,0,1],[0,1,0],[1,0,1]]
+ * Output: 5
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= rows <= 150
+ * 1 <= columns <= 150
+ * 0 <= mat[i][j] <= 1
+ * 
  */
 impl Solution {
-    pub fn island_perimeter(grid: Vec<Vec<i32>>) -> i32 {
-        let mut ans = 0;
-        for (i, row) in grid.iter().enumerate() {
-            for (j, &n) in row.iter().enumerate() {
-                if n == 1 {
-                    ans += 4;
-                    if i > 0 && grid[i - 1][j] == 1 {
-                        ans -= 2;
-                    }
-                    if j > 0 && grid[i][j - 1] == 1 {
-                        ans -= 2;
-                    }
-                }
-            }
-        }
-        ans
+    pub fn num_submat(mat: Vec<Vec<i32>>) -> i32 {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -84,7 +98,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -176,9 +190,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -257,31 +269,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
