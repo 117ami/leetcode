@@ -4,6 +4,6 @@ mod question;
 // let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
 
 fn main(){
-	println!("{:?}", question::Solution::num_submat());
+	println!("{:?}", question::Solution::get_last_moment());
 }
 
