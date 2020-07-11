@@ -629,6 +629,41 @@ def intToRoman(self, num: int) -> str:
     return res
 
 
+def create_palindrome(inp, b, is_odd):
+    n = inp
+    palin = inp
+
+    # checks if number of digits is odd or even
+    # if odd then neglect the last digit of input in
+    # finding reverse as in case of odd number of
+    # digits middle element occur once
+    if is_odd:
+        n = n // b
+
+    # Creates palindrome by just appending reverse
+    # of number to itself
+    while n > 0:
+        palin = palin * b + (n % b)
+        n = n // b
+    return palin
+
+def generate_palindromes(n):
+    '''Generate all palindromic numbers less than n'''
+    # Run two times for odd and even length palindromes
+    ans = set()
+    for j in range(2):
+        # Creates palindrome numbers with first half as i.
+        # Value of j decided whether we need an odd length
+        # of even length palindrome.
+        i = 1
+        r = 1
+        while r < n:
+            ans.add(r)
+            r = create_palindrome(i, 10, j % 2)
+            i += 1
+    return ans 
+
+
 def sieve_primes(n):
     """ Find all primes under (inclusive) n
     """
