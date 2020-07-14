@@ -1,71 +1,73 @@
 /*
- * @lc app=leetcode id=1512 lang=rust
+ * @lc app=leetcode id=1507 lang=rust
  *
- * [1512] Number of Good Pairs
+ * [1507] Reformat Date
  *
- * https://leetcode.com/problems/number-of-good-pairs/description/
+ * https://leetcode.com/problems/reformat-date/description/
  *
  * algorithms
- * Easy (91.81%)
- * Total Accepted:    11.8K
- * Total Submissions: 13K
- * Testcase Example:  '[1,2,3,1,1,3]'
+ * Easy (60.02%)
+ * Total Accepted:    6.6K
+ * Total Submissions: 10.8K
+ * Testcase Example:  '"20th Oct 2052"'
  *
- * Given an array of integers nums.
- *
- * A pair (i,j) is called good if nums[i] == nums[j] and i < j.
- *
- * Return the number of good pairs.
- *
- *
+ * Given a date string in the form Day Month Year, where:
+ * 
+ * 
+ * Day is in the set {"1st", "2nd", "3rd", "4th", ..., "30th", "31st"}.
+ * Month is in the set {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug",
+ * "Sep", "Oct", "Nov", "Dec"}.
+ * Year is in the range [1900, 2100].
+ * 
+ * 
+ * Convert the date string to the format YYYY-MM-DD, where:
+ * 
+ * 
+ * YYYY denotes the 4 digit year.
+ * MM denotes the 2 digit month.
+ * DD denotes the 2 digit day.
+ * 
+ * 
+ * 
  * Example 1:
- *
- *
- * Input: nums = [1,2,3,1,1,3]
- * Output: 4
- * Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
- *
- *
+ * 
+ * 
+ * Input: date = "20th Oct 2052"
+ * Output: "2052-10-20"
+ * 
+ * 
  * Example 2:
- *
- *
- * Input: nums = [1,1,1,1]
- * Output: 6
- * Explanation: Each pair in the array are good.
- *
- *
+ * 
+ * 
+ * Input: date = "6th Jun 1933"
+ * Output: "1933-06-06"
+ * 
+ * 
  * Example 3:
- *
- *
- * Input: nums = [1,2,3]
- * Output: 0
- *
- *
- *
+ * 
+ * 
+ * Input: date = "26th May 1960"
+ * Output: "1960-05-26"
+ * 
+ * 
+ * 
  * Constraints:
- *
- *
- * 1 <= nums.length <= 100
- * 1 <= nums[i] <= 100
- *
+ * 
+ * 
+ * The given dates are guaranteed to be valid, so no error handling is
+ * necessary.
+ * 
+ * 
  */
 impl Solution {
-    pub fn num_identical_pairs(nums: Vec<i32>) -> i32 {
-        let mut ans = 0;
-        let mut cc: HashMap<i32, i32> = HashMap::new();
-        for n in nums {
-            ans += *cc.get(&n).unwrap_or(&0);
-            *cc.entry(n).or_insert(0) += 1;
-        }
-        ans
+    pub fn reformat_date(date: String) -> String {
+        
     }
 }
 
-pub struct Solution;
-static CHARHASH: [i32; 26] = [
-    -9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555,
-    -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002,
-];
+
+pub struct Solution; 
+static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {
     s.chars().map(|c| CHARHASH[char2usize(c)]).sum()
@@ -83,7 +85,7 @@ use std::iter::FromIterator;
 use std::any::type_name;
 use std::collections::BinaryHeap;
 
-pub fn char2usize(c: char) -> usize {
+pub fn char2usize(c:char) -> usize {
     c as usize - 97
 }
 
@@ -175,9 +177,7 @@ fn sayi32_arr(arr: &Vec<i32>) {
 
 #[allow(dead_code)]
 pub fn bisect_left(arr: &Vec<i32>, target: i32) -> usize {
-    if target > *arr.last().unwrap() {
-        return arr.len();
-    }
+    if target > *arr.last().unwrap() { return arr.len() }
     let (mut lo, mut hi) = (0, arr.len() - 1);
     let mut mid;
     while lo < hi {
@@ -256,31 +256,24 @@ fn get_vector_product(a: &Vec<i32>) -> i32 {
 }
 
 #[allow(dead_code)]
-fn accumulate_sum(nums: Vec<i32>) -> Vec<i32> {
+fn accumulate_sum(nums: Vec<i32>) -> Vec<i32>{
     nums.iter()
-        .scan(0, |sum, &v| {
-            *sum += v;
-            Some(*sum)
-        })
-        .collect::<Vec<i32>>()
+    .scan(0, |sum, &v| {
+        *sum += v;
+        Some(*sum)
+    })
+    .collect::<Vec<i32>>()
 }
 
-// There is NO gcd in standard lib for Rust, surprise.
+// There is NO gcd in standard lib for Rust, surprise.  
 #[allow(dead_code)]
 fn gcd(a: i32, b: i32) -> i32 {
-    if b == 0 {
-        a
-    } else {
-        gcd(b, a % b)
-    }
+    if b == 0 { a } else { gcd(b, a % b)}
 }
 
 #[allow(dead_code)]
-fn capitalize(word: String) -> String {
-    let mut res = word;
-    res.chars()
-        .take(1)
-        .flat_map(char::to_uppercase)
-        .chain(res.chars().skip(1))
-        .collect()
+fn capitalize(word: String) -> String { 
+	let mut res = word;
+	res.chars().take(1).flat_map(char::to_uppercase).chain(res.chars().skip(1)).collect()
 }
+
