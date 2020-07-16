@@ -1,12 +1,10 @@
 
 #include "aux.cpp"
-#include "151.reverse-words-in-a-string.cpp"
+#include "50.powx-n.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string xs = "  just   some string  "; 
-	xs = "v nep?bs .,pwin. e pi";
-	say(s.reverseWords(xs));
+	say(s.myPow(2, 10));
 	return 0;
 }
 

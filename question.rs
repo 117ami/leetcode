@@ -1,66 +1,51 @@
 /*
- * @lc app=leetcode id=151 lang=rust
+ * @lc app=leetcode id=50 lang=rust
  *
- * [151] Reverse Words in a String
+ * [50] Pow(x, n)
  *
- * https://leetcode.com/problems/reverse-words-in-a-string/description/
+ * https://leetcode.com/problems/powx-n/description/
  *
  * algorithms
- * Medium (20.67%)
- * Total Accepted:    404.2K
- * Total Submissions: 1.9M
- * Testcase Example:  '"the sky is blue"'
+ * Medium (29.67%)
+ * Total Accepted:    478.6K
+ * Total Submissions: 1.6M
+ * Testcase Example:  '2.00000\n10'
  *
- * Given an input string, reverse the string word by word.
- * 
- * 
+ * Implement pow(x, n), which calculates x raised to the power n (x^n).
  * 
  * Example 1:
  * 
  * 
- * Input: "the sky is blue"
- * Output: "blue is sky the"
+ * Input: 2.00000, 10
+ * Output: 1024.00000
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: "  hello world!  "
- * Output: "world! hello"
- * Explanation: Your reversed string should not contain leading or trailing
- * spaces.
+ * Input: 2.10000, 3
+ * Output: 9.26100
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: "a good   example"
- * Output: "example good a"
- * Explanation: You need to reduce multiple spaces between two words to a
- * single space in the reversed string.
- * 
- * 
+ * Input: 2.00000, -2
+ * Output: 0.25000
+ * Explanation: 2^-2 = 1/2^2 = 1/4 = 0.25
  * 
  * 
  * Note:
  * 
  * 
- * A word is defined as a sequence of non-space characters.
- * Input string may contain leading or trailing spaces. However, your reversed
- * string should not contain leading or trailing spaces.
- * You need to reduce multiple spaces between two words to a single space in
- * the reversed string.
+ * -100.0 < x < 100.0
+ * n is a 32-bit signed integer, within the range [−2^31, 2^31 − 1]
  * 
  * 
- * 
- * 
- * Follow up:
- * 
- * For C programmers, try to solve it in-place in O(1) extra space.
  */
 impl Solution {
-    pub fn reverse_words(s: String) -> String {
-        s.split_whitespace().rev().collect::<Vec<&str>>().join(" ")
+    pub fn my_pow(x: f64, n: i32) -> f64 {
+        
     }
 }
 
