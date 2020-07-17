@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "50.powx-n.cpp"
+#include "347.top-k-frequent-elements.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.myPow(2, 10));
+	vi t = {1,22,2,1,2,1,2,1,2,1,11}; 
+	say(s.topKFrequent(t, 2));
 	return 0;
 }
 

@@ -1,15 +1,3 @@
-#!/usr/bin/env python3
-from collections import Counter, defaultdict, OrderedDict, deque
-from bisect import bisect_left, bisect_right 
-from functools import reduce, lru_cache 
-from typing import List 
-import itertools 
-import math 
-import heapq 
-import string
-true = True
-false = False
-MIN, MAX = -0x3f3f3f3f, 0x3f3f3f3f
 #!/usr/local/bin/python3
 import sys 
 import os  
@@ -30,10 +18,8 @@ if sys.argv[-1].endswith('rs'):
     with open(sys.argv[-1], 'w') as wh:
         wh.write(f)
 
-os.system('/usr/local/bin/proxychains4 -q leetcode submit {}'.format(sys.argv[-1]))
-
-
-
+os.system('leetcode submit {}'.format(sys.argv[-1]))
+# os.system('/usr/local/bin/proxychains4 -q leetcode submit {}'.format(sys.argv[-1]))
 
 
 
