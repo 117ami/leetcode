@@ -198,3 +198,31 @@ vector<int> integerToArray(int x) {
 // }
 
 
+vector<int> kahn(vector<vector<int>> &graph, vector<int> &indegree) {
+  /*Kahn's topological sorting algorithm, https://bit.ly/2zVkzK4 .
+    Parammeters:
+    - graph, Adjacency matrix representing a graph
+    - indegree, the number of edges directed into a vertex
+    
+    If the graph is a DAG, a solution will be contained in the list sorted_nodes.
+    Otherwise, the graph must have at least one cycle and therefore a topological sort
+    is impossible.
+  */
+  vector<int> sorted_nodes = {};
+  stack<int> sources;
+  for (int i = 0; i < graph.size(); i++)
+    if (indegree[i] == 0)
+      sources.push(i);
+  while (!sources.empty()) {
+    int top = sources.top();
+    sources.pop();
+    sorted_nodes.push_back(top);
+    for (auto v : graph[top])
+      if (--indegree[v] == 0)
+        sources.push(v);
+  }
+  if (sorted_nodes.size() == graph.size())
+    return sorted_nodes;
+  return {};
+}
+
