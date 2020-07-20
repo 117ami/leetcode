@@ -42,21 +42,21 @@ impl Solution {
     /// 48 is ASCII '0'
     pub fn add_binary(a: String, b: String) -> String {
         let mut res: Vec<char> = vec![];
-        let ca: Vec<char> = a.chars().collect();
-        let cb: Vec<char> = b.chars().collect();
+        let v_a: Vec<char> = a.chars().collect();
+        let v_b: Vec<char> = b.chars().collect();
         
         let mut carry = 0;
-        let mut i = a.len();
-        let mut j = b.len();
+        let mut idx_a = a.len();
+        let mut idx_b = b.len();
         
-        while i > 0 || j > 0 || carry == 1 {
-            if i > 0 {
-                i -= 1;
-                carry += ca[i] as u8 - 48;
+        while idx_a > 0 || idx_b > 0 || carry == 1 {
+            if idx_a > 0 {
+                idx_a -= 1;
+                carry += v_a[idx_a] as u8 - 48;
             }
-            if j > 0 {
-                j -= 1;
-                carry += cb[j] as u8 - 48;
+            if idx_b > 0 {
+                idx_b -= 1;
+                carry += v_b[idx_b] as u8 - 48;
             }
             res.push((carry % 2 + 48) as char);
             carry /= 2;
@@ -67,7 +67,7 @@ impl Solution {
     }
 }
 
-pub struct Solution; 
+// pub struct Solution; 
 static CHARHASH: [i32; 26] = [-9536, -6688, 2006, -2069, 7302, -8825, -8832, 7678, 4540, 7567, 5286, 7027, -8601, -7555, -4541, 6134, 9023, 7805, -3888, 8309, -5265, 7487, -2988, 292, -5646, 7002];
 
 pub fn hash_string(s: String) -> i32 {

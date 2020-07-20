@@ -44,6 +44,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.60 | [permutation-sequence](https://leetcode.com/problems/permutation-sequence/description/) | [Python](./python_solutions/60.permutation-sequence.py)|
 |𝐌.64 | [minimum-path-sum](https://leetcode.com/problems/minimum-path-sum/description/) | [Python](./python_solutions/64.minimum-path-sum.py)/[Rust](./python_solutions/64.minimum-path-sum.rs) |
 |𝐄.66 | [plus-one](https://leetcode.com/problems/plus-one/description/) | [Python](./python_solutions/66.plus-one.py)/[C++](./python_solutions/66.plus-one.cpp) /[Rust](./python_solutions/66.plus-one.rs) |
+|𝐄.67 | [add-binary](https://leetcode.com/problems/add-binary/description/) | [Python](./python_solutions/67.add-binary.py)/[C++](./python_solutions/67.add-binary.cpp) /[Rust](./python_solutions/67.add-binary.rs) |
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb) |
 |𝐌.75 | [sort-colors](https://leetcode.com/problems/sort-colors/description/) | [Python](./python_solutions/75.sort-colors.py)/[C++](./python_solutions/75.sort-colors.cpp) /[Rust](./python_solutions/75.sort-colors.rs) |
 |𝐌.78 | [subsets](https://leetcode.com/problems/subsets/description/) | [Python](./python_solutions/78.subsets.py)/[C++](./python_solutions/78.subsets.cpp) /[Rust](./python_solutions/78.subsets.rs) |
