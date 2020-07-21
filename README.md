@@ -48,6 +48,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb) |
 |𝐌.75 | [sort-colors](https://leetcode.com/problems/sort-colors/description/) | [Python](./python_solutions/75.sort-colors.py)/[C++](./python_solutions/75.sort-colors.cpp) /[Rust](./python_solutions/75.sort-colors.rs) |
 |𝐌.78 | [subsets](https://leetcode.com/problems/subsets/description/) | [Python](./python_solutions/78.subsets.py)/[C++](./python_solutions/78.subsets.cpp) /[Rust](./python_solutions/78.subsets.rs) |
+|𝐌.79 | [word-search](https://leetcode.com/problems/word-search/description/) | [Python](./python_solutions/79.word-search.py)/[C++](./python_solutions/79.word-search.cpp) |
 |𝐌.81 | [search-in-rotated-sorted-array-ii](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/) | [Python](./python_solutions/81.search-in-rotated-sorted-array-ii.py)/[C++](./python_solutions/81.search-in-rotated-sorted-array-ii.cpp) |
 |𝐇.87 | [scramble-string](https://leetcode.com/problems/scramble-string/description/) | [Python](./python_solutions/87.scramble-string.py)/[C++](./python_solutions/87.scramble-string.cpp) |
 |𝐌.89 | [gray-code](https://leetcode.com/problems/gray-code/description/) | [Python](./python_solutions/89.gray-code.py)/[Javascript](./python_solutions/89.gray-code.js) /[C++](./python_solutions/89.gray-code.cpp) |

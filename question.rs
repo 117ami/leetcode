@@ -1,72 +1,51 @@
 /*
- * @lc app=leetcode id=1518 lang=rust
+ * @lc app=leetcode id=79 lang=rust
  *
- * [1518] Water Bottles
+ * [79] Word Search
  *
- * https://leetcode.com/problems/water-bottles/description/
+ * https://leetcode.com/problems/word-search/description/
  *
  * algorithms
- * Easy (65.56%)
- * Total Accepted:    9.8K
- * Total Submissions: 15K
- * Testcase Example:  '9\n3'
+ * Medium (34.92%)
+ * Total Accepted:    472.8K
+ * Total Submissions: 1.4M
+ * Testcase Example:  '[["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]\n"ABCCED"'
  *
- * Given numBottles full water bottles, you can exchange numExchange empty
- * water bottles for one full water bottle.
+ * Given a 2D board and a word, find if the word exists in the grid.
  * 
- * The operation of drinking a full water bottle turns it into an empty
- * bottle.
+ * The word can be constructed from letters of sequentially adjacent cell,
+ * where "adjacent" cells are those horizontally or vertically neighboring. The
+ * same letter cell may not be used more than once.
  * 
- * Return the maximum number of water bottles you can drink.
- * 
- * 
- * Example 1:
+ * Example:
  * 
  * 
+ * board =
+ * [
+ * ⁠ ['A','B','C','E'],
+ * ⁠ ['S','F','C','S'],
+ * ⁠ ['A','D','E','E']
+ * ]
  * 
- * 
- * Input: numBottles = 9, numExchange = 3
- * Output: 13
- * Explanation: You can exchange 3 empty bottles to get 1 full water bottle.
- * Number of water bottles you can drink: 9 + 3 + 1 = 13.
- * 
- * 
- * Example 2:
- * 
- * 
- * 
- * 
- * Input: numBottles = 15, numExchange = 4
- * Output: 19
- * Explanation: You can exchange 4 empty bottles to get 1 full water bottle. 
- * Number of water bottles you can drink: 15 + 3 + 1 = 19.
- * 
- * 
- * Example 3:
- * 
- * 
- * Input: numBottles = 5, numExchange = 5
- * Output: 6
- * 
- * 
- * Example 4:
- * 
- * 
- * Input: numBottles = 2, numExchange = 3
- * Output: 2
+ * Given word = "ABCCED", return true.
+ * Given word = "SEE", return true.
+ * Given word = "ABCB", return false.
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * 1 <= numBottles <= 100
- * 2 <= numExchange <= 100
+ * board and word consists only of lowercase and uppercase English letters.
+ * 1 <= board.length <= 200
+ * 1 <= board[i].length <= 200
+ * 1 <= word.length <= 10^3
+ * 
  * 
  */
 impl Solution {
-    pub fn num_water_bottles(num_bottles: i32, num_exchange: i32) -> i32 {
-        num_bottles + (num_bottles - 1) / (num_exchange - 1)
+    pub fn exist(board: Vec<Vec<char>>, word: String) -> bool {
+        
     }
 }
 
