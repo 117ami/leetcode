@@ -810,76 +810,51 @@ bool border_check(int i, int left, int right) {
   return i <= right && i >= left;
 }
 /*
- * @lc app=leetcode id=1521 lang=cpp
+ * @lc app=leetcode id=260 lang=cpp
  *
- * [1521] Find a Value of a Mysterious Function Closest to Target
+ * [260] Single Number III
  *
- * https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/description/
+ * https://leetcode.com/problems/single-number-iii/description/
  *
  * algorithms
- * Hard (38.78%)
- * Total Accepted:    3.1K
- * Total Submissions: 7.6K
- * Testcase Example:  '[9,12,3,7,15]\n5'
+ * Medium (61.15%)
+ * Total Accepted:    146.2K
+ * Total Submissions: 235.9K
+ * Testcase Example:  '[1,2,1,3,2,5]'
+ *
+ * Given an array of numbers nums, in which exactly two elements appear only
+ * once and all the other elements appear exactly twice. Find the two elements
+ * that appear only once.
+ *
+ * Example:
  *
  *
+ * Input:  [1,2,1,3,2,5]
+ * Output: [3,5]
  *
- * Winston was given the above mysterious function func. He has an integer
- * array arr and an integer target and he wants to find the values l and r that
- * make the value |func(arr, l, r) - target| minimum possible.
- *
- * Return the minimum possible value of |func(arr, l, r) - target|.
- *
- * Notice that func should be called with the values l and r where 0 <= l, r <
- * arr.length.
+ * Note:
  *
  *
- * Example 1:
- *
- *
- * Input: arr = [9,12,3,7,15], target = 5
- * Output: 2
- * Explanation: Calling func with all the pairs of [l,r] =
- * [[0,0],[1,1],[2,2],[3,3],[4,4],[0,1],[1,2],[2,3],[3,4],[0,2],[1,3],[2,4],[0,3],[1,4],[0,4]],
- * Winston got the following results [9,12,3,7,15,8,0,3,7,0,0,3,0,0,0]. The
- * value closest to 5 is 7 and 3, thus the minimum difference is 2.
- *
- *
- * Example 2:
- *
- *
- * Input: arr = [1000000,1000000,1000000], target = 1
- * Output: 999999
- * Explanation: Winston called the func with all possible values of [l,r] and
- * he always got 1000000, thus the min difference is 999999.
- *
- *
- * Example 3:
- *
- *
- * Input: arr = [1,2,4,8,16], target = 0
- * Output: 0
- *
- *
- *
- * Constraints:
- *
- *
- * 1 <= arr.length <= 10^5
- * 1 <= arr[i] <= 10^6
- * 0 <= target <= 10^7
- *
+ * The order of the result is not important. So in the above example, [5, 3] is
+ * also correct.
+ * Your algorithm should run in linear runtime complexity. Could you implement
+ * it using only constant space complexity?
  *
  */
 class Solution {
 public:
-  int closestToTarget(vector<int> &arr, int target) {
-    int pre = INT_MAX, ans = INT_MAX;
-    for (int n : arr) {
-      pre = (pre < target) ? n : pre & n;
-      ans = min(ans, min(abs(target - pre), abs(target-n)));
-    }
-    return ans;
+  vector<int> singleNumber(vector<int> &nums) {
+    int nxor = 0;
+    for (auto n : nums)
+      nxor ^= n;
+    int last = (nxor & (nxor - 1)) ^ nxor;
+    int a = 0, b = 0;
+    for (auto n : nums)
+      if (n & last)
+        a = a ^ n;
+      else
+        b = b ^ n;
+    return {a, b};
   }
 };
 
