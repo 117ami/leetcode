@@ -1,49 +1,85 @@
 /*
- * @lc app=leetcode id=260 lang=rust
+ * @lc app=leetcode id=1510 lang=rust
  *
- * [260] Single Number III
+ * [1510] Stone Game IV
  *
- * https://leetcode.com/problems/single-number-iii/description/
+ * https://leetcode.com/problems/stone-game-iv/description/
  *
  * algorithms
- * Medium (61.15%)
- * Total Accepted:    146.2K
- * Total Submissions: 235.9K
- * Testcase Example:  '[1,2,1,3,2,5]'
+ * Hard (48.73%)
+ * Total Accepted:    5.3K
+ * Total Submissions: 10.7K
+ * Testcase Example:  '1\r'
  *
- * Given an array of numbers nums, in which exactly two elements appear only
- * once and all the other elements appear exactly twice. Find the two elements
- * that appear only once.
+ * Alice and Bob take turns playing a game, with Alice starting first.
  * 
- * Example:
+ * Initially, there are n stones in a pile.  On each player's turn, that player
+ * makes a move consisting of removing any non-zero square number of stones in
+ * the pile.
+ * 
+ * Also, if a player cannot make a move, he/she loses the game.
+ * 
+ * Given a positive integer n. Return True if and only if Alice wins the game
+ * otherwise return False, assuming both players play optimally.
  * 
  * 
- * Input:  [1,2,1,3,2,5]
- * Output: [3,5]
- * 
- * Note:
+ * Example 1:
  * 
  * 
- * The order of the result is not important. So in the above example, [5, 3] is
- * also correct.
- * Your algorithm should run in linear runtime complexity. Could you implement
- * it using only constant space complexity?
+ * Input: n = 1
+ * Output: true
+ * Explanation: Alice can remove 1 stone winning the game because Bob doesn't
+ * have any moves.
+ * 
+ * Example 2:
+ * 
+ * 
+ * Input: n = 2
+ * Output: false
+ * Explanation: Alice can only remove 1 stone, after that Bob removes the last
+ * one winning the game (2 -> 1 -> 0).
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: n = 4
+ * Output: true
+ * Explanation: n is already a perfect square, Alice can win with one move,
+ * removing 4 stones (4 -> 0).
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: n = 7
+ * Output: false
+ * Explanation: Alice can't win the game if Bob plays optimally.
+ * If Alice starts removing 4 stones, Bob will remove 1 stone then Alice should
+ * remove only 1 stone and finally Bob removes the last one (7 -> 3 -> 2 -> 1
+ * -> 0). 
+ * If Alice starts removing 1 stone, Bob will remove 4 stones then Alice only
+ * can remove 1 stone and finally Bob removes the last one (7 -> 6 -> 2 -> 1 ->
+ * 0).
+ * 
+ * Example 5:
+ * 
+ * 
+ * Input: n = 17
+ * Output: false
+ * Explanation: Alice can't win the game if Bob plays optimally.
+ * 
+ * 
+ * 
+ * Constraints:
+ * 
+ * 
+ * 1 <= n <= 10^5
+ * 
  * 
  */
 impl Solution {
-    pub fn single_number(nums: Vec<i32>) -> Vec<i32> {
-        let acc = nums.iter().fold(0, |acc, n| acc ^ n);
-        let mask = acc & (-acc);
-        let mut ret = vec![0, 0];
-
-        for n in nums {
-            match n & mask {
-                0 => ret[0] ^= n,
-                _ => ret[1] ^= n,
-            }
-        }
-
-        ret        
+    pub fn winner_square_game(n: i32) -> bool {
+        
     }
 }
 
