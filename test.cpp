@@ -1,11 +1,10 @@
 
 #include "aux.cpp"
-#include "1509.minimum-difference-between-largest-and-smallest-value-in-three-moves.cpp"
+#include "1523.count-odd-numbers-in-an-interval-range.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi x = {1,4,2,28,88};
-	say(s.minDifference(x));
+	say(s.countOdds(3, 7));
 	return 0;
 }
 
