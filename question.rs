@@ -1,80 +1,96 @@
 /*
- * @lc app=leetcode id=1528 lang=rust
+ * @lc app=leetcode id=1530 lang=rust
  *
- * [1528] Shuffle String
+ * [1530] Number of Good Leaf Nodes Pairs
  *
- * https://leetcode.com/problems/shuffle-string/description/
+ * https://leetcode.com/problems/number-of-good-leaf-nodes-pairs/description/
  *
  * algorithms
- * Easy (85.41%)
- * Total Accepted:    9K
- * Total Submissions: 10.6K
- * Testcase Example:  '"codeleet"\n[4,5,6,7,0,2,1,3]'
+ * Medium (47.15%)
+ * Total Accepted:    6.4K
+ * Total Submissions: 12.6K
+ * Testcase Example:  '[1,2,3,null,4]\n3'
  *
- * Given a string s and an integer array indices of the same length.
+ * Given the root of a binary tree and an integer distance. A pair of two
+ * different leaf nodes of a binary tree is said to be good if the length of
+ * the shortest path between them is less than or equal to distance.
  * 
- * The string s will be shuffled such that the character at the i^th position
- * moves to indices[i] in the shuffled string.
- * 
- * Return the shuffled string.
+ * Return the number of good leaf node pairs in the tree.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
- * Output: "leetcode"
- * Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
+ * Input: root = [1,2,3,null,4], distance = 3
+ * Output: 1
+ * Explanation: The leaf nodes of the tree are 3 and 4 and the length of the
+ * shortest path between them is 3. This is the only good pair.
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: s = "abc", indices = [0,1,2]
- * Output: "abc"
- * Explanation: After shuffling, each character remains in its position.
+ * Input: root = [1,2,3,4,5,6,7], distance = 3
+ * Output: 2
+ * Explanation: The good pairs are [4,5] and [6,7] with shortest path = 2. The
+ * pair [4,6] is not good because the length of ther shortest path between them
+ * is 4.
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: s = "aiohn", indices = [3,1,4,2,0]
- * Output: "nihao"
+ * Input: root = [7,1,4,6,null,5,3,null,null,null,null,null,2], distance = 3
+ * Output: 1
+ * Explanation: The only good pair is [2,5].
  * 
  * 
  * Example 4:
  * 
  * 
- * Input: s = "aaiougrt", indices = [4,0,2,6,7,3,1,5]
- * Output: "arigatou"
+ * Input: root = [100], distance = 1
+ * Output: 0
  * 
  * 
  * Example 5:
  * 
  * 
- * Input: s = "art", indices = [1,0,2]
- * Output: "rat"
+ * Input: root = [1,1,1], distance = 2
+ * Output: 1
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * s.length == indices.length == n
- * 1 <= n <= 100
- * s contains only lower-case English letters.
- * 0 <= indices[i] < n
- * All values of indices are unique (i.e. indices is a permutation of the
- * integers from 0 to n - 1).
+ * The number of nodes in the tree is in the range [1, 2^10].
+ * Each node's value is between [1, 100].
+ * 1 <= distance <= 10
  * 
  */
+// Definition for a binary tree node.
+// #[derive(Debug, PartialEq, Eq)]
+// pub struct TreeNode {
+//   pub val: i32,
+//   pub left: Option<Rc<RefCell<TreeNode>>>,
+//   pub right: Option<Rc<RefCell<TreeNode>>>,
+// }
+// 
+// impl TreeNode {
+//   #[inline]
+//   pub fn new(val: i32) -> Self {
+//     TreeNode {
+//       val,
+//       left: None,
+//       right: None
+//     }
+//   }
+// }
+use std::rc::Rc;
+use std::cell::RefCell;
 impl Solution {
-    pub fn restore_string(s: String, indices: Vec<i32>) -> String {
-        let mut ss: Vec<char> = vec!['x'; s.len()];
-        for (i, c) in s.chars().into_iter().enumerate(){
-            ss[indices[i] as usize] = c; 
-        }
-        ss.into_iter().collect::<String>()
+    pub fn count_pairs(root: Option<Rc<RefCell<TreeNode>>>, distance: i32) -> i32 {
+        
     }
 }
 
