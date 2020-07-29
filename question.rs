@@ -1,95 +1,75 @@
 /*
- * @lc app=leetcode id=1530 lang=rust
+ * @lc app=leetcode id=621 lang=rust
  *
- * [1530] Number of Good Leaf Nodes Pairs
+ * [621] Task Scheduler
  *
- * https://leetcode.com/problems/number-of-good-leaf-nodes-pairs/description/
+ * https://leetcode.com/problems/task-scheduler/description/
  *
  * algorithms
- * Medium (47.15%)
- * Total Accepted:    6.4K
- * Total Submissions: 12.6K
- * Testcase Example:  '[1,2,3,null,4]\n3'
+ * Medium (48.76%)
+ * Total Accepted:    174.5K
+ * Total Submissions: 356.7K
+ * Testcase Example:  '["A","A","A","B","B","B"]\n2'
  *
- * Given the root of a binary tree and an integer distance. A pair of two
- * different leaf nodes of a binary tree is said to be good if the length of
- * the shortest path between them is less than or equal to distance.
+ * You are given a char array representing tasks CPU need to do. It contains
+ * capital letters A to Z where each letter represents a different task. Tasks
+ * could be done without the original order of the array. Each task is done in
+ * one unit of time. For each unit of time, the CPU could complete either one
+ * task or just be idle.
  * 
- * Return the number of good leaf node pairs in the tree.
+ * However, there is a non-negative integer n that represents the cooldown
+ * period between two same tasks (the same letter in the array), that is that
+ * there must be at least n units of time between any two same tasks.
+ * 
+ * You need to return the least number of units of times that the CPU will take
+ * to finish all the given tasks.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: root = [1,2,3,null,4], distance = 3
- * Output: 1
- * Explanation: The leaf nodes of the tree are 3 and 4 and the length of the
- * shortest path between them is 3. This is the only good pair.
+ * Input: tasks = ["A","A","A","B","B","B"], n = 2
+ * Output: 8
+ * Explanation: 
+ * A -> B -> idle -> A -> B -> idle -> A -> B
+ * There is at least 2 units of time between any two same tasks.
  * 
  * 
  * Example 2:
  * 
  * 
- * Input: root = [1,2,3,4,5,6,7], distance = 3
- * Output: 2
- * Explanation: The good pairs are [4,5] and [6,7] with shortest path = 2. The
- * pair [4,6] is not good because the length of ther shortest path between them
- * is 4.
+ * Input: tasks = ["A","A","A","B","B","B"], n = 0
+ * Output: 6
+ * Explanation: On this case any permutation of size 6 would work since n = 0.
+ * ["A","A","A","B","B","B"]
+ * ["A","B","A","B","A","B"]
+ * ["B","B","B","A","A","A"]
+ * ...
+ * And so on.
  * 
  * 
  * Example 3:
  * 
  * 
- * Input: root = [7,1,4,6,null,5,3,null,null,null,null,null,2], distance = 3
- * Output: 1
- * Explanation: The only good pair is [2,5].
- * 
- * 
- * Example 4:
- * 
- * 
- * Input: root = [100], distance = 1
- * Output: 0
- * 
- * 
- * Example 5:
- * 
- * 
- * Input: root = [1,1,1], distance = 2
- * Output: 1
+ * Input: tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"], n = 2
+ * Output: 16
+ * Explanation: 
+ * One possible solution is
+ * A -> B -> C -> A -> D -> E -> A -> F -> G -> A -> idle -> idle -> A -> idle
+ * -> idle -> A
  * 
  * 
  * 
  * Constraints:
  * 
  * 
- * The number of nodes in the tree is in the range [1, 2^10].
- * Each node's value is between [1, 100].
- * 1 <= distance <= 10
+ * The number of tasks is in the range [1, 10000].
+ * The integer n is in the range [0, 100].
+ * 
  * 
  */
-// Definition for a binary tree node.
-// #[derive(Debug, PartialEq, Eq)]
-// pub struct TreeNode {
-//   pub val: i32,
-//   pub left: Option<Rc<RefCell<TreeNode>>>,
-//   pub right: Option<Rc<RefCell<TreeNode>>>,
-// }
-// 
-// impl TreeNode {
-//   #[inline]
-//   pub fn new(val: i32) -> Self {
-//     TreeNode {
-//       val,
-//       left: None,
-//       right: None
-//     }
-//   }
-// }
-use std::rc::Rc;
-use std::cell::RefCell;
 impl Solution {
-    pub fn count_pairs(root: Option<Rc<RefCell<TreeNode>>>, distance: i32) -> i32 {
+    pub fn least_interval(tasks: Vec<char>, n: i32) -> i32 {
         
     }
 }

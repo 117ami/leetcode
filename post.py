@@ -22,4 +22,3 @@ os.system('leetcode submit {}'.format(sys.argv[-1]))
 # os.system('/usr/local/bin/proxychains4 -q leetcode submit {}'.format(sys.argv[-1]))
 
 
-

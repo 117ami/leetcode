@@ -1,6 +1,6 @@
 
 #include "aux.cpp"
-#include "1530.number-of-good-leaf-nodes-pairs.cpp"
+#include "621.task-scheduler.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
