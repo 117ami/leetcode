@@ -1,84 +1,40 @@
 /*
- * @lc app=leetcode id=12 lang=rust
+ * @lc app=leetcode id=309 lang=rust
  *
- * [12] Integer to Roman
+ * [309] Best Time to Buy and Sell Stock with Cooldown
  *
- * https://leetcode.com/problems/integer-to-roman/description/
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/
  *
  * algorithms
- * Medium (54.98%)
- * Total Accepted:    366.6K
- * Total Submissions: 666.7K
- * Testcase Example:  '3'
+ * Medium (46.42%)
+ * Total Accepted:    143.3K
+ * Total Submissions: 307.6K
+ * Testcase Example:  '[1,2,3,0,2]'
  *
- * Roman numerals are represented by seven different symbols: I, V, X, L, C, D
- * and M.
+ * Say you have an array for which the i^th element is the price of a given
+ * stock on day i.
+ * 
+ * Design an algorithm to find the maximum profit. You may complete as many
+ * transactions as you like (ie, buy one and sell one share of the stock
+ * multiple times) with the following restrictions:
  * 
  * 
- * Symbol       Value
- * I             1
- * V             5
- * X             10
- * L             50
- * C             100
- * D             500
- * M             1000
- * 
- * For example, two is written as II in Roman numeral, just two one's added
- * together. Twelve is written as, XII, which is simply X + II. The number
- * twenty seven is written as XXVII, which is XX + V + II.
- * 
- * Roman numerals are usually written largest to smallest from left to right.
- * However, the numeral for four is not IIII. Instead, the number four is
- * written as IV. Because the one is before the five we subtract it making
- * four. The same principle applies to the number nine, which is written as IX.
- * There are six instances where subtraction is used:
+ * You may not engage in multiple transactions at the same time (ie, you must
+ * sell the stock before you buy again).
+ * After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1
+ * day)
  * 
  * 
- * I can be placed before V (5) and X (10) to make 4 and 9. 
- * X can be placed before L (50) and C (100) to make 40 and 90. 
- * C can be placed before D (500) and M (1000) to make 400 and 900.
+ * Example:
  * 
  * 
- * Given an integer, convert it to a roman numeral. Input is guaranteed to be
- * within the range from 1 to 3999.
- * 
- * Example 1:
- * 
- * 
- * Input: 3
- * Output: "III"
- * 
- * Example 2:
- * 
- * 
- * Input: 4
- * Output: "IV"
- * 
- * Example 3:
- * 
- * 
- * Input: 9
- * Output: "IX"
- * 
- * Example 4:
- * 
- * 
- * Input: 58
- * Output: "LVIII"
- * Explanation: L = 50, V = 5, III = 3.
- * 
- * 
- * Example 5:
- * 
- * 
- * Input: 1994
- * Output: "MCMXCIV"
- * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+ * Input: [1,2,3,0,2]
+ * Output: 3 
+ * Explanation: transactions = [buy, sell, cooldown, buy, sell]
  * 
  */
 impl Solution {
-    pub fn int_to_roman(num: i32) -> String {
+    pub fn max_profit(prices: Vec<i32>) -> i32 {
         
     }
 }
