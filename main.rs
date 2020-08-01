@@ -4,6 +4,6 @@ mod question;
 // let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
 
 fn main(){
-	println!("{:?}", question::Solution::int_to_roman());
+	println!("{:?}", question::Solution::detect_capital_use());
 }
 

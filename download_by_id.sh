@@ -48,20 +48,20 @@ python3 scripts/add_inputs_to_solution_file.py $python_file >> $python_file
 rm tmp.file 
 
 # ================================================================= Rust soluton file
-cp $rust_file question.rs 
-echo -e "\n\npub struct Solution; " >> question.rs 
-cat aux.rs >> question.rs 
+# cp $rust_file question.rs 
+# echo -e "\n\npub struct Solution; " >> question.rs 
+# cat aux.rs >> question.rs 
 
-method=$(cat $rust_file | grep fn | head -n 1 | awk '{print $3}' | cut -d "(" -f 1)
-echo "
-mod question; 
+# method=$(cat $rust_file | grep fn | head -n 1 | awk '{print $3}' | cut -d "(" -f 1)
+# echo "
+# mod question; 
 
-// let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
+# // let vg = grid.iter().map(|c| c.to_vec()).collect::<Vec<Vec<_>>>();
 
-fn main(){
-	println!(\"{:?}\", question::Solution::$method());
-}
-" > main.rs 
+# fn main(){
+# 	println!(\"{:?}\", question::Solution::$method());
+# }
+# " > main.rs 
 
 
 # ================================================================= C++ soluton file

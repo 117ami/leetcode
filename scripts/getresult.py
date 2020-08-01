@@ -1,7 +1,8 @@
 import requests
 import bs4 
 
-res = requests.Session().get('https://leetcode.com/xiuxiu_/')
+# res = requests.Session().get('https://leetcode.com/xiuxiu_/')
+res = requests.Session().get('https://leetcode.com/GaoangLiu')
 soup = bs4.BeautifulSoup(res.text, 'lxml')
 submissions = soup.findAll('a', href=lambda h: h and h.startswith("/problems"))
 for s in submissions[:4]:

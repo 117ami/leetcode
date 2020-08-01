@@ -1,85 +1,67 @@
 /*
- * @lc app=leetcode id=12 lang=rust
+ * @lc app=leetcode id=520 lang=rust
  *
- * [12] Integer to Roman
+ * [520] Detect Capital
  *
- * https://leetcode.com/problems/integer-to-roman/description/
+ * https://leetcode.com/problems/detect-capital/description/
  *
  * algorithms
- * Medium (54.98%)
- * Total Accepted:    366.6K
- * Total Submissions: 666.7K
- * Testcase Example:  '3'
+ * Easy (53.44%)
+ * Total Accepted:    113.5K
+ * Total Submissions: 212.3K
+ * Testcase Example:  '"USA"'
  *
- * Roman numerals are represented by seven different symbols: I, V, X, L, C, D
- * and M.
+ * Given a word, you need to judge whether the usage of capitals in it is right
+ * or not.
+ * 
+ * We define the usage of capitals in a word to be right when one of the
+ * following cases holds:
  * 
  * 
- * Symbol       Value
- * I             1
- * V             5
- * X             10
- * L             50
- * C             100
- * D             500
- * M             1000
+ * All letters in this word are capitals, like "USA".
+ * All letters in this word are not capitals, like "leetcode".
+ * Only the first letter in this word is capital, like "Google".
  * 
- * For example, two is written as II in Roman numeral, just two one's added
- * together. Twelve is written as, XII, which is simply X + II. The number
- * twenty seven is written as XXVII, which is XX + V + II.
- * 
- * Roman numerals are usually written largest to smallest from left to right.
- * However, the numeral for four is not IIII. Instead, the number four is
- * written as IV. Because the one is before the five we subtract it making
- * four. The same principle applies to the number nine, which is written as IX.
- * There are six instances where subtraction is used:
+ * Otherwise, we define that this word doesn't use capitals in a right way.
  * 
  * 
- * I can be placed before V (5) and X (10) to make 4 and 9. 
- * X can be placed before L (50) and C (100) to make 40 and 90. 
- * C can be placed before D (500) and M (1000) to make 400 and 900.
- * 
- * 
- * Given an integer, convert it to a roman numeral. Input is guaranteed to be
- * within the range from 1 to 3999.
  * 
  * Example 1:
  * 
  * 
- * Input: 3
- * Output: "III"
+ * Input: "USA"
+ * Output: True
+ * 
+ * 
+ * 
  * 
  * Example 2:
  * 
  * 
- * Input: 4
- * Output: "IV"
- * 
- * Example 3:
+ * Input: "FlaG"
+ * Output: False
  * 
  * 
- * Input: 9
- * Output: "IX"
- * 
- * Example 4:
  * 
  * 
- * Input: 58
- * Output: "LVIII"
- * Explanation: L = 50, V = 5, III = 3.
- * 
- * 
- * Example 5:
- * 
- * 
- * Input: 1994
- * Output: "MCMXCIV"
- * Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+ * Note: The input will be a non-empty word consisting of uppercase and
+ * lowercase latin letters.
  * 
  */
 impl Solution {
-    pub fn int_to_roman(num: i32) -> String {
-        
+    pub fn detect_capital_use(word: String) -> bool {
+        let mut haslower = false; 
+        let mut cnt = 0; 
+        for c in word.chars().iter() {
+            if c.is_uppercase() {
+                cnt += 1; 
+                if haslower { return false ;}
+            } else {
+                haslower = true; 
+                if cnt > 1{ return false;}
+            }
+        }
+        true 
     }
 }
 

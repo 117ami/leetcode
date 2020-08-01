@@ -5,3 +5,8 @@ submit.py
 *sh 
 conf.d/ssinfo.txt
 *py 
+data/
+data/*
+lc.py 
+
+
