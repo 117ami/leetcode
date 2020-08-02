@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1482.minimum-number-of-days-to-make-m-bouquets.cpp"
+#include "1157.online-majority-element-in-subarray.cpp"
 
 int main(int argc, char const *argv[]) {
-	Solution s;
-	vi b = {1,10,2,9,3,8,4,7,5,6};
-	say(s.minDays(b, 4, 2));
+	vi arr = {1,1,2,2,1,1};
+	MajorityChecker s(arr);
+	say(s.query(0, 5, 4));
 	return 0;
 }
 
