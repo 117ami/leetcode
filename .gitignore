@@ -8,5 +8,4 @@ conf.d/ssinfo.txt
 data/
 data/*
 lc.py 
-
-
+xiulc.py

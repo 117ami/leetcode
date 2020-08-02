@@ -1,18 +1,18 @@
 #!/bin/bash 
 
 prepro() {
-    op=$(proxychains4 leetcode show $1 -gx -l rust)	
+    op=$(proxychains4 leetcode show $1 -gx -l python3)	
     if [[ $op =~ "ERROR" ]]; then 
     	echo $op
 		echo "Refreshing cache may help resolving this problem [leetcode cache -d]."
 	fi 
-	proxychains4 leetcode show $1 -gx -l python3
+	# proxychains4 leetcode show $1 -gx -l python3
 	proxychains4 leetcode show $1 -gx -l cpp
 }
 
 prepro $@
 
-rust_file=$(ls -t *.rs | head -n 1)
+# rust_file=$(ls -t *.rs | head -n 1)
 # js_file=$(ls -t *.js | head -n 1)
 python_file=$(ls -t *.py | head -n 1)
 # ruby_file=$(ls -t *.rb | head -n 1)
@@ -83,4 +83,5 @@ int main(int argc, char const *argv[]) {
 }
 " | tee test.cpp
 
+rm *.pye 
 
