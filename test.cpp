@@ -1,11 +1,9 @@
 
 #include "aux.cpp"
-#include "1157.online-majority-element-in-subarray.cpp"
+#include "961.n-repeated-element-in-size-2n-array.cpp"
 
 int main(int argc, char const *argv[]) {
-	vi arr = {1,1,2,2,1,1};
-	MajorityChecker s(arr);
-	say(s.query(0, 5, 4));
+	Solution s;
 	return 0;
 }
 
