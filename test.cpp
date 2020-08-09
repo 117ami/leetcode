@@ -1,11 +1,10 @@
 
 #include "aux.cpp"
-#include "1544.make-the-string-great.cpp"
+#include "1545.find-kth-bit-in-nth-binary-string.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string st = "leEeetcode";
-	say(s.makeGood(st));
+	say(s.findKthBit(4, 9));
 	return 0;
 }
 
