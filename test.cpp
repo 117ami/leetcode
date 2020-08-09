@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
-#include "1547.minimum-cost-to-cut-a-stick.cpp"
+#include "1546.maximum-number-of-non-overlapping-subarrays-with-sum-equals-target.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi cuts = {5,6,1,4,2};
-	say(s.minCost(9, cuts));
+	vi ns = {-2,6,6,3,5,4,1,2,8}; 
+	int n = 10; 
+	say(s.maxNonOverlapping(ns, n));
 	return 0;
 }
 
