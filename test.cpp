@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
-#include "1539.kth-missing-positive-number.cpp"
+#include "1541.minimum-insertions-to-balance-a-parentheses-string.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vi a = {1,2}; int k  =5; 
-	say(s.findKthPositive(a, k));
+	string ss = "))())("; 
+	ss = "(()))";
+	say(s.minInsertions(ss));
 	return 0;
 }
 
