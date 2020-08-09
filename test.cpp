@@ -1,12 +1,11 @@
 
 #include "aux.cpp"
-#include "1520.maximum-number-of-non-overlapping-substrings.cpp"
+#include "1524.number-of-sub-arrays-with-odd-sum.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string st = "bbcacbaba";
-	st ="adefaddaccc";
-	say(s.maxNumOfSubstrings(st));
+	vi a = {1,2,3,4,5,6,7};
+	say(s.numOfSubarrays(a));
 	return 0;
 }
 
