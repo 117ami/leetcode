@@ -4,7 +4,7 @@ Leetcode
 
 ### Leetcode Solutions 
 
-Python solutions to Leetcode problems in Python3, inspired by [Haoel(CPP solutions)](https://github.com/haoel/leetcode). 
+Solutions to Leetcode problems in Python3/C++/Rust etc, inspired by [Haoel(CPP solutions)](https://github.com/haoel/leetcode). 
 An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode problems can be found [here](./solutions/). 
 
 (Note: the symbols 𝐇, 𝐌, 𝐄 after each ID imply the difficulties: Hard, Medium, Easy)
@@ -738,18 +738,6 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1545 | [find-kth-bit-in-nth-binary-string](https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/description/) | [Python](./python_solutions/1545.find-kth-bit-in-nth-binary-string.py)/[C++](./python_solutions/1545.find-kth-bit-in-nth-binary-string.cpp) |
 |𝐌.1546 | [maximum-number-of-non-overlapping-subarrays-with-sum-equals-target](https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/description/) | [Python](./python_solutions/1546.maximum-number-of-non-overlapping-subarrays-with-sum-equals-target.py)/[C++](./python_solutions/1546.maximum-number-of-non-overlapping-subarrays-with-sum-equals-target.cpp) |
 |𝐇.1547 | [minimum-cost-to-cut-a-stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/description/) | [Python](./python_solutions/1547.minimum-cost-to-cut-a-stick.py)/[C++](./python_solutions/1547.minimum-cost-to-cut-a-stick.cpp) |
-|𝐄.5083 | [occurrences-after-bigram](https://leetcode.com/problems/occurrences-after-bigram/description/) | [Python](./python_solutions/5083.occurrences-after-bigram.py)/[Ruby](./python_solutions/5083.occurrences-after-bigram.rb) /[Javascript](./python_solutions/5083.occurrences-after-bigram.js) /[C++](./python_solutions/5083.occurrences-after-bigram.cpp) |
-|𝐌.5086 | [smallest-subsequence-of-distinct-characters](https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/description/) | [Python](./python_solutions/5086.smallest-subsequence-of-distinct-characters.py)/[Ruby](./python_solutions/5086.smallest-subsequence-of-distinct-characters.rb) /[Javascript](./python_solutions/5086.smallest-subsequence-of-distinct-characters.js) /[C++](./python_solutions/5086.smallest-subsequence-of-distinct-characters.cpp) |
-|𝐌.5087 | [letter-tile-possibilities](https://leetcode.com/problems/letter-tile-possibilities/description/) | [Python](./python_solutions/5087.letter-tile-possibilities.py)/[Ruby](./python_solutions/5087.letter-tile-possibilities.rb) /[Javascript](./python_solutions/5087.letter-tile-possibilities.js) /[C++](./python_solutions/5087.letter-tile-possibilities.cpp) |
-|𝐄.5291 | [find-numbers-with-even-number-of-digits](https://leetcode.com/problems/find-numbers-with-even-number-of-digits/description/) | [Python](./python_solutions/5291.find-numbers-with-even-number-of-digits.py)/[C++](./python_solutions/5291.find-numbers-with-even-number-of-digits.cpp) |
-|𝐌.5292 | [divide-array-in-sets-of-k-consecutive-numbers](https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/description/) | [Python](./python_solutions/5292.divide-array-in-sets-of-k-consecutive-numbers.py)/[C++](./python_solutions/5292.divide-array-in-sets-of-k-consecutive-numbers.cpp) |
-|𝐌.5293 | [maximum-number-of-occurrences-of-a-substring](https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/description/) | [Python](./python_solutions/5293.maximum-number-of-occurrences-of-a-substring.py)/[C++](./python_solutions/5293.maximum-number-of-occurrences-of-a-substring.cpp) |
-|𝐇.5294 | [maximum-candies-you-can-get-from-boxes](https://leetcode.com/problems/maximum-candies-you-can-get-from-boxes/description/) | [Python](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.py)/[C++](./python_solutions/5294.maximum-candies-you-can-get-from-boxes.cpp) |
-|𝐌.5297 | [jump-game-iii](https://leetcode.com/problems/jump-game-iii/description/) | [Python](./python_solutions/5297.jump-game-iii.py)|
-|𝐇.5310 | [minimum-distance-to-type-a-word-using-two-fingers](https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/description/) | [Python](./python_solutions/5310.minimum-distance-to-type-a-word-using-two-fingers.py)|
-|𝐇.5318 | [minimum-number-of-taps-to-open-to-water-a-garden](https://leetcode.com/problems/minimum-number-of-taps-to-open-to-water-a-garden/description/) | [Python](./python_solutions/5318.minimum-number-of-taps-to-open-to-water-a-garden.py)/[C++](./python_solutions/5318.minimum-number-of-taps-to-open-to-water-a-garden.cpp) |
-|𝐄.5453 | [running-sum-of-1d-array](https://leetcode.com/problems/running-sum-of-1d-array/description/) | [Python](./python_solutions/5453.running-sum-of-1d-array.py)/[C++](./python_solutions/5453.running-sum-of-1d-array.cpp) /[Rust](./python_solutions/5453.running-sum-of-1d-array.rs) |
-|𝐌.5454 | [least-number-of-unique-integers-after-k-removals](https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/description/) | [Python](./python_solutions/5454.least-number-of-unique-integers-after-k-removals.py)/[C++](./python_solutions/5454.least-number-of-unique-integers-after-k-removals.cpp) /[Rust](./python_solutions/5454.least-number-of-unique-integers-after-k-removals.rs) |
 
 
 ### Contact
