@@ -834,37 +834,34 @@ class Trie:
             cur = cur.children[c]
         return True
 
-sol = Solution()
 
+def geometric_median(positions):
+    '''Weiszfeld's algorithm to find a center point from 
+    a list positions such that the sum of distances to all points 
+    is minimal 
+    '''
+    if len(positions) == 1: return positions[0]
+    def dist(a, b):
+        return math.hypot(a[0] - b[0], a[1] - b[1])
 
-print(sol.__init__())
-print(sol.prefix_sum())
-print(sol.update())
-print(sol.longestPalindromeSubseq())
-print(sol.is_p())
-print(sol.lcslen())
-print(sol.lcs())
-print(sol.find_all_lcs())
-print(sol.scs())
-print(sol.__init__())
-print(sol.__str__())
-print(sol.isEmpty())
-print(sol.size())
-print(sol.push())
-print(sol.pop())
-print(sol.__init__())
-print(sol.__init__())
-print(sol.inorder())
-print(sol.getdepth())
-print(sol.printTree())
-print(sol.listToTree())
-print(sol.sortedArrayToBST())
-print(sol.treeToList())
-print(sol.isCompleteTree())
-print(sol.intToRoman())
-print(sol.__init__())
-print(sol.union())
-print(sol.find())
-print(sol.get_lhp())
-print(sol.pattern_search())
-print(sol.__init__())
+    curr = list(map(lambda a: sum(a) / len(a), zip(*positions)))
+    prev = [float('inf')] * 2
+    err, epsilon = 1e-7, 1e-20
+
+    while dist(prev, curr) > err:
+        f, s, d = 0, 0, 0
+        for p in positions:
+            ''' l2 = ... + epsilon to avoid divide-by-zero error 
+            The weights of p to form a next center point curr_next are inversely proportional to the
+            distances from the current estimate curr.
+            '''
+            l2 = dist(p, curr) + epsilon
+            f += p[0] / l2
+            s += p[1] / l2
+            d += 1 / l2
+        curr, prev = [f/d, s/d], curr
+    
+    return curr 
+    # or return the minimal sum of distances 
+    # return sum(map(lambda p: dist(curr, p), positions))
+
