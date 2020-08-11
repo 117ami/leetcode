@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1519.number-of-nodes-in-the-sub-tree-with-the-same-label.cpp"
+#include "1515.best-position-for-a-service-centre.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vvi edges = {{0, 2}, {0, 3}, {1, 2}}; 
-	say(s.countSubTrees(4, edges, "aeed"));
+	vvi p = {{1,1},{0,0},{2,0}};
+	say(s.getMinDistSum(p));
 	return 0;
 }
 
