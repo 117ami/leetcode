@@ -9,3 +9,4 @@ data/
 data/*
 lc.py 
 xiulc.py
+.gitignore

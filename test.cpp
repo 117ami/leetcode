@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "1531.string-compression-ii.cpp"
+#include "1519.number-of-nodes-in-the-sub-tree-with-the-same-label.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string a = "aaaaaaa"; 
-	say(s.getLengthOfOptimalCompression(a, 0));
+	vvi edges = {{0, 2}, {0, 3}, {1, 2}}; 
+	say(s.countSubTrees(4, edges, "aeed"));
 	return 0;
 }
 
