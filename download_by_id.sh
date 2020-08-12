@@ -65,9 +65,9 @@ rm tmp.file
 
 
 # ================================================================= C++ soluton file
-cat cpp/helper.cpp > tmpcpp
-cat $cpp_file >> tmpcpp
-mv tmpcpp $cpp_file
+# cat cpp/helper.cpp > tmpcpp
+# cat $cpp_file >> tmpcpp
+# mv tmpcpp $cpp_file
 
 echo -e "\n\n
 static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file

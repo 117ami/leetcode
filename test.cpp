@@ -1,40 +1,31 @@
 
 #include "aux.cpp"
-#include "1514.path-with-maximum-probability.cpp"
+#include "1505.minimum-possible-integer-after-at-most-k-adjacent-swaps-on-digits.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	int n = 3, start=0, end=2; 
-	vvi edges = {{0,1},{1,2},{0,2}};
-	vector<double> succProb = {0.5,0.5,0.2};
-	say(s.maxProbability(n, edges, succProb, start, end));
+	string c = "43432"; 
+	int n =3;
+	c = "3112056788886886880368579471175675";
+	c = "434332";
+	n =40;
 
-class CompareDist
-{
-public:
-    bool operator()(pair<double,int> n1,pair<double,int> n2) {
-        return n1.first < n2.first;
-    }
-};
-	    priority_queue<pair<double, int>, vector<pair<double, int>>, CompareDist>
-        pq;
+	say(s.minInteger(c, n));
 
-	pq.push(mp(1.0, 0));
-	pq.pop();
-	pq.push(mp(0.2, 2));
-	pq.push(mp(0.5, 1));
-	pq.push(mp(0.3, 1));
-	pq.push(mp(0.9, 1));
-	double p = pq.top().first;
-	say(p);
 
-	pq.pop(); 
-	p = pq.top().first;
-	say(p);
-	
-	pq.pop();
-	p = pq.top().first;
-	say(p);
+	std::vector<int> foo = {8,8,8,8,6,8,9,8,9,8};
+	std::vector<int> cc(foo.size());
+	std::iota(cc.begin(), cc.end(), 0);
+	std::vector<int> bar;
+
+	// copy only positive numbers:
+	bool valid = true; 
+	std::copy_if (cc.begin(), cc.end(), std::back_inserter(bar), [&foo, &valid](int i){ 
+		// valid = i > 0 && foo[i] > foo[i-1] ? false : valid; 
+		return foo[i] == 8 && (valid &= (i == 0 || (i > 0 && foo[i] <= foo[i-1]) ));
+		// (i == 0 || (i > 0 && valid ));
+		} );
+	say(bar);
 	return 0;
 }
 
