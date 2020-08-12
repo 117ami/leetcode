@@ -1,14 +1,11 @@
 
 #include "aux.cpp"
-#include "26.remove-duplicates-from-sorted-array.cpp"
+#include "135.candy.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	std::vector<int> v = {0,0,1,1,1,2,2,3,3,4};
-	v = {1,1,2};
-	// v = {};
-	say(s.removeDuplicates(v));
-	
+	vector<int> r = {1, 2, 87, 87, 87, 2, 1};
+	say(s.candy(r));
 	return 0;
 }
 
