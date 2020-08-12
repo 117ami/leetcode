@@ -70,7 +70,8 @@ rm tmp.file
 # mv tmpcpp $cpp_file
 
 echo -e "\n\n
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();" | tee -a $cpp_file
+ios_base::sync_with_stdio(false); " | tee -a $cpp_file
+# static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
 
 
 echo "
