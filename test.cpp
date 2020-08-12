@@ -1,11 +1,10 @@
 
 #include "aux.cpp"
-#include "1515.best-position-for-a-service-centre.cpp"
+#include "119.pascals-triangle-ii.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vvi p = {{1,1},{0,0},{2,0}};
-	say(s.getMinDistSum(p));
+	say(s.getRow(3));
 	return 0;
 }
 
