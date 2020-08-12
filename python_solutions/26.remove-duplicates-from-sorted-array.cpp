@@ -58,18 +58,18 @@
  * print(nums[i]);
  * }
  */
+#include <vector>
+
 class Solution {
 public:
   int removeDuplicates(vector<int> &nums) {
     ios_base::sync_with_stdio(false);
 
     // Method 1
-    int pre = INT_MIN;
+    size_t i=0; 
     auto it =
-        std::copy_if(nums.begin(), nums.end(), nums.begin(), [&pre](int n) {
-          bool v = n > pre;
-          pre = n;
-          return v;
+        std::copy_if(nums.begin(), nums.end(), nums.begin(), [&i, &nums](int n) {
+          return i++ == 0 || n > nums[i-2];
         });
     return std::distance(nums.begin(), it);
 

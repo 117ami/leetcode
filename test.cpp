@@ -8,7 +8,7 @@ int main(int argc, char const *argv[]) {
 	v = {1,1,2};
 	// v = {};
 	say(s.removeDuplicates(v));
-	say(2^2^42323);
+	
 	return 0;
 }
 
