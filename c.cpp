@@ -807,14 +807,16 @@ public:
     // merge node x and y
     int fx = find(x);
     int fy = find(y);
-    if (rank[fx] > rank[fy]) {
-      parent[fy] = fx;
-    } else if (rank[fx] == rank[fy]) {
-      rank[fy] += 1;
-      parent[fx] = fy;
-    } else {
-      parent[fx] = fy;
-    }
+    parent[fx]=parent[fy]= min(fx, fy);
+
+    // if (rank[fx] > rank[fy]) {
+    //   parent[fy] = fx;
+    // } else if (rank[fx] == rank[fy]) {
+    //   rank[fy] += 1;
+    //   parent[fx] = fy;
+    // } else {
+    //   parent[fx] = fy;
+    // }
   }
 };
 

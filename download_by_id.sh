@@ -69,9 +69,11 @@ rm tmp.file
 # cat $cpp_file >> tmpcpp
 # mv tmpcpp $cpp_file
 
-# echo -e "\n\n
-# ios_base::sync_with_stdio(false); " | tee -a $cpp_file
-# static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
+echo -e "\n\n
+auto speed_up = [] () {
+    ios_base::sync_with_stdio(false);
+    return 0;
+}(); " | tee -a $cpp_file
 
 
 echo "
