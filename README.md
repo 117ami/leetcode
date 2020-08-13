@@ -232,6 +232,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐇.493 | [reverse-pairs](https://leetcode.com/problems/reverse-pairs/description/) | [Python](./python_solutions/493.reverse-pairs.py)/[C++](./python_solutions/493.reverse-pairs.cpp) |
 |𝐌.494 | [target-sum](https://leetcode.com/problems/target-sum/description/) | [Python](./python_solutions/494.target-sum.py)/[Ruby](./python_solutions/494.target-sum.rb) /[Javascript](./python_solutions/494.target-sum.js) /[C++](./python_solutions/494.target-sum.cpp) |
 |𝐌.498 | [diagonal-traverse](https://leetcode.com/problems/diagonal-traverse/description/) | [Python](./python_solutions/498.diagonal-traverse.py)/[Rust](./python_solutions/498.diagonal-traverse.rs) |
+|𝐇.502 | [ipo](https://leetcode.com/problems/ipo/description/) | [Python](./python_solutions/502.ipo.py)/[C++](./python_solutions/502.ipo.cpp) |
 |𝐌.503 | [next-greater-element-ii](https://leetcode.com/problems/next-greater-element-ii/description/) | [Python](./python_solutions/503.next-greater-element-ii.py)/[C++](./python_solutions/503.next-greater-element-ii.cpp) |
 |𝐄.504 | [base-7](https://leetcode.com/problems/base-7/description/) | [Python](./python_solutions/504.base-7.py)/[C++](./python_solutions/504.base-7.cpp) |
 |𝐄.507 | [perfect-number](https://leetcode.com/problems/perfect-number/description/) | [Python](./python_solutions/507.perfect-number.py)/[Ruby](./python_solutions/507.perfect-number.rb) |
