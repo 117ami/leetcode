@@ -1,13 +1,15 @@
 
 #include "aux.cpp"
-#include "1488.avoid-flood-in-the-city.cpp"
+#include "928.minimize-malware-spread-ii.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> r = {1,2,0,0,2,1}; 
-	// r = {1,2,0, 2};
-	// r = {42, 0,0,42};
-	say(s.avoidFlood(r));
+	vector<vector<int>> g = {{1, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 1, 1}, {0, 0, 1, 1}};
+	vector<int> is = {0, 1};
+	g = {{1,1,0,0},{1,1,0,1},{0,0,1,0},{0,1,0,1}}; 
+	g = {{1,0,0,0,0,0},{0,1,0,0,0,0},{0,0,1,0,0,0},{0,0,0,1,1,0},{0,0,0,1,1,0},{0,0,0,0,0,1}};
+	is = {5,0};
+	say(s.minMalwareSpread(g, is));
 	return 0;
 }
 
