@@ -1,14 +1,13 @@
 
 #include "aux.cpp"
-#include "592.fraction-addition-and-subtraction.cpp"
+#include "1488.avoid-flood-in-the-city.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string input = "-3/10-10/5+2/3";
-	input = "-1/2+1/2-1/3";
-	input = "1/3-1/2";
-	// input = "";
-	say(s.fractionAddition(input));
+	vector<int> r = {1,2,0,0,2,1}; 
+	// r = {1,2,0, 2};
+	// r = {42, 0,0,42};
+	say(s.avoidFlood(r));
 	return 0;
 }
 
