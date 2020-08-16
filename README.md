@@ -755,6 +755,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1546 | [maximum-number-of-non-overlapping-subarrays-with-sum-equals-target](https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/description/) | [Python](./python_solutions/1546.maximum-number-of-non-overlapping-subarrays-with-sum-equals-target.py)/[C++](./python_solutions/1546.maximum-number-of-non-overlapping-subarrays-with-sum-equals-target.cpp) |
 |𝐇.1547 | [minimum-cost-to-cut-a-stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/description/) | [Python](./python_solutions/1547.minimum-cost-to-cut-a-stick.py)/[C++](./python_solutions/1547.minimum-cost-to-cut-a-stick.cpp) |
 |𝐄.1550 | [three-consecutive-odds](https://leetcode.com/problems/three-consecutive-odds/description/) | [Python](./python_solutions/1550.three-consecutive-odds.py)/[C++](./python_solutions/1550.three-consecutive-odds.cpp) |
+|𝐌.1551 | [minimum-operations-to-make-array-equal](https://leetcode.com/problems/minimum-operations-to-make-array-equal/description/) | [Python](./python_solutions/1551.minimum-operations-to-make-array-equal.py)/[C++](./python_solutions/1551.minimum-operations-to-make-array-equal.cpp) |
 
 
 ### Contact
