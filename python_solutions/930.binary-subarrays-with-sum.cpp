@@ -1,3 +1,4 @@
+#include<vector>
 /*
  * @lc app=leetcode id=930 lang=cpp
  *
@@ -6,9 +7,9 @@
  * https://leetcode.com/problems/binary-subarrays-with-sum/description/
  *
  * algorithms
- * Medium (37.53%)
- * Total Accepted:    8.8K
- * Total Submissions: 23.4K
+ * Medium (43.27%)
+ * Total Accepted:    22.5K
+ * Total Submissions: 52K
  * Testcase Example:  '[1,0,1,0,1]\n2'
  *
  * In an array A of 0s and 1s, how many non-empty subarrays have sum S?
@@ -40,22 +41,25 @@
  */
 class Solution {
 public:
+    int atmost(int m, vector<int> &ns) {
+        if (m<0) return 0; 
+        int n = ns.size(), i = 0, cnt = 0; 
+        for(int j = 0; j < n; j ++) {
+            m -= ns[j]; 
+            while (m < 0) m += ns[i++];
+            cnt += j - i + 1; 
+        }
+        return cnt; 
+    }
+
     int numSubarraysWithSum(vector<int>& A, int S) {
-		unordered_map<int, int> c({{0, 1}}); 
-		int psum = 0, res = 0; 
-		for(auto n : A) {
-			psum += n; 
-			res += c[psum - S]; 
-			c[psum] ++; 
-		}
-		return res; 
+        return atmost(S, A)     - atmost(S-1, A);
     }
 };
 
-static const int _ = []() { ios::sync_with_stdio(false); cin.tie(NULL);return 0; }();
 
-// int main(int argc, char const *argv[]) {
-// 	Solution s;
-// 	return 0;
-// }
 
+auto speed_up = [] () {
+    ios_base::sync_with_stdio(false);
+    return 0;
+}(); 

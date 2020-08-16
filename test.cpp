@@ -1,11 +1,12 @@
 
 #include "aux.cpp"
-#include "740.delete-and-earn.cpp"
+#include "930.binary-subarrays-with-sum.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> i32 = {2,2,3,3,3,4};
-	say(s.deleteAndEarn(i32));
+	vector<int> a = {1,0,1,0,1}; 
+	int i32 = 2; 
+	say(s.numSubarraysWithSum(a, i32));
 	return 0;
 }
 
