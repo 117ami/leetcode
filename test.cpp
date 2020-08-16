@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "315.count-of-smaller-numbers-after-self.cpp"
+#include "1550.three-consecutive-odds.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<int> i32 = {6, 4, 1, 8, 7, 5, 2, 9};
-	say(s.countSmaller(i32));
+	vector<int> i32 ={1,2,34,3,4,5,7,23,12};
+	say(s.threeConsecutiveOdds(i32));
 	return 0;
 }
 
