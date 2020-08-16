@@ -756,6 +756,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐇.1547 | [minimum-cost-to-cut-a-stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/description/) | [Python](./python_solutions/1547.minimum-cost-to-cut-a-stick.py)/[C++](./python_solutions/1547.minimum-cost-to-cut-a-stick.cpp) |
 |𝐄.1550 | [three-consecutive-odds](https://leetcode.com/problems/three-consecutive-odds/description/) | [Python](./python_solutions/1550.three-consecutive-odds.py)/[C++](./python_solutions/1550.three-consecutive-odds.cpp) |
 |𝐌.1551 | [minimum-operations-to-make-array-equal](https://leetcode.com/problems/minimum-operations-to-make-array-equal/description/) | [Python](./python_solutions/1551.minimum-operations-to-make-array-equal.py)/[C++](./python_solutions/1551.minimum-operations-to-make-array-equal.cpp) |
+|𝐌.1552 | [magnetic-force-between-two-balls](https://leetcode.com/problems/magnetic-force-between-two-balls/description/) | [Python](./python_solutions/1552.magnetic-force-between-two-balls.py)/[C++](./python_solutions/1552.magnetic-force-between-two-balls.cpp) |
 
 
 ### Contact
