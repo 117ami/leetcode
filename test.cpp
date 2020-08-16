@@ -1,15 +1,11 @@
 
 #include "aux.cpp"
-#include "928.minimize-malware-spread-ii.cpp"
+#include "315.count-of-smaller-numbers-after-self.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vector<vector<int>> g = {{1, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 1, 1}, {0, 0, 1, 1}};
-	vector<int> is = {0, 1};
-	g = {{1,1,0,0},{1,1,0,1},{0,0,1,0},{0,1,0,1}}; 
-	g = {{1,0,0,0,0,0},{0,1,0,0,0,0},{0,0,1,0,0,0},{0,0,0,1,1,0},{0,0,0,1,1,0},{0,0,0,0,0,1}};
-	is = {5,0};
-	say(s.minMalwareSpread(g, is));
+	vector<int> i32 = {6, 4, 1, 8, 7, 5, 2, 9};
+	say(s.countSmaller(i32));
 	return 0;
 }
 

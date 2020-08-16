@@ -68,6 +68,7 @@ rm tmp.file
 # cat cpp/helper.cpp > tmpcpp
 # cat $cpp_file >> tmpcpp
 # mv tmpcpp $cpp_file
+gsed -ie '1i #include<vector>' 315.count-of-smaller-numbers-after-self.cpp 
 
 echo -e "\n\n
 auto speed_up = [] () {
