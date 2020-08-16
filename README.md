@@ -757,6 +757,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1550 | [three-consecutive-odds](https://leetcode.com/problems/three-consecutive-odds/description/) | [Python](./python_solutions/1550.three-consecutive-odds.py)/[C++](./python_solutions/1550.three-consecutive-odds.cpp) |
 |𝐌.1551 | [minimum-operations-to-make-array-equal](https://leetcode.com/problems/minimum-operations-to-make-array-equal/description/) | [Python](./python_solutions/1551.minimum-operations-to-make-array-equal.py)/[C++](./python_solutions/1551.minimum-operations-to-make-array-equal.cpp) |
 |𝐌.1552 | [magnetic-force-between-two-balls](https://leetcode.com/problems/magnetic-force-between-two-balls/description/) | [Python](./python_solutions/1552.magnetic-force-between-two-balls.py)/[C++](./python_solutions/1552.magnetic-force-between-two-balls.cpp) |
+|𝐇.1553 | [minimum-number-of-days-to-eat-n-oranges](https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/description/) | [Python](./python_solutions/1553.minimum-number-of-days-to-eat-n-oranges.py)/[C++](./python_solutions/1553.minimum-number-of-days-to-eat-n-oranges.cpp) |
 
 
 ### Contact
