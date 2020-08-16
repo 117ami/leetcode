@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "887.super-egg-drop.cpp"
+#include "517.super-washing-machines.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.superEggDrop(3,14));
+	vector<int> i32 = {4,0,5};
+	say(s.findMinMoves(i32));
 	return 0;
 }
 
