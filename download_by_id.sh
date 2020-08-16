@@ -88,4 +88,5 @@ int main(int argc, char const *argv[]) {
 " | tee test.cpp
 
 rm *.pye 
+rm *.cppe 
 
