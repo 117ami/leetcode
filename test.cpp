@@ -4,6 +4,7 @@
 
 int main(int argc, char const *argv[]) {
 	Solution s;
+	say(s.minNumberOfFrogs("croakcroak"));
 	return 0;
 }
 
