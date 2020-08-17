@@ -1,10 +1,10 @@
 
 #include "aux.cpp"
-#include "1419.minimum-number-of-frogs-croaking.cpp"
+#include "43.multiply-strings.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.minNumberOfFrogs("croakcroak"));
+	say(s.multiply("123","456"));
 	return 0;
 }
 
