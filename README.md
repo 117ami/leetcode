@@ -50,6 +50,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.70 | [climbing-stairs](https://leetcode.com/problems/climbing-stairs/description/) | [Python](./python_solutions/70.climbing-stairs.py)/[C++](./python_solutions/70.climbing-stairs.cpp) |
 |𝐌.73 | [set-matrix-zeroes](https://leetcode.com/problems/set-matrix-zeroes/description/) | [Python](./python_solutions/73.set-matrix-zeroes.py)/[Ruby](./python_solutions/73.set-matrix-zeroes.rb) |
 |𝐌.75 | [sort-colors](https://leetcode.com/problems/sort-colors/description/) | [Python](./python_solutions/75.sort-colors.py)/[C++](./python_solutions/75.sort-colors.cpp) /[Rust](./python_solutions/75.sort-colors.rs) |
+|𝐇.76 | [minimum-window-substring](https://leetcode.com/problems/minimum-window-substring/description/) | [Python](./python_solutions/76.minimum-window-substring.py)/[C++](./python_solutions/76.minimum-window-substring.cpp) |
 |𝐌.78 | [subsets](https://leetcode.com/problems/subsets/description/) | [Python](./python_solutions/78.subsets.py)/[C++](./python_solutions/78.subsets.cpp) /[Rust](./python_solutions/78.subsets.rs) |
 |𝐌.79 | [word-search](https://leetcode.com/problems/word-search/description/) | [Python](./python_solutions/79.word-search.py)/[C++](./python_solutions/79.word-search.cpp) |
 |𝐌.81 | [search-in-rotated-sorted-array-ii](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/) | [Python](./python_solutions/81.search-in-rotated-sorted-array-ii.py)/[C++](./python_solutions/81.search-in-rotated-sorted-array-ii.cpp) |
