@@ -1,0 +1,12 @@
+#!/usr/local/bin/bash 
+
+code_file=$1
+if [[ "$code_file" == *.py ]]; then 
+    /usr/local/bin/yapf --in-place $code_file 
+    /usr/local/bin/python3 $code_file
+elif [[ "$code_file" == *.cpp ]]; then 
+    /usr/local/bin/clang-format -i $code_file 
+    clang++ -std=c++17 -DEBUG test.cpp 
+    ./a.out 
+    rm a.out 
+fi 

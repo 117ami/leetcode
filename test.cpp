@@ -1,12 +1,12 @@
 
 #include "aux.cpp"
-#include "76.minimum-window-substring.cpp"
+#include "1053.previous-permutation-with-one-swap.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string ss = "ADOBECODEBANCCC", t="ABC";
-	ss = "aaaaaaaaaaaabbbbbcdd", t = "abcdd";
-	say(s.minWindow(ss, t));
+	std::vector<int> ns = {3,1,1,3};
+	ns = {1,9,3,4,5} ;
+	say(s.prevPermOpt1(ns));
 	return 0;
 }
 
