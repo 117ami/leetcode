@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "805.split-array-with-same-average.cpp"
+#include "975.odd-even-jump.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	std::vector<int> ns = {1,3,4,5};
-	say(s.splitArraySameAverage(ns));
+	std::vector<int> v = {5,1,3,4,2};
+	say(s.oddEvenJumps(v));
 	return 0;
 }
 
