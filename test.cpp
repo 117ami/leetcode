@@ -1,11 +1,11 @@
 
 #include "aux.cpp"
-#include "975.odd-even-jump.cpp"
+#include "847.shortest-path-visiting-all-nodes.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	std::vector<int> v = {5,1,3,4,2};
-	say(s.oddEvenJumps(v));
+	vector<vector<int>> ns ={{1}, {0, 2, 4}, {1, 3, 4}, {2}, {1, 2}};
+	say(s.shortestPathLength(ns));
 	return 0;
 }
 
