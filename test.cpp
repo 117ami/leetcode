@@ -1,10 +1,11 @@
 
 #include "aux.cpp"
-#include "464.can-i-win.cpp"
+#include "815.bus-routes.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	say(s.canIWin(10, 14));
+	vector<vector<int>> ns = {{1, 3, 7}, {2, 4, 8}, {2, 5, 7}};
+	say(s.numBusesToDestination(ns, 1, 4));
 	return 0;
 }
 
