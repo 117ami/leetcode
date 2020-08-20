@@ -382,19 +382,19 @@ string scs(string s, string t) {
 // This class represents a directed graph using adjacency list representation
 class Graph {
   int V;          // No. of vertices
-  list<pii> *adj; // In a weighted graph, we need to store vertex and weight
+  list<pair<int, int>> *adj; // In a weighted graph, we need to store vertex and weight
                   // pair for every edge
 
 public:
   Graph(int V); // Constructor
   void addEdge(int u, int v, int w);
-  vi shortestPath(int s);
+  vector<ing> shortestPath(int s);
 };
 
 // Allocates memory for adjacency list
 Graph::Graph(int V) {
   this->V = V;
-  adj = new list<pii>[V];
+  adj = new list<pair<int, int>>[V];
 }
 
 void Graph::addEdge(int u, int v, int w) {
@@ -408,9 +408,9 @@ vector<int> Graph::shortestPath(int src) {
   // are being preprocessed. This is weird syntax in C++.
   // Refer below link for details of this syntax
   // https://www.geeksforgeeks.org/implement-min-heap-using-stl/
-  priority_queue<pii, vector<pii>, greater<pii>> pq;
+  priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
-  vi dist(V, INF);
+  vector<int> dist(V, INF);
 
   pq.push(make_pair(0, src));
   dist[src] = 0;
