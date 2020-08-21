@@ -83,9 +83,14 @@ echo "
 
 int main(int argc, char const *argv[]) {
 	Solution s;
+
+
 	return 0;
 }
 " | tee test.cpp
+# Add testcases 
+gsed -ie '/Solution/r cpp_testcases.tmpfile' test.cpp 
+rm cpp_testcases.tmpfile
 
 rm *.pye 
 rm *.cppe 
