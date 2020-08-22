@@ -1,17 +1,17 @@
 
 #include "aux.cpp"
-#include "1000.minimum-cost-to-merge-stones.cpp"
+#include "1367.linked-list-in-binary-tree.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-std::vector<int> stones = {3,2,4,1} ;
-int K = 2 ;
+std::vector<int> head = {4,2,8} ;
+std::vector<int> root = {1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3} ;
 
-std::vector<int> stones = {3,2,4,1} ;
-int K = 3 ;
+std::vector<int> head = {1,4,2,6} ;
+std::vector<int> root = {1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3} ;
 
-std::vector<int> stones = {3,5,1,2,6} ;
-int K = 3 ;
+std::vector<int> head = {1,4,2,6,8} ;
+std::vector<int> root = {1,4,4,null,2,2,null,1,null,6,8,null,null,null,null,1,3} ;
 
 
 

@@ -760,6 +760,10 @@ class KMP():
         j, lhp = 0, [0] * len(t)
         for i in range(1, len(t)):
             while j > 0 and t[i] != t[j]:
+                # If t[i] != t[j], then we can only find a longest substring from 
+                # t[0] ... t[j-1]. We can recursively call get_lhp(t[:j]), but luckily
+                # we've computed get_lhp(t[:j]) and stored results in lhp[:j], whose last item
+                # is lhp[j-1]
                 j = lhp[j-1]
                 
             if t[i] == t[j]:
