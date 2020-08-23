@@ -1,18 +1,15 @@
 
 #include "aux.cpp"
-#include "1557.minimum-number-of-vertices-to-reach-all-nodes.cpp"
+#include "1558.minimum-numbers-of-function-calls-to-make-target-array.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-int n = 6 ;
-std::vector<vector<int>> edges = {{0,1},{0,2},{2,5},{3,4},{4,2}} ;
-
-// int n = 5 ;
-// std::vector<vector<int>> edges = {{0,1},{2,1},{3,1},{1,4},{2,4}} ;
-say(s.findSmallestSetOfVertices(n, edges));
-
-
-
+	std::vector<int> nums = {1,5} ;
+	nums = {2,2} ;
+	nums = {4,2,5} ;
+	// nums = {3,2,2,4} ;
+	// nums = {2,4,8,16} ;
+	say(s.minOperations(nums));
 	return 0;
 }
 

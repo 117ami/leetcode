@@ -9,6 +9,17 @@ import string
 true = True
 false = False
 MIN, MAX, MOD = -0x3f3f3f3f, 0x3f3f3f3f, 1000000007
+from collections import Counter, defaultdict, OrderedDict, deque
+from bisect import bisect_left, bisect_right 
+from functools import reduce, lru_cache 
+from typing import List 
+import itertools 
+import math 
+import heapq 
+import string
+true = True
+false = False
+MIN, MAX, MOD = -0x3f3f3f3f, 0x3f3f3f3f, 1000000007
 class FenwickTree:
     def __init__(self, _size):
         self.tree = [0] * _size
@@ -869,3 +880,38 @@ def geometric_median(positions):
     # or return the minimal sum of distances 
     # return sum(map(lambda p: dist(curr, p), positions))
 
+
+sol = Solution()
+
+
+print(sol.__init__())
+print(sol.prefix_sum())
+print(sol.update())
+print(sol.longestPalindromeSubseq())
+print(sol.is_p())
+print(sol.lcslen())
+print(sol.lcs())
+print(sol.find_all_lcs())
+print(sol.scs())
+print(sol.__init__())
+print(sol.__str__())
+print(sol.isEmpty())
+print(sol.size())
+print(sol.push())
+print(sol.pop())
+print(sol.__init__())
+print(sol.__init__())
+print(sol.inorder())
+print(sol.getdepth())
+print(sol.printTree())
+print(sol.listToTree())
+print(sol.sortedArrayToBST())
+print(sol.treeToList())
+print(sol.isCompleteTree())
+print(sol.intToRoman())
+print(sol.__init__())
+print(sol.union())
+print(sol.find())
+print(sol.get_lhp())
+print(sol.pattern_search())
+print(sol.__init__())
