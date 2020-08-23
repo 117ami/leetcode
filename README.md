@@ -784,6 +784,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1556 | [thousand-separator](https://leetcode.com/problems/thousand-separator/description/) | [Python](./python_solutions/1556.thousand-separator.py)/[C++](./python_solutions/1556.thousand-separator.cpp) |
 |𝐌.1557 | [minimum-number-of-vertices-to-reach-all-nodes](https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/description/) | [Python](./python_solutions/1557.minimum-number-of-vertices-to-reach-all-nodes.py)/[C++](./python_solutions/1557.minimum-number-of-vertices-to-reach-all-nodes.cpp) |
 |𝐌.1558 | [minimum-numbers-of-function-calls-to-make-target-array](https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/description/) | [Python](./python_solutions/1558.minimum-numbers-of-function-calls-to-make-target-array.py)/[C++](./python_solutions/1558.minimum-numbers-of-function-calls-to-make-target-array.cpp) |
+|𝐇.1559 | [detect-cycles-in-2d-grid](https://leetcode.com/problems/detect-cycles-in-2d-grid/description/) | [Python](./python_solutions/1559.detect-cycles-in-2d-grid.py)/[C++](./python_solutions/1559.detect-cycles-in-2d-grid.cpp) |
 |𝐌.1562 | [find-latest-group-of-size-m](https://leetcode.com/problems/find-latest-group-of-size-m/description/) | [Python](./python_solutions/1562.find-latest-group-of-size-m.py)/[C++](./python_solutions/1562.find-latest-group-of-size-m.cpp) |
 
 

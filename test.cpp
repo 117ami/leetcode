@@ -1,23 +1,14 @@
 
 #include "aux.cpp"
-#include "1562.find-latest-group-of-size-m.cpp"
+#include "1559.detect-cycles-in-2d-grid.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	// std::vector<int> arr = {3,5,1,2,4} ;
-	// int m = 1 ;
-
-	// std::vector<int> arr = {3,1,5,4,2} ;
-	// int m = 2 ;
-
-	// std::vector<int> arr = {1} ;
-	// int m = 1 ;
-
-	std::vector<int> arr = {2,1} ;
-	int m = 2 ;
-
-	say(s.findLatestStep(arr, m));
-
+	// std::vector<vector<char>> grid = {{'a','a','a','a'},{'a','b','b','a'},{'a','b','b','a'},{'a','a','a','a'}} ;
+	std::vector<vector<char>> grid = {{'c','c','c','a'},{'c','d','c','c'},{'c','c','e','c'},{'f','c','c','c'}} ;
+	// std::vector<vector<char>> grid = {{'a','b','b'},{'b','z','b'},{'b','b','a'}} ;
+	grid = {{'b', 'a', 'c'}, {'c', 'a', 'c'}, {'d','d', 'c'}, {'b','c', 'c'}};
+	say(s.containsCycle(grid));
 	return 0;
 }
 
