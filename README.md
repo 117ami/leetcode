@@ -782,6 +782,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1552 | [magnetic-force-between-two-balls](https://leetcode.com/problems/magnetic-force-between-two-balls/description/) | [Python](./python_solutions/1552.magnetic-force-between-two-balls.py)/[C++](./python_solutions/1552.magnetic-force-between-two-balls.cpp) |
 |𝐇.1553 | [minimum-number-of-days-to-eat-n-oranges](https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/description/) | [Python](./python_solutions/1553.minimum-number-of-days-to-eat-n-oranges.py)/[C++](./python_solutions/1553.minimum-number-of-days-to-eat-n-oranges.cpp) |
 |𝐄.1556 | [thousand-separator](https://leetcode.com/problems/thousand-separator/description/) | [Python](./python_solutions/1556.thousand-separator.py)/[C++](./python_solutions/1556.thousand-separator.cpp) |
+|𝐌.1557 | [minimum-number-of-vertices-to-reach-all-nodes](https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/description/) | [Python](./python_solutions/1557.minimum-number-of-vertices-to-reach-all-nodes.py)/[C++](./python_solutions/1557.minimum-number-of-vertices-to-reach-all-nodes.cpp) |
 
 
 ### Contact
