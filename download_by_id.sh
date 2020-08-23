@@ -65,7 +65,7 @@ rm tmp.file
 
 
 # ================================================================= C++ soluton file
-cat cpp/helper.cpp > tmpcpp
+head -n 135 cpp/helper.cpp > tmpcpp
 cat $cpp_file >> tmpcpp
 mv tmpcpp $cpp_file
 # gsed -ie '1i #include<vector>' $cpp_file

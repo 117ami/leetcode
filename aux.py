@@ -702,7 +702,7 @@ class UF:
     def __init__(self, n):
         self.p = list(range(n))
 
-    def union(self, x, y):
+    def merge(self, x, y):
         px, py = self.find(x), self.find(y)
         self.p[px] = self.p[py] = min(px, py)
 
@@ -880,38 +880,3 @@ def geometric_median(positions):
     # or return the minimal sum of distances 
     # return sum(map(lambda p: dist(curr, p), positions))
 
-
-sol = Solution()
-
-
-print(sol.__init__())
-print(sol.prefix_sum())
-print(sol.update())
-print(sol.longestPalindromeSubseq())
-print(sol.is_p())
-print(sol.lcslen())
-print(sol.lcs())
-print(sol.find_all_lcs())
-print(sol.scs())
-print(sol.__init__())
-print(sol.__str__())
-print(sol.isEmpty())
-print(sol.size())
-print(sol.push())
-print(sol.pop())
-print(sol.__init__())
-print(sol.__init__())
-print(sol.inorder())
-print(sol.getdepth())
-print(sol.printTree())
-print(sol.listToTree())
-print(sol.sortedArrayToBST())
-print(sol.treeToList())
-print(sol.isCompleteTree())
-print(sol.intToRoman())
-print(sol.__init__())
-print(sol.union())
-print(sol.find())
-print(sol.get_lhp())
-print(sol.pattern_search())
-print(sol.__init__())
