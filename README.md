@@ -240,6 +240,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.486 | [predict-the-winner](https://leetcode.com/problems/predict-the-winner/description/) | [Python](./python_solutions/486.predict-the-winner.py)/[Ruby](./python_solutions/486.predict-the-winner.rb) /[Javascript](./python_solutions/486.predict-the-winner.js) /[C++](./python_solutions/486.predict-the-winner.cpp) |
 |𝐇.493 | [reverse-pairs](https://leetcode.com/problems/reverse-pairs/description/) | [Python](./python_solutions/493.reverse-pairs.py)/[C++](./python_solutions/493.reverse-pairs.cpp) |
 |𝐌.494 | [target-sum](https://leetcode.com/problems/target-sum/description/) | [Python](./python_solutions/494.target-sum.py)/[Ruby](./python_solutions/494.target-sum.rb) /[Javascript](./python_solutions/494.target-sum.js) /[C++](./python_solutions/494.target-sum.cpp) |
+|𝐌.497 | [random-point-in-non-overlapping-rectangles](https://leetcode.com/problems/random-point-in-non-overlapping-rectangles/description/) | [Python](./python_solutions/497.random-point-in-non-overlapping-rectangles.py)|
 |𝐌.498 | [diagonal-traverse](https://leetcode.com/problems/diagonal-traverse/description/) | [Python](./python_solutions/498.diagonal-traverse.py)/[Rust](./python_solutions/498.diagonal-traverse.rs) |
 |𝐇.502 | [ipo](https://leetcode.com/problems/ipo/description/) | [Python](./python_solutions/502.ipo.py)/[C++](./python_solutions/502.ipo.cpp) |
 |𝐌.503 | [next-greater-element-ii](https://leetcode.com/problems/next-greater-element-ii/description/) | [Python](./python_solutions/503.next-greater-element-ii.py)/[C++](./python_solutions/503.next-greater-element-ii.cpp) |
@@ -780,6 +781,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1551 | [minimum-operations-to-make-array-equal](https://leetcode.com/problems/minimum-operations-to-make-array-equal/description/) | [Python](./python_solutions/1551.minimum-operations-to-make-array-equal.py)/[C++](./python_solutions/1551.minimum-operations-to-make-array-equal.cpp) |
 |𝐌.1552 | [magnetic-force-between-two-balls](https://leetcode.com/problems/magnetic-force-between-two-balls/description/) | [Python](./python_solutions/1552.magnetic-force-between-two-balls.py)/[C++](./python_solutions/1552.magnetic-force-between-two-balls.cpp) |
 |𝐇.1553 | [minimum-number-of-days-to-eat-n-oranges](https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/description/) | [Python](./python_solutions/1553.minimum-number-of-days-to-eat-n-oranges.py)/[C++](./python_solutions/1553.minimum-number-of-days-to-eat-n-oranges.cpp) |
+|𝐄.1556 | [thousand-separator](https://leetcode.com/problems/thousand-separator/description/) | [Python](./python_solutions/1556.thousand-separator.py)/[C++](./python_solutions/1556.thousand-separator.cpp) |
 
 
 ### Contact
