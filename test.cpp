@@ -1,15 +1,17 @@
 
 #include "aux.cpp"
-#include "1558.minimum-numbers-of-function-calls-to-make-target-array.cpp"
+#include "1561.maximum-number-of-coins-you-can-get.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	std::vector<int> nums = {1,5} ;
-	nums = {2,2} ;
-	nums = {4,2,5} ;
-	// nums = {3,2,2,4} ;
-	// nums = {2,4,8,16} ;
-	say(s.minOperations(nums));
+std::vector<int> piles = {2,4,1,2,7,8} ;
+
+// std::vector<int> piles = {2,4,5} ;
+
+// std::vector<int> piles = {9,8,7,6,5,1,2,3,4} ;
+
+say(s.maxCoins(piles));
+
 	return 0;
 }
 
