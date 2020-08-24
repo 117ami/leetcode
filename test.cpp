@@ -1,15 +1,16 @@
 
 #include "aux.cpp"
-#include "1032.stream-of-characters.cpp"
+#include "1563.stone-game-v.cpp"
 
 int main(int argc, char const *argv[]) {
-	vs cs = {"cd", "f", "kl"};
-	cs = {"ab", "ba", "aaab", "abab", "baa"};
-	StreamChecker sc(cs);
-	string xx = "aaaaa";
-	for(auto c: xx){
-		cout << c << " " << sc.query(c) << endl; 
-	}
+	Solution s;
+std::vector<int> stoneValue = {6,2,3,4,5,5} ;
+
+// std::vector<int> stoneValue = {7,7,7,7,7,7,7} ;
+
+// std::vector<int> stoneValue = {4} ;
+	say(s.stoneGameV(stoneValue));
+
 
 	return 0;
 }
