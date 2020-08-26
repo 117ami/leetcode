@@ -1,17 +1,11 @@
 
 #include "aux.cpp"
-#include "1563.stone-game-v.cpp"
+#include "121.best-time-to-buy-and-sell-stock.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-std::vector<int> stoneValue = {6,2,3,4,5,5} ;
-
-// std::vector<int> stoneValue = {7,7,7,7,7,7,7} ;
-
-// std::vector<int> stoneValue = {4} ;
-	say(s.stoneGameV(stoneValue));
-
-
+	vi stock = {7,1,5,3,6,4};
+	say(s.maxProfit(stock));
 	return 0;
 }
 

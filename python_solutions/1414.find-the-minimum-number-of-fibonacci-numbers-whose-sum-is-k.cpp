@@ -132,113 +132,81 @@ int dirs[5] = {-1, 0, 1, 0, -1};
 
 // ==================================================
 /*
- * @lc app=leetcode id=983 lang=cpp
+ * @lc app=leetcode id=1414 lang=cpp
  *
- * [983] Minimum Cost For Tickets
+ * [1414] Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
  *
- * https://leetcode.com/problems/minimum-cost-for-tickets/description/
+ * https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/description/
  *
  * algorithms
- * Medium (60.63%)
- * Total Accepted:    58K
- * Total Submissions: 94.6K
- * Testcase Example:  '[1,4,6,7,8,20]\n[2,7,15]'
+ * Medium (63.44%)
+ * Total Accepted:    14K
+ * Total Submissions: 22.1K
+ * Testcase Example:  '7'
  *
- * In a country popular for train travel, you have planned some train
- * travelling one year in advance.  The days of the year that you will travel
- * is given as an array days.  Each day is an integer from 1 to 365.
+ * Given the number k, return the minimum number of Fibonacci numbers whose sum
+ * is equal to k, whether a Fibonacci number could be used multiple times.
  *
- * Train tickets are sold in 3 different ways:
- *
- *
- * a 1-day pass is sold for costs[0] dollars;
- * a 7-day pass is sold for costs[1] dollars;
- * a 30-day pass is sold for costs[2] dollars.
+ * The Fibonacci numbers are defined as:
  *
  *
- * The passes allow that many days of consecutive travel.  For example, if we
- * get a 7-day pass on day 2, then we can travel for 7 days: day 2, 3, 4, 5, 6,
- * 7, and 8.
+ * F1 = 1
+ * F2 = 1
+ * Fn = Fn-1 + Fn-2 , for n > 2.
  *
- * Return the minimum number of dollars you need to travel every day in the
- * given list of days.
- *
- *
+ * It is guaranteed that for the given constraints we can always find such
+ * fibonacci numbers that sum k.
  *
  * Example 1:
  *
  *
- * Input: days = [1,4,6,7,8,20], costs = [2,7,15]
- * Output: 11
- * Explanation:
- * For example, here is one way to buy passes that lets you travel your travel
- * plan:
- * On day 1, you bought a 1-day pass for costs[0] = $2, which covered day 1.
- * On day 3, you bought a 7-day pass for costs[1] = $7, which covered days 3,
- * 4, ..., 9.
- * On day 20, you bought a 1-day pass for costs[0] = $2, which covered day 20.
- * In total you spent $11 and covered all the days of your travel.
- *
- *
+ * Input: k = 7
+ * Output: 2
+ * Explanation: The Fibonacci numbers are: 1, 1, 2, 3, 5, 8, 13, ...
+ * For k = 7 we can use 2 + 5 = 7.
  *
  * Example 2:
  *
  *
- * Input: days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]
- * Output: 17
- * Explanation:
- * For example, here is one way to buy passes that lets you travel your travel
- * plan:
- * On day 1, you bought a 30-day pass for costs[2] = $15 which covered days 1,
- * 2, ..., 30.
- * On day 31, you bought a 1-day pass for costs[0] = $2 which covered day 31.
- * In total you spent $17 and covered all the days of your travel.
+ * Input: k = 10
+ * Output: 2
+ * Explanation: For k = 10 we can use 2 + 8 = 10.
+ *
+ *
+ * Example 3:
+ *
+ *
+ * Input: k = 19
+ * Output: 3
+ * Explanation: For k = 19 we can use 1 + 5 + 13 = 19.
  *
  *
  *
+ * Constraints:
  *
  *
- * Note:
- *
- *
- * 1 <= days.length <= 365
- * 1 <= days[i] <= 365
- * days is in strictly increasing order.
- * costs.length == 3
- * 1 <= costs[i] <= 1000
- *
+ * 1 <= k <= 10^9
  *
  */
-
-/*
-Let minCost(i) denote the minimum cost that will be payed for all trips on days
-1 to day 365. The desired answer is then minCost(365).
-
-Calculation minCost(i):
-
-If no trip on day i, then minCost(i) = minCost(i-1).
-minCost(i)=0 for all i ≤ 0.
-Otherwise:
-If a 1-day pass on day i. In this case, minCost(i) = minCost(i) + costs[0].
-If a 7-day pass ending on day i. then : In this case, minCost(i) = min(minCost(i
-− 7), minCost(i − 6), …, minCost(i − 1)) + costs[1]. But since since minCost is
-increasing (adding a day never reduces the minCost) hence: minCost(i) =
-minCost(i − 7) + costs[2]
-
-*/
 class Solution {
 public:
-  int mincostTickets(vector<int> &days, vector<int> &costs) {
-    int dp[366] = {0};
-    unordered_set<int> cc(qall(days));
-    forloopup(i, 1, 366) {
-      if (cc.find(i) == cc.end())
-        dp[i] = dp[i - 1];
-      else
-        dp[i] = min({dp[i - 1] + costs[0], dp[max(0, i - 7)] + costs[1],
-                     dp[max(0, i - 30)] + costs[2]});
-    }
-    return dp[365];
+  vector<int> fib{1,         2,         3,         5,         8,
+                  13,        21,        34,        55,        89,
+                  144,       233,       377,       610,       987,
+                  1597,      2584,      4181,      6765,      10946,
+                  17711,     28657,     46368,     75025,     121393,
+                  196418,    317811,    514229,    832040,    1346269,
+                  2178309,   3524578,   5702887,   9227465,   14930352,
+                  24157817,  39088169,  63245986,  102334155, 165580141,
+                  267914296, 433494437, 701408733, 1134903170};
+
+  unordered_map<int, int> memo;
+  int findMinFibonacciNumbers(int k) {
+    auto it = std::lower_bound(fib.begin(), fib.end(), k);
+    if (*it == k)
+      return 1;
+    it--;
+    return 1 + findMinFibonacciNumbers(k - *it);
   }
 };
 
