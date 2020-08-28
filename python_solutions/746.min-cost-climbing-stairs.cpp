@@ -132,104 +132,62 @@ int dirs[5] = {-1, 0, 1, 0, -1};
 
 // ==================================================
 /*
- * @lc app=leetcode id=1553 lang=cpp
+ * @lc app=leetcode id=746 lang=cpp
  *
- * [1553] Minimum Number of Days to Eat N Oranges
+ * [746] Min Cost Climbing Stairs
  *
- * https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/description/
+ * https://leetcode.com/problems/min-cost-climbing-stairs/description/
  *
  * algorithms
- * Hard (26.76%)
- * Total Accepted:    8.5K
- * Total Submissions: 31.3K
- * Testcase Example:  '10'
- *
- * There are n oranges in the kitchen and you decided to eat some of these
- * oranges every day as follows:
+ * Easy (50.38%)
+ * Total Accepted:    172.1K
+ * Total Submissions: 341.5K
+ * Testcase Example:  '[0,0,0,0]'
  *
  *
- * Eat one orange.
- * If the number of remaining oranges (n) is divisible by 2 then you can eat
- * n/2 oranges.
- * If the number of remaining oranges (n) is divisible by 3 then you can eat
- * 2*(n/3) oranges.
+ * On a staircase, the i-th step has some non-negative cost cost[i] assigned (0
+ * indexed).
  *
- *
- * You can only choose one of the actions per day.
- *
- * Return the minimum number of days to eat n oranges.
+ * Once you pay the cost, you can either climb one or two steps. You need to
+ * find minimum cost to reach the top of the floor, and you can either start
+ * from the step with index 0, or the step with index 1.
  *
  *
  * Example 1:
  *
+ * Input: cost = [10, 15, 20]
+ * Output: 15
+ * Explanation: Cheapest is start on cost[1], pay that cost and go to the
+ * top.
  *
- * Input: n = 10
- * Output: 4
- * Explanation: You have 10 oranges.
- * Day 1: Eat 1 orange,  10 - 1 = 9.
- * Day 2: Eat 6 oranges, 9 - 2*(9/3) = 9 - 6 = 3. (Since 9 is divisible by 3)
- * Day 3: Eat 2 oranges, 3 - 2*(3/3) = 3 - 2 = 1.
- * Day 4: Eat the last orange  1 - 1  = 0.
- * You need at least 4 days to eat the 10 oranges.
  *
  *
  * Example 2:
  *
- *
- * Input: n = 6
- * Output: 3
- * Explanation: You have 6 oranges.
- * Day 1: Eat 3 oranges, 6 - 6/2 = 6 - 3 = 3. (Since 6 is divisible by 2).
- * Day 2: Eat 2 oranges, 3 - 2*(3/3) = 3 - 2 = 1. (Since 3 is divisible by 3)
- * Day 3: Eat the last orange  1 - 1  = 0.
- * You need at least 3 days to eat the 6 oranges.
- *
- *
- * Example 3:
- *
- *
- * Input: n = 1
- * Output: 1
- *
- *
- * Example 4:
- *
- *
- * Input: n = 56
+ * Input: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
  * Output: 6
+ * Explanation: Cheapest is start on cost[0], and only step on 1s, skipping
+ * cost[3].
  *
  *
  *
- * Constraints:
+ * Note:
  *
+ * cost will have a length in the range [2, 1000].
+ * Every cost[i] will be an integer in the range [0, 999].
  *
- * 1 <= n <= 2*10^9
  *
  */
-unordered_map<int, int> dp;
 class Solution {
 public:
-  int minDays(int n) { return dfs(n); }
-
-  int dfs(int n) {
-    if (n <= 2)
-      return n;
-    if (dp.count(n))
-      return dp[n];
-    dp[n] = 1 + min(n % 2 + dfs(n / 2), n % 3 + dfs(n / 3));
-    // Compress the following codes in one line. E.g.,
-    // 3 / 3 = 4 / 3 = 5 / 3, the only difference is the steps required
-    // to reduce n + k to n (k == 0, 1, 2)
-    return dp[n];
-    // if (n % 2 == 0)
-    //   res = min(res, 1 + dfs(n / 2));
-    // if (n % 3 == 0)
-    //   res = min(res, 1 + dfs(n / 3));
-    // if ((n - 1) % 2 == 0 || (n - 1) % 3 == 0)
-    //   res = min(res, 1 + dfs(n - 1));
-    // if ((n - 2) % 3 == 0)
-    //   res = min(res, 2 + dfs(n - 2));
-    // return dp[n] = res;
+  int minCostClimbingStairs(vector<int> &cost) {
+    int b = cost[0], a = cost[1];
+    int n = cost.size();
+    forloopup(i, 2, n) {
+      int t = a;
+      a = cost[i] + min(a, b), b = t;
+    }
+    return min(a, b);
   }
 };
 

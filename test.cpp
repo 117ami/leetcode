@@ -1,15 +1,16 @@
 
 #include "aux.cpp"
-#include "436.find-right-interval.cpp"
+#include "746.min-cost-climbing-stairs.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	vvi ns= {{3,4},{2, 3}, {1,2}};
-	ns = {{1,2},{2,3},{0,1},{3,4}};
-	say(s.findRightInterval(ns));
-	vi v = {0,1,2,3};
-	auto it = lower_bound(v.begin(), v.end(), 2);
-	say(it - v.begin());
+// std::vector<int> cost = {10, 15, 20} ;
+
+std::vector<int> cost = {1, 100, 1, 1, 1, 100, 1, 1, 100, 1} ;
+say(s.minCostClimbingStairs(cost));
+
+
+
 	return 0;
 }
 
