@@ -792,6 +792,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐇.1559 | [detect-cycles-in-2d-grid](https://leetcode.com/problems/detect-cycles-in-2d-grid/description/) | [Python](./python_solutions/1559.detect-cycles-in-2d-grid.py)/[C++](./python_solutions/1559.detect-cycles-in-2d-grid.cpp) |
 |𝐌.1562 | [find-latest-group-of-size-m](https://leetcode.com/problems/find-latest-group-of-size-m/description/) | [Python](./python_solutions/1562.find-latest-group-of-size-m.py)/[C++](./python_solutions/1562.find-latest-group-of-size-m.cpp) |
 |𝐇.1563 | [stone-game-v](https://leetcode.com/problems/stone-game-v/description/) | [Python](./python_solutions/1563.stone-game-v.py)/[C++](./python_solutions/1563.stone-game-v.cpp) |
+|𝐄.1566 | [detect-pattern-of-length-m-repeated-k-or-more-times](https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/description/) | [Python](./python_solutions/1566.detect-pattern-of-length-m-repeated-k-or-more-times.py)/[C++](./python_solutions/1566.detect-pattern-of-length-m-repeated-k-or-more-times.cpp) |
 
 
 ### Contact
