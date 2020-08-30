@@ -794,6 +794,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐇.1563 | [stone-game-v](https://leetcode.com/problems/stone-game-v/description/) | [Python](./python_solutions/1563.stone-game-v.py)/[C++](./python_solutions/1563.stone-game-v.cpp) |
 |𝐄.1566 | [detect-pattern-of-length-m-repeated-k-or-more-times](https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/description/) | [Python](./python_solutions/1566.detect-pattern-of-length-m-repeated-k-or-more-times.py)/[C++](./python_solutions/1566.detect-pattern-of-length-m-repeated-k-or-more-times.cpp) |
 |𝐌.1567 | [maximum-length-of-subarray-with-positive-product](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/description/) | [Python](./python_solutions/1567.maximum-length-of-subarray-with-positive-product.py)/[C++](./python_solutions/1567.maximum-length-of-subarray-with-positive-product.cpp) |
+|𝐇.1569 | [number-of-ways-to-reorder-array-to-get-same-bst](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/description/) | [Python](./python_solutions/1569.number-of-ways-to-reorder-array-to-get-same-bst.py)/[C++](./python_solutions/1569.number-of-ways-to-reorder-array-to-get-same-bst.cpp) |
 
 
 ### Contact
