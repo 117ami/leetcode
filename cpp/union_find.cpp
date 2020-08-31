@@ -26,11 +26,14 @@ public:
     return id[p];
   }
 
-  // Merge to smaller root if greater == false else to larger root
-  void merge_by_value(int x, int y, bool greater) {
-    int i = find(x), j = find(y);
-    id[x] = id[y] = greater ? std::max(i, j) : std::min(i, j);
-  }
+  // Merge to smaller root if greater == false else to larger root. 
+  // Should use normal merge as possible as you can. This method cause trouble when 
+  // you try to merge (2, 6), and then (6, 3). The larger number 6 should work as a 
+  // middleman, however, it's useless if you use this method. 
+  // void merge_by_value(int x, int y, bool greater) {
+  //   int i = find(x), j = find(y);
+  //   id[x] = id[y] = greater ? std::max(i, j) : std::min(i, j);
+  // }
 
   // Replace sets containing x and y with their union.
   void merge(int x, int y) {
