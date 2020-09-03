@@ -65,11 +65,11 @@ class Solution:
 
 
 
-s = Solution()
-arr = [1, 2, 4, 3]
-arr = [1, 9, 6, 0]
-arr = [1, 2, 3]
-res = myperm(arr,2)
-print(list(res))
+# s = Solution()
+# arr = [1, 2, 4, 3]
+# arr = [1, 9, 6, 0]
+# arr = [1, 2, 3]
+# res = myperm(arr,2)
+# print(list(res))
 
 # print(s.largestTimeFromDigits(arr))
