@@ -134,102 +134,92 @@ int dirs[5] = {-1, 0, 1, 0, -1};
 
 // ==================================================
 /*
- * @lc app=leetcode id=931 lang=cpp
+ * @lc app=leetcode id=1411 lang=cpp
  *
- * [931] Minimum Falling Path Sum
+ * [1411] Number of Ways to Paint N × 3 Grid
  *
- * https://leetcode.com/problems/minimum-falling-path-sum/description/
+ * https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/description/
  *
  * algorithms
- * Medium (62.60%)
- * Total Accepted:    53.7K
- * Total Submissions: 85.8K
- * Testcase Example:  '[[1,2,3],[4,5,6],[7,8,9]]'
+ * Hard (61.30%)
+ * Total Accepted:    9.9K
+ * Total Submissions: 16.2K
+ * Testcase Example:  '1'
  *
- * Given a square array of integers A, we want the minimum sum of a falling
- * path through A.
+ * You have a grid of size n x 3 and you want to paint each cell of the grid
+ * with exactly one of the three colours: Red, Yellow or Green while making
+ * sure that no two adjacent cells have the same colour (i.e no two cells that
+ * share vertical or horizontal sides have the same colour).
  * 
- * A falling path starts at any element in the first row, and chooses one
- * element from each row.  The next row's choice must be in a column that is
- * different from the previous row's column by at most one.
+ * You are given n the number of rows of the grid.
  * 
+ * Return the number of ways you can paint this grid. As the answer may grow
+ * large, the answer must be computed modulo 10^9 + 7.
  * 
  * 
  * Example 1:
  * 
  * 
- * Input: [[1,2,3],[4,5,6],[7,8,9]]
+ * Input: n = 1
  * Output: 12
- * Explanation: 
- * The possible falling paths are:
+ * Explanation: There are 12 possible way to paint the grid as shown:
  * 
  * 
  * 
- * [1,4,7], [1,4,8], [1,5,7], [1,5,8], [1,5,9]
- * [2,4,7], [2,4,8], [2,5,7], [2,5,8], [2,5,9], [2,6,8], [2,6,9]
- * [3,5,7], [3,5,8], [3,5,9], [3,6,8], [3,6,9]
+ * Example 2:
  * 
  * 
- * The falling path with the smallest sum is [1,4,7], so the answer is 12.
+ * Input: n = 2
+ * Output: 54
+ * 
+ * 
+ * Example 3:
+ * 
+ * 
+ * Input: n = 3
+ * Output: 246
+ * 
+ * 
+ * Example 4:
+ * 
+ * 
+ * Input: n = 7
+ * Output: 106494
+ * 
+ * 
+ * Example 5:
+ * 
+ * 
+ * Input: n = 5000
+ * Output: 30228214
+ * 
  * 
  * 
  * Constraints:
  * 
  * 
- * 1 <= A.length == A[0].length <= 100
- * -100 <= A[i][j] <= 100
- * 
+ * n == grid.length
+ * grid[i].length == 3
+ * 1 <= n <= 5000
  * 
  */
 class Solution {
 public:
-    int dp[101][101];
-    int M = 10001; 
-    int dfs(int i, int j, vector<vector<int>> &ns) {
-      int sz = ns.size(); 
-      if (i >= sz || j >= sz || j < 0) return M; 
-      if (i == sz - 1) return ns[i][j];
-      if (dp[i][j] < M) return dp[i][j];
-      int res = ns[i][j] + min(dfs(i + 1, j - 1, ns), min(dfs(i + 1, j, ns), dfs(i + 1, j + 1, ns))); 
-      dp[i][j] = res; 
+    int numOfWays(int n) {
+      long a = 6, b = 6, res = 0; 
+      for(int i = 0 ;i < n; i ++){
+        res = (a + b) % MOD; 
+        int n_a = a; 
+        a = (3*a + 2*b) % MOD; 
+        b = (2*n_ a + 2*b) % MOD; 
+      }
       return res; 
     }
-
-    int minFallingPathSum(vector<vector<int>>& ns) {
-      memset(dp, M, sizeof(dp));
-      int res = dfs(0, 0, ns);
-      for (int j = 1; j < ns.size(); j++) res = min(res, dfs(0, j, ns));
-      // say(dp);
-      return res;
-    }
-
-
-    // // int dp[101][101];
-    // int M = 10001; 
-    // int dfs(int i, int j, vector<vector<int>> &ns, vector<vector<int>> &dp) {
-    //   int sz = ns.size(); 
-    //   if (i >= sz || j >= sz || j < 0) return M; 
-    //   if (i == sz - 1) return ns[i][j];
-    //   if (dp[i][j] < M) return dp[i][j];
-    //   int res = ns[i][j] + min(dfs(i + 1, j - 1, ns, dp), min(dfs(i + 1, j, ns, dp), dfs(i + 1, j + 1, ns, dp))); 
-    //   dp[i][j] = res; 
-    //   return res; 
-    // }
-
-    // int minFallingPathSum(vector<vector<int>>& ns) {
-    //   // memset(dp, 10001, sizeof(dp));
-    //   vector<vector<int>> dp(101, vector<int>(101, M));
-    //   int res = dfs(0, 0, ns, dp);
-    //   for (int j = 1; j < ns.size(); j++) res = min(res, dfs(0, j, ns, dp));
-    //   // say(dp);
-    //   return res;
-    // }
 };
 
 
 
 auto speed_up = [] () {
     ios_base::sync_with_stdio(false);
-
     return 0;
 }(); 

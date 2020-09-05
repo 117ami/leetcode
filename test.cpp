@@ -1,13 +1,11 @@
 
 #include "aux.cpp"
-#include "1312.minimum-insertion-steps-to-make-a-string-palindrome.cpp"
+#include "1411.number-of-ways-to-paint-n-3-grid.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string ss = "leetcode" ;
-	say(s.minInsertions(ss));
-
-
+	int n = 5000 ;
+	say(s.numOfWays(n));
 	return 0;
 }
 
