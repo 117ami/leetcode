@@ -1,11 +1,15 @@
 
 #include "aux.cpp"
-#include "1411.number-of-ways-to-paint-n-3-grid.cpp"
+#include "1572.matrix-diagonal-sum.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	int n = 5000 ;
-	say(s.numOfWays(n));
+std::vector<vector<int>> mat = {{1,2,3},               {4,5,6},               {7,8,9}} ;
+
+
+	say(s.diagonalSum(mat));
+
+
 	return 0;
 }
 

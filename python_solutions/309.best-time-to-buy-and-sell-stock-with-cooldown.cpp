@@ -862,6 +862,21 @@ public:
         }
         return cur[2];
     }
+    // Method 2
+    int maxProfit_2(vector<int> &prices) {
+    if (prices.empty())
+      return 0;
+    int rest = 0, sold = 0, buy = -prices[0];
+    for (int i = 1; i < prices.size(); i++) {
+      int p = prices[i];
+      int n_sold = sold, n_buy = buy;
+      sold = max(sold, buy + p);
+      buy = max(buy, rest - p);
+      rest = max(n_sold, max(rest, n_buy));
+    }
+    return sold;
+  }
+
 };
 
 

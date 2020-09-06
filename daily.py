@@ -141,7 +141,7 @@ class LeetCode():
                     items.append((nj['chapterId'], nj['id'], nj['title']))
 
         # print(items, len(items))
-        for chapter_id, item_id, title in items[::-1][:4]:
+        for chapter_id, item_id, title in items[::-1][:2]:
             qid, title_slug = self.get_itemid(item_id)
             js = json.load(open('data/question_ids.json', 'r'))
             front_id = 1
