@@ -1,18 +1,35 @@
 
 #include "aux.cpp"
-#include "1573.number-of-ways-to-split-a-string.cpp"
+#include "1575.count-all-possible-routes.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-// string s = "10101" ;
+	// std::vector<int> locations = {2,3,6,8,4} ;
+	// int start = 1 ;
+	// int finish = 3 ;
+	// int fuel = 5 ;
 
-// string s = "1001" ;
+	// std::vector<int> locations = {4,3,1} ;
+	// int start = 1 ;
+	// int finish = 0 ;
+	// int fuel = 6 ;
 
-// string s = "0000" ;
+	// std::vector<int> locations = {5,2,1} ;
+	// int start = 0 ;
+	// int finish = 2 ;
+	// int fuel = 3 ;
 
-	string ss = "100100010100110" ;
-	// ss = "1101";
-	say(s.numWays(ss));
+	// std::vector<int> locations = {2,1,5} ;
+	// int start = 0 ;
+	// int finish = 0 ;
+	// int fuel = 3 ;
+
+	std::vector<int> locations = {1,2,3} ;
+	int start = 0 ;
+	int finish = 2 ;
+	int fuel = 40 ;
+
+	say(s.countRoutes(locations, start, finish, fuel));
 	return 0;
 }
 
