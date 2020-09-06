@@ -1,15 +1,18 @@
 
 #include "aux.cpp"
-#include "1572.matrix-diagonal-sum.cpp"
+#include "1573.number-of-ways-to-split-a-string.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-std::vector<vector<int>> mat = {{1,2,3},               {4,5,6},               {7,8,9}} ;
+// string s = "10101" ;
 
+// string s = "1001" ;
 
-	say(s.diagonalSum(mat));
+// string s = "0000" ;
 
-
+	string ss = "100100010100110" ;
+	// ss = "1101";
+	say(s.numWays(ss));
 	return 0;
 }
 

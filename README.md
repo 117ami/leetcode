@@ -800,6 +800,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1567 | [maximum-length-of-subarray-with-positive-product](https://leetcode.com/problems/maximum-length-of-subarray-with-positive-product/description/) | [Python](./python_solutions/1567.maximum-length-of-subarray-with-positive-product.py)/[C++](./python_solutions/1567.maximum-length-of-subarray-with-positive-product.cpp) |
 |𝐇.1569 | [number-of-ways-to-reorder-array-to-get-same-bst](https://leetcode.com/problems/number-of-ways-to-reorder-array-to-get-same-bst/description/) | [Python](./python_solutions/1569.number-of-ways-to-reorder-array-to-get-same-bst.py)/[C++](./python_solutions/1569.number-of-ways-to-reorder-array-to-get-same-bst.cpp) |
 |𝐄.1572 | [matrix-diagonal-sum](https://leetcode.com/problems/matrix-diagonal-sum/description/) | [Python](./python_solutions/1572.matrix-diagonal-sum.py)/[C++](./python_solutions/1572.matrix-diagonal-sum.cpp) |
+|𝐌.1573 | [number-of-ways-to-split-a-string](https://leetcode.com/problems/number-of-ways-to-split-a-string/description/) | [Python](./python_solutions/1573.number-of-ways-to-split-a-string.py)/[C++](./python_solutions/1573.number-of-ways-to-split-a-string.cpp) |
 
 
 ### Contact
