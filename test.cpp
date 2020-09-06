@@ -1,17 +1,16 @@
 
 #include "aux.cpp"
-#include "1574.shortest-subarray-to-be-removed-to-make-array-sorted.cpp"
+#include "1578.minimum-deletion-cost-to-avoid-repeating-letters.cpp"
 
 int main(int argc, char const *argv[]) {
-	Solution s;
-	std::vector<int> arr = {1,2,3,10,4,2,3,5} ;
-	// std::vector<int> arr = {5,4,3,2,1} ;
-	// std::vector<int> arr = {1,2,3} ;
-	// std::vector<int> arr = {1} ;
-	// arr = {13,0,14,7,18,18,18,16,8,15,20};
-	// arr ={6,3,10,11,15,20,13,3,18,12};
-	say(s.findLengthOfShortestSubarray(arr));
+	Solution sol;
+	string s = "abaac" ;
+	std::vector<int> cost = {1,2,3,4,5} ;
 
+	// string s = "abc" ;
+	// std::vector<int> cost = {1,2,3} ;
+
+	say(sol.minCost(s, cost));
 
 
 	return 0;

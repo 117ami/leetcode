@@ -167,4 +167,3 @@ if __name__ == "__main__":
     cur_month = arrow.now().format('MM') 
     LeetCode().do_daily_challenge()
     LeetCode('data/leetcode_header.dat').do_daily_challenge()
-
