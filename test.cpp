@@ -1,21 +1,16 @@
 
 #include "aux.cpp"
-#include "1577.number-of-ways-where-square-of-number-is-equal-to-product-of-two-numbers.cpp"
+#include "638.shopping-offers.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	// std::vector<int> nums1 = {7,4} ;
-	// std::vector<int> nums2 = {5,2,8,9} ;
-
-	std::vector<int> nums1 = {1,1} ;
-	std::vector<int> nums2 = {1,1,1} ;
-
-	// std::vector<int> nums1 = {7,7,8,3} ;
-	// std::vector<int> nums2 = {1,2,9,7} ;
-	// nums1={43024,99908}, nums2={1864};
-	say(s.numTriplets(nums1,nums2));
-
-
+	vi price={2,3,4};
+	vvi special = {{1,1,0,4}, {2,2,1,9}};
+	vi needs= {1,2,1};
+	
+	price={2,5}, special={{3,0,5},{1,2,10}}, needs={3,2};
+	price  = {4,3,2,9,8,8}, special = {{1,5,5,1,4,0,18}, {3,3,6,6,4,2,32}}, needs = {6,5,5,6,4,1};
+	say(s.shoppingOffers(price, special,needs));
 
 	return 0;
 }
