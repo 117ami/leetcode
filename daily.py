@@ -150,17 +150,20 @@ class LeetCode():
                     front_id = s['stat']['frontend_question_id']
                     break
             # print(qid, title_slug)
-            python_file = f"{front_id}.{title_slug}.py"
-            cpp_file = f"{front_id}.{title_slug}.cpp"
-            local_file = f'python_solutions/{python_file}'
-            print(python_file, local_file)
-            self.submit_answer(local_file, title_slug, item_id)
-            
-            local_file = f'python_solutions/{cpp_file}'
-            if os.path.exists(local_file):
-                time.sleep(10)
+            try:
+                python_file = f"{front_id}.{title_slug}.py"
+                cpp_file = f"{front_id}.{title_slug}.cpp"
+                local_file = f'python_solutions/{python_file}'
+                print(python_file, local_file)
                 self.submit_answer(local_file, title_slug, item_id)
-            time.sleep(10)
+                
+                local_file = f'python_solutions/{cpp_file}'
+                if os.path.exists(local_file):
+                    time.sleep(10)
+                    self.submit_answer(local_file, title_slug, item_id)
+                time.sleep(10)
+            except:
+                pass 
 
 
 if __name__ == "__main__":
