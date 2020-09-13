@@ -1,18 +1,19 @@
 
 #include "aux.cpp"
-#include "518.coin-change-2.cpp"
+#include "1582.special-positions-in-a-binary-matrix.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	int amount = 5 ;
-	std::vector<int> coins = {1, 2, 5} ;
+std::vector<vector<int>> mat = {{1,0,0},               {0,0,1},               {1,0,0}} ;
 
-	// int amount = 3 ;
-	// std::vector<int> coins = {2} ;
+std::vector<vector<int>> mat = {{1,0,0},               {0,1,0},               {0,0,1}} ;
 
-	// int amount = 10 ;
-	// std::vector<int> coins = {10} ;
-	say(s.change(amount, coins));
+std::vector<vector<int>> mat = {{0,0,0,1},               {1,0,0,0},               {0,1,1,0},               {0,0,0,0}} ;
+
+std::vector<vector<int>> mat = {{0,0,0,0,0},               {1,0,0,0,0},               {0,1,0,0,0},               {0,0,1,0,0},               {0,0,0,1,1}} ;
+
+
+
 	return 0;
 }
 
