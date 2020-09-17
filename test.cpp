@@ -1,23 +1,14 @@
 
 #include "aux.cpp"
-#include "53.maximum-subarray.cpp"
+#include "848.shifting-letters.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	std::vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4} ;
-	nums={-2,1};
-	say(s.maxSubArray(nums));
-
-	// std::vector<int> nums = {1} ;
-
-	// std::vector<int> nums = {0} ;
-
-	// std::vector<int> nums = {-1} ;
-
-	// std::vector<int> nums = {-2147483647} ;
-
-
-
+	string S = "abc" ;
+	std::vector<int> shifts = {3,5,9} ;
+	S = "ruu"; 
+	shifts={26,9,17};
+	say(s.shiftingLetters(S, shifts));
 	return 0;
 }
 
