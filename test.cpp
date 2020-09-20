@@ -1,14 +1,17 @@
 
 #include "aux.cpp"
-#include "848.shifting-letters.cpp"
+#include "1588.sum-of-all-odd-length-subarrays.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string S = "abc" ;
-	std::vector<int> shifts = {3,5,9} ;
-	S = "ruu"; 
-	shifts={26,9,17};
-	say(s.shiftingLetters(S, shifts));
+	std::vector<int> arr = {1,4,2,5,3} ;
+
+	// std::vector<int> arr = {1,2} ;
+	// std::vector<int> arr = {10,11,12} ;
+	say(s.sumOddLengthSubarrays(arr));
+
+
+
 	return 0;
 }
 
