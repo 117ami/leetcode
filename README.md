@@ -816,6 +816,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1582 | [special-positions-in-a-binary-matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix/description/) | [Python](./python_solutions/1582.special-positions-in-a-binary-matrix.py)/[C++](./python_solutions/1582.special-positions-in-a-binary-matrix.cpp) |
 |𝐄.1588 | [sum-of-all-odd-length-subarrays](https://leetcode.com/problems/sum-of-all-odd-length-subarrays/description/) | [Python](./python_solutions/1588.sum-of-all-odd-length-subarrays.py)/[C++](./python_solutions/1588.sum-of-all-odd-length-subarrays.cpp) |
 |𝐄.1592 | [rearrange-spaces-between-words](https://leetcode.com/problems/rearrange-spaces-between-words/description/) | [Python](./python_solutions/1592.rearrange-spaces-between-words.py)/[C++](./python_solutions/1592.rearrange-spaces-between-words.cpp) |
+|𝐌.1593 | [split-a-string-into-the-max-number-of-unique-substrings](https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/description/) | [Python](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.py)/[C++](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.cpp) |
 
 
 ### Contact

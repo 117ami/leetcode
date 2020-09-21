@@ -1,23 +1,13 @@
 
 #include "aux.cpp"
-#include "1592.rearrange-spaces-between-words.cpp"
+#include "1593.split-a-string-into-the-max-number-of-unique-substrings.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	string text = "  this   is  a sentence " ;
-
-	// string text = " practice   makes   perfect" ;
-
-	// string text = "hello   world" ;
-
-	// string text = "  walks  udp package   into  bar a" ;
-
-	// text = "   a" ;
-	string res = s.reorderSpaces(text); 
-	say(res.size());
-	say(res);
-
-
+	string text = "ababccc" ;
+	// text="aa";
+	// say(text.substr(2));
+	say(s.maxUniqueSplit(text));
 	return 0;
 }
 
