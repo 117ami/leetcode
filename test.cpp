@@ -1,15 +1,21 @@
 
 #include "aux.cpp"
-#include "1588.sum-of-all-odd-length-subarrays.cpp"
+#include "1592.rearrange-spaces-between-words.cpp"
 
 int main(int argc, char const *argv[]) {
 	Solution s;
-	std::vector<int> arr = {1,4,2,5,3} ;
+	string text = "  this   is  a sentence " ;
 
-	// std::vector<int> arr = {1,2} ;
-	// std::vector<int> arr = {10,11,12} ;
-	say(s.sumOddLengthSubarrays(arr));
+	// string text = " practice   makes   perfect" ;
 
+	// string text = "hello   world" ;
+
+	// string text = "  walks  udp package   into  bar a" ;
+
+	// text = "   a" ;
+	string res = s.reorderSpaces(text); 
+	say(res.size());
+	say(res);
 
 
 	return 0;

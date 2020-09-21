@@ -815,6 +815,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1578 | [minimum-deletion-cost-to-avoid-repeating-letters](https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/description/) | [Python](./python_solutions/1578.minimum-deletion-cost-to-avoid-repeating-letters.py)/[C++](./python_solutions/1578.minimum-deletion-cost-to-avoid-repeating-letters.cpp) |
 |𝐄.1582 | [special-positions-in-a-binary-matrix](https://leetcode.com/problems/special-positions-in-a-binary-matrix/description/) | [Python](./python_solutions/1582.special-positions-in-a-binary-matrix.py)/[C++](./python_solutions/1582.special-positions-in-a-binary-matrix.cpp) |
 |𝐄.1588 | [sum-of-all-odd-length-subarrays](https://leetcode.com/problems/sum-of-all-odd-length-subarrays/description/) | [Python](./python_solutions/1588.sum-of-all-odd-length-subarrays.py)/[C++](./python_solutions/1588.sum-of-all-odd-length-subarrays.cpp) |
+|𝐄.1592 | [rearrange-spaces-between-words](https://leetcode.com/problems/rearrange-spaces-between-words/description/) | [Python](./python_solutions/1592.rearrange-spaces-between-words.py)/[C++](./python_solutions/1592.rearrange-spaces-between-words.cpp) |
 
 
 ### Contact
