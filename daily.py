@@ -1,3 +1,14 @@
+from collections import Counter, defaultdict, OrderedDict, deque
+from bisect import bisect_left, bisect_right 
+from functools import reduce, lru_cache 
+from typing import List 
+import itertools 
+import math 
+import heapq 
+import string
+true = True
+false = False
+MIN, MAX, MOD = -0x3f3f3f3f, 0x3f3f3f3f, 1000000007
 import json
 import re
 import requests
@@ -170,3 +181,16 @@ if __name__ == "__main__":
     cur_month = arrow.now().format('MM') 
     LeetCode().do_daily_challenge()
     LeetCode('data/leetcode_header.dat').do_daily_challenge()
+
+sol = Solution()
+
+
+print(sol.__init__())
+print(sol._update_question_id())
+print(sol._get_config())
+print(sol._read_code_file())
+print(sol._get_question_id())
+print(sol._get_id_from_sql())
+print(sol.submit_answer())
+print(sol.get_itemid())
+print(sol.do_daily_challenge())
