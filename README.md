@@ -824,6 +824,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐇.1591 | [strange-printer-ii](https://leetcode.com/problems/strange-printer-ii/description/) | [Python](./python_solutions/1591.strange-printer-ii.py)/[C++](./python_solutions/1591.strange-printer-ii.cpp) |
 |𝐄.1592 | [rearrange-spaces-between-words](https://leetcode.com/problems/rearrange-spaces-between-words/description/) | [Python](./python_solutions/1592.rearrange-spaces-between-words.py)/[C++](./python_solutions/1592.rearrange-spaces-between-words.cpp) |
 |𝐌.1593 | [split-a-string-into-the-max-number-of-unique-substrings](https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/description/) | [Python](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.py)/[C++](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.cpp) |
+|𝐄.1598 | [crawler-log-folder](https://leetcode.com/problems/crawler-log-folder/description/) | [Python](./python_solutions/1598.crawler-log-folder.py)/[C++](./python_solutions/1598.crawler-log-folder.cpp) |
 
 
 ### Contact
