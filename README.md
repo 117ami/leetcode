@@ -828,6 +828,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐄.1592 | [rearrange-spaces-between-words](https://leetcode.com/problems/rearrange-spaces-between-words/description/) | [Python](./python_solutions/1592.rearrange-spaces-between-words.py)/[C++](./python_solutions/1592.rearrange-spaces-between-words.cpp) |
 |𝐌.1593 | [split-a-string-into-the-max-number-of-unique-substrings](https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/description/) | [Python](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.py)/[C++](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.cpp) |
 |𝐄.1598 | [crawler-log-folder](https://leetcode.com/problems/crawler-log-folder/description/) | [Python](./python_solutions/1598.crawler-log-folder.py)/[C++](./python_solutions/1598.crawler-log-folder.cpp) |
+|𝐌.1612 | [check-if-two-expression-trees-are-equivalent](https://leetcode.com/problems/check-if-two-expression-trees-are-equivalent/description/) | [Python](./python_solutions/1612.check-if-two-expression-trees-are-equivalent.py)/[C++](./python_solutions/1612.check-if-two-expression-trees-are-equivalent.cpp) |
 
 
 ### Contact
