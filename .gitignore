@@ -9,3 +9,6 @@ data/*
 lc.py 
 xiulc.py
 .gitignore
+upvote.py 
+cheatsheet/*
+cheatsheet/
