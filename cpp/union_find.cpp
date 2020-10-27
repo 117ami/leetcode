@@ -1,28 +1,26 @@
 
 
 class UF {
-  // sz is the size of a group
-  int *id, cnt, *sz;
+  // len is the size of a group
+  int *id, cnt, *len;
 
 public:
   // Create an empty union find data structure with N isolated sets.
   UF(int N) {
     cnt = N;
     id = new int[N];
-    sz = new int[N];
-    for (int i = 0; i < N; i++)
-      id[i] = i, sz[i] = 1;
+    len = new int[N];
+    for (int i = 0; i < N; i++) id[i] = i, len[i] = 1;
   }
 
   ~UF() {
     delete[] id;
-    delete[] sz;
+    delete[] len;
   }
 
   // Return the id of component corresponding to object p.
   int find(int p) {
-    if (p != id[p])
-      id[p] = find(id[p]);
+    if (p != id[p]) id[p] = find(id[p]);
     return id[p];
   }
 
@@ -42,12 +40,8 @@ public:
       return;
 
     // make smaller root point to larger one
-    if (sz[i] < sz[j]) {
-      id[i] = j, sz[j] += sz[i];
-    } else {
-      id[j] = i, sz[i] += sz[j];
-    }
-
+    if (len[i] < len[j]) id[i] = j, len[j] += len[i];
+    else id[j] = i, len[i] += len[j];
     cnt--;
   }
 
