@@ -10,6 +10,7 @@ lc.py
 xiulc.py
 .gitignore
 upvote.py 
+downvote.py
 cheatsheet/*
 cheatsheet/
 tmp/
