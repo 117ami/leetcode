@@ -1,0 +1,94 @@
+import json
+import re
+import requests
+from bs4 import BeautifulSoup
+from pprint import pprint
+import arrow
+import random
+import time
+import base64
+import sys
+import os
+import logging
+from termcolor import colored
+
+from typing import Dict, Sequence, List
+
+FORMAT = '[%(asctime)-15s] %(message)s'
+logging.basicConfig(format=FORMAT, level=logging.INFO)
+
+# Leetcode related urls
+class UrlEnum:
+    GRAPHSQL: str = "https://leetcode.com/graphql"
+    HOMEPAGE_117: str = "https://leetcode.com/l117"
+
+
+class LeetCode():
+    def __init__(self,
+                 header_file='data/xiuheader.dat'):
+        self.s = requests.Session()
+        delimiter = "\t" if "xiu" in header_file else ": "
+        headers = self._get_config(header_file, delimiter)
+        self.s.headers.update(headers)
+
+    def _get_config(self, head_file: str, delimiter="\t")->Dict:
+        '''Load config (head/cookie) from file
+        '''
+        with open(head_file, 'r') as f:
+            return dict(map(lambda l: l.rstrip().split(delimiter)[:2], f.readlines()))
+
+    def _query_post_id(self, topic_id: str)->str:
+        json_dict: Dict = {
+            "operationName": "DiscussTopic",
+            "query": "query DiscussTopic($topicId: Int!) {\n topic(id: $topicId) {\n id\n viewCount\n topLevelCommentCount\n subscribed\n title\n pinned\n tags\n hideFromTrending\n post {\n ...DiscussPost\n __typename\n }\n __typename\n }\n}\n\nfragment DiscussPost on PostNode {\n id\n voteCount\n voteStatus\n content\n updationDate\n creationDate\n status\n isHidden\n coinRewards {\n ...CoinReward\n __typename\n }\n author {\n isDiscussAdmin\n isDiscussStaff\n username\n profile {\n userAvatar\n reputation\n userSlug\n __typename\n }\n isActive\n __typename\n }\n authorIsModerator\n isOwnPost\n __typename\n}\n\nfragment CoinReward on ScoreNode {\n id\n score\n description\n date\n __typename\n}\n",
+            "variables": {"topicId": topic_id}
+        }
+        ret = self.s.post(UrlEnum.GRAPHSQL, json=json_dict, verify=False)
+        # print(ret, ret.text)
+        return ret.json()['data']['topic']['post']['id']
+
+    def _upvote_topic(self, post_id: str):
+        json_dict: Dict = {
+            "operationName": "votePost",
+            "variables": {
+                "postId": post_id,
+                "voteStatus": 1 
+                },
+            "query": "mutation votePost($postId: Int!, $voteStatus: Int!) {\n votePost(postId: $postId, value: $voteStatus) {\n ok\n error\n value\n post {\n id\n voteStatus\n __typename\n }\n __typename\n }\n}\n"
+        }
+        ret = self.s.post(UrlEnum.GRAPHSQL, json=json_dict)
+        print(ret, ret.text)
+        return ret.json()
+
+    def _query_recent_topics(self) -> List[str]:
+        json_dict: Dict = {
+            "operationName": "getRecentPosts",
+            "variables":{"username":"L117"},
+            "query": "query getRecentPosts($username: String!, $limit: Int) {\n  userRecentTopics(username: $username, limit: $limit) {\n    id\n    title\n    commentCount\n    post {\n      creationDate\n      voteCount\n      __typename\n    }\n    __typename\n  }\n}\n"
+        }
+        ret = self.s.get(UrlEnum.GRAPHSQL, json=json_dict, verify=False)
+        return (i['id'] for i in ret.json()['data']['userRecentTopics'])
+
+    def upvote_recent_posts(self):
+        for topic_id in self._query_recent_topics():
+            post_id = self._query_post_id(topic_id)
+            # print(topic_id, post_id)
+            if random.randint(1, 10) < 8:
+                self._upvote_topic(post_id)
+
+
+if __name__ == "__main__":
+    # LeetCode().upvote_recent_posts()
+    LeetCode('data/qiusa.dat').upvote_recent_posts()
+    # LeetCode('data/hera.dat').upvote_recent_posts()
+    # LeetCode('data/adawa.dat').upvote_recent_posts()
+    # LeetCode('data/lilei.dat').upvote_recent_posts()
+    # LeetCode('data/maya.dat').upvote_recent_posts()
+    # LeetCode('data/lila.dat').upvote_recent_posts()
+    # LeetCode('data/elenaheader.dat').upvote_recent_posts()
+
+
+
+sol = Solution()
+
+
