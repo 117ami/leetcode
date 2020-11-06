@@ -3,7 +3,7 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from pprint import pprint
-import arrow
+import arrow, calendar
 import random
 import time
 import base64
@@ -123,12 +123,13 @@ class LeetCode():
         return (q['questionId'], q['titleSlug'])
 
     def do_daily_challenge(self):
+        month_name = calendar.month_name[int(arrow.now().month)].lower()
         j = {
             'operationName': "GetChaptersWithItems",
             'query':
             "query GetChaptersWithItems($cardSlug: String!) {\n chapters(cardSlug: $cardSlug) {\n ...ExtendedChapterDetail\n descriptionText\n __typename\n }\n}\n\nfragment ExtendedChapterDetail on ChapterNode {\n id\n title\n slug\n items {\n id\n title\n type\n info\n paidOnly\n chapterId\n isEligibleForCompletion\n prerequisites {\n id\n chapterId\n __typename\n }\n __typename\n }\n __typename\n}\n",
             'variables': {
-                "cardSlug": "october-leetcoding-challenge"
+                "cardSlug": f"{month_name}-leetcoding-challenge"
             }
         }
         r = self.s.post('https://leetcode.com/graphql/', json=j)
@@ -167,7 +168,6 @@ class LeetCode():
 
 
 if __name__ == "__main__":
-    cur_month = arrow.now().format('MM') 
     LeetCode().do_daily_challenge()
     LeetCode('data/leetcode_header.dat').do_daily_challenge()
 

@@ -67,13 +67,13 @@ class LeetCode():
 
 if __name__ == "__main__":
     topic_url = sys.argv[1]
-    # LeetCode().entry(topic_url)
-    # LeetCode('data/adawa.dat').entry(topic_url)
-    # LeetCode('data/qiusa.dat').entry(topic_url)
-    # LeetCode('data/hera.dat').entry(topic_url)
-    # LeetCode('data/lilei.dat').entry(topic_url)
-    # LeetCode('data/maya.dat').entry(topic_url)
-    # LeetCode('data/lila.dat').entry(topic_url)
+    LeetCode().entry(topic_url)
+    LeetCode('data/adawa.dat').entry(topic_url)
+    LeetCode('data/qiusa.dat').entry(topic_url)
+    LeetCode('data/hera.dat').entry(topic_url)
+    LeetCode('data/lilei.dat').entry(topic_url)
+    LeetCode('data/maya.dat').entry(topic_url)
+    LeetCode('data/lila.dat').entry(topic_url)
     LeetCode('data/elenaheader.dat').entry(topic_url)
 
 
