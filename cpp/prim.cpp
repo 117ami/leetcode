@@ -1,7 +1,14 @@
+#include <deque>
 #include <iostream>
-#include <list>
+#include <map>
+#include <numeric>
 #include <queue>
+#include <set>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
+#include <list>
 using namespace std;
 #define INF 0x3f3f3f3f
 
@@ -79,7 +86,7 @@ public:
 
 
 int main() {
-  Graph g(4);
+  Prim g(4);
   g.add_edge(0, 1, 2);
   g.add_edge(1, 2, 4);
   g.add_edge(2, 3, 7);
@@ -88,10 +95,10 @@ int main() {
   int cost = g.cost_of_mst();
   std::cout << cost << endl;
 
-  list<int> *arr = new list<int>(8); 
-  arr[0].push_back(1);
-  arr[7].push_back(12);
-  for(int i=0 ;i < 7; i++) {
-    for(auto c: arr[i]) std::cout<< c << std::endl;
-  }
+  // list<int> *arr = new list<int>(8); 
+  // arr[0].push_back(1);
+  // arr[7].push_back(12);
+  // for(int i=0 ;i < 7; i++) {
+  //   for(auto c: arr[i]) std::cout<< c << std::endl;
+  // }
 }

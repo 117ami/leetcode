@@ -27,7 +27,7 @@ class LeetCode():
     def __init__(self,
                  header_file='data/xiuheader.dat'):
         self.s = requests.Session()
-        delimiter = ": " if "elena" in header_file else "\t"
+        delimiter = ": " 
         headers = self._get_config(header_file, delimiter)
         self.s.headers.update(headers)
 
