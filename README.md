@@ -840,6 +840,7 @@ An incomplete unsorted list of **Ruby** solutions (with ids) to 600+ Leetcode pr
 |𝐌.1593 | [split-a-string-into-the-max-number-of-unique-substrings](https://leetcode.com/problems/split-a-string-into-the-max-number-of-unique-substrings/description/) | [Python](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.py)/[C++](./python_solutions/1593.split-a-string-into-the-max-number-of-unique-substrings.cpp) |
 |𝐄.1598 | [crawler-log-folder](https://leetcode.com/problems/crawler-log-folder/description/) | [Python](./python_solutions/1598.crawler-log-folder.py)/[C++](./python_solutions/1598.crawler-log-folder.cpp) |
 |𝐌.1612 | [check-if-two-expression-trees-are-equivalent](https://leetcode.com/problems/check-if-two-expression-trees-are-equivalent/description/) | [Python](./python_solutions/1612.check-if-two-expression-trees-are-equivalent.py)/[C++](./python_solutions/1612.check-if-two-expression-trees-are-equivalent.cpp) |
+|𝐇.1627 | [graph-connectivity-with-threshold](https://leetcode.com/problems/graph-connectivity-with-threshold/description/) | [Python](./python_solutions/1627.graph-connectivity-with-threshold.py)/[C++](./python_solutions/1627.graph-connectivity-with-threshold.cpp) |
 |𝐇.1649 | [create-sorted-array-through-instructions](https://leetcode.com/problems/create-sorted-array-through-instructions/description/) | [Python](./python_solutions/1649.create-sorted-array-through-instructions.py)/[C++](./python_solutions/1649.create-sorted-array-through-instructions.cpp) |
 
 
